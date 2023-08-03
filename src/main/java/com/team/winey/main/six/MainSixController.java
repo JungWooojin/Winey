@@ -80,6 +80,7 @@ public class MainSixController {
         SERVICE.selWineByday();
     }*/
     @GetMapping("/random-wines")
+    @Operation(summary = "입문용 와인리스트 6개")
     @Scheduled(cron = "0 0 0 * * *") // 매 시간 0분마다 실행
     public List<WineVo> getRandomWines() {
         List<WineVo> allWines = MAPPER.selWineByday();
