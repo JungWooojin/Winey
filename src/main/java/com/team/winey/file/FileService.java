@@ -25,7 +25,7 @@ public class FileService {
     public Resource fileLoad(FileUpdDto dto) {
         String urlPath = "https://images.vivino.com/thumbs/";
 
-        for (int i = 1; i < 485; i++) {
+        for (int i = 1; i <= 485; i++) {
             FileEntity entity = MAPPER.getFileEntityById(i);
 
             String path = entity.getImagePath();
