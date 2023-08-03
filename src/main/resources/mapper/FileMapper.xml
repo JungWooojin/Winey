@@ -15,4 +15,9 @@
         SET pic = #{imagePath}
         WHERE product_id = #{productId}
     </update>
+
+    <select id="count">
+        SELECT COUNT(*)
+        FROM t_product
+    </select>
 </mapper>

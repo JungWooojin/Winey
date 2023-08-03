@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -24,8 +25,9 @@ public class FileService {
 
     public Resource fileLoad(FileUpdDto dto) {
         String urlPath = "https://images.vivino.com/thumbs/";
+        int count = MAPPER.count();
 
-        for (int i = 1; i <= 485; i++) {
+        for (int i = 1; i <=count; i++) {
             FileEntity entity = MAPPER.getFileEntityById(i);
 
             String path = entity.getImagePath();
