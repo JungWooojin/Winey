@@ -2,57 +2,54 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.team.winey.main.MainMapper">
+<mapper namespace="com.team.winey.main.six.MainSixMapper">
 
-    <select id="selWine">
+    <select id="selWineByPrice2limit6">
+        <![CDATA[
         SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
         aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
         promotion, beginner, alcohol
         FROM t_product
+        WHERE price < 20000
+        LIMIT 6
+    ]]>
     </select>
 
-    <select id="selWineByPrice2">
-        <![CDATA[
-            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
-            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
-            promotion, beginner, alcohol
-            FROM t_product
-            WHERE price < 20000
-        ]]>
-    </select>
 
-    <select id="selWineByPrice25">
+    <select id="selWineByPrice25limit6">
         <![CDATA[
             SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
             aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
             promotion, beginner, alcohol
             FROM t_product
             WHERE price > 20000 AND price < 50000
+            LIMIT 6
         ]]>
     </select>
 
-
-    <select id="selWineByPrice510">
+    <select id="selWineByPrice510limit6">
         <![CDATA[
             SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
             aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
             promotion, beginner, alcohol
             FROM t_product
             WHERE price > 50000 AND price < 100000
+            LIMIT 6
         ]]>
     </select>
 
-    <select id="selWineByPrice10">
+    <select id="selWineByPrice10limit6">
         <![CDATA[
             SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
             aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
             promotion, beginner, alcohol
             FROM t_product
             WHERE price > 100000
+            LIMIT 6
         ]]>
     </select>
 
-    <select id="selWineByCountry">
+    <select id="selWineByCountrylimit6">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol
@@ -60,9 +57,10 @@
         INNER JOIN t_country b
         ON a.country_id = b.country_id
         WHERE b.country_id = #{countryId}
+        LIMIT 6
     </select>
 
-    <select id="selWineByFood">
+    <select id="selWineByFoodlimit6">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         a.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol
@@ -74,6 +72,7 @@
         INNER JOIN t_big_category d
         ON c.big_category_id = d.big_category_id
         WHERE d.big_category_id = #{bigCategoryId}
+        LIMIT 6
     </select>
 
 </mapper>
