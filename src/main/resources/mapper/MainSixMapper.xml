@@ -75,4 +75,13 @@
         LIMIT 6
     </select>
 
+    <select id="selWineByday">
+        SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+        aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+        promotion, beginner, alcohol
+        FROM t_product
+        WHERE beginner = 1
+    </select>
+
+
 </mapper>

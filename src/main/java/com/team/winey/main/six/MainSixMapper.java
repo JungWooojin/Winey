@@ -18,4 +18,6 @@ public interface MainSixMapper {
     List<WineVo> selWineByCountrylimit6(WineSelByCountryDto dto);
     List<WineFoodVo> selWineByFoodlimit6(WineSelByFoodDto dto);
 
+    List<WineVo> selWineByday();
+
 }
