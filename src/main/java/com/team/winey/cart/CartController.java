@@ -30,16 +30,16 @@ public class CartController {
 
     @GetMapping("/filledcart")
     @Operation(summary = "장바구니 출력", description =
-             "userId: 유저PK값, <br>"
-                + "quantity: 수량, <br>"
-                + "nmKor: 한글 이름, <br>"
-                + "nmEng: 영어 이름, <br>"
-                + "price: 가격, <br>"
-                + "salePrice: 할인가격, <br>"
-                + "pic: 사진, <br>")
+            "userId: 유저PK값, <br>"
+                    + "quantity: 수량, <br>"
+                    + "nmKor: 한글 이름, <br>"
+                    + "nmEng: 영어 이름, <br>"
+                    + "price: 가격, <br>"
+                    + "salePrice: 할인가격, <br>"
+                    + "pic: 사진, <br>")
     public List<CartVo> getFilledCart(@RequestParam int userId) {
-            CartSelDto dto = new CartSelDto();
-            dto.setUserId(userId);
+        CartSelDto dto = new CartSelDto();
+        dto.setUserId(userId);
         return service.selCart(dto);
     }
 
@@ -50,9 +50,10 @@ public class CartController {
         return service.delCart(dto);
     }
 
+
     @PostMapping("/quantity")
     @Operation(summary = "장바구니 수량변경", description =
-                    "quantity: 수량, <br>"
+            "quantity: 수량, <br>"
                     + "cartId: cart pk값 <br>")
     public int postCart(@RequestParam int cartId, @RequestParam int quantity){
         CartUpdDto dto = new CartUpdDto();
@@ -60,6 +61,7 @@ public class CartController {
         dto.setQuantity(quantity);
         return service.updCart(dto);
     }
+
     @GetMapping("/sumPrice")
     @Operation(summary = "장바구니 총합계", description =
             "userId: user pk값 <br>")

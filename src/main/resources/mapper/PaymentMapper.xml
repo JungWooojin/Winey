@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.cart.payment.PaymentMapper">
+
+    <insert id="insPayment" useGeneratedKeys="true" keyProperty="orderId">
+        insert into t_order
+        set user_id = #{userId},
+        store_id = #{storeId},
+        payment = 1,
+        total_order_price =
+        (SELECT sum(A.quantity * B.price) sumPrice
+        from t_cart A
+        inner JOIN t_product B
+        ON A.product_id = B.product_id
+        WHERE user_id = #{userId}
+        order by user_id),
+        pickup_time = #{pickupTime},
+        order_status = #{orderStatus}
+    </insert>
+
+    <update id="updPayment">
+        update t_order
+        set order_status = #{orderStatus}
+        where payment = 1
+    </update>
+
+    <select id = "selSumPrice">
+        SELECT sum(A.quantity * B.price) sumPrice
+        from t_cart A
+        inner JOIN t_product B
+        ON A.product_id = B.product_id
+        WHERE user_id = #{userId}
+        order by userId;
+    </select>
+
+    <insert id ="insReview">
+        insert into t_review
+        set order_detail_id = #{orderDetailId},
+            review_level = #{reviewLevel}
+    </insert>
+
+</mapper>

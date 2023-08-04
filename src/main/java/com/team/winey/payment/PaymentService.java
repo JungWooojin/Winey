@@ -18,9 +18,9 @@ public class PaymentService {
         PaymentInsDto2 dto2 = new PaymentInsDto2();
         dto2.setUserId(dto.getUserId());
         dto2.setStoreId(dto.getStoreId());
-        dto2.setCartId(dto.getCartId());
-        dto2.setPayment(dto.getPayment());
-        dto2.setTotalOrderPrice(dto.getTotalOrderPrice());
+//        dto2.setCartId(dto.getCartId());
+//        dto2.setPayment(dto.getPayment());
+//        dto2.setTotalOrderPrice(dto.getTotalOrderPrice());
         dto2.setPickupTime(dto.getPickupTime());
         dto2.setOrderStatus(dto.getOrderStatus());
         mapper.insPayment(dto2);
@@ -29,6 +29,12 @@ public class PaymentService {
 
     public int updPayment(PaymentUpdDto dto){
         return mapper.updPayment(dto);
+    }
+    public int selSumPrice(int userId){
+        return mapper.selSumPrice(userId);
+    }
+    public int insReview(ReviewInsDto dto){
+        return mapper.insReview(dto);
     }
 
 

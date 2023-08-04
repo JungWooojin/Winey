@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.cart.cart.CartMapper">
+
+    <select id="selCart">
+        SELECT A.user_id, B.product_id productId, A.quantity
+        , B.nm_kor nmKor, B.nm_eng nmEng, B.price, c.sale_price salePrice, B.pic
+        FROM t_cart A
+        left JOIN t_product B
+        ON A.product_id = B.product_id
+        left JOIN t_sale C
+        ON B.product_id = C.product_id
+        WHERE user_id = 1;
+    </select>
+
+    <insert id="insCart" useGeneratedKeys="true" keyProperty="cartId">
+        insert into t_cart
+        set
+        user_id = #{userId},
+        product_id = #{productId},
+        quantity = #{quantity}
+    </insert>
+
+    <delete id="delCart">
+        delete from t_cart
+        where cart_id = #{cartId}
+    </delete>
+
+    <update id ="updCart">
+        update t_cart
+        set quantity = #{quantity},
+        updated_at = current_timestamp()
+        where cart_id = #{cartId}
+    </update>
+
+    <select id = "selSumPrice">
+        SELECT sum(A.quantity * B.price) sumPrice
+        from t_cart A
+        inner JOIN t_product B
+        ON A.product_id = B.product_id
+        WHERE user_id = #{user_id}
+        order by user_id;
+    </select>
+
+</mapper>
