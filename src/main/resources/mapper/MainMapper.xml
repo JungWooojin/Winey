@@ -11,6 +11,14 @@
         FROM t_product
     </select>
 
+    <select id="selWineById">
+        SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+        aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+        promotion, beginner, alcohol
+        FROM t_product
+        WHERE product_id = #{productId}
+    </select>
+
     <select id="selWineByPrice2">
         <![CDATA[
             SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,

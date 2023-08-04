@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class WineFoodVo {
+    private Long productId;
     private Long categoryId;
     private Long featureId;
     private Long countryId;

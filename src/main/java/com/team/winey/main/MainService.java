@@ -1,9 +1,7 @@
 package com.team.winey.main;
 
-import com.team.winey.main.model.WineFoodVo;
-import com.team.winey.main.model.WineSelByCountryDto;
-import com.team.winey.main.model.WineSelByFoodDto;
-import com.team.winey.main.model.WineTotalVo;
+import com.team.winey.detail.model.WineVo;
+import com.team.winey.main.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +17,12 @@ public class MainService {
         return MAPPER.selWine();
     }
 
-//    public List<WineVo> selWineByPrice(WineSelByPriceDto dto) {
+    //    public List<WineVo> selWineByPrice(WineSelByPriceDto dto) {
 //        return MAPPER.selWineByPrice(dto);
 //    }
-
+    public WineVo selWineById(WineSelDetailDto dto) {
+        return MAPPER.selWineById(dto);
+    }
 
     public List<WineTotalVo> selWineByPrice2() {
         return MAPPER.selWineByPrice2();

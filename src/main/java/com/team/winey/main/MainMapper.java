@@ -1,9 +1,7 @@
 package com.team.winey.main;
 
-import com.team.winey.main.model.WineFoodVo;
-import com.team.winey.main.model.WineSelByCountryDto;
-import com.team.winey.main.model.WineSelByFoodDto;
-import com.team.winey.main.model.WineTotalVo;
+import com.team.winey.detail.model.WineVo;
+import com.team.winey.main.model.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,7 +9,9 @@ import java.util.List;
 @Mapper
 public interface MainMapper {
     List<WineTotalVo> selWine();
-//    List<WineVo> selWineByPrice(WineSelByPriceDto dto);
+
+    //    List<WineVo> selWineByPrice(WineSelByPriceDto dto);
+    WineVo selWineById(WineSelDetailDto productId);
     List<WineTotalVo> selWineByPrice2();
     List<WineTotalVo> selWineByPrice25();
     List<WineTotalVo> selWineByPrice510();
