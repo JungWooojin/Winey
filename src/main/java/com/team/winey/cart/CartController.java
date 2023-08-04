@@ -20,7 +20,7 @@ public class CartController {
         this.service = service;
     }
 
-    @PutMapping("/cart")
+    @PostMapping("/cart")
     @Operation(summary = "장바구니 추가", description =
             "productId: 상품 PK값,<br>" + "quantity: 수량,<br>" + "userId: 유저PK값, <br>")
     public int putCart(@RequestBody CartInsDto dto){
@@ -51,11 +51,11 @@ public class CartController {
     }
 
 
-    @PostMapping("/quantity")
+    @PutMapping("/quantity")
     @Operation(summary = "장바구니 수량변경", description =
             "quantity: 수량, <br>"
                     + "cartId: cart pk값 <br>")
-    public int postCart(@RequestParam int cartId, @RequestParam int quantity){
+    public int putCart(@RequestParam int cartId, @RequestParam int quantity){
         CartUpdDto dto = new CartUpdDto();
         dto.setCartId(cartId);
         dto.setQuantity(quantity);
