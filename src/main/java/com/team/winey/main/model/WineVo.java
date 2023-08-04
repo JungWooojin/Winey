@@ -4,10 +4,11 @@ import lombok.Data;
 
 @Data
 public class WineVo {
-    public Long categoryId;
-    public Long featureId;
-    public Long countryId;
-    public Long aromaId;
+    private Long productId;
+    private Long categoryId;
+    private Long featureId;
+    private Long countryId;
+    private Long aromaId;
     private String nmKor;
     private String nmEng;
     private int price;
