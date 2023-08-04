@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/payment")
-@Tag(name = "2. 결제")
+@Tag(name = "결제")
 public class PaymentController {
 
     private final PaymentService service;

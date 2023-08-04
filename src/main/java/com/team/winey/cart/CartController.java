@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/wine")
-@Tag(name = "1. 장바구니")
+@Tag(name = "장바구니")
 public class CartController {
 
     private final CartService service;
