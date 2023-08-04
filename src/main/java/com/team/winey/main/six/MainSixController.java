@@ -3,7 +3,7 @@ package com.team.winey.main.six;
 import com.team.winey.main.model.WineFoodVo;
 import com.team.winey.main.model.WineSelByCountryDto;
 import com.team.winey.main.model.WineSelByFoodDto;
-import com.team.winey.main.model.WineVo;
+import com.team.winey.main.model.WineTotalVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -36,31 +36,31 @@ public class MainSixController {
     //6개 출력
     @GetMapping("/price2")
     @Operation(summary = "2만원 미만 와인리스트 6개")
-    public List<WineVo> getWineByPrice2limit6() {
+    public List<WineTotalVo> getWineByPrice2limit6() {
         return SERVICE.selWineByPrice2limit6();
     }
 
     @GetMapping("/price25")
     @Operation(summary = "2-5만원 와인리스트 6개")
-    public List<WineVo> getWineByPrice25limit6() {
+    public List<WineTotalVo> getWineByPrice25limit6() {
         return SERVICE.selWineByPrice25limit6();
     }
 
     @GetMapping("/price510")
     @Operation(summary = "5-10만원 와인리스트 6개")
-    public List<WineVo> getWineByPrice510limit6() {
+    public List<WineTotalVo> getWineByPrice510limit6() {
         return SERVICE.selWineByPrice510limit6();
     }
 
     @GetMapping("/price10")
     @Operation(summary = "10만원 이상 와인리스트 6개")
-    public List<WineVo> getWineByPrice10limit6() {
+    public List<WineTotalVo> getWineByPrice10limit6() {
         return SERVICE.selWineByPrice10limit6();
     }
 
     @GetMapping("/country")
     @Operation(summary = "국가별 와인리스트 6개")
-    public List<WineVo> getWineByCountrylimit6(@RequestParam Long countryId) {
+    public List<WineTotalVo> getWineByCountrylimit6(@RequestParam Long countryId) {
         WineSelByCountryDto dto = new WineSelByCountryDto();
         dto.setCountryId(countryId);
         return SERVICE.selWineByCountrylimit6(dto);
@@ -82,9 +82,9 @@ public class MainSixController {
     @GetMapping("/random-wines")
     @Operation(summary = "입문용 와인리스트 6개")
     @Scheduled(cron = "0 0 0 * * *") // 매 시간 0분마다 실행
-    public List<WineVo> getRandomWines() {
-        List<WineVo> allWines = MAPPER.selWineByday();
-        List<WineVo> selectedWines = new ArrayList<>();
+    public List<WineTotalVo> getRandomWines() {
+        List<WineTotalVo> allWines = MAPPER.selWineByday();
+        List<WineTotalVo> selectedWines = new ArrayList<>();
 
         int totalWines = allWines.size();
         int winesToDisplay = 6;

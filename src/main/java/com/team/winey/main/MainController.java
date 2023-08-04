@@ -3,7 +3,7 @@ package com.team.winey.main;
 import com.team.winey.main.model.WineFoodVo;
 import com.team.winey.main.model.WineSelByCountryDto;
 import com.team.winey.main.model.WineSelByFoodDto;
-import com.team.winey.main.model.WineVo;
+import com.team.winey.main.model.WineTotalVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -33,37 +33,37 @@ public class MainController {
 
     @GetMapping("/price")
     @Operation(summary = "전체 와인리스트")
-    public List<WineVo> getWineByPrice() {
+    public List<WineTotalVo> getWineByPrice() {
         return SERVICE.selWine();
     }
 
     @GetMapping("/price2")
     @Operation(summary = "2만원 미만 와인리스트")
-    public List<WineVo> getWineByPrice2() {
+    public List<WineTotalVo> getWineByPrice2() {
         return SERVICE.selWineByPrice2();
     }
 
     @GetMapping("/price25")
     @Operation(summary = "2-5만원 와인리스트")
-    public List<WineVo> getWineByPrice25() {
+    public List<WineTotalVo> getWineByPrice25() {
         return SERVICE.selWineByPrice25();
     }
 
     @GetMapping("/price510")
     @Operation(summary = "5-10만원 와인리스트")
-    public List<WineVo> getWineByPrice510() {
+    public List<WineTotalVo> getWineByPrice510() {
         return SERVICE.selWineByPrice510();
     }
 
     @GetMapping("/price10")
     @Operation(summary = "10만원 이상 와인리스트")
-    public List<WineVo> getWineByPrice10() {
+    public List<WineTotalVo> getWineByPrice10() {
         return SERVICE.selWineByPrice10();
     }
 
     @GetMapping("/country")
     @Operation(summary = "국가별 와인리스트")
-    public List<WineVo> selWineByCountry(@RequestParam Long countryId) {
+    public List<WineTotalVo> selWineByCountry(@RequestParam Long countryId) {
         WineSelByCountryDto dto = new WineSelByCountryDto();
         dto.setCountryId(countryId);
         return SERVICE.selWineByCountry(dto);

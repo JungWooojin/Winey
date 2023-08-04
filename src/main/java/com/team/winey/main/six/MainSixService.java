@@ -3,10 +3,9 @@ package com.team.winey.main.six;
 import com.team.winey.main.model.WineFoodVo;
 import com.team.winey.main.model.WineSelByCountryDto;
 import com.team.winey.main.model.WineSelByFoodDto;
-import com.team.winey.main.model.WineVo;
+import com.team.winey.main.model.WineTotalVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -19,23 +18,23 @@ public class MainSixService {
     private final MainSixMapper MAPPER;
 
     //6개씩 출력
-    public List<WineVo> selWineByPrice2limit6() {
+    public List<WineTotalVo> selWineByPrice2limit6() {
         return MAPPER.selWineByPrice2limit6();
     }
 
-    public List<WineVo> selWineByPrice25limit6() {
+    public List<WineTotalVo> selWineByPrice25limit6() {
         return MAPPER.selWineByPrice25limit6();
     }
 
-    public List<WineVo> selWineByPrice510limit6() {
+    public List<WineTotalVo> selWineByPrice510limit6() {
         return MAPPER.selWineByPrice510limit6();
     }
 
-    public List<WineVo> selWineByPrice10limit6() {
+    public List<WineTotalVo> selWineByPrice10limit6() {
         return MAPPER.selWineByPrice10limit6();
     }
 
-    public List<WineVo> selWineByCountrylimit6(WineSelByCountryDto dto) {
+    public List<WineTotalVo> selWineByCountrylimit6(WineSelByCountryDto dto) {
         return MAPPER.selWineByCountrylimit6(dto);
     }
 
