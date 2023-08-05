@@ -3,8 +3,8 @@ package com.team.winey.main.model;
 import lombok.Data;
 
 @Data
-public class WineSelByCountryDto {
-    private Long countryId;
+public class WineSelDto {
+    private Long productId;
     private int startIdx;
     private int page;
     private int row;

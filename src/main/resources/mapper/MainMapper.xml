@@ -9,7 +9,38 @@
         aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
         promotion, beginner, alcohol
         FROM t_product
+        ORDER BY product_id DESC
+        LIMIT ${startIdx}, ${row}
     </select>
+
+    <select id="selWineByNew">
+        SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+        aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+        promotion, beginner, alcohol
+        FROM t_product
+        ORDER BY product_id DESC
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+    <select id="selWineByExpencive">
+        SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+        aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+        promotion, beginner, alcohol
+        FROM t_product
+        ORDER BY price DESC
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+    <select id="selWineByCheap">
+        SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+        aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+        promotion, beginner, alcohol
+        FROM t_product
+        ORDER BY price
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////  -->
 
     <select id="selWineById">
         SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
@@ -19,6 +50,8 @@
         WHERE product_id = #{productId}
     </select>
 
+    <!-- ////////////////////////////////////////////////////////////////////////////////  -->
+
     <select id="selWineByPrice2">
         <![CDATA[
             SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
@@ -26,8 +59,47 @@
             promotion, beginner, alcohol
             FROM t_product
             WHERE price < 20000
+            LIMIT ${startIdx}, ${row}
         ]]>
     </select>
+
+    <select id="selWineByPrice2New">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price < 20000
+            ORDER BY product_id DESC
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+    <select id="selWineByPrice2Expencive">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price < 20000
+            ORDER BY price DESC
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+    <select id="selWineByPrice2Cheap">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price < 20000
+            ORDER BY price
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////  -->
 
     <select id="selWineByPrice25">
         <![CDATA[
@@ -36,9 +108,49 @@
             promotion, beginner, alcohol
             FROM t_product
             WHERE price > 20000 AND price < 50000
+            LIMIT ${startIdx}, ${row}
         ]]>
     </select>
 
+    <select id="selWineByPrice25New">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price > 20000 AND price < 50000
+            ORDER BY product_id DESC
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+    <select id="selWineByPrice25Expencive">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price > 20000 AND price < 50000
+            ORDER BY price DESC
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+    <select id="selWineByPrice25Cheap">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price > 20000 AND price < 50000
+            ORDER BY price
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////  -->
 
     <select id="selWineByPrice510">
         <![CDATA[
@@ -47,8 +159,48 @@
             promotion, beginner, alcohol
             FROM t_product
             WHERE price > 50000 AND price < 100000
+            LIMIT ${startIdx}, ${row}
         ]]>
     </select>
+
+    <select id="selWineByPrice510New">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price > 50000 AND price < 100000
+            ORDER BY product_id DESC
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+    <select id="selWineByPrice510Expencive">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price > 50000 AND price < 100000
+            ORDER BY price DESC
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+    <select id="selWineByPrice510Cheap">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price > 50000 AND price < 100000
+            ORDER BY price
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////  -->
 
     <select id="selWineByPrice10">
         <![CDATA[
@@ -57,8 +209,47 @@
             promotion, beginner, alcohol
             FROM t_product
             WHERE price > 100000
+            LIMIT ${startIdx}, ${row}
         ]]>
     </select>
+
+    <select id="selWineByPrice10New">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price > 100000
+            ORDER BY product_id DESC
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+    <select id="selWineByPrice10Expencive">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price > 100000
+            ORDER BY price DESC
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+    <select id="selWineByPrice10Cheap">
+        <![CDATA[
+            SELECT product_id productId, category_id categoryId, feature_id featureId, country_id countryId,
+            aroma_id aromaId, nm_kor nmKor, nm_eng nmEng, price, quantity, pic,
+            promotion, beginner, alcohol
+            FROM t_product
+            WHERE price > 100000
+            ORDER BY price
+            LIMIT ${startIdx}, ${row}
+        ]]>
+    </select>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////  -->
 
     <select id="selWineByCountry">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
@@ -68,10 +259,49 @@
         INNER JOIN t_country b
         ON a.country_id = b.country_id
         WHERE b.country_id = #{countryId}
+        LIMIT ${startIdx}, ${row}
     </select>
 
-    <select id="selWineByFood">
+    <select id="selWineByCountryNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol
+        FROM t_product a
+        INNER JOIN t_country b
+        ON a.country_id = b.country_id
+        WHERE b.country_id = #{countryId}
+        ORDER BY product_id DESC
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+    <select id="selWineByCountryExpencive">
+        SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol
+        FROM t_product a
+        INNER JOIN t_country b
+        ON a.country_id = b.country_id
+        WHERE b.country_id = #{countryId}
+        ORDER BY price desc
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+    <select id="selWineByCountryCheap">
+        SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol
+        FROM t_product a
+        INNER JOIN t_country b
+        ON a.country_id = b.country_id
+        WHERE b.country_id = #{countryId}
+        ORDER BY price
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////  -->
+    <select id="selWineByFood">
+        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         a.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol
         FROM t_product a
@@ -82,6 +312,54 @@
         INNER JOIN t_big_category d
         ON c.big_category_id = d.big_category_id
         WHERE d.big_category_id = #{bigCategoryId}
+        LIMIT ${startIdx}, ${row}
     </select>
 
+    <select id="selWineByFoodNew">
+        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        a.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol
+        FROM t_product a
+        INNER JOIN t_wine_pairing b
+        ON a.product_id = b.product_id
+        INNER JOIN t_small_category c
+        ON b.small_category_id = c.small_category_id
+        INNER JOIN t_big_category d
+        ON c.big_category_id = d.big_category_id
+        WHERE d.big_category_id = #{bigCategoryId}
+        ORDER BY product_id DESC
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+    <select id="selWineByFoodExpencive">
+        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        a.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol
+        FROM t_product a
+        INNER JOIN t_wine_pairing b
+        ON a.product_id = b.product_id
+        INNER JOIN t_small_category c
+        ON b.small_category_id = c.small_category_id
+        INNER JOIN t_big_category d
+        ON c.big_category_id = d.big_category_id
+        WHERE d.big_category_id = #{bigCategoryId}
+        ORDER BY price DESC
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+    <select id="selWineByFoodCheap">
+        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        a.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol
+        FROM t_product a
+        INNER JOIN t_wine_pairing b
+        ON a.product_id = b.product_id
+        INNER JOIN t_small_category c
+        ON b.small_category_id = c.small_category_id
+        INNER JOIN t_big_category d
+        ON c.big_category_id = d.big_category_id
+        WHERE d.big_category_id = #{bigCategoryId}
+        ORDER BY price
+        LIMIT ${startIdx}, ${row}
+    </select>
 </mapper>
