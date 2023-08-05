@@ -1,5 +1,6 @@
 package com.team.winey.sign;
 
+import com.team.winey.sign.model.SignDto;
 import com.team.winey.sign.model.SignInResultDto;
 import com.team.winey.sign.model.SignUpResultDto;
 import com.team.winey.utils.EmailValidator;
@@ -37,10 +38,10 @@ public class SignController {
                     "참고사항 : 로그인시 액세스 토큰과 리프레시 토큰이 발급되요"
     )
 
-    public SignInResultDto signIn(HttpServletRequest req, @RequestParam String email, @RequestParam String pw) throws Exception {
+    public SignInResultDto signIn(HttpServletRequest req, @RequestBody SignDto dto) throws Exception {
         String ip = req.getRemoteAddr();
-        log.info("[signIn] 로그인을 시도하고 있습니다. email: {}, pw: {}, ip: {}", email, pw, ip);
-        return SERVICE.signIn(email, pw, ip);
+        log.info("[signIn] 로그인을 시도하고 있습니다. email: {}, pw: {}, ip: {}", dto.getEmail(),dto.getPw(), ip);
+        return SERVICE.signIn(dto.getEmail(),dto.getPw(), ip);
     }
 
     @PostMapping("/sign-up")
