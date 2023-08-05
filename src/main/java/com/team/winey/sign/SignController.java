@@ -5,6 +5,7 @@ import com.team.winey.sign.model.SignUpResultDto;
 import com.team.winey.utils.EmailValidator;
 import com.team.winey.utils.EmailValidator;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import static com.team.winey.utils.EmailValidator.emailValidator;
 
+@Tag(name = "회원가입/로그인/로그아웃/refreshtoken관리")
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -29,7 +31,7 @@ public class SignController {
 
     @PostMapping("/sign-in")
     @Operation(summary = "로그인", description =
-            "email : 회원의 이메일(아이디가)<br>" +
+            "email : 회원의 이메일(아이디)<br>" +
                     "password: 회원의 비밀번호<br>" +
                     "참고사항 : password 가 틀릴경우 경고창이 나와요<br>" +
                     "참고사항 : 로그인시 액세스 토큰과 리프레시 토큰이 발급되요"
@@ -43,7 +45,7 @@ public class SignController {
 
     @PostMapping("/sign-up")
     @Operation(summary = "회원가입", description =
-            "email : 회원의 이메일(아이디가)<br>" +
+            "email : 회원의 이메일(아이디)<br>" +
                     "password: 회원의 비밀번호<br>" +
                     "role : 회원의 권한인데 ADMIN(관리자)아니면USER(구매자)만 입력해야합니다요 ex)ADMIN <br>" +
                     "nm : 회원의 이름<br>" +
@@ -79,6 +81,9 @@ public class SignController {
     }
 
     @PostMapping("/logout")
+    @Operation(summary = "로그아웃", description =
+            " 기존에 로그인을 하고 있을때만 사용하고, 두번 연속 로그아웃시 에러가 뜹니다요.<br>"
+    )
     public ResponseEntity<?> logout(HttpServletRequest req) {
         SERVICE.logout(req);
         ResponseCookie responseCookie = ResponseCookie.from("refresh-token", "")// 프론트엔드에다가 "refresh-token"값으로 저장해주세요 쿠키에 저장해주세요 해야함

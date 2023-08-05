@@ -1,4 +1,4 @@
-package com.team.winey.history.model;
+package com.team.winey.mypage.model;
 
 import lombok.Data;
 

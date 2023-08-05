@@ -1,38 +1,35 @@
-package com.team.winey.history;
+package com.team.winey.mypage;
 
-import com.team.winey.history.model.*;
+import com.team.winey.mypage.model.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+
+@Tag(name = "마이페이지")
 @RestController
-@RequestMapping("/history")
+@RequestMapping
 @RequiredArgsConstructor
-public class HistoryController {
-    private final HistoryService service;
+public class MyPageController {
+    private final MypageService service;
 
 
     @GetMapping("/order")
+    @Operation(summary = "결제내역전체출력")
     public OrderVo getOrder(OrderDto dto){
         return service.selOrder(dto);
     }
 
 
     @PutMapping("/pick")
+    @Operation(summary = "픽업완료처리")
     public int putPick(@RequestParam long orderId){
         UpdPickDto dto = new UpdPickDto();
         dto.setOrderId(orderId);
         return service.updPick(dto);
     }
 
-    @GetMapping("/review")
-    public ReviewVo getReview(ReviewDto dto){
-        return service.selReview(dto);
-    }
-
-    @GetMapping("/refund")
-    public RefundVo getRefund(RefundDto dto){
-        return service.selRefund(dto);
-    }
 
 
 
