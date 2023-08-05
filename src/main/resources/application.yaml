@@ -1,10 +1,19 @@
+springboot:
+  jwt:
+    access-secret: DeaguGreenArtAcademyClass502ForJavaSpringBootaaaasdf
+    refresh-secret: HelloWorldRefreshTokenCreateBySecretHaHaaasdfasdf
+
+    token-type: Bearer
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     username: team_d
     password: green502
     url: jdbc:mariadb://192.168.0.144:3306/team_d
-
+  data:
+    redis:
+      host: localhost
+      port: 6379
 mybatis:
   type-aliases-package: com.team.winey
   mapper-locations: mapper/*.xml
@@ -29,3 +38,16 @@ spring:
       mode: always
       schema-locations: init/schema.sql
       data-locations: init/data.sql
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+  data:
+    redis:
+      host: 192.168.0.144
+  datasource:
+    url: jdbc:mariadb://192.168.0.144:3306/team_d
+file:
+  dir: /home/download/
