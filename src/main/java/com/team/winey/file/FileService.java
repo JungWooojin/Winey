@@ -27,8 +27,9 @@ public class FileService {
         String urlPath = "https://images.vivino.com/thumbs/";
         int count = MAPPER.count();
 
-        for (int i = 1; i <=count; i++) {
+        for (int i = 1; i <= count; i++) {
             FileEntity entity = MAPPER.getFileEntityById(i);
+            entity.setProductId(dto.getProductId());
 
             String path = entity.getImagePath();
             String fullPath = "https:" + path;
@@ -44,7 +45,7 @@ public class FileService {
 
                 BufferedImage image = ImageIO.read(new URL(realUrl));
 
-                String savedFilePath = fileDir + "/wine/" + fileName;
+                String savedFilePath = fileDir + "/wine/" + i + "/" + fileName;
 
                 File dic = new File(savedFilePath);
                 if (!dic.exists()) {
@@ -52,7 +53,7 @@ public class FileService {
                 }
 
                 ImageIO.write(image, file_ext, new File(savedFilePath));
-                log.info("{}, 다운로드 완료" ,fileName);
+                log.info("{}, 다운로드 완료", fileName);
 
 
                 // DB에 파일 경로 업데이트
