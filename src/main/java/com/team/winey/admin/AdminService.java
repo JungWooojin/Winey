@@ -1,8 +1,6 @@
 package com.team.winey.admin;
 
-import com.team.winey.admin.model.ProductAromaDto;
-import com.team.winey.admin.model.ProductInsDto;
-import com.team.winey.admin.model.ProductInsParam;
+import com.team.winey.admin.model.*;
 import com.team.winey.utils.MyFileUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,5 +107,96 @@ public class AdminService {
             MAPPER.insWinePairing(dto);
         }
         return dto.getProductId();
+    }
+
+    public int putProduct(MultipartFile pic, ProductUpdParam param) {
+        ProductUpdDto dto = MAPPER.selProductFk(param.getProductId());
+        ProductAromaDto aromaDto = new ProductAromaDto(param.getAroma()); //t_aroma
+
+        dto.setProductId(param.getProductId()); //t_product
+        dto.setNmKor(param.getNmKor()); //t_product
+        dto.setNmEng(param.getNmEng()); //t_product
+
+        dto.setPrice(param.getPrice()); //t_product
+        dto.setCountryId(param.getCountry()); //t_product
+        dto.setCategoryId(param.getCategory()); //t_product
+
+        dto.setSale(param.getSale()); // t_sale
+        dto.setSalePrice(param.getSalePrice()); // t_sale
+        dto.setStartSale(param.getStartSale()); // t_sale
+        dto.setEndSale(param.getEndSale()); // t_sale
+
+        dto.setSweety(param.getSweety()); //t_feature
+        dto.setAcidity(param.getAcidity()); //t_feature
+        dto.setBody(param.getBody()); //t_feature
+
+        //t_aroma 테이블 update
+        MAPPER.updAroma(aromaDto);
+        //t_sale 테이블 update
+        MAPPER.updSale(dto);
+        //t_feature 테이블 update
+        MAPPER.updFeature(dto);
+
+        //t_small_category table update
+        MAPPER.delWinePairing(dto);
+
+        ProductInsDto pairingDto = new ProductInsDto();
+        pairingDto.setProductId(param.getProductId());
+        pairingDto.setSmallCategoryId(param.getCategory());
+
+        for(int i=0;i<param.getSmallCategoryId().size();i++) {
+            pairingDto.setSmallCategoryId(param.getSmallCategoryId().get(i));
+            MAPPER.insWinePairing(pairingDto);
+        }
+
+        //사진 파일 업로드 로직 1
+        //임시경로에 사진 저장
+        if(pic != null) { //만약에 pic가 있다면
+            File tempDic = new File(FILE_DIR, "/temp");
+            if(!tempDic.exists()) { // /temp 경로에 temp폴더가 존재하지 않는다면 temp폴더를 만든다.
+                tempDic.mkdirs();
+            }
+
+            String savedFileName = MyFileUtils.makeRandomFileNm(pic.getOriginalFilename());
+
+            File tempFile = new File(tempDic.getPath(), savedFileName);
+
+            try{
+                pic.transferTo(tempFile);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            dto.setPic(savedFileName);
+
+            //t_product테이블 update
+            //사진 파일 업로드 로직 2
+            int result = MAPPER.updProduct(dto); //t_product 인서트 후 pk값 productInsDto에 들어감
+            try {
+                if(result == 0) {
+                    throw new Exception("상품을 등록할 수 없습니다.");
+                }
+            } catch(Exception e) {
+                tempFile.delete();
+                return 0;
+            }
+            if (result == 1) {
+                String targetPath = FILE_DIR + "/winey/product/" + dto.getProductId();
+                File targetDic = new File(targetPath);
+                if(!targetDic.exists()) {
+                    targetDic.mkdirs();
+                }
+                File targetFile = new File(targetPath, savedFileName);
+                tempFile.renameTo(targetFile);
+            }
+            return dto.getProductId(); //성공시 상품PK값 리턴
+        }
+
+        //수정시 사진파일을 수정하지 않을 경우 (pic = null)
+        int result2 = MAPPER.updProduct(dto);
+        if(result2 == 1) {
+            return dto.getProductId();
+        }
+        return 0; // result2가 0이면 수정에 실패했다는 의미로 0 리턴
     }
 }
