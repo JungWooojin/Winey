@@ -215,4 +215,11 @@ public class AdminService {
 
         return MAPPER.selProductSale(dto);
     }
+
+    //가입회원 리스트
+    public List<UserVo> getUserList(SelListDto dto) {
+        int startIdx = (dto.getPage()-1) * dto.getRow();
+        dto.setStartIdx(startIdx);
+        return MAPPER.selUserList(dto);
+    }
 }

@@ -35,7 +35,7 @@ public class AdminController {
 
     //등록 상품 리스트 출력 (페이징 처리)
     @Operation(summary = "등록된 상품 리스트 출력(페이징처리)", description = "page값 = 1(default), row값 = 20(default)<br>"
-            + "default값은 임의로 넣은 것이니 수정이 필요합니다.")
+            + "default값은 임시로 넣은 것이니 수정이 필요합니다.")
     @GetMapping("/product/list")
     public List<ProductVo> getProduct(@RequestParam(defaultValue = "1")int page,
                                       @RequestParam(defaultValue = "20")int row) {
@@ -54,5 +54,16 @@ public class AdminController {
         dto.setRow(row);
         dto.setPage(page);
         return SERVICE.getProductSale(dto);
+    }
+
+    //가입 회원 리스트 출력
+    @Operation(summary = "가입 회원 리스트 (페이징처리)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.")
+    @GetMapping("/user/list")
+    public List<UserVo> getUserList(@RequestParam(defaultValue = "1") int page,
+                                    @RequestParam(defaultValue = "15") int row) {
+        SelListDto dto = new SelListDto();
+        dto.setPage(page);
+        dto.setRow(row);
+        return SERVICE.getUserList(dto);
     }
 }

@@ -24,8 +24,9 @@ public interface AdminMapper {
     int delWinePairing(ProductUpdDto dto);
     int updProduct(ProductUpdDto dto);
 
-    //등록 상품 리스트 출력
+    //리스트 출력
     List<ProductVo> selProduct(SelListDto dto);
     List<ProductSaleVo> selProductSale(SelListDto dto);
+    List<UserVo> selUserList(SelListDto dto);
 
 }

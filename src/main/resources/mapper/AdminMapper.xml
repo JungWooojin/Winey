@@ -141,5 +141,11 @@
         LIMIT #{startIdx}, #{row}
     </select>
 
+    <select id="selUserList" resultType="UserVo">
+        SELECT user_id userId, email, nm, region_nm_id regionNmId
+        FROM t_user
+        LIMIT #{startIdx}, #{row}
+    </select>
+
 
 </mapper>
