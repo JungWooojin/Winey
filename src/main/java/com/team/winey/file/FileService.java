@@ -46,6 +46,7 @@ public class FileService {
                 BufferedImage image = ImageIO.read(new URL(realUrl));
 
                 String savedFilePath = fileDir + "wine/" + i + "/" + fileName;
+                String dbFilePath = "wine/" + i + "/" + fileName;
 
                 File dic = new File(savedFilePath);
                 if (!dic.exists()) {
@@ -58,7 +59,7 @@ public class FileService {
 
                 // DB에 파일 경로 업데이트
                 entity.setProductId(Long.valueOf(i)); //Long > int 변환...
-                entity.setImagePath(savedFilePath);
+                entity.setImagePath(dbFilePath);
                 MAPPER.updPic(entity);
 
                 log.info("{}, 경로 업데이트 완료", entity.getImagePath());
