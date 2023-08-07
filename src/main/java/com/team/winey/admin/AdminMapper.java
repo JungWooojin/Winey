@@ -41,4 +41,7 @@ public interface AdminMapper {
 
     int updOrderStatus(OrderStatusDto dto); //주문상태 업데이트 (관리자 페이지에서)
 
+    int updSaleYnOn(ProductUpdDto dto); //세일 스케줄러용. saleYn을 1로 update
+    int updSaleYnOff(ProductUpdDto dto); //세일 스케줄러용. saleYn을 0으로 update
+
 }

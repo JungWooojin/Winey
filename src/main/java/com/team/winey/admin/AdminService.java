@@ -3,15 +3,20 @@ package com.team.winey.admin;
 import com.team.winey.admin.model.*;
 import com.team.winey.utils.MyFileUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.regex.Pattern;
 
+@Slf4j
 @Service
 public class AdminService {
 
@@ -200,6 +205,20 @@ public class AdminService {
             return dto.getProductId();
         }
         return 0; // result2가 0이면 수정에 실패했다는 의미로 0 리턴
+    }
+
+    //할인 스케줄러
+    @Scheduled(cron = "0 0 0/1 1/1 * ?") //매시 정각마다 실행
+//    @Scheduled(cron = "0 0/1 * 1/1 * ?") //1분마다 실행 테스트용
+    public void updSaleDateTime() {
+        ProductUpdDto dto = new ProductUpdDto();
+        dto.setStartSale(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        dto.setEndSale(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        //startSale(할인시작날짜)와 현재시간이 같으면 saleYn을 1로 update
+        MAPPER.updSaleYnOn(dto);
+        //endSale(할인종료날짜)와 현재시간이 같으면 saleYn을 0으로 update
+        MAPPER.updSaleYnOff(dto);
+        log.info("매시 정각마다 스케줄러 실행");
     }
 
     //상품 사진 삭제

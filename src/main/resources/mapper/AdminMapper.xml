@@ -220,5 +220,19 @@
         WHERE order_id = #{orderId}
     </update>
 
+    <update id="updSaleYnOn">
+        UPDATE t_sale
+        SET
+        sale_yn = 1
+        WHERE start_sale = #{startSale}
+    </update>
+
+    <update id="updSaleYnOff">
+        UPDATE t_sale
+        SET
+        sale_yn = 0
+        WHERE end_sale = #{endSale}
+    </update>
+
 
 </mapper>
