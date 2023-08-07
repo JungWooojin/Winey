@@ -33,11 +33,6 @@ spring:
       on-profile: test
   datasource:
     url: jdbc:mariadb://localhost:3306/test
-  sql:
-    init:
-      mode: always
-      schema-locations: init/schema.sql
-      data-locations: init/data.sql
 ---
 
 spring:
