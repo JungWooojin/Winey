@@ -29,4 +29,6 @@ public interface AdminMapper {
     List<ProductSaleVo> selProductSale(SelListDto dto);
     List<UserVo> selUserList(SelListDto dto);
 
+    List<UserOrderDetailVo> selUserOrder(UserOrderDetailDto dto);
+
 }

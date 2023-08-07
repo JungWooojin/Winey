@@ -222,4 +222,16 @@ public class AdminService {
         dto.setStartIdx(startIdx);
         return MAPPER.selUserList(dto);
     }
+
+    //미완성) 가입회원 상세 주문 내역(회원pk별) +페이징 처리
+    public List<UserOrderDetailVo> getUserOrder(Long userId, int page, int row) {
+        UserOrderDetailDto dto = new UserOrderDetailDto();
+        dto.setUserId(userId);
+        dto.setRow(row);
+
+        int startIdx = (page - 1) * row;
+        dto.setStartIdx(startIdx);
+
+        return MAPPER.selUserOrder(dto);
+    }
 }

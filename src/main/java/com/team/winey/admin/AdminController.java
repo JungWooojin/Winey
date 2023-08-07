@@ -46,7 +46,8 @@ public class AdminController {
     }
 
     //할인 중인 등록 상품 리스트 출력
-    @Operation(summary = "할인 중인 상품 리스트", description = "saleYn = 1 인 상품만 리스트에 나옵니다.")
+    @Operation(summary = "할인 중인 상품 리스트", description = "saleYn = 1 인 상품만 리스트에 나옵니다.<br>"
+    +"page (기본값 1), row (기본값 20) 디폴트값 임시로 해놓은거라 수정이 필요합니다.")
     @GetMapping("/product/salelist")
     public List<ProductSaleVo> getProductSale(@RequestParam(defaultValue = "1")int page,
                                               @RequestParam(defaultValue = "20")int row) {
@@ -65,5 +66,13 @@ public class AdminController {
         dto.setPage(page);
         dto.setRow(row);
         return SERVICE.getUserList(dto);
+    }
+
+    //미완성) 가입 회원별 상세 주문 내역(회원pk별) +페이징 처리
+    @Operation(summary = "회원별 상세 주문 내역 (페이징처리)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @GetMapping("/{userId}/order")
+    public List<UserOrderDetailVo> getUserOrder(@PathVariable Long userId, @RequestParam(defaultValue = "1")int page,
+                                                @RequestParam(defaultValue = "15")int row) {
+        return SERVICE.getUserOrder(userId, page, row);
     }
 }
