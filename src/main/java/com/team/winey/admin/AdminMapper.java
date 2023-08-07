@@ -31,4 +31,6 @@ public interface AdminMapper {
 
     List<UserOrderDetailVo> selUserOrder(UserOrderDetailDto dto);
 
+    List<OrderDetailVo> selOrderDetail(int orderId); //상세 주문 내역 리스트 by orderId
+
 }

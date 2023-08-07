@@ -163,5 +163,20 @@
         LIMIT #{startIdx}, #{row}
     </select>
 
+    <select id="selOrderDetail" resultType="OrderDetailVo">
+        SELECT A.order_id orderId, A.order_date orderDate, C.email, D.nm_kor nmKor, B.sale_price salePrice, B.quantity, A.total_order_price totalPrice,
+        A.payment, E.nm storeNm, DATE_FORMAT(A.pickup_time, '%y-%m-%d') pickUpDate, DATE_FORMAT(A.pickup_time, '%H:%i') pickUpTime, A.order_status orderStatus
+        FROM t_order A
+        INNER JOIN t_order_detail B
+        ON A.order_id = B.order_id
+        INNER JOIN t_user C
+        ON A.user_id = C.user_id
+        INNER JOIN t_product D
+        ON B.product_id = D.product_id
+        INNER JOIN t_store E
+        ON A.store_id = E.store_id
+        WHERE A.order_id = #{orderId}
+    </select>
+
 
 </mapper>

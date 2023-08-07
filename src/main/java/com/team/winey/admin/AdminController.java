@@ -69,7 +69,7 @@ public class AdminController {
     }
 
     //미완성) 가입 회원별 상세 주문 내역(회원pk별) +페이징 처리
-    @Operation(summary = "회원별 상세 주문 내역 (페이징처리)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @Operation(summary = "미완성) 회원별 상세 주문 내역 (페이징처리)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
     @GetMapping("/{userId}/order")
     public List<UserOrderDetailVo> getUserOrder(@PathVariable Long userId, @RequestParam(defaultValue = "1")int page,
                                                 @RequestParam(defaultValue = "15")int row) {
@@ -82,5 +82,14 @@ public class AdminController {
     @DeleteMapping("/product/pic")
     public int deleteProductPic(int productId) {
         return SERVICE.deleteProductPic(productId);
+    }
+
+    //주문 내역
+
+    //상세 주문 내역 리스트 by orderId
+    @Operation(summary = "상세 주문 내역 출력 by orderId(피그마:주문상세리스트)")
+    @GetMapping("/order/{orderId}")
+    public List<OrderDetailVo> getOrderDetail(@PathVariable int orderId) {
+        return SERVICE.getOrderDetail(orderId);
     }
 }

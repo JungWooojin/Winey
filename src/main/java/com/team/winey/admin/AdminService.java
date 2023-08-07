@@ -241,4 +241,9 @@ public class AdminService {
 
         return MAPPER.selUserOrder(dto);
     }
+
+    //상세 주문 내역 리스트 by orderId
+    List<OrderDetailVo> getOrderDetail(int orderId) {
+        return MAPPER.selOrderDetail(orderId);
+    }
 }
