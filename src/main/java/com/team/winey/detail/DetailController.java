@@ -19,7 +19,14 @@ public class DetailController {
     private final DetailService SERVICE;
 
     @GetMapping("/{productId}")
-    @Operation(summary = "와인 디테일 페이지")
+    @Operation(summary = "와인 디테일 페이지", description =
+                "temp -> 스파클링일 때 10, 화이트일 때 15, 레드/기타일 때 18로 표시되도록 했음<br>" +
+                 "promotion -> 추천상품에 해당할 때 1, 아닐 때 0<br>" +
+                 "beginner -> 입문자 추천상품일 때 1, 아닐 때 0<br>" +
+                 "selPairing -> 페어링 음식 목록<br>" +
+                 "selSale -> 세일항목일 경우 숫자로 % 표시, 세일아닐 시 null 표시<br>" +
+                 "level -> 입문 난이도 표시<br>" +
+                 "selReview -> 리뷰개수 표시. 좋아요, 보통이에요, 취향이 아니에요 순서로 표시(예 - 2,1,0이면 좋아요 2개, 보통이에요 1개, 취향이 아니에요 0개)")
     public WineVo getWineDetail(@PathVariable Long productId){
         WineDetailVo vo = new WineDetailVo();
         vo.setProductId(productId);
