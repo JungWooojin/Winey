@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class PaymentInsDto {
+    private int cartId;
     private int userId;
     private int storeId;
     //    private int cartId;

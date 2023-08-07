@@ -4,21 +4,27 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.green.cart.payment.PaymentMapper">
 
-    <insert id="insPayment" useGeneratedKeys="true" keyProperty="orderId">
+    <insert id="insPayment">
         insert into t_order
         set user_id = #{userId},
         store_id = #{storeId},
         payment = 1,
         total_order_price =
-        (SELECT sum(A.quantity * B.price) sumPrice
+        (SELECT SUM(A.quantity * B.price) sumPrice
         from t_cart A
-        inner JOIN t_product B
+        INNER JOIN t_product B
         ON A.product_id = B.product_id
-        WHERE user_id = #{userId}
+        WHERE user_id = #{userId} and DATE_FORMAT(A.created_at, "%Y-%m-%d") = curdate()
         order by user_id),
         pickup_time = #{pickupTime},
         order_status = #{orderStatus}
     </insert>
+
+    <update id = "updBuy">
+        update t_cart
+        set buy_yn = 1
+        where user_id = #{userId} AND cart_id = #{cartId}
+    </update>
 
     <update id="updPayment">
         update t_order
@@ -36,9 +42,21 @@
     </select>
 
     <insert id ="insReview">
-        insert into t_review
-        set order_detail_id = #{orderDetailId},
-            review_level = #{reviewLevel}
+        INSERT INTO t_review (review_level, order_detail_id)
+        SELECT review, order_detail_id
+        FROM t_review
+        WHERE order_status = 4
     </insert>
+
+    <select id = "selOrderDetail">
+
+        SELECT A.order_id orderId, A.quantity, A.sale_price salePrice
+        , A.product_id productId, B.nm_kor nmKor, B.nm_eng nmEng, B.pic
+        FROM t_order_detail A
+        inner JOIN t_product B
+        ON A.product_id = B.product_id
+        where order_id = #{orderId}
+
+    </select>
 
 </mapper>
