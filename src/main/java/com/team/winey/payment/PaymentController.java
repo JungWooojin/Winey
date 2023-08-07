@@ -49,7 +49,7 @@ public class PaymentController {
     }
 
     @PostMapping("/review")
-    @Operation(summary = "결제", description =
+    @Operation(summary = "리뷰 작성", description =
             "orderDetailId: 주문상세 pk값, <br>"
                     + "review_level: 1번 좋아요 <br>"
                     + "2번 보통이에요 <br>"
