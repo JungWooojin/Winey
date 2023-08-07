@@ -126,5 +126,11 @@
         WHERE product_id = #{productId}
     </select>
 
+    <select id="selProduct" resultType="ProductVo">
+        SELECT product_id productId, nm_kor nmKor, price, promotion, beginner, quantity
+        FROM t_product
+        LIMIT #{startIdx}, #{row}
+    </select>
+
 
 </mapper>

@@ -1,9 +1,9 @@
 package com.team.winey.admin;
 
-import com.team.winey.admin.model.ProductAromaDto;
-import com.team.winey.admin.model.ProductInsDto;
-import com.team.winey.admin.model.ProductUpdDto;
+import com.team.winey.admin.model.*;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface AdminMapper {
@@ -23,4 +23,7 @@ public interface AdminMapper {
     int updSale(ProductUpdDto dto);
     int delWinePairing(ProductUpdDto dto);
     int updProduct(ProductUpdDto dto);
+
+    //등록 상품 리스트 출력
+    List<ProductVo> selProduct(SelListDto dto);
 }

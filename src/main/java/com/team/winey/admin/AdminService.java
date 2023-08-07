@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.List;
 
 @Service
 public class AdminService {
@@ -198,5 +199,12 @@ public class AdminService {
             return dto.getProductId();
         }
         return 0; // result2가 0이면 수정에 실패했다는 의미로 0 리턴
+    }
+
+    //등록 상품 리스트 출력 (전체 상품)
+    public List<ProductVo> getProduct(SelListDto dto) {
+        int startIdx = (dto.getPage() - 1) * dto.getRow();
+        dto.setStartIdx(startIdx);
+        return MAPPER.selProduct(dto);
     }
 }
