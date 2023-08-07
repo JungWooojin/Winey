@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @OpenAPIDefinition(
-        info = @Info(title = "서큐리티 로그인 로그아웃"
+        info = @Info(title = "Winey"
                 , description = "와인 픽업 서비스"
                 , version = "v0.0.1"
         ),
