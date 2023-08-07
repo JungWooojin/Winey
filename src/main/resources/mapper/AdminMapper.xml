@@ -163,6 +163,16 @@
         LIMIT #{startIdx}, #{row}
     </select>
 
+    <select id="selOrder" resultType="OrderListVo">
+        SELECT A.order_id orderId, DATE_FORMAT(A.order_date, '%y-%m-%d') orderDate , B.email, A.total_order_price totalPrice, A.payment, C.nm pickUpStore
+        FROM t_order A
+        INNER JOIN t_user B
+        ON A.user_id = B.user_id
+        INNER JOIN t_store C
+        ON A.store_id = C.store_id
+        LIMIT #{startIdx}, #{row}
+    </select>
+
     <select id="selOrderDetail" resultType="OrderDetailVo">
         SELECT A.order_id orderId, A.order_date orderDate, C.email, D.nm_kor nmKor, B.sale_price salePrice, B.quantity, A.total_order_price totalPrice,
         A.payment, E.nm storeNm, DATE_FORMAT(A.pickup_time, '%y-%m-%d') pickUpDate, DATE_FORMAT(A.pickup_time, '%H:%i') pickUpTime, A.order_status orderStatus

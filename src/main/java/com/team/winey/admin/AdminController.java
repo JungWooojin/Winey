@@ -2,7 +2,7 @@ package com.team.winey.admin;
 
 import com.team.winey.admin.model.*;
 import io.swagger.v3.oas.annotations.Operation;
-import lombok.RequiredArgsConstructor;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@Tag(name = "관리자 페이지")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
@@ -85,7 +86,17 @@ public class AdminController {
     }
 
     //주문 내역
+    @Operation(summary = "주문 내역 출력", description = "주문상품, 주문수량 출력 안하는 중<br>"
+    +"page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @GetMapping("/order")
+    public List<OrderListVo> getOrder(@RequestParam(defaultValue = "1")int page,
+                                      @RequestParam(defaultValue = "15")int row) {
+        SelListDto dto = new SelListDto();
+        dto.setPage(page);
+        dto.setRow(row);
 
+        return SERVICE.getOrder(dto);
+    }
     //상세 주문 내역 리스트 by orderId
     @Operation(summary = "상세 주문 내역 출력 by orderId(피그마:주문상세리스트)")
     @GetMapping("/order/{orderId}")

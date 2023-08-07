@@ -2,7 +2,6 @@ package com.team.winey.admin;
 
 import com.team.winey.admin.model.*;
 import com.team.winey.utils.MyFileUtils;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -261,9 +260,16 @@ public class AdminService {
 
         return MAPPER.selUserOrder(dto);
     }
+    //주문 내역
+    public List<OrderListVo> getOrder(SelListDto dto) {
+        int startIdx = (dto.getPage() - 1) * dto.getRow();
+        dto.setStartIdx(startIdx);
+
+        return MAPPER.selOrder(dto);
+    }
 
     //상세 주문 내역 리스트 by orderId
-    List<OrderDetailVo> getOrderDetail(int orderId) {
+    public List<OrderDetailVo> getOrderDetail(int orderId) {
         return MAPPER.selOrderDetail(orderId);
     }
 
