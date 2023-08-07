@@ -45,7 +45,7 @@ public class FileService {
 
                 BufferedImage image = ImageIO.read(new URL(realUrl));
 
-                String savedFilePath = fileDir + "/wine/" + i + "/" + fileName;
+                String savedFilePath = fileDir + "wine/" + i + "/" + fileName;
 
                 File dic = new File(savedFilePath);
                 if (!dic.exists()) {
