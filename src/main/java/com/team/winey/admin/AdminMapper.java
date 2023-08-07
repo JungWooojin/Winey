@@ -26,4 +26,6 @@ public interface AdminMapper {
 
     //등록 상품 리스트 출력
     List<ProductVo> selProduct(SelListDto dto);
+    List<ProductSaleVo> selProductSale(SelListDto dto);
+
 }

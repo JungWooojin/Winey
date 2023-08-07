@@ -1,9 +1,6 @@
 package com.team.winey.admin;
 
-import com.team.winey.admin.model.ProductInsParam;
-import com.team.winey.admin.model.ProductUpdParam;
-import com.team.winey.admin.model.ProductVo;
-import com.team.winey.admin.model.SelListDto;
+import com.team.winey.admin.model.*;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +43,16 @@ public class AdminController {
         dto.setRow(row);
         dto.setPage(page);
         return SERVICE.getProduct(dto);
+    }
+
+    //할인 중인 등록 상품 리스트 출력
+    @Operation(summary = "할인 중인 상품 리스트", description = "saleYn = 1 인 상품만 리스트에 나옵니다.")
+    @GetMapping("/product/salelist")
+    public List<ProductSaleVo> getProductSale(@RequestParam(defaultValue = "1")int page,
+                                              @RequestParam(defaultValue = "20")int row) {
+        SelListDto dto = new SelListDto();
+        dto.setRow(row);
+        dto.setPage(page);
+        return SERVICE.getProductSale(dto);
     }
 }
