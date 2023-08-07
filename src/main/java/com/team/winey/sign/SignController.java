@@ -1,6 +1,7 @@
 package com.team.winey.sign;
 
 import com.team.winey.config.security.model.SignUpDto;
+import com.team.winey.sign.model.RefreshDto;
 import com.team.winey.sign.model.SignDto;
 import com.team.winey.sign.model.SignInResultDto;
 import com.team.winey.sign.model.SignUpResultDto;
@@ -65,15 +66,15 @@ public class SignController {
         return SERVICE.signUp(dto);
     }
 
-    @GetMapping("/refresh-token")
+    @PostMapping("/refresh-token")
     @Operation(summary = "토큰발행", description =
             "refreshToken : 리프레시 토큰을 입력하면 됩니다.<br>" +
                     "참고사항 : 리프레시토큰입력시 액세스토큰이 재발행 됩니다. <br>" +
                     "참고사항 : 로그인이 되어있는 상태에서만 발행이 됩니다."
     )
     public ResponseEntity<SignUpResultDto> refreshToken(HttpServletRequest req
-            , @RequestParam String refreshToken) {
-        SignUpResultDto dto = SERVICE.refreshToken(req, refreshToken);
+            , @RequestBody RefreshDto dto1) {
+        SignUpResultDto dto = SERVICE.refreshToken(req, dto1.getRefreshToken());
         return dto == null ? ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null) : ResponseEntity.ok(dto);
     }
 
