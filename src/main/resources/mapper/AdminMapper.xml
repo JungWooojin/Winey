@@ -213,5 +213,12 @@
         WHERE store_id = #{storeId}
     </delete>
 
+    <update id="updOrderStatus" parameterType="OrderStatusDto">
+        UPDATE t_order
+        SET
+        order_status = #{orderStatus}
+        WHERE order_id = #{orderId}
+    </update>
+
 
 </mapper>

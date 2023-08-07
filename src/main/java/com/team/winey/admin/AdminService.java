@@ -295,4 +295,20 @@ public class AdminService {
     public Long deleteStore(Long storeId) {
         return MAPPER.delStore(storeId);
     }
+
+    //주문상태 업데이트 (관리자 페이지용)
+    public Long updOrderStatus(OrderStatusDto dto) {
+        //order_status 코드 유효성 검사
+        String orderStatus = String.valueOf(dto.getOrderStatus()); // int -> String 변환
+        String pattern = "[1-6]";
+        if(!Pattern.matches(pattern, orderStatus)) {
+            return 200L; //orderStatus 코드 유효성 검사 실패시 200 리턴
+        }
+
+        int result = MAPPER.updOrderStatus(dto);
+        if(result == 1) {
+            return dto.getOrderId();
+        }
+        return 0L; //매장 정보 수정 실패했다는 의미
+    }
 }

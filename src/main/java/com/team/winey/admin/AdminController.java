@@ -135,4 +135,13 @@ public class AdminController {
     public Long deleteStore(Long storeId) {
         return SERVICE.deleteStore(storeId);
     }
+
+    //주문 상태 업데이트 (관리자 페이지에서)
+    @Operation(summary = "주문 상태 업데이트(피그마:주문내역관리 페이지의 배송상태설정 기능)", description = "orderStatus코드 : 1(결제완료), 2(배송중), 3(배송완료), 4(픽업대기), 5(픽업완료), 6(주문취소)<br>"
+            +"* orderStatus 코드 유효성 검사 실패시 200 리턴<br>"
+            +"* 주문 상태 업데이트 실패시 0 리턴")
+    @PutMapping("/order")
+    public Long putOrderStatus(@RequestBody OrderStatusDto dto) {
+        return SERVICE.updOrderStatus(dto);
+    }
 }
