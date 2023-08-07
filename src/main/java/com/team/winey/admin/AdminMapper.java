@@ -39,4 +39,6 @@ public interface AdminMapper {
     int updStore(StoreInsDto dto); //매장 정보 수정
     Long delStore(Long storeId); //매장 정보 삭제
 
+    int updOrderStatus(OrderStatusDto dto); //주문상태 업데이트 (관리자 페이지에서)
+
 }
