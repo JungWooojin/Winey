@@ -85,6 +85,13 @@ public class DetailService {
     }
 
 
+    public SelWineKorNm selKorNm(Long productId) {
+        return MAPPER.selKorNm(productId);
+    }
+
+
+
+
 
 
 }

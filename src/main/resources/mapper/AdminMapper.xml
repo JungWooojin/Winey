@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.winey.admin.AdminMapper">
+    <insert id="insProduct" parameterType="ProductInsDto" useGeneratedKeys="true" keyProperty="productId">
+        INSERT INTO t_product
+        SET
+        category_id = #{categoryId},
+        feature_id = #{featureId},
+        country_id = #{countryId},
+        aroma_id = #{aromaId},
+        nm_kor = #{nmKor},
+        nm_eng = #{nmEng},
+        price = #{price},
+        pic = #{pic},
+        promotion = #{promotion},
+        beginner = #{beginner},
+        alcohol = #{alcohol},
+        quantity = #{quantity}
+    </insert>
+
+    <insert id="insFeature" parameterType="ProductInsDto" useGeneratedKeys="true" keyProperty="featureId">
+        INSERT INTO t_feature
+        SET
+        sweety = #{sweety},
+        acidity = #{acidity},
+        body = #{body}
+    </insert>
+
+    <insert id="insAroma" parameterType="ProductAromaDto" useGeneratedKeys="true" keyProperty="aromaId">
+        INSERT INTO t_aroma
+        SET
+        flower = #{flower},
+        plant = #{plant},
+        fruit = #{fruit},
+        spicy = #{spicy},
+        earth = #{earth},
+        oak = #{oak},
+        nuts = #{nuts}
+    </insert>
+
+    <insert id="insSale" parameterType="ProductInsDto">
+        INSERT INTO t_sale
+        SET
+        product_id = #{productId},
+        sale = #{sale},
+        sale_price = #{salePrice},
+        start_sale = #{startSale},
+        end_sale = #{endSale}
+    </insert>
+
+    <insert id="insWinePairing" parameterType="ProductInsDto">
+        INSERT INTO t_wine_pairing
+        SET
+        product_id = #{productId},
+        small_category_id = #{smallCategoryId}
+    </insert>
+
+    <update id="updProduct" parameterType="ProductUpdDto">
+        UPDATE t_product
+        SET
+        category_id = #{categoryId},
+        feature_id = #{featureId},
+        country_id = #{countryId},
+        aroma_id = #{aromaId},
+        nm_kor = #{nmKor},
+        nm_eng = #{nmEng},
+        price = #{price},
+        <if test="pic != null">
+            pic = #{pic},
+        </if>
+        promotion = #{promotion},
+        beginner = #{beginner},
+        alcohol = #{alcohol},
+        quantity = #{quantity},
+        updated_at = CURRENT_TIMESTAMP()
+
+        WHERE product_id = #{productId}
+    </update>
+
+    <update id="updFeature" parameterType="ProductUpdDto">
+        UPDATE t_feature
+        SET
+        sweety = #{sweety},
+        acidity = #{acidity},
+        body = #{body}
+        WHERE feature_id = #{featureId}
+    </update>
+
+    <update id="updAroma" parameterType="ProductAromaDto">
+        UPDATE t_aroma
+        SET
+        flower = #{flower},
+        plant = #{plant},
+        fruit = #{fruit},
+        spicy = #{spicy},
+        earth = #{earth},
+        oak = #{oak},
+        nuts = #{nuts}
+
+        WHERE aroma_id = #{aromaId}
+    </update>
+
+    <update id="updSale" parameterType="ProductUpdDto">
+        UPDATE t_sale
+        SET
+        product_id = #{productId},
+        sale = #{sale},
+        sale_price = #{salePrice},
+        start_sale = #{startSale},
+        end_sale = #{endSale},
+        sale_yn = #{saleYn}
+
+        WHERE product_id = #{productId}
+    </update>
+
+    <update id="delWinePairing" parameterType="ProductUpdDto">
+        DELETE FROM t_wine_pairing
+        WHERE product_id = #{productId}
+    </update>
+
+    <select id="selProductFk" resultType="ProductUpdDto">
+        SELECT category_id categoryId, feature_id featureId, country_id countryId, aroma_id aromaId
+        FROM t_product
+        WHERE product_id = #{productId}
+    </select>
+
+
+</mapper>
