@@ -37,8 +37,8 @@
     <select id="selCount">
         SELECT count(A.review_level) reviewCount
         FROM t_review A
-        INNER JOIN t_order_product B
-        ON A.order_product_id = B.order_product_id
+        INNER JOIN t_order_detail B
+        ON A.order_detail_id = B.order_detail_id
         WHERE B.product_id=#{productId} AND review_level=#{reviewLevel}
 
     </select>
@@ -52,6 +52,19 @@
         WHERE A.product_id=#{productId};
 
     </select>
+
+
+    <select id="selKorNm">
+        SELECT product_id productId, nm_kor nmKor
+        from t_product
+        WHERE product_id=#{productId}
+
+    </select>
+
+
+
+
+
 
 
 
