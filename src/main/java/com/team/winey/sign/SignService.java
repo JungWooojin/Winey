@@ -8,6 +8,7 @@ import com.team.winey.config.security.AuthenticationFacade;
 import com.team.winey.config.security.JwtTokenProvider;
 import com.team.winey.config.security.UserDetailsMapper;
 import com.team.winey.config.security.model.RedisJwtVo;
+import com.team.winey.config.security.model.SignUpDto;
 import com.team.winey.config.security.model.UserEntity;
 import com.team.winey.config.security.model.UserTokenEntity;
 import com.team.winey.sign.model.SignInResultDto;
@@ -37,16 +38,16 @@ public class SignService {
     private final AuthenticationFacade FACADE;
     private final ObjectMapper OBJECT_MAPPER;
 
-    public SignUpResultDto signUp(String email, String pw, String role, String nm,String tel, Long regionNmId) {
+    public SignUpResultDto signUp(SignUpDto dto1) {
         log.info("[getSignUpResult] signDataHandler로 회원 정보 요청");
 
         UserEntity user = UserEntity.builder()
-                .email(email)
-                .pw(PW_ENCODER.encode(pw))
-                .role(String.format("ROLE_%s", role))
-                .name(nm)
-                .tel(tel)
-                .regionNmId(regionNmId)
+                .email(dto1.getEmail())
+                .pw(PW_ENCODER.encode(dto1.getPw()))
+                .role(String.format("ROLE_%s", dto1.getRole()))
+                .name(dto1.getNm())
+                .tel(dto1.getTel())
+                .regionNmId(dto1.getRegionNmId())
                 .build();
 
         int result = MAPPER.save(user);

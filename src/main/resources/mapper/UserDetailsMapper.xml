@@ -11,6 +11,7 @@
         , tel = #{tel}
         , tos_yn= 1
         , region_nm_id = #{regionNmId}
+        , del_yn = 0
     </insert>
 
     <select id="getByUid">

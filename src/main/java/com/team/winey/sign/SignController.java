@@ -1,5 +1,6 @@
 package com.team.winey.sign;
 
+import com.team.winey.config.security.model.SignUpDto;
 import com.team.winey.sign.model.SignDto;
 import com.team.winey.sign.model.SignInResultDto;
 import com.team.winey.sign.model.SignUpResultDto;
@@ -55,18 +56,13 @@ public class SignController {
                     "참고사항 : email값에 너무 아무렇게치면 유효성검사규칙에 의해서 회원가입이 안되요. 있을만한 이메일형식으로 등록해야한다요!"
     )
 
-    public SignUpResultDto signUp(@RequestParam String email
-            , @RequestParam String pw
-            , @RequestParam String role
-            , @RequestParam String nm
-            , @RequestParam String tel
-            , @RequestParam Long regionNmId) {
-        log.info("[signUp] 회원가입을 수행합니다. email: {}, pw: {},role: {},nm: {},tel: {},regionNmId: {}", email, pw, role, nm, tel, regionNmId);
-        if (!emailValidator(email)) {
+    public SignUpResultDto signUp(@RequestBody SignUpDto dto) {
+        log.info("[signUp] 회원가입을 수행합니다. email: {}, pw: {},role: {},nm: {},tel: {},regionNmId: {}",dto.getEmail() , dto.getPw(), dto.getRole(), dto.getNm(), dto.getTel(), dto.getRegionNmId());
+        if (!emailValidator(dto.getEmail())) {
             throw new IllegalArgumentException("유효하지 않은 이메일 형식입니다. 유효한 이메일 주소를 입력해주세요.");
         }
-        log.info("[signUp] 회원가입 완료 email: {}", email);
-        return SERVICE.signUp(email, pw, role, nm, tel, regionNmId);
+        log.info("[signUp] 회원가입 완료 email: {}", dto.getEmail());
+        return SERVICE.signUp(dto);
     }
 
     @GetMapping("/refresh-token")
