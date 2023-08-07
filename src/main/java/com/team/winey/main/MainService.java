@@ -145,6 +145,7 @@ public class MainService {
     public List<WineTotalVo> selWineByFoodExpencive(WineSelByFoodDto dto) {
         return MAPPER.selWineByFoodExpencive(dto);
     }
+
     public List<WineTotalVo> selWineByFoodCheap(WineSelByFoodDto dto) {
         return MAPPER.selWineByFoodCheap(dto);
     }
