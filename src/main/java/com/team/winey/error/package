@@ -1,0 +1,7 @@
+There are test failures.
+
+Please refer to D:\Students\winey_test\target\surefire-reports for the individual test results.
+Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+
+이런오류가 뜨면서 짐이 안싸지면 캐시를 의심해라...
+상단바에 Build > Rebuild Project 누르고 다시 해라...................진짜.........
