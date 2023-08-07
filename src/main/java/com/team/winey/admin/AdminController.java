@@ -75,4 +75,12 @@ public class AdminController {
                                                 @RequestParam(defaultValue = "15")int row) {
         return SERVICE.getUserOrder(userId, page, row);
     }
+
+    //상품 사진 삭제
+    @Operation(summary = "상품 사진 삭제", description = "상품 수정할 때 기존 등록한 사진 삭제하기 위한 것<br>"
+            +"성공시 코드 : 200")
+    @DeleteMapping("/product/pic")
+    public int deleteProductPic(int productId) {
+        return SERVICE.deleteProductPic(productId);
+    }
 }

@@ -201,6 +201,13 @@ public class AdminService {
         return 0; // result2가 0이면 수정에 실패했다는 의미로 0 리턴
     }
 
+    //상품 사진 삭제
+    public int deleteProductPic(int productId) {
+        MyFileUtils.delFolder(FILE_DIR+"/winey/product/"+productId);
+
+        return 200; //성공시 200 리턴
+    }
+
     //등록 상품 리스트 출력 (전체 상품)
     public List<ProductVo> getProduct(SelListDto dto) {
         int startIdx = (dto.getPage() - 1) * dto.getRow();
