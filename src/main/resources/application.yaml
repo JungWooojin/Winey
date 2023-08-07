@@ -9,7 +9,7 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     username: team_d
     password: green502
-    jdbc-url: jdbc:mariadb://192.168.0.144:3306/team_d
+    url: jdbc:mariadb://192.168.0.144:3306/team_d
   data:
     redis:
       host: localhost
@@ -32,7 +32,7 @@ spring:
     activate:
       on-profile: test
   datasource:
-    jdbc-url: jdbc:mariadb://localhost:3306/test
+    url: jdbc:mariadb://localhost:3306/test
   sql:
     init:
       mode: always
@@ -48,6 +48,6 @@ spring:
     redis:
       host: 192.168.0.144
   datasource:
-    jdbc-url: jdbc:mariadb://192.168.0.144:3306/team_d
+    url: jdbc:mariadb://192.168.0.144:3306/team_d
 file:
   dir: /home/download
