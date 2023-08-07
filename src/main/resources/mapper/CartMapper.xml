@@ -5,14 +5,14 @@
 <mapper namespace="com.green.cart.cart.CartMapper">
 
     <select id="selCart">
-        SELECT A.user_id, B.product_id productId, A.quantity
+        SELECT A.cart_id cartId, A.user_id, B.product_id productId, A.quantity
         , B.nm_kor nmKor, B.nm_eng nmEng, B.price, c.sale_price salePrice, B.pic
         FROM t_cart A
         left JOIN t_product B
         ON A.product_id = B.product_id
         left JOIN t_sale C
         ON B.product_id = C.product_id
-        WHERE user_id = 1;
+        WHERE user_id = #{userId} and buy_yn = 0
     </select>
 
     <insert id="insCart" useGeneratedKeys="true" keyProperty="cartId">
@@ -20,7 +20,8 @@
         set
         user_id = #{userId},
         product_id = #{productId},
-        quantity = #{quantity}
+        quantity = #{quantity},
+        buy_yn = 0
     </insert>
 
     <delete id="delCart">

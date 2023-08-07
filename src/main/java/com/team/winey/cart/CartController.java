@@ -3,6 +3,7 @@ package com.team.winey.cart;
 import com.team.winey.cart.model.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,20 +11,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/wine")
+@RequiredArgsConstructor
 @Tag(name = "장바구니")
 public class CartController {
 
     private final CartService service;
 
-    @Autowired
-    public CartController(CartService service){
-        this.service = service;
-    }
 
-    @PostMapping("/cart")
+    @PostMapping ("/cart")
     @Operation(summary = "장바구니 추가", description =
             "productId: 상품 PK값,<br>" + "quantity: 수량,<br>" + "userId: 유저PK값, <br>")
-    public int putCart(@RequestBody CartInsDto dto){
+    public int postCart(@RequestBody CartInsDto dto){
         return service.insCart(dto);
     }
 
@@ -68,5 +66,4 @@ public class CartController {
     public int getSumPrice(@RequestParam int userId){
         return service.selSumPrice(userId);
     }
-
 }
