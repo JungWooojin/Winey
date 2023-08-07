@@ -246,4 +246,12 @@ public class AdminService {
     List<OrderDetailVo> getOrderDetail(int orderId) {
         return MAPPER.selOrderDetail(orderId);
     }
+
+    //환불된 상품과 환불 사유 출력
+    public List<OrderRefundVo> getOrderRefund(SelListDto dto) {
+        int startIdx = (dto.getPage() - 1) * dto.getRow();
+        dto.setStartIdx(startIdx);
+
+        return MAPPER.selOrderRefund(dto);
+    }
 }

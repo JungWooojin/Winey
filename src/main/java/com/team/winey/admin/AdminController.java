@@ -92,4 +92,16 @@ public class AdminController {
     public List<OrderDetailVo> getOrderDetail(@PathVariable int orderId) {
         return SERVICE.getOrderDetail(orderId);
     }
+
+    //환불된 상품과 환불 사유 출력
+    @Operation(summary = "환불 상품 내역과 환불 사유 출력", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @GetMapping("/order/refund")
+    public List<OrderRefundVo> getOrderRefund(@RequestParam(defaultValue = "1")int page,
+                                              @RequestParam(defaultValue = "15")int row) {
+        SelListDto dto = new SelListDto();
+        dto.setPage(page);
+        dto.setRow(row);
+
+        return SERVICE.getOrderRefund(dto);
+    }
 }

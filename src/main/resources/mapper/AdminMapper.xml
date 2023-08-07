@@ -178,5 +178,11 @@
         WHERE A.order_id = #{orderId}
     </select>
 
+    <select id="selOrderRefund" resultType="OrderRefundVo">
+        SELECT refund_id refundId, order_id orderId, refund_reason refundReason, refund_yn refundYn, refund_date refundDate
+        FROM t_order_refund
+        LIMIT #{startIdx}, #{row}
+    </select>
+
 
 </mapper>

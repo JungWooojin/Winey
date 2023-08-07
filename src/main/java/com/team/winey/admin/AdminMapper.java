@@ -32,5 +32,6 @@ public interface AdminMapper {
     List<UserOrderDetailVo> selUserOrder(UserOrderDetailDto dto);
 
     List<OrderDetailVo> selOrderDetail(int orderId); //상세 주문 내역 리스트 by orderId
+    List<OrderRefundVo> selOrderRefund(SelListDto dto); //환불된 상품과 환불 사유 출력
 
 }
