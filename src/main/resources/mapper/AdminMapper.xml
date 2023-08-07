@@ -234,5 +234,13 @@
         WHERE end_sale = #{endSale}
     </update>
 
+    <update id="updSaleYn" parameterType="ProductSaleYnDto">
+        UPDATE t_sale
+        SET
+        sale_yn = #{saleYn}
+
+        WHERE product_id = #{productId}
+    </update>
+
 
 </mapper>

@@ -44,4 +44,6 @@ public interface AdminMapper {
     int updSaleYnOn(ProductUpdDto dto); //세일 스케줄러용. saleYn을 1로 update
     int updSaleYnOff(ProductUpdDto dto); //세일 스케줄러용. saleYn을 0으로 update
 
+    int updSaleYn(ProductSaleYnDto dto); //할인 상태(saleYn) 업데이트 (관리자가 수동으로 On/Off하는 용도)
+
 }

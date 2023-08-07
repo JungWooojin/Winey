@@ -330,4 +330,9 @@ public class AdminService {
         }
         return 0L; //매장 정보 수정 실패했다는 의미
     }
+
+    //할인 상태(saleYn) 업데이트 (관리자가 수동으로 On/Off하는 용도)
+    public int putProductSaleYn(ProductSaleYnDto dto) {
+        return MAPPER.updSaleYn(dto); // saleYn update 성공시 1, 실패시 0 리턴
+    }
 }
