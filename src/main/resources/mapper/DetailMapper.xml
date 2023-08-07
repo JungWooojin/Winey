@@ -49,7 +49,7 @@
         FROM t_product A
         INNER JOIN t_sale B
         ON A.product_id = B.product_id
-        WHERE A.product_id=#{productId};
+        WHERE B.sale_yn=1 AND A.product_id=#{productId};
 
     </select>
 
