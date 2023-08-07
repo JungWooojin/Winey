@@ -104,4 +104,35 @@ public class AdminController {
 
         return SERVICE.getOrderRefund(dto);
     }
+
+    //매장 정보 등록
+    @Operation(summary = "매장 정보 등록", description = "nm(매장이름)을 기존 등록된 매장이름과 중복된 이름 입력시 등록 안됨<br>"
+            +"전화번호 유효성 검사 (2~3자리 숫자)-(3~4자리 숫자)-(4자리 숫자), 실패시 코드 : 0")
+    @PostMapping("/store")
+    public Long postStore(@RequestBody StoreInsParam param) {
+        return SERVICE.insStore(param);
+    }
+    //매장 리스트 출력
+    @Operation(summary = "매장 리스트 출력", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @GetMapping("/store")
+    public List<StoreVo> getStore(@RequestParam(defaultValue = "1")int page,
+                                  @RequestParam(defaultValue = "15")int row) {
+        SelListDto dto = new SelListDto();
+        dto.setPage(page);
+        dto.setRow(row);
+
+        return SERVICE.getStore(dto);
+    }
+    //매장 정보 수정
+    @Operation(summary = "매장 정보 수정", description = "전화번호 유효성 검사 (2~3자리 숫자)-(3~4자리 숫자)-(4자리 숫자), 실패시 코드 : 0 ")
+    @PutMapping("/store/{storeId}")
+    public Long putStore(@RequestBody StoreInsParam param, Long storeId) {
+        return SERVICE.updStore(param, storeId);
+    }
+    //매장 정보 삭제
+    @Operation(summary = "매장 정보 삭제", description = "삭제 성공시 코드 : 1, 실패시 코드 : 0")
+    @DeleteMapping("/store/{storeId}")
+    public Long deleteStore(Long storeId) {
+        return SERVICE.deleteStore(storeId);
+    }
 }

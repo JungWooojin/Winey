@@ -184,5 +184,34 @@
         LIMIT #{startIdx}, #{row}
     </select>
 
+    <insert id="insStore" parameterType="StoreInsDto" useGeneratedKeys="true" keyProperty="storeId">
+        INSERT INTO t_store
+        SET
+        region_nm_id = #{regionNmId},
+        nm = #{nm},
+        tel = #{tel}
+    </insert>
+
+    <select id="selStore">
+        SELECT store_id storeId, region_nm_id regionNmId, nm, tel
+        FROM t_store
+        LIMIT #{startIdx}, #{row}
+    </select>
+
+    <update id="updStore" parameterType="StoreInsDto">
+        UPDATE t_store
+        SET
+        region_nm_id = #{regionNmId},
+        nm = #{nm},
+        tel = #{tel},
+        updated_at = CURRENT_TIMESTAMP
+        WHERE store_id = #{storeId}
+    </update>
+
+    <delete id="delStore">
+        DELETE FROM t_store
+        WHERE store_id = #{storeId}
+    </delete>
+
 
 </mapper>

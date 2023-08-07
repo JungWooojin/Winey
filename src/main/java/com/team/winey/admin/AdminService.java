@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Service
 public class AdminService {
@@ -253,5 +254,45 @@ public class AdminService {
         dto.setStartIdx(startIdx);
 
         return MAPPER.selOrderRefund(dto);
+    }
+
+    // 매장 정보 등록
+    public Long insStore(StoreInsParam param) {
+        StoreInsDto dto = new StoreInsDto();
+        dto.setRegionNmId(param.getRegionNmId());
+        dto.setNm(param.getNm());
+        dto.setTel(param.getTel());
+
+        //tel(전화번호) 유효성 검사하기
+        String pattern = "(\\d{2,3})-(\\d{3,4})-(\\d{4})"; // (2~3자리 숫자)-(3~4자리 숫자)-(4자리 숫자)
+
+        if(Pattern.matches(pattern, param.getTel())) {
+            MAPPER.insStore(dto);
+            return dto.getStoreId(); //pk값 리턴
+        }
+        return 0L; //전화번호 유효성 검사 통과 실패
+    }
+    public List<StoreVo> getStore(SelListDto dto) {
+        return MAPPER.selStore(dto);
+    }
+    public Long updStore(StoreInsParam param, Long storeId) {
+        StoreInsDto dto = new StoreInsDto();
+        dto.setStoreId(storeId);
+        dto.setRegionNmId(param.getRegionNmId());
+        dto.setNm(param.getNm());
+        dto.setTel(param.getTel());
+
+        //tel(전화번호) 유효성 검사하기
+        String pattern = "(\\d{2,3})-(\\d{3,4})-(\\d{4})"; // (2~3자리 숫자)-(3~4자리 숫자)-(4자리 숫자)
+
+        if(Pattern.matches(pattern, param.getTel())) {
+            MAPPER.updStore(dto);
+            return dto.getStoreId(); //pk값 리턴
+        }
+        return 0L; //전화번호 유효성 검사 통과 실패
+    }
+    //매장 삭제
+    public Long deleteStore(Long storeId) {
+        return MAPPER.delStore(storeId);
     }
 }
