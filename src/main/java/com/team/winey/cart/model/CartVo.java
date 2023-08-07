@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class CartVo {
+    private int cartId;
     private int productId;
     private int quantity;
     private String pic;
