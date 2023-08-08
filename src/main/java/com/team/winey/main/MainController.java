@@ -19,7 +19,7 @@ public class MainController {
 
     @Bean
     public OpenAPI OpenAPI() {
-        final Info info = new Info().version("v1.0.0").title("winey").description("FINAL PROJECT");
+        final Info info = new Info().version("v1.0.0").title("winey").description("SECOND PROJECT");
         return new OpenAPI().info(info);
     }
 
