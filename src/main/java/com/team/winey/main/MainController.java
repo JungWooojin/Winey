@@ -1,6 +1,5 @@
 package com.team.winey.main;
 
-import com.team.winey.detail.model.WineVo;
 import com.team.winey.main.model.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,6 +24,13 @@ public class MainController {
     }
 
     private final MainService SERVICE;
+
+    @GetMapping("/feature")
+    public int getFeature(@RequestParam Long productId) {
+        WineFeatureDto dto = new WineFeatureDto();
+        dto.setProductId(productId);
+        return SERVICE.selFeature(dto);
+    }
 
     @GetMapping("/wines")
     @Operation(summary = "전체 와인리스트", description = "{<br>" +

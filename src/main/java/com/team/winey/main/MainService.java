@@ -1,6 +1,5 @@
 package com.team.winey.main;
 
-import com.team.winey.detail.model.WineVo;
 import com.team.winey.main.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +11,18 @@ import java.util.List;
 public class MainService {
 
     private final MainMapper MAPPER;
+
+    public int selFeature(WineFeatureDto dto) {
+        List<WineFeatureVo> result = MAPPER.beginners(dto);
+        WineFeatureVo num = result.get(dto.getProductId().intValue() - 1);
+        if (num.getSweety() <= 2 && num.getAcidity() <= 2 && num.getBody() <= 2) {
+            return 1;
+        } else if (num.getSweety() <= 4 && num.getAcidity() <= 4 && num.getBody() <= 4) {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
 
     public List<WineTotalVo> selWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
@@ -46,14 +57,17 @@ public class MainService {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice2(dto);
     }
+
     public List<WineTotalVo> selWineByPrice2New(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice2New(dto);
     }
+
     public List<WineTotalVo> selWineByPrice2Expencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice2Expencive(dto);
     }
+
     public List<WineTotalVo> selWineByPrice2Cheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice2Cheap(dto);
@@ -64,14 +78,17 @@ public class MainService {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice25(dto);
     }
+
     public List<WineTotalVo> selWineByPrice25New(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice25New(dto);
     }
+
     public List<WineTotalVo> selWineByPrice25Expencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice25Expencive(dto);
     }
+
     public List<WineTotalVo> selWineByPrice25Cheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice25Cheap(dto);
@@ -82,14 +99,17 @@ public class MainService {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice510(dto);
     }
+
     public List<WineTotalVo> selWineByPrice510New(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice510New(dto);
     }
+
     public List<WineTotalVo> selWineByPrice510Expencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice510Expencive(dto);
     }
+
     public List<WineTotalVo> selWineByPrice510Cheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice510Cheap(dto);
@@ -116,7 +136,8 @@ public class MainService {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWineByPrice10Cheap(dto);
     }
-//===================================================================================
+
+    //===================================================================================
     public List<WineTotalVo> selWineByCountry(WineSelByCountryDto dto) {
         return MAPPER.selWineByCountry(dto);
     }
@@ -128,6 +149,7 @@ public class MainService {
     public List<WineTotalVo> selWineByCountryExpencive(WineSelByCountryDto dto) {
         return MAPPER.selWineByCountryExpencive(dto);
     }
+
     public List<WineTotalVo> selWineByCountryCheap(WineSelByCountryDto dto) {
         return MAPPER.selWineByCountryCheap(dto);
     }

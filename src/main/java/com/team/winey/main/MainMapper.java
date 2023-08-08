@@ -1,6 +1,5 @@
 package com.team.winey.main;
 
-import com.team.winey.detail.model.WineVo;
 import com.team.winey.main.model.*;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -8,6 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface MainMapper {
+
+    List<WineFeatureVo> beginners(WineFeatureDto dto);
     List<WineTotalVo> selWine(WineSelDto dto);
     List<WineTotalVo> selWineByNew(WineSelDto dto);
     List<WineTotalVo> selWineByExpencive(WineSelDto dto);
