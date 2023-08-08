@@ -16,6 +16,11 @@
         set pw=#{pw}
         where user_id=#{userId}
     </update>
+    <select id ="selUser">
+        select user_id userId,email,pw,nm,tel,region_nm_id regionNmId
+        from t_user
+        where user_id=#{userId}
+    </select>
 
 
 

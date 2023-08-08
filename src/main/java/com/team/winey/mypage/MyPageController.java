@@ -43,6 +43,15 @@ public class MyPageController {
     public int patchUser(@RequestBody UpdPasswordDto dto){
         return service.updPassword(dto);
     }
+    @GetMapping
+    @Operation(summary = "로그인한사람의 회원정보",description =
+            "주의사항: 로그인되어있을때 사용하셔야합니다. <br>")
+    private SelUserVo getUser(){
+        return service.selUser();
+    }
+
+
+
 
 
 

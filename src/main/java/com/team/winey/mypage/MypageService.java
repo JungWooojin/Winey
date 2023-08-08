@@ -42,4 +42,9 @@ public class MypageService {
         dto1.setPw(passwordEncoder.encode(dto.getPw()));
         return mapper.updPassword(dto1);
     }
+    public SelUserVo selUser(){
+        SelUserDto dto =new SelUserDto();
+        dto.setUserId(facade.getLoginUserPk());
+        return mapper.selUser(dto);
+    }
 }
