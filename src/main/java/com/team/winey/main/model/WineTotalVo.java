@@ -17,5 +17,7 @@ public class WineTotalVo {
     private int promotion;
     private int beginner;
     private int alcohol;
+    private int sale;
+    private int salePrice;
 
 }

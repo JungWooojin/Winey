@@ -8,9 +8,12 @@ import java.util.List;
 @Mapper
 public interface PaymentMapper {
     int insPayment(PaymentInsDto2 dto2);
-    int updBuy(PaymentUpdBuyDto dto);
+    int updBuy(int cartId);
     int updPayment(PaymentUpdDto dto);
     int selSumPrice(int userId);
     int insReview(ReviewInsDto dto);
     List<OrderDetailSelVo> selOrderDetail(int orderId);
+
+    int insOrderDetail(OrderDetailInsDto dto);
+
 }

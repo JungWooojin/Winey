@@ -10,7 +10,9 @@ public interface MyPageMapper {
 
     OrderVo selOrder(OrderDto dto);
     int updPick(UpdPickDto dto);
-
+    int updUser(UpduserDto2 dto2);
+    int updPassword(UpdPasswordDto2 dto2);
+    SelUserVo selUser(SelUserDto dto);
 
 
 

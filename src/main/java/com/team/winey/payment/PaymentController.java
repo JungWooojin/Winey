@@ -24,8 +24,9 @@ public class PaymentController {
                     + "storeId: 매장PK값, <br>"
                     + "totalOrderPrice: 총 결제 금액, <br>"
                     + "pickupTime: 픽업타임, <br>"
-                    + "orderStatus: 주문상태 <br>")
-    public PaymentRes postPayment(@RequestBody PaymentInsDto dto){
+                    + "orderStatus: 주문상태, <br>"
+                    + "cartId: 카트 pk값 <br>" )
+    public int postPayment(@RequestBody PaymentInsDto dto){
         return service.insPayment(dto);
     }
 
@@ -55,7 +56,7 @@ public class PaymentController {
         return service.insReview(dto);
     }
 
-    @GetMapping("/orderDetail")
+    @GetMapping("/listOrderDetail")
     @Operation(summary = "결제 총금액", description =
             "orderId: 결제 pk값 <br>")
     public List<OrderDetailSelVo> getOrderDetail(@RequestParam int orderId){

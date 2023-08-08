@@ -1,15 +1,21 @@
 package com.team.winey.main;
 
-import com.team.winey.detail.model.WineVo;
 import com.team.winey.main.model.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.IOUtils;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Tag(name = "와인 리스트")
@@ -20,11 +26,23 @@ public class MainController {
 
     @Bean
     public OpenAPI OpenAPI() {
-        final Info info = new Info().version("v1.0.0").title("winey").description("FINAL PROJECT");
+        final Info info = new Info().version("v1.0.0").title("winey").description("SECOND PROJECT");
         return new OpenAPI().info(info);
     }
 
     private final MainService SERVICE;
+
+
+    @GetMapping("/feature")
+    @Operation(summary = "입문 레벨", description = "productId 입력하면 됩니다<br><br>" +
+            "Responses : 1 > 레벨1<br>" +
+            "Responses : 2 > 레벨2<br>" +
+            "Responses : 3 > 레벨3<br>")
+    public int getFeature(@RequestParam Long productId) {
+        WineFeatureDto dto = new WineFeatureDto();
+        dto.setProductId(productId);
+        return SERVICE.selFeature(dto);
+    }
 
     @GetMapping("/wines")
     @Operation(summary = "전체 와인리스트", description = "{<br>" +
