@@ -26,6 +26,10 @@ public class MainController {
     private final MainService SERVICE;
 
     @GetMapping("/feature")
+    @Operation(summary = "입문 레벨", description = "productId 입력하면 됩니다<br><br>" +
+            "Responses : 1 > 레벨1<br>" +
+            "Responses : 2 > 레벨2<br>" +
+            "Responses : 3 > 레벨3<br>")
     public int getFeature(@RequestParam Long productId) {
         WineFeatureDto dto = new WineFeatureDto();
         dto.setProductId(productId);
