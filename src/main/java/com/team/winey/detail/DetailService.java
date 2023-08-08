@@ -77,7 +77,7 @@ public class DetailService {
         return WineVo.builder()
                 .wineDetailVo(vo)
                 .selPairing(selPairing)
-                .SelReview(selCount)
+                .selReview(selCount)
                 .Level(level)
                 .selSale(selSale)
                 .build();

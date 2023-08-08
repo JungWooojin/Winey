@@ -10,7 +10,7 @@ import java.util.List;
 public class WineVo {
     private WineDetailVo wineDetailVo;
     private List<String> selPairing;
-    private List<String> SelReview;
+    private List<String> selReview;
     private int Level;
     private SelSale selSale;
 }

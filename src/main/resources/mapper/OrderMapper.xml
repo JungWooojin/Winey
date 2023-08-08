@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.winey.order.OrderMapper">
+
+    <select id="selOrder">
+        SELECT  DATE_FORMAT(A.order_date, "%Y.%m.%d") orderDate,
+        A.order_id orderId, A.user_id userId,
+        C.nm_kor nmKor, A.payment,
+        A.total_order_price totalOrderPrice,
+        D.nm storeNm, A.pickup_time pickupTime,
+        A.order_status orderStatus,
+        B.quantity
+        from t_order A
+        INNER JOIN t_order_detail B
+        ON A.order_id = B.order_id
+        INNER JOIN t_product C
+        ON B.product_id=C.product_id
+        INNER JOIN t_store D
+        ON A.store_id=D.store_id
+        WHERE A.user_id=#{userId} AND A.order_id=#{orderId}
+        ORDER BY DATE_FORMAT(A.order_date, "%Y.%m.%d") DESC, A.order_id desc
+    </select>
+
+    <select id="selOrderCountByUser">
+        SELECT count(A.order_id) orderIdCount
+        from t_order A
+        INNER JOIN t_order_detail B
+        ON A.order_id = B.order_id
+        INNER JOIN t_product C
+        ON B.product_id=C.product_id
+        INNER JOIN t_store D
+        ON A.store_id=D.store_id
+        WHERE A.user_id=#{userId} AND A.order_id=#{orderId}
+        ORDER BY A.order_date DESC
+
+    </select>
+
+
+    <select id="selOrderIdMax">
+        SELECT MAX(A.order_id) orderIdMax
+        from t_order A
+        INNER JOIN t_order_detail B
+        ON A.order_id = B.order_id
+        INNER JOIN t_product C
+        ON B.product_id=C.product_id
+        INNER JOIN t_store D
+        ON A.store_id=D.store_id
+        WHERE A.user_id=#{userId}
+
+
+    </select>
+
+
+
+
+
+
+
+
+
+
+</mapper>
