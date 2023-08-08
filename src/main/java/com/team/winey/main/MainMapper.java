@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface MainMapper {
 
-    List<WineFeatureVo> beginners(WineFeatureDto dto);
+    WineFeatureVo beginners(WineFeatureDto dto);
     List<WineTotalVo> selWine(WineSelDto dto);
     List<WineTotalVo> selWineByNew(WineSelDto dto);
     List<WineTotalVo> selWineByExpencive(WineSelDto dto);

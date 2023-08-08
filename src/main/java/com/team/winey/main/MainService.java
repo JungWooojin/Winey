@@ -13,15 +13,17 @@ public class MainService {
     private final MainMapper MAPPER;
 
     public int selFeature(WineFeatureDto dto) {
-        List<WineFeatureVo> result = MAPPER.beginners(dto);
-        WineFeatureVo num = result.get(dto.getProductId().intValue() - 1);
-        if (num.getSweety() <= 2 && num.getAcidity() <= 2 && num.getBody() <= 2) {
+        WineFeatureVo result = MAPPER.beginners(dto);
+
+        if (result.getSweety() <= 2 && result.getAcidity() <= 2 && result.getBody() <= 2) {
             return 1;
-        } else if (num.getSweety() <= 4 && num.getAcidity() <= 4 && num.getBody() <= 4) {
+        } else if (result.getSweety() <= 4 && result.getSweety() > 2 || result.getAcidity() <= 4 && result.getAcidity() > 2
+                    || result.getBody() <= 4 && result.getBody() > 2) {
             return 2;
-        } else {
+        } else if (result.getSweety() > 4 && result.getAcidity() > 4 && result.getBody() > 4){
             return 3;
         }
+        return -1;
     }
 
     public List<WineTotalVo> selWine(WineSelDto dto) {
