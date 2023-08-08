@@ -29,6 +29,16 @@ public class MyPageController {
         dto.setOrderId(orderId);
         return service.updPick(dto);
     }
+    @PatchMapping("/upduser")
+    public  int putUser(@RequestBody UpduserDto dto){
+        return service.updUser(dto);
+    }
+
+    @PatchMapping
+    public int patchUser(@RequestBody UpdPasswordDto dto){
+
+        return service.updPassword(dto);
+    }
 
 
 
