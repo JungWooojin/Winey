@@ -2,10 +2,12 @@ package com.team.winey.main;
 
 import com.team.winey.main.model.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class MainService {
@@ -15,14 +17,16 @@ public class MainService {
     public int selFeature(WineFeatureDto dto) {
         WineFeatureVo result = MAPPER.beginners(dto);
 
-        if (result.getSweety() <= 2 && result.getAcidity() <= 2 && result.getBody() <= 2) {
+        int sum = result.getSweety() + result.getAcidity() + result.getBody();
+
+        if (sum < 8) {
             return 1;
-        } else if (result.getSweety() <= 4 && result.getSweety() > 2 || result.getAcidity() <= 4 && result.getAcidity() > 2
-                    || result.getBody() <= 4 && result.getBody() > 2) {
+        } else if (sum >= 8 && sum < 11) {
             return 2;
-        } else if (result.getSweety() > 4 && result.getAcidity() > 4 && result.getBody() > 4){
+        } else if (sum >= 11 && sum < 16) {
             return 3;
         }
+
         return -1;
     }
 
