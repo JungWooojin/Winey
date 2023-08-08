@@ -1,5 +1,6 @@
 package com.team.winey.payment;
 
+import com.team.winey.cart.model.CartVo;
 import com.team.winey.payment.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,25 +16,30 @@ public class PaymentService {
     private final PaymentMapper mapper;
 
 
-    public PaymentRes insPayment(PaymentInsDto dto){
+    public int insPayment(PaymentInsDto dto){
         PaymentInsDto2 dto2 = new PaymentInsDto2();
         dto2.setUserId(dto.getUserId());
         dto2.setStoreId(dto.getStoreId());
-//        dto2.setCartId(dto.getCartId());
-//        dto2.setPayment(dto.getPayment());
-//        dto2.setTotalOrderPrice(dto.getTotalOrderPrice());
         dto2.setPickupTime(dto.getPickupTime());
         dto2.setOrderStatus(dto.getOrderStatus());
+
         mapper.insPayment(dto2);
 
-        PaymentUpdBuyDto buyDto = new PaymentUpdBuyDto();
-        buyDto.setCartId(dto.getCartId());
-        buyDto.setUserId(dto2.getUserId());
-        mapper.updBuy(buyDto);
 
-        return PaymentRes.builder()
-                .buyDto(buyDto)
-                .build();
+        List<CartVo> list = dto.getList();
+        for (CartVo cartVo : list) {
+            mapper.updBuy(cartVo.getCartId());
+        }
+
+        OrderDetailInsDto d = new OrderDetailInsDto();
+        for(int i = 0; i < dto.getList().size(); i++){
+            d.setQuantity( dto.getList().get(i).getQuantity());
+            d.setProductId(dto.getList().get(i).getProductId());
+            d.setOrderId(dto2.getOrderId());
+            mapper.insOrderDetail(d);
+        }
+
+        return dto2.getOrderId();
     }
 
     public int updPayment(PaymentUpdDto dto){
