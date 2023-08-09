@@ -11,5 +11,5 @@ public interface CartMapper {
     List<CartVo> selCart(CartSelDto dto);
     int delCart(CartdelDto dto);
     int updCart(CartUpdDto dto);
-    int selSumPrice(int userId);
+//    int selSumPrice(int userId);
 }

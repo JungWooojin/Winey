@@ -22,6 +22,7 @@ public class PaymentService {
         dto2.setStoreId(dto.getStoreId());
         dto2.setPickupTime(dto.getPickupTime());
         dto2.setOrderStatus(dto.getOrderStatus());
+        dto2.setTotalOrderPrice(dto.getTotalOrderPrice());
 
         mapper.insPayment(dto2);
 
@@ -45,9 +46,9 @@ public class PaymentService {
     public int updPayment(PaymentUpdDto dto){
         return mapper.updPayment(dto);
     }
-    public int selSumPrice(int userId){
-        return mapper.selSumPrice(userId);
-    }
+//    public int selSumPrice(int userId){
+//        return mapper.selSumPrice(userId);
+//    }
     public int insReview(ReviewInsDto dto){
         return mapper.insReview(dto);
     }

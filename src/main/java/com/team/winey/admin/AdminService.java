@@ -100,6 +100,8 @@ public class AdminService {
                 }
                 File targetFile = new File(targetPath, savedFileName);
                 tempFile.renameTo(targetFile);
+
+                MAPPER.insSale(dto);
                 return dto.getProductId();
             }
         }

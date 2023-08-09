@@ -33,7 +33,7 @@ public class CartService {
     public int updCart(CartUpdDto dto){
         return mapper.updCart(dto);
     }
-    public int selSumPrice(int userId){
-        return mapper.selSumPrice(userId);
-    }
+//    public int selSumPrice(int userId){
+//        return mapper.selSumPrice(userId);
+//    }
 }
