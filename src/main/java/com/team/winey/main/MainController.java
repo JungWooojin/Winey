@@ -27,7 +27,7 @@ public class MainController {
     private final MainService SERVICE;
 
 
-    @GetMapping("/feature")
+   /* @GetMapping("/feature")
     @Operation(summary = "입문 레벨", description = "productId 입력하면 됩니다<br><br>" +
             "Responses : 1 > 레벨1<br>" +
             "Responses : 2 > 레벨2<br>" +
@@ -36,7 +36,7 @@ public class MainController {
         WineFeatureDto dto = new WineFeatureDto();
         dto.setProductId(productId);
         return SERVICE.selFeature(dto);
-    }
+    }*/
 
     @GetMapping("/wines")
     @Operation(summary = "전체 와인리스트", description = "{<br>" +
