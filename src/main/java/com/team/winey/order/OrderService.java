@@ -31,7 +31,7 @@ public class OrderService {
         List<OrderEntity> temp = new ArrayList<>();
 
 
-        if (mapper.selOrderCheck(userId) != null) {
+        if ("".equals(mapper.selOrderIdMax(userId))) {
 
             for (int i = mapper.selOrderIdMax(userId); i > 0; i--) {
 

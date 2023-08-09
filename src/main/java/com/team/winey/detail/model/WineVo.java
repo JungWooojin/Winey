@@ -11,7 +11,7 @@ public class WineVo {
     private WineDetailVo wineDetailVo;
     private List<String> selPairing;
     private List<String> selReview;
-    private SelAroma selAroma;
+    private List<String> selAroma;
     private int Level;
     private SelSale selSale;
 
