@@ -60,11 +60,11 @@ public class CartController {
         return service.updCart(dto);
     }
 
-    @GetMapping("/sumPrice")
-    @Operation(summary = "장바구니 총합계", description =
-            "userId: user pk값 <br>")
-    public int getSumPrice(@RequestParam int userId){
-        return service.selSumPrice(userId);
-    }
+//    @GetMapping("/sumPrice")
+//    @Operation(summary = "장바구니 총합계", description =
+//            "userId: user pk값 <br>")
+//    public int getSumPrice(@RequestParam int userId){
+//        return service.selSumPrice(userId);
+//    }
 
 }

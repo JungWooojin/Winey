@@ -11,6 +11,6 @@ public class PaymentInsDto {
     private int storeId;
     private String pickupTime;
     private int orderStatus;
-    //    private int cartId;
+    private int totalOrderPrice;
     private List<CartVo> list;
 }
