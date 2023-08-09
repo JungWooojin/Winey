@@ -14,4 +14,5 @@ public interface UserDetailsMapper {
 
     int updUserToken(UserTokenEntity p);
     UserTokenEntity selUserToken(UserTokenEntity p);
+
 }

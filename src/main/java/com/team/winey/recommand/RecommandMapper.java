@@ -11,4 +11,5 @@ public interface RecommandMapper {
 
     List<Integer> selRecommand(RecommandRes res);
     int insUserinfo(UserinfoDto dto);
+    List<Integer> selUserinfo(SelRecommandDto dto);
 }

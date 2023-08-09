@@ -42,5 +42,10 @@ public class RecommandController {
         return service.selRecommand(res);
     }
 
+    @GetMapping("/getUserInfo")
+    public List<Integer> getUserInfo(){
+        return service.selUserinfo();
+    }
+
 }
 

@@ -24,4 +24,9 @@ public class RecommandService {
         mapper.insUserinfo(dto);
         return result;
     }
+    List<Integer> selUserinfo(){
+        SelRecommandDto dto =new SelRecommandDto();
+        dto.setUserId(facade.getLoginUserPk());
+        return mapper.selUserinfo(dto);
+    }
 }

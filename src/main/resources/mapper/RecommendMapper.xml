@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.winey.recommand.RecommandMapper">
 
-
+    <!--  -->
     <select id="selRecommand" resultType="Integer">
         SELECT distinct B.product_id
         FROM t_wine_pairing A
@@ -21,6 +21,7 @@
                         #{categoryId}
                     </foreach>
                 </if>
+
                 <if test="countryId != null">
                     AND B.country_id IN
                     <foreach item="countryId" collection="countryId" open="(" separator="," close=")">
@@ -75,6 +76,7 @@
             </if>
         </where>
     </select>
+
     <insert id="insUserinfo">
         INSERT INTO t_user_info (user_id, product_id)
         VALUES
@@ -82,6 +84,12 @@
             (#{userId}, #{productId})
         </foreach>
     </insert>
+
+    <select id="selUserinfo">
+        select product_id
+        from t_user_info
+        where user_id=#{userId}
+    </select>
 </mapper>
 
 
