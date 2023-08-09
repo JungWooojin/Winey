@@ -99,13 +99,24 @@ public class DetailService {
 
 
         int level = 0;
-        if(vo.getSweety() <= 2 && vo.getAcidity() <= 2 && vo.getBody() <= 2 ){
+        int sum = vo.getSweety() + vo.getAcidity() + vo.getBody();
+
+        if (sum < 8) {
             level = 1;
-        } else if(vo.getSweety() == 5 && vo.getAcidity() == 5 && vo.getBody() == 5 ){
-            level = 3;
-        } else {
+        } else if (sum >= 8 && sum < 11) {
             level = 2;
+        } else if (sum >= 11 && sum < 16) {
+            level = 3;
         }
+
+//        return -1;
+//        if(vo.getSweety() <= 2 && vo.getAcidity() <= 2 && vo.getBody() <= 2 ){
+//            level = 1;
+//        } else if(vo.getSweety() == 5 && vo.getAcidity() == 5 && vo.getBody() == 5 ){
+//            level = 3;
+//        } else {
+//            level = 2;
+//        }
 
 
         SelSale selSale = MAPPER.selSale(productId);

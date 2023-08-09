@@ -29,9 +29,10 @@ public class OrderService {
     List<OrderEntity> selOrder(Long userId) {
 
         List<OrderEntity> temp = new ArrayList<>();
+        List<OrderEntity> empty = new ArrayList<>();
 
 
-        if ("".equals(mapper.selOrderIdMax(userId))) {
+        if (!"".equals(mapper.selOrderIdMax(userId))) {
 
             for (int i = mapper.selOrderIdMax(userId); i > 0; i--) {
 
@@ -116,9 +117,8 @@ public class OrderService {
                 }
             }
             return temp;
-        } else {
-            return null;
         }
+        return null;
 
     }
 
