@@ -81,7 +81,7 @@ public class AdminController {
     }
 
     //가입 회원 리스트 출력
-    @Operation(summary = "가입 회원 리스트 (페이징처리)(피그마: 가입회원리스트 페이지)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.")
+    @Operation(summary = "페이징)가입 회원 리스트 (페이징처리)(피그마: 가입회원리스트 페이지)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.")
     @GetMapping("/user/list")
     public UserList getUserList(@RequestParam(defaultValue = "1") int page,
                                     @RequestParam(defaultValue = "15") int row) {
@@ -92,11 +92,14 @@ public class AdminController {
     }
 
     //미완성) 가입 회원별 상세 주문 내역(회원pk별) +페이징 처리
-    @Operation(summary = "미완성) 회원별 상세 주문 내역 (페이징처리)(피그마: 회원상세내역 페이지)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @Operation(summary = "페이징)회원별 상세 주문 내역 (피그마: 회원상세내역 페이지)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
     @GetMapping("/{userId}/order")
-    public List<UserOrderDetailVo> getUserOrder(@PathVariable Long userId, @RequestParam(defaultValue = "1")int page,
+    public UserOrderDetailList getUserOrder(@PathVariable Long userId, @RequestParam(defaultValue = "1")int page,
                                                 @RequestParam(defaultValue = "15")int row) {
-        return SERVICE.getUserOrder(userId, page, row);
+        SelListDto dto = new SelListDto();
+        dto.setPage(page);
+        dto.setRow(row);
+        return SERVICE.getUserOrder(userId, dto);
     }
 
     //상품 사진 삭제

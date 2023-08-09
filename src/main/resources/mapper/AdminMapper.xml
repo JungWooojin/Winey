@@ -149,6 +149,24 @@
     </select>
 
     <select id="selUserOrder" resultType="UserOrderDetailVo">
+        SELECT B.order_id orderId, DATE_FORMAT(B.order_date, '%y-%m-%d') orderDate,
+        D.nm_kor nmKor, B.total_order_price price, E.nm storeNm, B.order_status orderStatus
+        , COUNT(*) count
+        FROM t_user A
+        INNER JOIN t_order B
+        ON A.user_id = B.user_id
+        INNER JOIN t_order_detail C
+        ON B.order_id = C.order_id
+        INNER JOIN t_product D
+        ON C.product_id = D.product_id
+        INNER JOIN t_store E
+        ON B.store_id = E.store_id
+        WHERE A.user_id = #{userId}
+        GROUP BY B.order_id
+        LIMIT #{startIdx}, #{row}
+    </select>
+    <!--
+    <select id="selUserOrder" resultType="UserOrderDetailVo">
         SELECT B.order_id orderId, C.order_detail_id orderDetailId, DATE_FORMAT(B.order_date, '%y-%m-%d') orderDate,
         D.nm_kor nmKor, C.sale_price price, C.quantity, E.nm storeNm, B.order_status orderStatus
         FROM t_user A
@@ -163,7 +181,7 @@
         WHERE A.user_id = #{userId}
         LIMIT #{startIdx}, #{row}
     </select>
-
+-->
     <select id="selOrder" resultType="OrderListVo">
         SELECT A.order_id orderId, DATE_FORMAT(A.order_date, '%y-%m-%d') orderDate , B.email, A.total_order_price totalPrice, A.payment, C.nm pickUpStore
         FROM t_order A
@@ -268,6 +286,31 @@
         SELECT COUNT(user_id)
         FROM t_user
         WHERE role = 'ROLE_USER'
+    </select>
+
+    <select id="userOrderCount">
+        SELECT COUNT(F.count)
+        FROM
+        (
+        SELECT COUNT(*) count
+        FROM t_user A
+        INNER JOIN t_order B
+        ON A.user_id = B.user_id
+        INNER JOIN t_order_detail C
+        ON B.order_id = C.order_id
+        INNER JOIN t_product D
+        ON C.product_id = D.product_id
+        INNER JOIN t_store E
+        ON B.store_id = E.store_id
+        WHERE A.user_id = #{userId}
+        GROUP BY B.order_id
+        ) F
+    </select>
+
+    <select id="selUserInfo">
+        SELECT user_id userId, email, nm
+        FROM t_user
+        WHERE user_id = #{userId}
     </select>
 
 

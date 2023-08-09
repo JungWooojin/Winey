@@ -270,15 +270,31 @@ public class AdminService {
     }
 
     //미완성) 가입회원 상세 주문 내역(회원pk별) +페이징 처리
-    public List<UserOrderDetailVo> getUserOrder(Long userId, int page, int row) {
-        UserOrderDetailDto dto = new UserOrderDetailDto();
-        dto.setUserId(userId);
-        dto.setRow(row);
+    public UserOrderDetailList getUserOrder(Long userId, SelListDto dto) {
+        UserOrderDetailDto detailDto = new UserOrderDetailDto();
+        detailDto.setUserId(userId);
+        detailDto.setRow(dto.getRow());
 
-        int startIdx = (page - 1) * row;
-        dto.setStartIdx(startIdx);
+        int startIdx = (dto.getPage() - 1) * dto.getRow();
+        detailDto.setStartIdx(startIdx);
 
-        return MAPPER.selUserOrder(dto);
+        //페이징 처리
+        int maxUserOrder = MAPPER.userOrderCount(userId);
+
+        List<UserOrderDetailVo> list = MAPPER.selUserOrder(detailDto);
+
+        for(int i=0;i<list.size();i++) {
+            if(list.get(i).getCount()>1) {
+                list.get(i).setNmKor(list.get(i).getNmKor()+" 외 "+(list.get(i).getCount()-1));
+            }
+        }
+        UserInfo user = MAPPER.selUserInfo(userId);
+
+        return UserOrderDetailList.builder()
+                .page(new PageDto(maxUserOrder, dto.getPage(), dto.getRow()))
+                .userInfo(user)
+                .userOrderList(list)
+                .build();
     }
     //주문 내역
     public List<OrderListVo> getOrder(SelListDto dto) {
