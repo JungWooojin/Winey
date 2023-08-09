@@ -27,6 +27,12 @@ public class MainController {
     private final MainService SERVICE;
 
 
+
+    @GetMapping("/wines/price")
+    public List<WineTotalVo> getWinesPrice() {
+        return SERVICE.selWinePrice();
+    }
+
    /* @GetMapping("/feature")
     @Operation(summary = "입문 레벨", description = "productId 입력하면 됩니다<br><br>" +
             "Responses : 1 > 레벨1<br>" +

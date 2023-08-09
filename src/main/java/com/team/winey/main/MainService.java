@@ -1,10 +1,12 @@
 package com.team.winey.main;
 
+import com.team.winey.file.FileMapper;
 import com.team.winey.main.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -30,10 +32,28 @@ public class MainService {
         return -1;
     }*/
 
+    public List<WineTotalVo> selWinePrice() {
+        List<WineTotalVo> voList = MAPPER.selWinePrice();
+
+        for (WineTotalVo vo : voList) {
+            double originalPrice = vo.getPrice();
+            int ceilPrice = (int) Math.ceil(originalPrice / 100) * 100;
+
+            WineUpdDto dto = new WineUpdDto();
+            dto.setProductId(vo.getProductId());
+            dto.setPrice(ceilPrice);
+            MAPPER.updPrice(dto);
+        }
+
+        return MAPPER.selWinePrice();
+    }
+
+
     public List<WineTotalVo> selWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.selWine(dto);
     }
+
 
     public List<WineTotalVo> selWineByNew(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
