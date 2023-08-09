@@ -1,5 +1,6 @@
 package com.team.winey.payment;
 
+import com.team.winey.admin.model.OrderDetailVo;
 import com.team.winey.payment.model.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,7 +20,7 @@ public class PaymentController {
 
     @PostMapping("/payment")
     @Operation(summary = "결제", description =
-                     "storeId: 매장PK값, <br>"
+            "storeId: 매장PK값, <br>"
                     + "totalOrderPrice: 총 결제 금액, <br>"
                     + "pickupTime: 픽업타임, <br>"
                     + "orderStatus: 주문상태, <br>"
@@ -27,7 +28,7 @@ public class PaymentController {
                     + "quantity: 수량 <br>"
                     + "productId: 결제하려는제품 pk값 <br>"
                     + "orderId: 결제 완료시 t_order의 pk 값이 출력 됩니다 <br>")
-    public int postPayment(@RequestBody PaymentInsDto dto){
+    public int postPayment(@RequestBody PaymentInsDto dto) {
         return service.insPayment(dto);
     }
 
@@ -35,7 +36,7 @@ public class PaymentController {
     @PutMapping("/orderstatus")
     @Operation(summary = "주문상태 변경", description =
             "orderStatus: 주문 상태, <br>")
-    public int putPayment(@RequestBody PaymentUpdDto dto){
+    public int putPayment(@RequestBody PaymentUpdDto dto) {
         return service.updPayment(dto);
     }
 
@@ -53,25 +54,34 @@ public class PaymentController {
                     + "review_level: 1번 좋아요 <br>"
                     + "2번 보통이에요 <br>"
                     + "3번 취향 아니에요 <br>")
-    public int postReview(@RequestBody ReviewInsDto dto){
+    public int postReview(@RequestBody ReviewInsDto dto) {
         return service.insReview(dto);
     }
 
-    @GetMapping("/listOrderDetail")
-    @Operation(summary = "결제 총금액", description =
-            "orderId: 결제 pk값 <br>")
-    public List<OrderDetailSelVo> getOrderDetail(@RequestParam int orderId){
-        return service.selOrderDetail(orderId);
-    }
+
     @GetMapping("/region")
     @Operation(summary = "픽업 지역", description =
             "userId: 사용자 pk값, <br>"
-                    +"regionNmId: 지역 pk값 <br>"
-                    +"regionNm: 지역 이름 <br>"
-                    +"storeId: 가게 pk값 <br>"
-                    +"nm: 지점명 <br>")
-    public List<RegionSelVO> getRegion(){
+                    + "regionNmId: 지역 pk값 <br>"
+                    + "regionNm: 지역 이름 <br>"
+                    + "storeId: 가게 pk값 <br>"
+                    + "nm: 지점명 <br>")
+    public List<RegionSelVO> getRegion() {
         return service.selRegion();
+    }
+    @Operation(summary = "주문 상세 내역 출력",description =
+            "orderDate: 주문날짜 <br>"
+                    +"nmKor: 한글 이름 <br>"
+                    +"quantity: 주문수량 <br>"
+                    +"totalPrice: 총 금액 <br>"
+                    +"payment: 카드결제(1번) <br>"
+                    +"storeNm: 지점명 <br>"
+                    +"pickUpdate: 픽업 날짜 <br>"
+                    +"pickUpTime: 픽업 시간 <br>"
+                    +"orderStatus: 주문 상태 <br>")
+    @GetMapping("/order/{orderId}")
+    public List<OrderSelDetailVo> getOrderDetail(@PathVariable int orderId) {
+        return service.getOrderDetail(orderId);
     }
 
 }

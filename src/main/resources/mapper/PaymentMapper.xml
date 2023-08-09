@@ -57,14 +57,6 @@
         WHERE order_status = 4
     </insert>
 
-    <select id = "selOrderDetail">
-        SELECT A.order_id orderId, A.quantity, A.sale_price salePrice
-        , A.product_id productId, B.nm_kor nmKor, B.nm_eng nmEng, B.pic
-        FROM t_order_detail A
-        inner JOIN t_product B
-        ON A.product_id = B.product_id
-        where order_id = #{orderId}
-    </select>
 
     <select id = "selRegion">
         SELECT
@@ -75,6 +67,21 @@
         inner JOIN t_store s
         ON u.region_nm_id = s.region_nm_id
         WHERE user_id = #{userId}
+    </select>
+
+    <select id = "selOrderDetail">
+        SELECT  B.order_id, DATE_FORMAT(B.order_date, '%y-%m-%d') orderDate,
+        D.nm_kor nmKor, C.sale_price price, C.quantity, E.nm storeNm, B.order_status orderStatus
+        FROM t_user A
+        INNER JOIN t_order B
+        ON A.user_id = B.user_id
+        INNER JOIN t_order_detail C
+        ON B.order_id = C.order_id
+        INNER JOIN t_product D
+        ON C.product_id = D.product_id
+        INNER JOIN t_store E
+        ON B.store_id = E.store_id
+        WHERE B.order_id = #{orderId}
     </select>
 
 </mapper>

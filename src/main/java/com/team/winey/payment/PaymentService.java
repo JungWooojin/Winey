@@ -56,15 +56,16 @@ public class PaymentService {
     public int insReview(ReviewInsDto dto){
         return mapper.insReview(dto);
     }
-    public List<OrderDetailSelVo> selOrderDetail(int orderId){
-        return mapper.selOrderDetail(orderId);
-    }
+
 
     public List<RegionSelVO> selRegion(){
         RegionInsDto dto = new RegionInsDto();
         dto.setUserId(facade.getLoginUserPk());
 
         return mapper.selRegion(dto);
+    }
+    public List<OrderSelDetailVo> getOrderDetail(int orderId) {
+        return mapper.selOrderDetail(orderId);
     }
 
 }
