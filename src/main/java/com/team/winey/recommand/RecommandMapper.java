@@ -10,5 +10,5 @@ import java.util.List;
 public interface RecommandMapper {
 
     List<Integer> selRecommand(RecommandRes res);
-
+    int insUserinfo(UserinfoDto dto);
 }
