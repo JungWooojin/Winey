@@ -1,6 +1,7 @@
 package com.team.winey.payment;
 
 import com.team.winey.cart.model.CartVo;
+import com.team.winey.config.security.AuthenticationFacade;
 import com.team.winey.payment.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +15,15 @@ import java.util.List;
 public class PaymentService {
 
     private final PaymentMapper mapper;
-
+    private final AuthenticationFacade facade;
 
     public int insPayment(PaymentInsDto dto){
         PaymentInsDto2 dto2 = new PaymentInsDto2();
-        dto2.setUserId(dto.getUserId());
+        dto2.setUserId(facade.getLoginUserPk());
         dto2.setStoreId(dto.getStoreId());
         dto2.setPickupTime(dto.getPickupTime());
         dto2.setOrderStatus(dto.getOrderStatus());
         dto2.setTotalOrderPrice(dto.getTotalOrderPrice());
-
         mapper.insPayment(dto2);
 
 
@@ -37,8 +37,14 @@ public class PaymentService {
             d.setQuantity( dto.getList().get(i).getQuantity());
             d.setProductId(dto.getList().get(i).getProductId());
             d.setOrderId(dto2.getOrderId());
+            d.setSalePrice(dto.getList().get(i).getSalePrice());
             mapper.insOrderDetail(d);
         }
+
+        QuantityUpdDto quantityDto = new QuantityUpdDto();
+        quantityDto.setQuantity(dto.getQuantityUpdDto().getQuantity());
+        quantityDto.setProductId(dto.getQuantityUpdDto().getProductId());
+        mapper.updQuantity(quantityDto);
 
         return dto2.getOrderId();
     }
@@ -46,9 +52,7 @@ public class PaymentService {
     public int updPayment(PaymentUpdDto dto){
         return mapper.updPayment(dto);
     }
-//    public int selSumPrice(int userId){
-//        return mapper.selSumPrice(userId);
-//    }
+
     public int insReview(ReviewInsDto dto){
         return mapper.insReview(dto);
     }
@@ -56,8 +60,11 @@ public class PaymentService {
         return mapper.selOrderDetail(orderId);
     }
 
-    public List<RegionSelVO> selRegion(int userId){
-        return mapper.selRegion(userId);
+    public List<RegionSelVO> selRegion(){
+        RegionInsDto dto = new RegionInsDto();
+        dto.setUserId(facade.getLoginUserPk());
+
+        return mapper.selRegion(dto);
     }
 
 }

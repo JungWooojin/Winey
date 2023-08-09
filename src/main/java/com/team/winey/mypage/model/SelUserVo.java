@@ -8,6 +8,7 @@ public class SelUserVo {
     private String email;
     private String pw;
     private String nm;
+    private String tel;
     private Long regionNmId;
     private char delYn;
 }

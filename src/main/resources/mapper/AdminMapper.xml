@@ -252,5 +252,10 @@
         WHERE product_id = #{productId}
     </update>
 
+    <select id="productCount">
+        SELECT COUNT(product_id)
+        FROM t_product
+    </select>
+
 
 </mapper>

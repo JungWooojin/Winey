@@ -1,9 +1,9 @@
-package com.team.winey.cart.model;
+package com.team.winey.payment.model;
 
 import lombok.Data;
 
 @Data
-public class CartInsDto {
+public class QuantityUpdDto {
     private int quantity;
     private int productId;
 }

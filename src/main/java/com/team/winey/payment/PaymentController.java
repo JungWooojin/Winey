@@ -19,13 +19,14 @@ public class PaymentController {
 
     @PostMapping("/payment")
     @Operation(summary = "결제", description =
-            "userId: 유저PK값, <br>"
-                    + "payment: 카드결제 1번, <br>"
-                    + "storeId: 매장PK값, <br>"
+                     "storeId: 매장PK값, <br>"
                     + "totalOrderPrice: 총 결제 금액, <br>"
                     + "pickupTime: 픽업타임, <br>"
                     + "orderStatus: 주문상태, <br>"
-                    + "cartId: 카트 pk값 <br>" )
+                    + "cartId: 카트 pk값 <br>"
+                    + "quantity: 수량 <br>"
+                    + "productId: 결제하려는제품 pk값 <br>"
+                    + "orderId: 결제 완료시 t_order의 pk 값이 출력 됩니다 <br>")
     public int postPayment(@RequestBody PaymentInsDto dto){
         return service.insPayment(dto);
     }
@@ -42,8 +43,8 @@ public class PaymentController {
 //    @GetMapping("/sumPrice")
 //    @Operation(summary = "결제 총금액", description =
 //            "userId: user pk값 <br>")
-//    public int getSumPrice(@RequestParam int userId){
-//        return service.selSumPrice(userId);
+//    public int getSumPrice(){
+//        return service.selSumPrice();
 //    }
 
     @PostMapping("/review")
@@ -69,7 +70,8 @@ public class PaymentController {
                     +"regionNm: 지역 이름 <br>"
                     +"storeId: 가게 pk값 <br>"
                     +"nm: 지점명 <br>")
-    public List<RegionSelVO> getRegion(int userId){
-        return service.selRegion(userId);
+    public List<RegionSelVO> getRegion(){
+        return service.selRegion();
     }
+
 }
