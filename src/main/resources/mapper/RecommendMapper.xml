@@ -34,7 +34,6 @@
                     </foreach>
                 </if>
             </if>
-            </if>
 
             <!-- aroma 객체가 null이 아닌 경우에만 조건을 추가 -->
             <if test="(aroma == null) or (aroma.flower == 0 and aroma.plant == 0 and aroma.fruit == 0 and aroma.spicy == 0 and aroma.earth == 0 and aroma.oak == 0 and aroma.nuts == 0)">
@@ -72,7 +71,6 @@
                         AND price >= 0
                     </when>
                 </choose>
-
             </if>
         </where>
     </select>
