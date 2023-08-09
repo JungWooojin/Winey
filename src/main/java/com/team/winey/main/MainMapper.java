@@ -7,9 +7,11 @@ import java.util.List;
 
 @Mapper
 public interface MainMapper {
+    int updPrice(WineUpdDto dto);
 
     /*WineFeatureVo beginners(WineFeatureDto dto);*/
     List<WineTotalVo> selWine(WineSelDto dto);
+    List<WineTotalVo> selWinePrice();
     List<WineTotalVo> selWineByNew(WineSelDto dto);
     List<WineTotalVo> selWineByExpencive(WineSelDto dto);
     List<WineTotalVo> selWineByCheap(WineSelDto dto);
