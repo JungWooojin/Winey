@@ -19,9 +19,7 @@ public class PaymentController {
 
     @PostMapping("/payment")
     @Operation(summary = "결제", description =
-            "userId: 유저PK값, <br>"
-                    + "payment: 카드결제 1번, <br>"
-                    + "storeId: 매장PK값, <br>"
+                     "storeId: 매장PK값, <br>"
                     + "totalOrderPrice: 총 결제 금액, <br>"
                     + "pickupTime: 픽업타임, <br>"
                     + "orderStatus: 주문상태, <br>"
