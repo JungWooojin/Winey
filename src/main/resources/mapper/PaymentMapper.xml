@@ -70,18 +70,22 @@
     </select>
 
     <select id = "selOrderDetail">
-        SELECT  B.order_id, DATE_FORMAT(B.order_date, '%y-%m-%d') orderDate,
-        D.nm_kor nmKor, C.sale_price price, C.quantity, E.nm storeNm, B.order_status orderStatus
+        select
+        DATE_FORMAT(B.order_date, '%y-%m-%d') AS orderDate,
+        GROUP_CONCAT(DISTINCT D.nm_kor ORDER BY D.nm_kor ASC SEPARATOR ', ') AS nmKor,
+        B.total_order_price totalOrderPrice,
+        E.nm storeNm,
+        B.order_status orderStatus,
+        B.payment,
+        B.order_date orderDate,
+        B.pickup_time pickUpTime
         FROM t_user A
-        INNER JOIN t_order B
-        ON A.user_id = B.user_id
-        INNER JOIN t_order_detail C
-        ON B.order_id = C.order_id
-        INNER JOIN t_product D
-        ON C.product_id = D.product_id
-        INNER JOIN t_store E
-        ON B.store_id = E.store_id
+        INNER JOIN t_order B ON A.user_id = B.user_id
+        INNER JOIN t_order_detail C ON B.order_id = C.order_id
+        INNER JOIN t_product D ON C.product_id = D.product_id
+        INNER JOIN t_store E ON B.store_id = E.store_id
         WHERE B.order_id = #{orderId}
+        GROUP BY B.order_id, orderDate, B.total_order_price, storeNm, orderStatus
     </select>
 
 </mapper>
