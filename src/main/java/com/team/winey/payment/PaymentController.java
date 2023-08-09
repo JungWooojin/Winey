@@ -27,7 +27,8 @@ public class PaymentController {
                     + "orderStatus: 주문상태, <br>"
                     + "cartId: 카트 pk값 <br>"
                     + "quantity: 수량 <br>"
-                    + "productId: 결제하려는제품 pk값 <br>")
+                    + "productId: 결제하려는제품 pk값 <br>"
+                    + "orderId: 결제 완료시 t_order의 pk 값이 출력 됩니다 <br>")
     public int postPayment(@RequestBody PaymentInsDto dto){
         return service.insPayment(dto);
     }
