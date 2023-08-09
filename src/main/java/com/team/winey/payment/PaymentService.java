@@ -55,5 +55,8 @@ public class PaymentService {
         return mapper.selOrderDetail(orderId);
     }
 
+    public List<RegionSelVO> selRegion(int userId){
+        return mapper.selRegion(userId);
+    }
 
 }
