@@ -7,7 +7,6 @@ import java.util.List;
 
 @Data
 public class PaymentInsDto {
-    private int userId;
     private int storeId;
     private String pickupTime;
     private int orderStatus;

@@ -1,6 +1,7 @@
 package com.team.winey.payment;
 
 import com.team.winey.cart.model.CartVo;
+import com.team.winey.config.security.AuthenticationFacade;
 import com.team.winey.payment.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +15,15 @@ import java.util.List;
 public class PaymentService {
 
     private final PaymentMapper mapper;
-
+    private final AuthenticationFacade facade;
 
     public int insPayment(PaymentInsDto dto){
         PaymentInsDto2 dto2 = new PaymentInsDto2();
-        dto2.setUserId(dto.getUserId());
+        dto2.setUserId(facade.getLoginUserPk());
         dto2.setStoreId(dto.getStoreId());
         dto2.setPickupTime(dto.getPickupTime());
         dto2.setOrderStatus(dto.getOrderStatus());
         dto2.setTotalOrderPrice(dto.getTotalOrderPrice());
-
         mapper.insPayment(dto2);
 
 
@@ -40,15 +40,16 @@ public class PaymentService {
             mapper.insOrderDetail(d);
         }
 
+
+
+
         return dto2.getOrderId();
     }
 
     public int updPayment(PaymentUpdDto dto){
         return mapper.updPayment(dto);
     }
-//    public int selSumPrice(int userId){
-//        return mapper.selSumPrice(userId);
-//    }
+
     public int insReview(ReviewInsDto dto){
         return mapper.insReview(dto);
     }
@@ -56,8 +57,11 @@ public class PaymentService {
         return mapper.selOrderDetail(orderId);
     }
 
-    public List<RegionSelVO> selRegion(int userId){
-        return mapper.selRegion(userId);
+    public List<RegionSelVO> selRegion(){
+        RegionInsDto dto = new RegionInsDto();
+        dto.setUserId(facade.getLoginUserPk());
+
+        return mapper.selRegion(dto);
     }
 
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class PaymentInsDto2 {
     private int orderId;
-    private int userId;
+    private Long userId;
     private int storeId;
     private String pickupTime;
     private int orderStatus;

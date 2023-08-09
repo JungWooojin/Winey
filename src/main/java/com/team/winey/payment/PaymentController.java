@@ -42,8 +42,8 @@ public class PaymentController {
 //    @GetMapping("/sumPrice")
 //    @Operation(summary = "결제 총금액", description =
 //            "userId: user pk값 <br>")
-//    public int getSumPrice(@RequestParam int userId){
-//        return service.selSumPrice(userId);
+//    public int getSumPrice(){
+//        return service.selSumPrice();
 //    }
 
     @PostMapping("/review")
@@ -69,7 +69,8 @@ public class PaymentController {
                     +"regionNm: 지역 이름 <br>"
                     +"storeId: 가게 pk값 <br>"
                     +"nm: 지점명 <br>")
-    public List<RegionSelVO> getRegion(int userId){
-        return service.selRegion(userId);
+    public List<RegionSelVO> getRegion(){
+        return service.selRegion();
     }
+
 }

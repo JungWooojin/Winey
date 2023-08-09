@@ -35,10 +35,8 @@ public class CartController {
                     + "price: 가격, <br>"
                     + "salePrice: 할인가격, <br>"
                     + "pic: 사진, <br>")
-    public List<CartVo> getFilledCart(@RequestParam int userId) {
-        CartSelDto dto = new CartSelDto();
-        dto.setUserId(userId);
-        return service.selCart(dto);
+    public List<CartVo> getFilledCart() {
+        return service.selCart();
     }
 
     @DeleteMapping("/delete")
@@ -59,7 +57,7 @@ public class CartController {
         dto.setQuantity(quantity);
         return service.updCart(dto);
     }
-
+//
 //    @GetMapping("/sumPrice")
 //    @Operation(summary = "장바구니 총합계", description =
 //            "userId: user pk값 <br>")
