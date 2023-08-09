@@ -82,9 +82,11 @@
         '개'
         )
         END AS nmKor,
-        B.total_order_price,
-        E.nm AS storeNm,
-        B.order_status AS orderStatus
+        B.total_order_price totalOrderPrice,
+        E.nm storeNm,
+        B.order_status orderStatus,
+        B.pickup_time,
+        B.payment
         FROM t_user A
         INNER JOIN t_order B ON A.user_id = B.user_id
         INNER JOIN t_order_detail C ON B.order_id = C.order_id
