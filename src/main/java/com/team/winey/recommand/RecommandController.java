@@ -43,6 +43,9 @@ public class RecommandController {
     }
 
     @GetMapping("/getUserInfo")
+    @Operation(summary = "사용자 추천설정", description =
+            "로그인하시고 excute누르면 그 사용자가 처음에 취향체크해서 필터링해서 나온 추천와인들의 pk들을 출력합니다 "
+    )
     public List<Integer> getUserInfo(){
         return service.selUserinfo();
     }
