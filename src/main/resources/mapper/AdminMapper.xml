@@ -257,5 +257,11 @@
         FROM t_product
     </select>
 
+    <select id="productSaleCount">
+        SELECT COUNT(sale_id)
+        FROM t_sale
+        WHERE sale_yn = 1
+    </select>
+
 
 </mapper>
