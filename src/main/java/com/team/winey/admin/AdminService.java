@@ -230,10 +230,17 @@ public class AdminService {
     }
 
     //등록 상품 리스트 출력 (전체 상품)
-    public List<ProductVo> getProduct(SelListDto dto) {
+    public ProductList getProduct(SelListDto dto) {
         int startIdx = (dto.getPage() - 1) * dto.getRow();
         dto.setStartIdx(startIdx);
-        return MAPPER.selProduct(dto);
+        int maxProduct = MAPPER.productCount();
+
+        PageDto pageDto = new PageDto(maxProduct, dto.getPage(), dto.getRow());
+
+        return ProductList.builder()
+                .page(pageDto)
+                .productList(MAPPER.selProduct(dto))
+                .build();
     }
 
     //할인 중인 상품 리스트 출력 (saleYn = 1인 상품만)
