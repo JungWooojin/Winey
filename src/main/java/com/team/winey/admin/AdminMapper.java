@@ -53,5 +53,6 @@ public interface AdminMapper {
     int userCount(); //가입회원 수
     int userOrderCount(Long userId); //userOrder 개수 카운트
     UserInfo selUserInfo(Long userId); //피그마(회원상세내역)페이지 회원정보 출력용
+    int orderCount(); //order 수
 
 }

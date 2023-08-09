@@ -297,11 +297,25 @@ public class AdminService {
                 .build();
     }
     //주문 내역
-    public List<OrderListVo> getOrder(SelListDto dto) {
+    public OrderList getOrder(SelListDto dto) {
         int startIdx = (dto.getPage() - 1) * dto.getRow();
         dto.setStartIdx(startIdx);
 
-        return MAPPER.selOrder(dto);
+        int maxOrder = MAPPER.orderCount();
+
+        //상품명에 외 1 넣는 로직
+        List<OrderListVo> list = MAPPER.selOrder(dto);
+
+        for(int i=0;i<list.size();i++) {
+            if(list.get(i).getCount()>1) {
+                list.get(i).setNmKor(list.get(i).getNmKor()+" 외 "+(list.get(i).getCount()-1));
+            }
+        }
+
+        return OrderList.builder()
+                .page(new PageDto(maxOrder, dto.getPage(), dto.getRow()))
+                .list(list)
+                .build();
     }
 
     //상세 주문 내역 리스트 by orderId

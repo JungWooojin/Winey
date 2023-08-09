@@ -111,10 +111,10 @@ public class AdminController {
     }
 
     //주문 내역
-    @Operation(summary = "주문 내역 출력(피그마:주문내역관리 페이지)", description = "주문상품, 주문수량 출력 안하는 중<br>"
+    @Operation(summary = "페이징)주문 내역 출력(피그마:주문내역관리 페이지)", description = "주문상품, 주문수량 출력 안하는 중<br>"
             +"page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
     @GetMapping("/order")
-    public List<OrderListVo> getOrder(@RequestParam(defaultValue = "1")int page,
+    public OrderList getOrder(@RequestParam(defaultValue = "1")int page,
                                       @RequestParam(defaultValue = "15")int row) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
