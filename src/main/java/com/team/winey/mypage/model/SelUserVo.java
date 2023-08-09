@@ -9,5 +9,5 @@ public class SelUserVo {
     private String pw;
     private String nm;
     private Long regionNmId;
-
+    private char delYn;
 }

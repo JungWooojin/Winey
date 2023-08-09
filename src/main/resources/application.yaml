@@ -6,10 +6,10 @@ springboot:
     token-type: Bearer
 spring:
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
     username: team_d
     password: green502
-    url: jdbc:mariadb://192.168.0.144:3306/team_d
+    jdbc-url: jdbc:mariadb://192.168.0.144:3306/team_d
+    driver-class-name: org.mariadb.jdbc.Driver
   data:
     redis:
       host: localhost
