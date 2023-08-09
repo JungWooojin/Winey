@@ -19,9 +19,6 @@
                     AND D.category_id IN
                     <foreach item="categoryId" collection="categoryId" open="(" separator="," close=")">
                         #{categoryId}
-                    </foreach>
-                </if>
-
                 <if test="countryId != null">
                     AND B.country_id IN
                     <foreach item="countryId" collection="countryId" open="(" separator="," close=")">

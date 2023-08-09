@@ -47,4 +47,9 @@ public class MypageService {
         dto.setUserId(facade.getLoginUserPk());
         return mapper.selUser(dto);
     }
+    public int delUser(){
+        DelUserDto dto = new DelUserDto();
+        dto.setUserId(facade.getLoginUserPk());
+        return mapper.delUser(dto);
+    }
 }
