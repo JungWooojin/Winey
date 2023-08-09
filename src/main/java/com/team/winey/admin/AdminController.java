@@ -149,9 +149,9 @@ public class AdminController {
         return SERVICE.insStore(param);
     }
     //매장 리스트 출력
-    @Operation(summary = "매장 리스트 출력", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @Operation(summary = "페이징)매장 리스트 출력", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
     @GetMapping("/store")
-    public List<StoreVo> getStore(@RequestParam(defaultValue = "1")int page,
+    public StoreList getStore(@RequestParam(defaultValue = "1")int page,
                                   @RequestParam(defaultValue = "15")int row) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);

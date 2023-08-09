@@ -347,8 +347,18 @@ public class AdminService {
         }
         return 0L; //전화번호 유효성 검사 통과 실패
     }
-    public List<StoreVo> getStore(SelListDto dto) {
-        return MAPPER.selStore(dto);
+    public StoreList getStore(SelListDto dto) {
+        int startIdx = (dto.getPage()-1) * dto.getRow();
+        dto.setStartIdx(startIdx);
+
+        int maxStore = MAPPER.storeCount();
+        PageDto page = new PageDto(maxStore, dto.getPage(), dto.getRow());
+        page.setPageSize(3);
+
+        return StoreList.builder()
+                .page(page)
+                .list(MAPPER.selStore(dto))
+                .build();
     }
     public Long updStore(StoreInsParam param, Long storeId) {
         StoreInsDto dto = new StoreInsDto();

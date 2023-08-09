@@ -321,6 +321,11 @@
         ) F
     </select>
 
+    <select id="storeCount">
+        SELECT COUNT(store_id) count
+        FROM t_store
+    </select>
+
 
 
 
