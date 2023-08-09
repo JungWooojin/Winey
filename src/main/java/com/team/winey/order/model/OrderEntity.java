@@ -17,7 +17,6 @@ public class OrderEntity {
     private String storeNm;
     private String pickupTime;
     private int orderStatus;
-    private int quantity;
 
 
 }
