@@ -6,7 +6,7 @@ import lombok.Data;
 public class OrderSelDetailVo {
     private String orderDate;
     private String nmKor;
-    private int totalPrice;
+    private int totalOrderPrice;
     private int payment;
     private String storeNm;
     private String pickUpTime;

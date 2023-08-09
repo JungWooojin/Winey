@@ -20,11 +20,11 @@ public class CartController {
 
     @PostMapping ("/cart")
     @Operation(summary = "장바구니 추가", description =
-            "productId: 상품 PK값,<br>" + "quantity: 수량,<br>" + "userId: 유저PK값, <br>")
+            "productId: 상품 PK값,<br>"
+            + "quantity: 수량,<br>")
     public int postCart(@RequestBody CartInsDto dto){
         return service.insCart(dto);
     }
-
 
     @GetMapping("/filledcart")
     @Operation(summary = "장바구니 출력", description =
