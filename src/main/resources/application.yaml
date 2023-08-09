@@ -34,6 +34,11 @@ spring:
   datasource:
     username: root
     url: jdbc:mariadb://localhost:3306/test
+#  sql:
+#    init:
+#      mode: always
+#      schema-locations: classpath:init/schema.sql
+#      data-locations: classpath:init/data.sql
 
 ---
 

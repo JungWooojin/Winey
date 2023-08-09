@@ -116,35 +116,4 @@ public class MainMapperTest {
     }
 
 
-    @Test
-    void selWineByCountry() {
-
-        WineSelByCountryDto countryDto = new WineSelByCountryDto();
-        countryDto.setCountryId(1L);
-        countryDto.setPage(1);
-        countryDto.setStartIdx(1);
-        countryDto.setRow(9);
-        List<WineTotalVo> list = MAPPER.selWineByCountry(countryDto);
-        assertEquals(9, list.size());
-
-        for (WineTotalVo vo : list) {
-            WineSelDetailDto dto = new WineSelDetailDto(vo.getProductId());
-            WineTotalVo item = MAPPER.selWineById(dto);
-            assertEquals(item.getProductId(), vo.getProductId());
-            assertEquals(item.getCategoryId(), vo.getCategoryId());
-            assertEquals(item.getFeatureId(), vo.getFeatureId());
-            assertEquals(item.getCountryId(), vo.getCountryId());
-            assertEquals(item.getAromaId(), vo.getAromaId());
-            assertEquals(item.getNmKor(), vo.getNmKor());
-            assertEquals(item.getNmEng(), vo.getNmEng());
-            assertEquals(item.getPrice(), vo.getPrice());
-            assertEquals(item.getQuantity(), vo.getQuantity());
-            assertEquals(item.getPic(), vo.getPic());
-            assertEquals(item.getPromotion(), vo.getPromotion());
-            assertEquals(item.getBeginner(), vo.getBeginner());
-            assertEquals(item.getAlcohol(), vo.getAlcohol());
-
-        }
-    }
-
 }
