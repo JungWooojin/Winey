@@ -12,4 +12,5 @@ public class PaymentInsDto {
     private int orderStatus;
     private int totalOrderPrice;
     private List<CartVo> list;
+    private QuantityUpdDto quantityUpdDto;
 }

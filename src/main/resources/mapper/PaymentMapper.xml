@@ -28,6 +28,13 @@
         where cart_id = #{cartId}
     </update>
 
+    <update id = "updQuantity">
+        update t_product
+        set quantity = quantity - #{quantity}
+        where product_id = #{productId}
+    </update>
+
+
     <update id="updPayment">
         update t_order
         set order_status = #{orderStatus}
