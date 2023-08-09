@@ -50,5 +50,6 @@ public interface AdminMapper {
     //페이징 처리
     int productCount(); //product 개수 카운트
     int productSaleCount(); //saleYn = 1인 상품 개수
+    int userCount(); //가입회원 수
 
 }

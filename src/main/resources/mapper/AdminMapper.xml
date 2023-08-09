@@ -144,6 +144,7 @@
     <select id="selUserList" resultType="UserVo">
         SELECT user_id userId, email, nm, region_nm_id regionNmId
         FROM t_user
+        WHERE role = 'ROLE_USER’
         LIMIT #{startIdx}, #{row}
     </select>
 
@@ -262,6 +263,14 @@
         FROM t_sale
         WHERE sale_yn = 1
     </select>
+
+    <select id="userCount">
+        SELECT COUNT(user_id)
+        FROM t_user
+        WHERE role = 'ROLE_USER'
+    </select>
+
+
 
 
 </mapper>

@@ -257,10 +257,16 @@ public class AdminService {
     }
 
     //가입회원 리스트
-    public List<UserVo> getUserList(SelListDto dto) {
+    public UserList getUserList(SelListDto dto) {
         int startIdx = (dto.getPage()-1) * dto.getRow();
         dto.setStartIdx(startIdx);
-        return MAPPER.selUserList(dto);
+
+        int maxUser = MAPPER.userCount();
+
+        return UserList.builder()
+                .page(new PageDto(maxUser, dto.getPage(), dto.getRow()))
+                .list(MAPPER.selUserList(dto))
+                .build();
     }
 
     //미완성) 가입회원 상세 주문 내역(회원pk별) +페이징 처리

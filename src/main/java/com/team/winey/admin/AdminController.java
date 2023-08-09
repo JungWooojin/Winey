@@ -83,7 +83,7 @@ public class AdminController {
     //가입 회원 리스트 출력
     @Operation(summary = "가입 회원 리스트 (페이징처리)(피그마: 가입회원리스트 페이지)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.")
     @GetMapping("/user/list")
-    public List<UserVo> getUserList(@RequestParam(defaultValue = "1") int page,
+    public UserList getUserList(@RequestParam(defaultValue = "1") int page,
                                     @RequestParam(defaultValue = "15") int row) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
