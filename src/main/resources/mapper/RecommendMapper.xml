@@ -20,6 +20,7 @@
                     <foreach item="categoryId" collection="categoryId" open="(" separator="," close=")">
                         #{categoryId}
                     </foreach>
+                </if>
                 <if test="countryId != null">
                     AND B.country_id IN
                     <foreach item="countryId" collection="countryId" open="(" separator="," close=")">
@@ -74,6 +75,13 @@
             </if>
         </where>
     </select>
+    <insert id="insUserinfo">
+        INSERT INTO t_user_info (user_id, product_id)
+        VALUES
+        <foreach item="productId" collection="productId" separator=",">
+            (#{userId}, #{productId})
+        </foreach>
+    </insert>
 </mapper>
 
 
