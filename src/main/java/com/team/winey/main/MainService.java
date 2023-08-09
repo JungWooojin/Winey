@@ -14,7 +14,7 @@ public class MainService {
 
     private final MainMapper MAPPER;
 
-    public int selFeature(WineFeatureDto dto) {
+    /*public int selFeature(WineFeatureDto dto) {
         WineFeatureVo result = MAPPER.beginners(dto);
 
         int sum = result.getSweety() + result.getAcidity() + result.getBody();
@@ -28,7 +28,7 @@ public class MainService {
         }
 
         return -1;
-    }
+    }*/
 
     public List<WineTotalVo> selWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());

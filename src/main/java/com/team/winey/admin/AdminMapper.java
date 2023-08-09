@@ -47,4 +47,8 @@ public interface AdminMapper {
 
     int updSaleYn(ProductSaleYnDto dto); //할인 상태(saleYn) 업데이트 (관리자가 수동으로 On/Off하는 용도)
 
+    //페이징 처리
+    int productCount(); //product 개수 카운트
+    int productSaleCount(); //saleYn = 1인 상품 개수
+
 }

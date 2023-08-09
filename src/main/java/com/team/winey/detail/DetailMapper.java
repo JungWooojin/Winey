@@ -1,9 +1,6 @@
 package com.team.winey.detail;
 
-import com.team.winey.detail.model.SelCountVo;
-import com.team.winey.detail.model.SelSale;
-import com.team.winey.detail.model.SelWineKorNm;
-import com.team.winey.detail.model.WineDetailVo;
+import com.team.winey.detail.model.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,7 +11,9 @@ public interface DetailMapper {
     List<String> selPairing(Long productId);
     String selCount(SelCountVo vo);
     SelSale selSale(Long productId);
+    SelAroma selAroma(Long productId);
     SelWineKorNm selKorNm(Long productId);
+
 
 
 

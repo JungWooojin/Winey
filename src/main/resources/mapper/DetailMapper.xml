@@ -9,7 +9,6 @@
         , B.nm categoryNm, B.temp
         , C.nm countryNm
         , D.sweety, D.acidity, D.body
-        , E.flower, E.plant, E.fruit, E.spicy, E.earth, E.oak, E.nuts
                 FROM t_product A
                 INNER JOIN t_category B
                 ON A.category_id = B.category_id
@@ -20,6 +19,17 @@
                 INNER JOIN t_aroma E
                 ON A.aroma_id = E.aroma_id
                 WHERE A.product_id=#{productId}
+    </select>
+
+    <select id="selAroma">
+        SELECT A.product_id productId,
+        B.flower, B.plant, B.fruit,
+        B.spicy, B.earth, B.oak, B.nuts
+        FROM t_product A
+        INNER JOIN t_aroma B
+        ON A.aroma_id=b.aroma_id
+        WHERE A.product_id =#{productId}
+
     </select>
 
 

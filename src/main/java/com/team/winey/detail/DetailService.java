@@ -44,8 +44,12 @@ public class DetailService {
             selCountVo.setProductId(productId);
             MAPPER.selCount(selCountVo);
             selCount.add(MAPPER.selCount(selCountVo));
-
         }
+
+
+        SelAroma selAroma = MAPPER.selAroma(productId);
+
+
 
         int level = 0;
         if(vo.getSweety() <= 2 && vo.getAcidity() <= 2 && vo.getBody() <= 2 ){
@@ -74,10 +78,13 @@ public class DetailService {
 
 
 
+
+
         return WineVo.builder()
                 .wineDetailVo(vo)
                 .selPairing(selPairing)
-                .SelReview(selCount)
+                .selReview(selCount)
+                .selAroma(selAroma)
                 .Level(level)
                 .selSale(selSale)
                 .build();
