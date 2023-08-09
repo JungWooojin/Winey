@@ -14,13 +14,13 @@ import java.util.List;
 @Tag(name = "사용자맞춤와인추천")
 @Slf4j
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/recommand")
 @RequiredArgsConstructor
 public class RecommandController {
     private final RecommandService service;
 
 
-    @GetMapping("/recommand")
+    @GetMapping
     @Operation(summary = "사용자 추천설정", description =
             "categoryId:와인종류 1:레드와인, 2:화이트와인, 3:스파클링와인, 4:기타 ex) 1번과 3번하려면 1누르고 add누르고 3입력해야하며 생략또한 가능 <br>" +
                     "countryId: 원산지 1:미국, 2:스페인, 3:이탈리아, 4:칠레, 5:포르투갈, 6:프랑스 ex: categoryId입력방법과 동일<br>" +
