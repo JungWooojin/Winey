@@ -57,14 +57,23 @@
     </insert>
 
     <select id = "selOrderDetail">
-
         SELECT A.order_id orderId, A.quantity, A.sale_price salePrice
         , A.product_id productId, B.nm_kor nmKor, B.nm_eng nmEng, B.pic
         FROM t_order_detail A
         inner JOIN t_product B
         ON A.product_id = B.product_id
         where order_id = #{orderId}
+    </select>
 
+    <select id = "selRegion">
+        SELECT
+        u.user_id, u.region_nm_id regionNmId, r.region_nm regionNm, s.store_id storeId, s.nm
+        FROM t_user u
+        inner JOIN t_region_nm r
+        ON u.region_nm_id = r.region_nm_id
+        inner JOIN t_store s
+        ON u.region_nm_id = s.region_nm_id
+        WHERE user_id = #{userId}
     </select>
 
 </mapper>

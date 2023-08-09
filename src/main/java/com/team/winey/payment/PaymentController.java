@@ -62,4 +62,14 @@ public class PaymentController {
     public List<OrderDetailSelVo> getOrderDetail(@RequestParam int orderId){
         return service.selOrderDetail(orderId);
     }
+    @GetMapping("/region")
+    @Operation(summary = "픽업 지역", description =
+            "userId: 사용자 pk값, <br>"
+                    +"regionNmId: 지역 pk값 <br>"
+                    +"regionNm: 지역 이름 <br>"
+                    +"storeId: 가게 pk값 <br>"
+                    +"nm: 지점명 <br>")
+    public List<RegionSelVO> getRegion(int userId){
+        return service.selRegion(userId);
+    }
 }
