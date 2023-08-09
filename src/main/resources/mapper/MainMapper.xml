@@ -64,7 +64,7 @@
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
-        WHERE product_id = #{productId}
+        WHERE a.product_id = #{productId}
     </select>
 
     <!-- ////////////////////////////////////////////////////////////////////////////////  -->
