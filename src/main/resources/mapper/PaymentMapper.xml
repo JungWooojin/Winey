@@ -19,7 +19,7 @@
         set order_id = #{orderId},
         product_id = #{productId},
         quantity = #{quantity},
-        sale_price = 1
+        sale_price = #{salePrice}
     </insert>
 
     <update id = "updBuy">
