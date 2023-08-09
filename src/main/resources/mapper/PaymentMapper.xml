@@ -9,13 +9,7 @@
         set user_id = #{userId},
         store_id = #{storeId},
         payment = 1,
-        total_order_price =
-        (SELECT SUM(A.quantity * B.price) sumPrice
-        from t_cart A
-        INNER JOIN t_product B
-        ON A.product_id = B.product_id
-        WHERE user_id = #{userId} and DATE_FORMAT(A.created_at, "%Y-%m-%d") = curdate()
-        order by user_id),
+        total_order_price = #{totalOrderPrice},
         pickup_time = #{pickupTime},
         order_status = #{orderStatus}
     </insert>

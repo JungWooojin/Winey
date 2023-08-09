@@ -39,12 +39,12 @@ public class PaymentController {
     }
 
 
-    @GetMapping("/sumPrice")
-    @Operation(summary = "결제 총금액", description =
-            "userId: user pk값 <br>")
-    public int getSumPrice(@RequestParam int userId){
-        return service.selSumPrice(userId);
-    }
+//    @GetMapping("/sumPrice")
+//    @Operation(summary = "결제 총금액", description =
+//            "userId: user pk값 <br>")
+//    public int getSumPrice(@RequestParam int userId){
+//        return service.selSumPrice(userId);
+//    }
 
     @PostMapping("/review")
     @Operation(summary = "리뷰 작성", description =
