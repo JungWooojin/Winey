@@ -17,20 +17,20 @@ import java.util.Locale;
 @RequiredArgsConstructor
 public class OrderService {
     private final OrderMapper mapper;
-    //private final AuthenticationFacade facade;
+    private final AuthenticationFacade facade;
 
 
-    List<OrderEntity> selOrder(Long userId){
-        //파라미터에 UserIdDto dto 넣기
-        //dto.setUserId(facade.getLoginUserPk());
-        List<OrderEntity> list = mapper.selOrder(userId);
+    List<OrderEntity> selOrder(){
+        UserIdDto dto =new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
+        List<OrderEntity> list = mapper.selOrder(dto);
 
         for(OrderEntity entity : list){
             if(entity.getCount() >= 2 ){
 
                 entity.setOrderDate(entity.getOrderDate());
                 //entity.setUserId(facade.getLoginUserPk());
-                entity.setUserId(userId);
+                entity.setUserId(facade.getLoginUserPk());
                 entity.setOrderId(entity.getOrderId());
                 entity.setPayment(entity.getPayment());
                 entity.setTotalOrderPrice(entity.getTotalOrderPrice());
@@ -63,7 +63,7 @@ public class OrderService {
 
                 entity.setOrderDate(entity.getOrderDate());
                 //entity.setUserId(facade.getLoginUserPk());
-                entity.setUserId(userId);
+                entity.setUserId(facade.getLoginUserPk());
                 entity.setOrderId(entity.getOrderId());
                 entity.setPayment(entity.getPayment());
                 entity.setTotalOrderPrice(entity.getTotalOrderPrice());
@@ -94,15 +94,25 @@ public class OrderService {
 
 
     int cancelOrder(Long orderId) {
+        UserIdDto dto = new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
         return mapper.cancelOrder(orderId);
 
     }
 
     int pickupFinishOrder(Long orderId) {
+        UserIdDto dto = new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
         return mapper.pickupFinishOrder(orderId);
     }
 
+
+
+
+
     public DetailVo selOrderDetail(Long orderId){
+        UserIdDto dto = new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
 
         List<OrderDetailVo1> vo1 = mapper.selOrderDetail1(orderId);
 

@@ -38,7 +38,7 @@ public class DetailService {
 
         List<String> selCount = new ArrayList();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 1; i <= 3; i++) {
             SelCountVo selCountVo = new SelCountVo();
             selCountVo.setReviewLevel(i);
             selCountVo.setProductId(productId);
