@@ -1,8 +1,10 @@
 package com.team.winey.main.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class WineTotalVo {
     private Long productId;
     private Long categoryId;
@@ -19,5 +21,6 @@ public class WineTotalVo {
     private int alcohol;
     private int sale;
     private int salePrice;
+
 
 }
