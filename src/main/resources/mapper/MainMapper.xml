@@ -4,6 +4,53 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.winey.main.MainMapper">
 
+    <select id="redWine">
+        SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        FROM t_product a
+        LEFT JOIN t_sale b
+        ON a.product_id = b.product_id
+        WHERE a.category_id = 1
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+    <select id="whiteWine">
+        SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        FROM t_product a
+        LEFT JOIN t_sale b
+        ON a.product_id = b.product_id
+        WHERE a.category_id = 2
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+    <select id="sparklingWine">
+        SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        FROM t_product a
+        LEFT JOIN t_sale b
+        ON a.product_id = b.product_id
+        WHERE a.category_id = 3
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+    <select id="otherWine">
+        SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        FROM t_product a
+        LEFT JOIN t_sale b
+        ON a.product_id = b.product_id
+        WHERE a.category_id = 4
+        LIMIT ${startIdx}, ${row}
+    </select>
+
+
+
+
     <update id="updPrice">
         UPDATE t_product
         SET price = #{price}

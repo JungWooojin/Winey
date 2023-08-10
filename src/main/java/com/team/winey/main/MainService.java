@@ -32,6 +32,28 @@ public class MainService {
         return -1;
     }*/
 
+    public List<WineTotalVo> redWine(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.redWine(dto);
+    }
+
+    public List<WineTotalVo> whiteWine(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.whiteWine(dto);
+    }
+
+    public List<WineTotalVo> sparklingWine(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.sparklingWine(dto);
+    }
+
+    public List<WineTotalVo> otherWine(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.otherWine(dto);
+    }
+
+
+
     public List<WineTotalVo> selWinePrice() {
         List<WineTotalVo> voList = MAPPER.selWinePrice();
 

@@ -9,6 +9,11 @@ import java.util.List;
 public interface MainMapper {
     int updPrice(WineUpdDto dto);
 
+    List<WineTotalVo> redWine(WineSelDto dto);
+    List<WineTotalVo> whiteWine(WineSelDto dto);
+    List<WineTotalVo> sparklingWine(WineSelDto dto);
+    List<WineTotalVo> otherWine(WineSelDto dto);
+
     /*WineFeatureVo beginners(WineFeatureDto dto);*/
     List<WineTotalVo> selWine(WineSelDto dto);
     List<WineTotalVo> selWinePrice();

@@ -26,7 +26,45 @@ public class MainController {
 
     private final MainService SERVICE;
 
+    @GetMapping("/redWine")
+    @Operation(summary = "레드와인", description = "레드와인만 모아놨지롱")
+    public List<WineTotalVo> getRedWines(@RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
+        WineSelDto dto = new WineSelDto();
+        dto.setPage(page);
+        dto.setRow(row);
+        return SERVICE.redWine(dto);
+    }
 
+    @GetMapping("/whiteWine")
+    @Operation(summary = "화이트와인", description = "화이트와인만 모아놨지롱")
+    public List<WineTotalVo> getWhiteWines(@RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
+        WineSelDto dto = new WineSelDto();
+        dto.setPage(page);
+        dto.setRow(row);
+        return SERVICE.whiteWine(dto);
+    }
+
+    @GetMapping("/sparklingWine")
+    @Operation(summary = "스파클링와인", description = "스파클링와인만 모아놨지롱")
+    public List<WineTotalVo> getsparklingWines(@RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
+        WineSelDto dto = new WineSelDto();
+        dto.setPage(page);
+        dto.setRow(row);
+        return SERVICE.sparklingWine(dto);
+    }
+
+    @GetMapping("/otherWine")
+    @Operation(summary = "기타와인", description = "기타와인만 모아놨지롱")
+    public List<WineTotalVo> getOtherWines(@RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
+        WineSelDto dto = new WineSelDto();
+        dto.setPage(page);
+        dto.setRow(row);
+        return SERVICE.otherWine(dto);
+    }
 
     @GetMapping("/wines/price")
     @Operation(summary = "금액 10원단위 절삭", description = "디비 새로 만들 때 마다 기본적으로 해놓을테니 신경 안쓰셔도 됩니다!")
