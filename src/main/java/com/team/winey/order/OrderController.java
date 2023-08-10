@@ -39,7 +39,7 @@ public class OrderController {
 
 
     @GetMapping("/detail")
-    @Operation(summary = "주문 상세 내역")
+    @Operation(summary = "주문 상세 내역", description = "")
     public DetailVo selOrderDetail(@RequestParam Long orderId) {
         return service.selOrderDetail(orderId);
     }

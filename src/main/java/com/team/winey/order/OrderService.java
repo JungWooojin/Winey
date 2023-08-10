@@ -1,6 +1,5 @@
 package com.team.winey.order;
 
-import com.team.winey.config.security.AuthenticationFacade;
 import com.team.winey.order.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,8 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderService {
     private final OrderMapper mapper;
-    private final AuthenticationFacade facade;
-
 
     List<OrderEntity> selOrder(Long userId){
         List<OrderEntity> list = mapper.selOrder(userId);
@@ -58,7 +55,7 @@ public class OrderService {
             } else if (entity.getCount() == 1) {
 
                 entity.setOrderDate(entity.getOrderDate());
-                entity.setUserId(facade.getLoginUserPk());
+                entity.setUserId(userId);
                 entity.setOrderId(entity.getOrderId());
                 entity.setPayment(entity.getPayment());
                 entity.setTotalOrderPrice(entity.getTotalOrderPrice());
@@ -100,7 +97,29 @@ public class OrderService {
     public DetailVo selOrderDetail(Long orderId){
 
         List<OrderDetailVo1> vo1 = mapper.selOrderDetail1(orderId);
+
+
         OrderDetailVo2 vo2 = mapper.selOrderDetail2(orderId);
+        if(vo2 != null) {
+            try {
+                String strDate = vo2.getPickupTime();
+                SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm");
+                // String 타입을 Date 타입으로 변환
+
+                Date formatDate = dtFormat.parse(strDate);
+                // Date타입의 변수를 새롭게 지정한 포맷으로 변환
+
+                String strNewDtFormat = newDtFormat.format(formatDate);
+
+                vo2.setPickupTime(strNewDtFormat);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            vo2.setStoreNm("이마트 " + vo2.getStoreNm());
+        } else {
+            return null;
+        }
 
 
         return DetailVo.builder()

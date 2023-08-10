@@ -1,10 +1,10 @@
 package com.team.winey.order.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 
-@Getter
-@AllArgsConstructor
+@Data
 public class OrderDetailVo2 {
     private String orderDate;
     private int payment;

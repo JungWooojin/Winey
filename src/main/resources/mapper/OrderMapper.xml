@@ -54,7 +54,7 @@
     </select>
 
     <select id="selOrderDetail2">
-        SELECT A.order_date orderDate, A.payment,
+        SELECT DATE_FORMAT(A.order_date, '%Y-%m-%d') orderDate, A.payment,
         A.pickup_time pickupTime,
         A.order_status orderStatus,
         A.total_order_price totalOrderPrice,
