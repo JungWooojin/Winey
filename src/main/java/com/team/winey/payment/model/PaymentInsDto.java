@@ -9,7 +9,6 @@ import java.util.List;
 public class PaymentInsDto {
     private int storeId;
     private String pickupTime;
-    private int orderStatus;
     private int totalOrderPrice;
     private List<CartVo> list;
     private QuantityUpdDto quantityUpdDto;

@@ -22,7 +22,6 @@ public class PaymentService {
         dto2.setUserId(facade.getLoginUserPk());
         dto2.setStoreId(dto.getStoreId());
         dto2.setPickupTime(dto.getPickupTime());
-        dto2.setOrderStatus(dto.getOrderStatus());
         dto2.setTotalOrderPrice(dto.getTotalOrderPrice());
         mapper.insPayment(dto2);
 
@@ -41,10 +40,25 @@ public class PaymentService {
             mapper.insOrderDetail(d);
         }
 
-//        QuantityUpdDto quantityDto = new QuantityUpdDto();
-//        quantityDto.setQuantity(dto.getQuantityUpdDto().getQuantity());
-//        quantityDto.setProductId(dto.getQuantityUpdDto().getProductId());
-//        mapper.updQuantity(quantityDto);
+
+        return dto2.getOrderId();
+    }
+    public int insEachPayment(EachPaymentInsDto dto){
+        EachPaymentInsDto2 dto2 = new EachPaymentInsDto2();
+        dto2.setUserId(facade.getLoginUserPk());
+        dto2.setStoreId(dto.getStoreId());
+        dto2.setPickupTime(dto.getPickupTime());
+        dto2.setSalePrice(dto.getSalePrice());
+        dto2.setPayment(dto.getPayment());
+        mapper.insEachPayment(dto2);
+
+        OrderDetailInsDto d = new OrderDetailInsDto();
+        d.setOrderId(dto2.getOrderId());
+        d.setProductId(dto.getProductId());
+        d.setQuantity(dto2.getQuantity());
+        d.setSalePrice(dto2.getSalePrice());
+
+        mapper.insOrderDetail(d);
 
         return dto2.getOrderId();
     }

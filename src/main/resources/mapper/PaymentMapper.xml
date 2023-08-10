@@ -11,7 +11,17 @@
         payment = 1,
         total_order_price = #{totalOrderPrice},
         pickup_time = #{pickupTime},
-        order_status = #{orderStatus}
+        order_status = 1
+    </insert>
+
+    <insert id = "insEachPayment" useGeneratedKeys="true" keyProperty="orderId">
+        insert into t_order
+        set user_id = #{userId},
+        store_id = #{storeId},
+        payment = #{payment},
+        total_order_price = #{salePrice},
+        pickup_time = #{pickupTime},
+        order_status = 1
     </insert>
 
     <insert id = "insOrderDetail">
@@ -28,27 +38,11 @@
         where cart_id = #{cartId}
     </update>
 
-<!--    <update id = "updQuantity">-->
-<!--        update t_product-->
-<!--        set quantity = quantity - #{quantity}-->
-<!--        where product_id = #{productId}-->
-<!--    </update>-->
-
-
     <update id="updPayment">
         update t_order
         set order_status = #{orderStatus}
         where payment = 1
     </update>
-
-<!--    <select id = "selSumPrice">-->
-<!--        SELECT sum(A.quantity * B.price) sumPrice-->
-<!--        from t_cart A-->
-<!--        inner JOIN t_product B-->
-<!--        ON A.product_id = B.product_id-->
-<!--        WHERE user_id = #{userId}-->
-<!--        order by userId;-->
-<!--    </select>-->
 
     <insert id ="insReview">
         INSERT INTO t_review (review_level, order_detail_id)
@@ -69,31 +63,5 @@
         WHERE user_id = #{userId}
     </select>
 
-<!--    <select id = "selOrderDetail">-->
-<!--        SELECT-->
-<!--        B.order_id,-->
-<!--        DATE_FORMAT(B.order_date, '%y-%m-%d') AS orderDate,-->
-<!--        CASE-->
-<!--        WHEN COUNT(DISTINCT D.nm_kor) = 1 THEN MAX(DISTINCT D.nm_kor)-->
-<!--        ELSE CONCAT(-->
-<!--        MIN(DISTINCT D.nm_kor),-->
-<!--        ' 외 ',-->
-<!--        COUNT(DISTINCT D.nm_kor) - 1,-->
-<!--        '개'-->
-<!--        )-->
-<!--        END AS nmKor,-->
-<!--        B.total_order_price totalOrderPrice,-->
-<!--        E.nm storeNm,-->
-<!--        B.order_status orderStatus,-->
-<!--        B.pickup_time,-->
-<!--        B.payment-->
-<!--        FROM t_user A-->
-<!--        INNER JOIN t_order B ON A.user_id = B.user_id-->
-<!--        INNER JOIN t_order_detail C ON B.order_id = C.order_id-->
-<!--        INNER JOIN t_product D ON C.product_id = D.product_id-->
-<!--        INNER JOIN t_store E ON B.store_id = E.store_id-->
-<!--        WHERE B.order_id = #{orderId}-->
-<!--        GROUP BY B.order_id, orderDate, B.total_order_price, storeNm, orderStatus;-->
-<!--    </select>-->
 
 </mapper>

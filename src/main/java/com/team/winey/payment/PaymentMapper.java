@@ -10,13 +10,12 @@ import java.util.List;
 public interface PaymentMapper {
 
         int insPayment(PaymentInsDto2 dto2);
+        int insEachPayment(EachPaymentInsDto2 dto2);
         int updBuy(int cartId);
         int updPayment(PaymentUpdDto dto);
-        //    int selSumPrice(int userId);
         int insReview(ReviewInsDto dto);
         int insOrderDetail(OrderDetailInsDto dto);
         List<RegionSelVO> selRegion(RegionInsDto dto);
-//        int updQuantity(QuantityUpdDto dto);
-//        List<OrderSelDetailVo> selOrderDetail(int orderId);
+
 
 }
