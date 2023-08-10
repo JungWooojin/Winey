@@ -40,7 +40,7 @@ public class OrderService {
                 try {
                     String strDate = list.get(0).getPickupTime();
                     SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 (E)요일 HH:mm", Locale.KOREA);
+                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
                     // String 타입을 Date 타입으로 변환
 
                     Date formatDate = dtFormat.parse(strDate);
@@ -72,7 +72,7 @@ public class OrderService {
                 try {
                     String strDate = list.get(0).getPickupTime();
                     SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 (E)요일 HH:mm", Locale.KOREA);
+                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
                     // String 타입을 Date 타입으로 변환
 
                     Date formatDate = dtFormat.parse(strDate);
