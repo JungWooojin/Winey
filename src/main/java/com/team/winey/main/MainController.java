@@ -29,6 +29,7 @@ public class MainController {
 
 
     @GetMapping("/wines/price")
+    @Operation(summary = "금액 10원단위 절삭", description = "디비 새로 만들 때 마다 기본적으로 해놓을테니 신경 안쓰셔도 됩니다!")
     public List<WineTotalVo> getWinesPrice() {
         return SERVICE.selWinePrice();
     }

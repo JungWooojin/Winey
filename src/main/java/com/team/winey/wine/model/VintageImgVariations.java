@@ -1,0 +1,10 @@
+package com.team.winey.wine.model;
+
+import lombok.Data;
+
+@Data
+public class VintageImgVariations {
+    private String bottle_large;
+//    private String bottle_medium;
+//    private String bottle_small;
+}

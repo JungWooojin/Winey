@@ -7,7 +7,7 @@
     <update id="updPrice">
         UPDATE t_product
         SET price = #{price}
-        WHERE WHERE product_id = #{productId}
+        WHERE product_id = #{productId}
     </update>
 
     <select id="selWinePrice">
