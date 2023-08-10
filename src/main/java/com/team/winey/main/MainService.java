@@ -37,22 +37,88 @@ public class MainService {
         return MAPPER.redWine(dto);
     }
 
+    public List<WineTotalVo> redWineByNew(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.redWineByNew(dto);
+    }
+
+    public List<WineTotalVo> redWineByExpencive(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.redWineByExpencive(dto);
+    }
+
+    public List<WineTotalVo> redWineByCheap(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.redWineByCheap(dto);
+    }
+
+    //====================================================================
+
     public List<WineTotalVo> whiteWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.whiteWine(dto);
     }
+
+    public List<WineTotalVo> whiteWineByNew(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.whiteWineByNew(dto);
+    }
+
+    public List<WineTotalVo> whiteWineByExpencive(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.whiteWineByExpencive(dto);
+    }
+
+    public List<WineTotalVo> whiteWineByCheap(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.whiteWineByCheap(dto);
+    }
+
+    //====================================================================
 
     public List<WineTotalVo> sparklingWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.sparklingWine(dto);
     }
 
+    public List<WineTotalVo> sparklingWineByNew(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.sparklingWineByNew(dto);
+    }
+
+    public List<WineTotalVo> sparklingWineByExpencive(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.sparklingWineByExpencive(dto);
+    }
+
+    public List<WineTotalVo> sparklingWineByCheap(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.sparklingWineByCheap(dto);
+    }
+
+    //====================================================================
+
     public List<WineTotalVo> otherWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.otherWine(dto);
     }
 
+    public List<WineTotalVo> otherWineByNew(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.otherWineByNew(dto);
+    }
 
+    public List<WineTotalVo> otherWineByExpencive(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.otherWineByExpencive(dto);
+    }
+
+    public List<WineTotalVo> otherWineByCheap(WineSelDto dto) {
+        dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
+        return MAPPER.otherWineByCheap(dto);
+    }
+
+    //====================================================================
 
     public List<WineTotalVo> selWinePrice() {
         List<WineTotalVo> voList = MAPPER.selWinePrice();

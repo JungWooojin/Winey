@@ -10,9 +10,24 @@ public interface MainMapper {
     int updPrice(WineUpdDto dto);
 
     List<WineTotalVo> redWine(WineSelDto dto);
+    List<WineTotalVo> redWineByNew(WineSelDto dto);
+    List<WineTotalVo> redWineByExpencive(WineSelDto dto);
+    List<WineTotalVo> redWineByCheap(WineSelDto dto);
+
     List<WineTotalVo> whiteWine(WineSelDto dto);
+    List<WineTotalVo> whiteWineByNew(WineSelDto dto);
+    List<WineTotalVo> whiteWineByExpencive(WineSelDto dto);
+    List<WineTotalVo> whiteWineByCheap(WineSelDto dto);
+
     List<WineTotalVo> sparklingWine(WineSelDto dto);
+    List<WineTotalVo> sparklingWineByNew(WineSelDto dto);
+    List<WineTotalVo> sparklingWineByExpencive(WineSelDto dto);
+    List<WineTotalVo> sparklingWineByCheap(WineSelDto dto);
+
     List<WineTotalVo> otherWine(WineSelDto dto);
+    List<WineTotalVo> otherWineByNew(WineSelDto dto);
+    List<WineTotalVo> otherWineByExpencive(WineSelDto dto);
+    List<WineTotalVo> otherWineByCheap(WineSelDto dto);
 
     /*WineFeatureVo beginners(WineFeatureDto dto);*/
     List<WineTotalVo> selWine(WineSelDto dto);
