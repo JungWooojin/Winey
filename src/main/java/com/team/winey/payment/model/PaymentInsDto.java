@@ -11,5 +11,4 @@ public class PaymentInsDto {
     private String pickupTime;
     private int totalOrderPrice;
     private List<CartVo> list;
-    private QuantityUpdDto quantityUpdDto;
 }
