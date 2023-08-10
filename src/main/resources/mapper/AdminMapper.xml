@@ -203,6 +203,14 @@
         LIMIT #{startIdx}, #{row}
     </select>
 
+    <select id="selOrderRefundById" resultType="OrderRefundVo">
+        SELECT B.refund_id refundId, A.order_id orderId, B.refund_reason refundReason, B.refund_yn refundYn, B.refund_date refundDate
+        FROM t_order A
+        INNER JOIN t_order_refund B
+        ON A.order_id = B.order_id
+        WHERE user_id = #{userId}
+    </select>
+
     <insert id="insStore" parameterType="StoreInsDto" useGeneratedKeys="true" keyProperty="storeId">
         INSERT INTO t_store
         SET

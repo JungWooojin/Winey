@@ -33,7 +33,8 @@ public interface AdminMapper {
 
     List<OrderListVo> selOrder(SelListDto dto); //주문 내역
     List<OrderDetailVo> selOrderDetail(int orderId); //상세 주문 내역 리스트 by orderId
-    List<OrderRefundVo> selOrderRefund(SelListDto dto); //환불된 상품과 환불 사유 출력
+    List<OrderRefundVo> selOrderRefund(SelListDto dto); //전체 환불된 상품과 환불 사유 출력
+    List<OrderRefundVo> selOrderRefundById(SelListDto dto, Long userId); //환불된 상품과 환불 사유 출력 by userId
 
     int insStore(StoreInsDto dto); //매장 정보 등록
     List<StoreVo> selStore(SelListDto dto); //매장 리스트 출력

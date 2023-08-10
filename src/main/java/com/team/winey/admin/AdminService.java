@@ -324,11 +324,14 @@ public class AdminService {
     }
 
     //환불된 상품과 환불 사유 출력
-    public List<OrderRefundVo> getOrderRefund(SelListDto dto) {
+    public List<OrderRefundVo> getOrderRefund(SelListDto dto, Long userId) {
         int startIdx = (dto.getPage() - 1) * dto.getRow();
         dto.setStartIdx(startIdx);
 
-        return MAPPER.selOrderRefund(dto);
+        if(userId == 0L) {
+            return MAPPER.selOrderRefund(dto);
+        }
+        return MAPPER.selOrderRefundById(dto, userId);
     }
 
     // 매장 정보 등록
