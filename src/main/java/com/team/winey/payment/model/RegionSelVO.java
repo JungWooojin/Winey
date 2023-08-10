@@ -9,4 +9,5 @@ public class RegionSelVO {
     private String regionNm;
     private int storeId;
     private String nm;
+    private String address;
 }

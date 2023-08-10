@@ -54,7 +54,7 @@
 
     <select id = "selRegion">
         SELECT
-        u.user_id, u.region_nm_id regionNmId, r.region_nm regionNm, s.store_id storeId, s.nm
+        u.user_id, u.region_nm_id regionNmId, r.region_nm regionNm, s.store_id storeId, s.nm , s.address
         FROM t_user u
         inner JOIN t_region_nm r
         ON u.region_nm_id = r.region_nm_id

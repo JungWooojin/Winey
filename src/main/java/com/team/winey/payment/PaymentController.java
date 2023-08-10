@@ -68,7 +68,8 @@ public class PaymentController {
                     + "regionNmId: 지역 pk값 <br>"
                     + "regionNm: 지역 이름 <br>"
                     + "storeId: 가게 pk값 <br>"
-                    + "nm: 지점명 <br>")
+                    + "nm: 지점명 <br>"
+                    + "address: 주소")
     public List<RegionSelVO> getRegion() {
         return service.selRegion();
     }
