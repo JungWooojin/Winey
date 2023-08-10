@@ -6,13 +6,13 @@
 
     <select id="selCart">
         SELECT A.cart_id cartId, A.user_id, B.product_id productId, A.quantity
-        , B.nm_kor nmKor, B.nm_eng nmEng, B.price, c.sale_price salePrice, B.pic
+        , B.nm_kor nmKor, B.nm_eng nmEng, IFNULL(c.sale_price, B.price) price
         FROM t_cart A
         left JOIN t_product B
         ON A.product_id = B.product_id
         left JOIN t_sale C
         ON B.product_id = C.product_id
-        WHERE user_id = #{userId} and DATE_FORMAT(A.created_at, "%Y-%m-%d") = curdate()
+        WHERE user_id = 1 DATE_FORMAT(A.created_at, "%Y-%m-%d") = curdate() and buy_yn = 0;
     </select>
 
     <insert id="insCart" useGeneratedKeys="true" keyProperty="cartId">
