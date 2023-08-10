@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Slf4j
 @Service
@@ -39,7 +40,7 @@ public class OrderService {
                 try {
                     String strDate = list.get(0).getPickupTime();
                     SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm");
+                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
                     // String 타입을 Date 타입으로 변환
 
                     Date formatDate = dtFormat.parse(strDate);
@@ -71,7 +72,7 @@ public class OrderService {
                 try {
                     String strDate = list.get(0).getPickupTime();
                     SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm");
+                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
                     // String 타입을 Date 타입으로 변환
 
                     Date formatDate = dtFormat.parse(strDate);
@@ -111,7 +112,7 @@ public class OrderService {
             try {
                 String strDate = vo2.getPickupTime();
                 SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm");
+                SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
                 // String 타입을 Date 타입으로 변환
 
                 Date formatDate = dtFormat.parse(strDate);
