@@ -16,7 +16,7 @@ public interface PaymentMapper {
         int insReview(ReviewInsDto dto);
         int insOrderDetail(OrderDetailInsDto dto);
         List<RegionSelVO> selRegion(RegionInsDto dto);
-        int updQuantity(QuantityUpdDto dto);
+//        int updQuantity(QuantityUpdDto dto);
 //        List<OrderSelDetailVo> selOrderDetail(int orderId);
 
 }

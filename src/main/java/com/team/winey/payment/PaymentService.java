@@ -41,10 +41,10 @@ public class PaymentService {
             mapper.insOrderDetail(d);
         }
 
-        QuantityUpdDto quantityDto = new QuantityUpdDto();
-        quantityDto.setQuantity(dto.getQuantityUpdDto().getQuantity());
-        quantityDto.setProductId(dto.getQuantityUpdDto().getProductId());
-        mapper.updQuantity(quantityDto);
+//        QuantityUpdDto quantityDto = new QuantityUpdDto();
+//        quantityDto.setQuantity(dto.getQuantityUpdDto().getQuantity());
+//        quantityDto.setProductId(dto.getQuantityUpdDto().getProductId());
+//        mapper.updQuantity(quantityDto);
 
         return dto2.getOrderId();
     }
