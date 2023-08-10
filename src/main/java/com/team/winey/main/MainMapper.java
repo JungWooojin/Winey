@@ -44,10 +44,10 @@ public interface MainMapper {
     List<WineTotalVo> selWineByCountryExpencive(WineSelByCountryDto dto);
     List<WineTotalVo> selWineByCountryCheap(WineSelByCountryDto dto);
 
-    List<WineTotalVo> selWineByFood(WineSelByFoodDto dto);
-    List<WineTotalVo> selWineByFoodNew(WineSelByFoodDto dto);
-    List<WineTotalVo> selWineByFoodExpencive(WineSelByFoodDto dto);
-    List<WineTotalVo> selWineByFoodCheap(WineSelByFoodDto dto);
+    List<WineFoodVo> selWineByFood(WineSelByFoodDto dto);
+    List<WineFoodVo> selWineByFoodNew(WineSelByFoodDto dto);
+    List<WineFoodVo> selWineByFoodExpencive(WineSelByFoodDto dto);
+    List<WineFoodVo> selWineByFoodCheap(WineSelByFoodDto dto);
 
 
 }

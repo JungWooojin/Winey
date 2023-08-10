@@ -182,19 +182,19 @@ public class MainService {
 
 //===================================================================================
 
-    public List<WineTotalVo> selWineByFood(WineSelByFoodDto dto) {
+    public List<WineFoodVo> selWineByFood(WineSelByFoodDto dto) {
         return MAPPER.selWineByFood(dto);
     }
 
-    public List<WineTotalVo> selWineByFoodNew(WineSelByFoodDto dto) {
+    public List<WineFoodVo> selWineByFoodNew(WineSelByFoodDto dto) {
         return MAPPER.selWineByFoodNew(dto);
     }
 
-    public List<WineTotalVo> selWineByFoodExpencive(WineSelByFoodDto dto) {
+    public List<WineFoodVo> selWineByFoodExpencive(WineSelByFoodDto dto) {
         return MAPPER.selWineByFoodExpencive(dto);
     }
 
-    public List<WineTotalVo> selWineByFoodCheap(WineSelByFoodDto dto) {
+    public List<WineFoodVo> selWineByFoodCheap(WineSelByFoodDto dto) {
         return MAPPER.selWineByFoodCheap(dto);
     }
 }
