@@ -21,7 +21,6 @@ public class OrderService {
 
 
     List<OrderEntity> selOrder(){
-        //파라미터에 UserIdDto dto 넣기
         UserIdDto dto =new UserIdDto();
         dto.setUserId(facade.getLoginUserPk());
         List<OrderEntity> list = mapper.selOrder(dto);
@@ -95,15 +94,25 @@ public class OrderService {
 
 
     int cancelOrder(Long orderId) {
+        UserIdDto dto = new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
         return mapper.cancelOrder(orderId);
 
     }
 
     int pickupFinishOrder(Long orderId) {
+        UserIdDto dto = new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
         return mapper.pickupFinishOrder(orderId);
     }
 
+
+
+
+
     public DetailVo selOrderDetail(Long orderId){
+        UserIdDto dto = new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
 
         List<OrderDetailVo1> vo1 = mapper.selOrderDetail1(orderId);
 
