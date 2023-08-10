@@ -20,10 +20,8 @@ public class OrderController {
     @GetMapping("/user")
     @Operation(summary = "유저별 주문내역 리스트", description =
             "")
-    public List<OrderEntity> selOrder(@RequestParam Long userId){
-        //파라미터에 @RequestBody Long userId 넣기
-
-        return service.selOrder(userId);
+    public List<OrderEntity> selOrder(){
+        return service.selOrder();
     }
 
     @PutMapping("/cancel")
