@@ -42,9 +42,9 @@ public class MainSixService {
         return MAPPER.selWineByFoodlimit6(dto);
     }
 
-    /*public List<WineVo> selWineByday() {
-        return MAPPER.selWineByday();
-    }*/
+//    public List<WineTotalVo> selWineByday() {
+//        return MAPPER.selWineByday();
+//    }
 
    /* @Scheduled(cron = "0 0 0 * * *") // 매일 자정마다 뿌려
     public void selWineByday() {
