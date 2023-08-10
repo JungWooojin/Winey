@@ -69,17 +69,17 @@ public class PaymentController {
     public List<RegionSelVO> getRegion() {
         return service.selRegion();
     }
-    @Operation(summary = "주문 상세 내역 출력",description =
-            "orderDate: 주문날짜 <br>"
-                    +"nmKor: 한글 이름 <br>"
-                    +"totalPrice: 총 금액 <br>"
-                    +"payment: 카드결제(1번) <br>"
-                    +"storeNm: 지점명 <br>"
-                    +"pickUpTime: 픽업 시간 <br>"
-                    +"orderStatus: 주문 상태 <br>")
-    @GetMapping("/order/{orderId}")
-    public List<OrderSelDetailVo> getOrderDetail(@PathVariable int orderId) {
-        return service.getOrderDetail(orderId);
-    }
+//    @Operation(summary = "주문 상세 내역 출력",description =
+//            "orderDate: 주문날짜 <br>"
+//                    +"nmKor: 한글 이름 <br>"
+//                    +"totalPrice: 총 금액 <br>"
+//                    +"payment: 카드결제(1번) <br>"
+//                    +"storeNm: 지점명 <br>"
+//                    +"pickUpTime: 픽업 시간 <br>"
+//                    +"orderStatus: 주문 상태 <br>")
+//    @GetMapping("/order/{orderId}")
+//    public List<OrderSelDetailVo> getOrderDetail(@PathVariable int orderId) {
+//        return service.getOrderDetail(orderId);
+//    }
 
 }
