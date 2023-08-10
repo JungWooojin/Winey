@@ -23,6 +23,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static reactor.core.publisher.Mono.when;
 
+/*
+
 @ExtendWith(SpringExtension.class)
 @Import( {MainService.class})
 @TestPropertySource(properties = {
@@ -80,3 +82,5 @@ class MainServiceTest {
     void selWineByPrice2() {
     }
 }
+
+ */

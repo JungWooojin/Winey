@@ -1,5 +1,6 @@
 package com.team.winey.order;
 
+import com.team.winey.config.security.AuthenticationFacade;
 import com.team.winey.order.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,14 +16,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderService {
     private final OrderMapper mapper;
+    //private final AuthenticationFacade facade;
+
 
     List<OrderEntity> selOrder(Long userId){
+        //파라미터에 UserIdDto dto 넣기
+        //dto.setUserId(facade.getLoginUserPk());
         List<OrderEntity> list = mapper.selOrder(userId);
 
         for(OrderEntity entity : list){
             if(entity.getCount() >= 2 ){
 
                 entity.setOrderDate(entity.getOrderDate());
+                //entity.setUserId(facade.getLoginUserPk());
                 entity.setUserId(userId);
                 entity.setOrderId(entity.getOrderId());
                 entity.setPayment(entity.getPayment());
@@ -55,6 +61,7 @@ public class OrderService {
             } else if (entity.getCount() == 1) {
 
                 entity.setOrderDate(entity.getOrderDate());
+                //entity.setUserId(facade.getLoginUserPk());
                 entity.setUserId(userId);
                 entity.setOrderId(entity.getOrderId());
                 entity.setPayment(entity.getPayment());

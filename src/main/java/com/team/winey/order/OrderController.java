@@ -2,6 +2,7 @@ package com.team.winey.order;
 
 import com.team.winey.order.model.DetailVo;
 import com.team.winey.order.model.OrderEntity;
+import com.team.winey.order.model.UserIdDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +17,11 @@ import java.util.List;
 public class OrderController {
     private final OrderService service;
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user")
     @Operation(summary = "유저별 주문내역 리스트", description =
             "")
-    public List<OrderEntity> selOrder(@PathVariable Long userId){
-
+    public List<OrderEntity> selOrder(@RequestParam Long userId){
+        //파라미터에 @RequestBody Long userId 넣기
 
         return service.selOrder(userId);
     }

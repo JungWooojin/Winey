@@ -40,7 +40,8 @@
                 ON A.product_id=B.product_id
                 INNER JOIN t_small_category C
                 ON B.small_category_id=C.small_category_id
-                WHERE A.product_id=#{productId};
+                WHERE A.product_id=#{productId}
+                ORDER BY C.small_category_id
     </select>
 
 
@@ -59,7 +60,7 @@
         FROM t_product A
         INNER JOIN t_sale B
         ON A.product_id = B.product_id
-        WHERE B.sale_yn=1 AND A.product_id=#{productId};
+        WHERE B.sale_yn=1 AND A.product_id=#{productId}
 
     </select>
 

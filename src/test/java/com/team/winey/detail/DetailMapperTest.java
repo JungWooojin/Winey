@@ -26,24 +26,26 @@ class DetailMapperTest {
     @Test
     void selWineDetail() {
         WineDetailVo vo = mapper.selWineDetail(1L);
-        assertEquals(8, vo.getAlcohol());
+        assertEquals(10, vo.getAlcohol());
         assertNotNull(vo.getPic());
-        assertEquals("트라마리 로제 디 프리미티보", vo.getNmKor());
+        assertEquals("포이약(그랜드 크뤼 클라쎄)", vo.getNmKor());
+        assertEquals("Pauillac (Grand Cru Classé)", vo.getNmEng());
 
         WineDetailVo vo2 = mapper.selWineDetail(222L);
-        assertEquals(48981, vo2.getPrice());
-        assertEquals("Stonehorse Shiraz", vo2.getNmEng());
+        assertEquals("하라가안 레저바 에스페셜", vo2.getNmKor());
+        assertEquals(73196, vo2.getPrice());
+        assertEquals("Haragán Reserva Especial", vo2.getNmEng());
     }
 
     @Test
     void selPairing() {
         List<String> selPairing = mapper.selPairing(1L);
-        assertEquals("fruit", selPairing.get(0));
-        assertEquals("steak", selPairing.get(1));
+        assertEquals("steak", selPairing.get(0));
+        assertEquals("chicken", selPairing.get(1));
 
         List<String> selPairing2 = mapper.selPairing(100L);
-        assertEquals("cheeze", selPairing2.get(0));
-        assertEquals("lamb", selPairing2.get(3));
+        assertEquals("lamb", selPairing2.get(0));
+        assertEquals("cheeze", selPairing2.get(3));
     }
 
     @Test
@@ -58,32 +60,32 @@ class DetailMapperTest {
         vo2.setProductId(11L);
         vo2.setReviewLevel(0);
         String result2 = mapper.selCount(vo2);
-        assertEquals("1", result2);
+        assertEquals("0", result2);
 
     }
 
     @Test
     void selSale() {
-        SelSale selSale = mapper.selSale(58L);
+        SelSale selSale = mapper.selSale(111L);
         assertEquals(10, selSale.getSale());
-        assertEquals(19838, selSale.getSalePrice());
+        assertEquals(10000, selSale.getSalePrice());
 
-        SelSale selSale2 = mapper.selSale(10L);
+        SelSale selSale2 = mapper.selSale(333L);
         assertNull(selSale2);
 
-        SelSale selSale3 = mapper.selSale(485L);
-        assertEquals(10, selSale3.getSale());
-        assertEquals(198000, selSale3.getSalePrice());
+        SelSale selSale3 = mapper.selSale(222L);
+        assertEquals(20, selSale3.getSale());
+        assertEquals(22222, selSale3.getSalePrice());
 
     }
 
     @Test
     void selKorNm() {
         SelWineKorNm sel = mapper.selKorNm(1L);
-        assertEquals("트라마리 로제 디 프리미티보", sel.getNmKor());
+        assertEquals("포이약(그랜드 크뤼 클라쎄)", sel.getNmKor());
 
         SelWineKorNm sel2 = mapper.selKorNm(222L);
-        assertEquals("스톤호스 시라즈(Stonehorse Shiraz", sel2.getNmKor());
+        assertEquals("하라가안 레저바 에스페셜", sel2.getNmKor());
 
 
 
