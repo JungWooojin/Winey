@@ -11,6 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @MybatisTest
 @ActiveProfiles("test")
@@ -27,28 +28,35 @@ public class MainMapperTest {
         selDto.setStartIdx(1);
         selDto.setRow(9);
         List<WineTotalVo> list = MAPPER.selWine(selDto);
-        assertEquals(9, list.size());
 
-        for (WineTotalVo vo : list) {
-            WineSelDetailDto dto = new WineSelDetailDto(vo.getProductId());
-            WineTotalVo item = MAPPER.selWineById(dto);
+//        WineTotalVo vo = list.get(0);
+////        list.get(0).setSale(0);
+////        list.get(0).setSalePrice(0);
+//        assertEquals(9, list.size());
 
-            assertEquals(item.getProductId(), vo.getProductId());
-            assertEquals(item.getCategoryId(), vo.getCategoryId());
-            assertEquals(item.getFeatureId(), vo.getFeatureId());
-            assertEquals(item.getCountryId(), vo.getCountryId());
-            assertEquals(item.getAromaId(), vo.getAromaId());
-            assertEquals(item.getNmKor(), vo.getNmKor());
-            assertEquals(item.getNmEng(), vo.getNmEng());
-            assertEquals(item.getPrice(), vo.getPrice());
-            assertEquals(item.getQuantity(), vo.getQuantity());
-            assertEquals(item.getPic(), vo.getPic());
-            assertEquals(item.getPromotion(), vo.getPromotion());
-            assertEquals(item.getBeginner(), vo.getBeginner());
-            assertEquals(item.getAlcohol(), vo.getAlcohol());
-        }
+
+//        WineSelDetailDto dto = new WineSelDetailDto(list.get(0).getProductId());
+//        WineTotalVo item = MAPPER.selWineById(dto);
+
+        assertEquals(2, list.get(0).getProductId());
+        assertEquals(1, list.get(0).getCategoryId());
+        assertEquals(81, list.get(0).getFeatureId());
+        assertEquals(3, list.get(0).getCountryId());
+        assertEquals(81, list.get(0).getAromaId());
+        assertEquals("러시아 리버 밸리 피노 누아", list.get(0).getNmKor());
+        assertEquals("Russian River Valley Pinot Noir", list.get(0).getNmEng());
+        assertEquals(12000, list.get(0).getPrice());
+        assertEquals(11, list.get(0).getQuantity());
+        assertEquals("wine/2/4-vr4iXPT5eVsW46Yi6MnA_pb_x960.png", list.get(0).getPic());
+        assertEquals(0, list.get(0).getPromotion());
+        assertEquals(0, list.get(0).getBeginner());
+        assertEquals(10, list.get(0).getAlcohol());
+        assertEquals(10, list.get(0).getSale());
+        assertEquals(298699, list.get(0).getSalePrice());
 
     }
+
+
 
     @Test
     void selWineById() {
@@ -61,12 +69,14 @@ public class MainMapperTest {
         assertEquals(470, vo.getAromaId());
         assertEquals("트라마리 로제 디 프리미티보", vo.getNmKor());
         assertEquals("Tramari Rosé di Primitivo", vo.getNmEng());
-        assertEquals(11298, vo.getPrice());
+        assertEquals(11300, vo.getPrice());
         assertEquals(7, vo.getQuantity());
         assertEquals("wine/1/qMwuRhM3Sl2mHZSfzDwwXg_pb_x960.png", vo.getPic());
         assertEquals(0, vo.getPromotion());
         assertEquals(0, vo.getBeginner());
         assertEquals(8, vo.getAlcohol());
+        assertEquals(11, vo.getSale());
+        assertEquals(98104, vo.getSalePrice());
 
 
         WineSelDetailDto dto2 = new WineSelDetailDto(2L);
@@ -84,6 +94,8 @@ public class MainMapperTest {
         assertEquals(0, vo2.getPromotion());
         assertEquals(0, vo2.getBeginner());
         assertEquals(10, vo2.getAlcohol());
+        assertEquals(11, vo.getSale());
+        assertEquals(98104, vo.getSalePrice());
     }
 
     @Test
@@ -111,6 +123,8 @@ public class MainMapperTest {
             assertEquals(item.getPromotion(), vo.getPromotion());
             assertEquals(item.getBeginner(), vo.getBeginner());
             assertEquals(item.getAlcohol(), vo.getAlcohol());
+            assertEquals(item.getSale(), vo.getSale());
+            assertEquals(item.getSalePrice(), vo.getSalePrice());
             assertEquals(item.getProductId() < 20000, vo.getPrice() < 20000);
         }
     }

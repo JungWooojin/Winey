@@ -8,8 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.core.publisher.Flux;
@@ -22,8 +24,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-/*
-
+@SpringBootTest
+@ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
 @Import( {MainService.class})
 @TestPropertySource(properties = {
@@ -39,7 +41,13 @@ class MainServiceTest {
 
     @Test
     @DisplayName("전체 와인 리스트")
-    void selWinePrice() {
+    void selWine() {
+        WineSelDto selDto = new WineSelDto();
+        selDto.setProductId(1L);
+        selDto.setPage(1);
+        selDto.setStartIdx(1);
+        selDto.setRow(9);
+
         List<WineTotalVo> mockList = new ArrayList<>();
         mockList.add(new WineTotalVo(1L, 1L, 1L, 1L, 1L,
                 "트라마리 로제 디 프리미티보", "Tramari Rosé di Primitivo", 11300, 7,
@@ -48,12 +56,7 @@ class MainServiceTest {
                 "러시아 리버 밸리 피노 누아", "Russian River Valley Pinot Noir", 12000, 11,
                 "wine/2/4-vr4iXPT5eVsW46Yi6MnA_pb_x960.png", 0, 0, 10,0,0 ));
 
-        when(MAPPER.selWinePrice()).thenReturn(mockList);
-
-        WineSelDto selDto = new WineSelDto();
-        selDto.setPage(1);
-        selDto.setStartIdx(1);
-        selDto.setRow(2);
+        when(MAPPER.selWine(selDto)).thenReturn(mockList);
 
         List<WineTotalVo> result = SERVICE.selWine(selDto);
         assertEquals(mockList.size(), result.size());
@@ -90,4 +93,3 @@ class MainServiceTest {
     }
 }
 
- */
