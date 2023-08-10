@@ -130,15 +130,17 @@ public class AdminController {
     }
 
     //환불된 상품과 환불 사유 출력
-    @Operation(summary = "환불 상품 내역과 환불 사유 출력", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @Operation(summary = "환불 상품 내역과 환불 사유 출력", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.<br>"+
+    "userId는 입력 안하면 전체 환불 내역과 사유 출력, 입력하면 userId의 환불내역과 사유 출력")
     @GetMapping("/order/refund")
     public List<OrderRefundVo> getOrderRefund(@RequestParam(defaultValue = "1")int page,
-                                              @RequestParam(defaultValue = "15")int row) {
+                                              @RequestParam(defaultValue = "15")int row,
+                                              @RequestParam(defaultValue = "0")Long userId) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
         dto.setRow(row);
 
-        return SERVICE.getOrderRefund(dto);
+        return SERVICE.getOrderRefund(dto, userId);
     }
 
     //매장 정보 등록
