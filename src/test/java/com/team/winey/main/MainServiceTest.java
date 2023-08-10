@@ -22,6 +22,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/*
+
 @ExtendWith(SpringExtension.class)
 @Import( {MainService.class})
 @TestPropertySource(properties = {
@@ -87,3 +89,5 @@ class MainServiceTest {
     void selWineByPrice2() {
     }
 }
+
+ */

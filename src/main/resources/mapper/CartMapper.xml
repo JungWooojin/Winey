@@ -6,7 +6,7 @@
 
     <select id="selCart">
         SELECT A.cart_id cartId, A.user_id, B.product_id productId, A.quantity
-        , B.nm_kor nmKor, B.nm_eng nmEng, IFNULL(c.sale_price, B.price) price
+        , B.nm_kor nmKor, B.nm_eng nmEng, IFNULL(c.sale_price, B.price) price, B.pic
         FROM t_cart A
         left JOIN t_product B
         ON A.product_id = B.product_id
