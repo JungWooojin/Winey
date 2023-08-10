@@ -7,10 +7,8 @@ import com.team.winey.config.RedisService;
 import com.team.winey.config.security.AuthenticationFacade;
 import com.team.winey.config.security.JwtTokenProvider;
 import com.team.winey.config.security.UserDetailsMapper;
-import com.team.winey.config.security.model.RedisJwtVo;
 import com.team.winey.config.security.model.SignUpDto;
 import com.team.winey.config.security.model.UserEntity;
-import com.team.winey.config.security.model.UserTokenEntity;
 import com.team.winey.sign.model.SignInResultDto;
 import com.team.winey.sign.model.SignUpResultDto;
 import com.team.winey.sign.model.UserUpdDto;
@@ -81,21 +79,9 @@ public class SignService {
         log.info("[getSignInResult] access_token 객체 생성");
         String accessToken = JWT_PROVIDER.generateJwtToken(String.valueOf(user.getUserId()), Collections.singletonList(user.getRole()), JWT_PROVIDER.ACCESS_TOKEN_VALID_MS, JWT_PROVIDER.ACCESS_KEY);//여기서 사용할때 스태틱이아니라 . 아인붙고 객체화가 되어있다는거다즉 객체화된 주소가 있다
         String refreshToken = JWT_PROVIDER.generateJwtToken(String.valueOf(user.getUserId()), Collections.singletonList(user.getRole()), JWT_PROVIDER.REFRESH_TOKEN_VALID_MS, JWT_PROVIDER.REFRESH_KEY);
-        UserTokenEntity tokenEntity = UserTokenEntity.builder()
-                .userId(user.getUserId())
-                .accessToken(accessToken)
-                .refreshToken(refreshToken)
-                .ip(ip)
-                .build();
-        RedisJwtVo redisJwtVo = RedisJwtVo.builder()
-                .accessToken(accessToken)
-                .refreshToken(refreshToken)
-                .build();
-        String value = OBJECT_MAPPER.writeValueAsString(redisJwtVo); //오류가 나서 빵야 함
-        REDIS_SERVICE.setValues(redisKey, value);
-        int result = MAPPER.updUserToken(tokenEntity); // db에 저장되는 부분 토큰값이 ㅇㅇ
+        REDIS_SERVICE.setValues(redisKey, refreshToken);
 
-        log.info("[getSignInResult] SignInResultDto 객체 생성");
+
         SignInResultDto dto = SignInResultDto.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
@@ -133,8 +119,7 @@ public class SignService {
             return null;
         }
 
-        String ip = req.getRemoteAddr();
-        String accessToken = JWT_PROVIDER.resolveToken(req, JWT_PROVIDER.TOKEN_TYPE);
+
         Claims claims = null;
         try {
             claims = JWT_PROVIDER.getClaims(refreshToken, JWT_PROVIDER.REFRESH_KEY);
@@ -147,26 +132,22 @@ public class SignService {
 
         String strIuser = claims.getSubject();
         Long iuser = Long.valueOf(strIuser);
+        String ip = req.getRemoteAddr();
 
         String redisKey = String.format("d:RT(%s):%s:%s", "Server", iuser, ip);
-        String value = REDIS_SERVICE.getValues(redisKey); //리프레쉬토큰을 요구했는데  // json 형태의 문자열로 꺼내온다
-        if (value == null) { // Redis에 저장되어 있는 RT가 없을 경우 //널이라는건 넣은적이없다
+        String redisRt = REDIS_SERVICE.getValues(redisKey);
+        if (redisRt == null) { // Redis에 저장되어 있는 RT가 없을 경우
             return null; // -> 재로그인 요청
         }
         try {
-            RedisJwtVo redisJwtVo = OBJECT_MAPPER.readValue(value, RedisJwtVo.class);
-            if(!redisJwtVo.getAccessToken().equals(accessToken) //헤더에서 꺼내온 액세스토큰이다.
-                    || !redisJwtVo.getRefreshToken().equals(refreshToken)) {
+            if(!redisRt.equals(refreshToken)) {
                 return null;
             }
 
             List<String> roles = (List<String>)claims.get("roles");
             String reAccessToken = JWT_PROVIDER.generateJwtToken(strIuser, roles, JWT_PROVIDER.ACCESS_TOKEN_VALID_MS, JWT_PROVIDER.ACCESS_KEY);// 새로만든 액세스토큰이다.
 
-            //redis 업데이트 다시 똑같은키값으로 덮어쓰기 하면된다 그럼 새로운 밸류값이 들어가게 된다.
-            RedisJwtVo updateRedisJwtVo = RedisJwtVo.builder().accessToken(reAccessToken).refreshToken(redisJwtVo.getRefreshToken()).build();
-            String upateValue = OBJECT_MAPPER.writeValueAsString(updateRedisJwtVo);
-            REDIS_SERVICE.setValues(redisKey, upateValue);
+
             return SignInResultDto.builder()
                     .accessToken(reAccessToken)
                     .refreshToken(refreshToken)
@@ -175,7 +156,6 @@ public class SignService {
             e.printStackTrace();
         }
         return null;
-
     }
 
     public int updSecretKey(Long iuser, String secretKey) {

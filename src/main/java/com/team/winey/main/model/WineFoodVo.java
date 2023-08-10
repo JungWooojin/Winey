@@ -6,12 +6,12 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class WineFoodVo {
+    private Long bigCategoryId;
     private Long productId;
     private Long categoryId;
     private Long featureId;
     private Long countryId;
     private Long aromaId;
-    private Long bigCategoryId;
     private String nmKor;
     private String nmEng;
     private int price;
@@ -20,5 +20,8 @@ public class WineFoodVo {
     private int promotion;
     private int beginner;
     private int alcohol;
+    private int sale;
+    private int salePrice;
+
 
 }

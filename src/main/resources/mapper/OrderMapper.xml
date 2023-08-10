@@ -28,13 +28,13 @@
     <update id="cancelOrder">
         UPDATE t_order
         SET order_status=6
-        WHERE order_id=#{orderId}
+        WHERE order_id=#{orderId} AND user_id=#{userId}
     </update>
 
     <update id="pickupFinishOrder">
         UPDATE t_order
         SET order_status=5
-        WHERE order_id=#{orderId}
+        WHERE order_id=#{orderId} AND user_id=#{userId}
     </update>
     
 
@@ -50,7 +50,7 @@
         ON A.product_id = B.product_id
         INNER JOIN t_order C
         ON A.order_id = C.order_id
-        WHERE A.order_id=#{orderId};
+        WHERE A.order_id=#{orderId} AND C.user_id=#{userId}
     </select>
 
     <select id="selOrderDetail2">
@@ -62,7 +62,7 @@
         FROM t_order A
         INNER join t_store B
         ON A.store_id = B.store_id
-        WHERE order_id =#{orderId};
+        WHERE order_id =#{orderId} AND user_id=#{userId}
     </select>
 
 

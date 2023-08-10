@@ -10,26 +10,27 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class OrderService {
     private final OrderMapper mapper;
-    //private final AuthenticationFacade facade;
+    private final AuthenticationFacade facade;
 
 
-    List<OrderEntity> selOrder(Long userId){
-        //파라미터에 UserIdDto dto 넣기
-        //dto.setUserId(facade.getLoginUserPk());
-        List<OrderEntity> list = mapper.selOrder(userId);
+    List<OrderEntity> selOrder(){
+        UserIdDto dto =new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
+        List<OrderEntity> list = mapper.selOrder(dto);
 
         for(OrderEntity entity : list){
             if(entity.getCount() >= 2 ){
 
                 entity.setOrderDate(entity.getOrderDate());
                 //entity.setUserId(facade.getLoginUserPk());
-                entity.setUserId(userId);
+                entity.setUserId(facade.getLoginUserPk());
                 entity.setOrderId(entity.getOrderId());
                 entity.setPayment(entity.getPayment());
                 entity.setTotalOrderPrice(entity.getTotalOrderPrice());
@@ -39,7 +40,7 @@ public class OrderService {
                 try {
                     String strDate = list.get(0).getPickupTime();
                     SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm");
+                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
                     // String 타입을 Date 타입으로 변환
 
                     Date formatDate = dtFormat.parse(strDate);
@@ -62,7 +63,7 @@ public class OrderService {
 
                 entity.setOrderDate(entity.getOrderDate());
                 //entity.setUserId(facade.getLoginUserPk());
-                entity.setUserId(userId);
+                entity.setUserId(facade.getLoginUserPk());
                 entity.setOrderId(entity.getOrderId());
                 entity.setPayment(entity.getPayment());
                 entity.setTotalOrderPrice(entity.getTotalOrderPrice());
@@ -71,7 +72,7 @@ public class OrderService {
                 try {
                     String strDate = list.get(0).getPickupTime();
                     SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm");
+                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
                     // String 타입을 Date 타입으로 변환
 
                     Date formatDate = dtFormat.parse(strDate);
@@ -93,15 +94,25 @@ public class OrderService {
 
 
     int cancelOrder(Long orderId) {
+        UserIdDto dto = new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
         return mapper.cancelOrder(orderId);
 
     }
 
     int pickupFinishOrder(Long orderId) {
+        UserIdDto dto = new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
         return mapper.pickupFinishOrder(orderId);
     }
 
+
+
+
+
     public DetailVo selOrderDetail(Long orderId){
+        UserIdDto dto = new UserIdDto();
+        dto.setUserId(facade.getLoginUserPk());
 
         List<OrderDetailVo1> vo1 = mapper.selOrderDetail1(orderId);
 
@@ -111,7 +122,7 @@ public class OrderService {
             try {
                 String strDate = vo2.getPickupTime();
                 SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm");
+                SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
                 // String 타입을 Date 타입으로 변환
 
                 Date formatDate = dtFormat.parse(strDate);
