@@ -4,41 +4,15 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.winey.order.OrderMapper">
 
+
+
     <select id="selOrder">
         SELECT  DATE_FORMAT(A.order_date, "%Y.%m.%d") orderDate,
         A.order_id orderId, A.user_id userId,
         C.nm_kor nmKor, A.payment,
         A.total_order_price totalOrderPrice,
         D.nm storeNm, A.pickup_time pickupTime,
-        A.order_status orderStatus
-        from t_order A
-        INNER JOIN t_order_detail B
-        ON A.order_id = B.order_id
-        INNER JOIN t_product C
-        ON B.product_id=C.product_id
-        INNER JOIN t_store D
-        ON A.store_id=D.store_id
-        WHERE A.user_id=#{userId} AND A.order_id=#{orderId}
-        ORDER BY DATE_FORMAT(A.order_date, "%Y.%m.%d") DESC, A.order_id desc
-    </select>
-
-    <select id="selOrderCountByUser">
-        SELECT count(A.order_id) orderIdCount
-        from t_order A
-        INNER JOIN t_order_detail B
-        ON A.order_id = B.order_id
-        INNER JOIN t_product C
-        ON B.product_id=C.product_id
-        INNER JOIN t_store D
-        ON A.store_id=D.store_id
-        WHERE A.user_id=#{userId} AND A.order_id=#{orderId}
-        ORDER BY A.order_date DESC
-
-    </select>
-
-
-    <select id="selOrderIdMax">
-        SELECT MAX(A.order_id) orderIdMax
+        A.order_status orderStatus, COUNT(*) count
         from t_order A
         INNER JOIN t_order_detail B
         ON A.order_id = B.order_id
@@ -47,16 +21,9 @@
         INNER JOIN t_store D
         ON A.store_id=D.store_id
         WHERE A.user_id=#{userId}
+        GROUP BY A.order_id
+        ORDER BY DATE_FORMAT(A.order_date, "%Y.%m.%d") DESC, A.order_id DESC
     </select>
-
-    <select id="selOrderCheck">
-        SELECT order_id
-        FROM t_order
-        WHERE user_id=#{userId}
-    </select>
-
-
-
     
     <update id="cancelOrder">
         UPDATE t_order
@@ -69,6 +36,35 @@
         SET order_status=5
         WHERE order_id=#{orderId}
     </update>
+    
+
+
+
+
+    <select id="selOrderDetail1">
+        SELECT A.order_detail_id orderDetailId,
+        B.nm_kor nmKor, B.nm_eng nmEng,
+        A.sale_price salePrice, A.quantity
+        FROM t_order_detail A
+        INNER JOIN t_product B
+        ON A.product_id = B.product_id
+        INNER JOIN t_order C
+        ON A.order_id = C.order_id
+        WHERE A.order_id=#{orderId};
+    </select>
+
+    <select id="selOrderDetail2">
+        SELECT A.order_date orderDate, A.payment,
+        A.pickup_time pickupTime,
+        A.order_status orderStatus,
+        A.total_order_price totalOrderPrice,
+        B.nm storeNm
+        FROM t_order A
+        INNER join t_store B
+        ON A.store_id = B.store_id
+        WHERE order_id =#{orderId};
+    </select>
+
 
 
 

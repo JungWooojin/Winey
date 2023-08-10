@@ -1,8 +1,7 @@
 package com.team.winey.order;
 
-import com.team.winey.order.model.OrderCancelDto;
+import com.team.winey.order.model.DetailVo;
 import com.team.winey.order.model.OrderEntity;
-import com.team.winey.order.model.OrderPickupFinishDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +35,13 @@ public class OrderController {
     @Operation(summary = "픽업 완료", description = "주문상태를 픽업완료로 업데이트")
     public int pickupFinishOrder(@RequestParam Long orderId){
         return service.pickupFinishOrder(orderId);
+    }
+
+
+    @GetMapping("/detail")
+    @Operation(summary = "주문 상세 내역")
+    public DetailVo selOrderDetail(@RequestParam Long orderId) {
+        return service.selOrderDetail(orderId);
     }
 
 
