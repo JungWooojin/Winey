@@ -64,8 +64,6 @@ public class PaymentService {
 
         return mapper.selRegion(dto);
     }
-//    public List<OrderSelDetailVo > getOrderDetail(int orderId) {
-//        return mapper.selOrderDetail(orderId);
-//    }
+
 
 }
