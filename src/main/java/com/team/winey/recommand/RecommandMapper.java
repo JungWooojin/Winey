@@ -8,8 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface RecommandMapper {
-
-    List<Integer> selRecommand(RecommandRes res);
+    List<Long> selRecommand(RecommandRes res);
     int insUserinfo(UserinfoDto dto);
     List<Integer> selUserinfo(SelRecommandDto dto);
 }

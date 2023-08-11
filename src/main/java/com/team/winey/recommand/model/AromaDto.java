@@ -11,6 +11,4 @@ public class AromaDto {
     private Long earth;
     private Long oak;
     private Long nuts;
-
-
 }

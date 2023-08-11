@@ -2,11 +2,7 @@ package com.team.winey.recommand.model;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class UserinfoDto {
+public class UserDto {
     private Long userId;
-    private List<Long> productId;
 }
-

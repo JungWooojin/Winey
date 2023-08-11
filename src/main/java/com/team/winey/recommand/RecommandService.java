@@ -16,17 +16,19 @@ public class RecommandService {
     private final RecommandMapper mapper;
     private final AuthenticationFacade facade;
 
-    public List<Integer> selRecommand(RecommandRes res) {
+    public List<Long> selRecommand(RecommandRes res) {
+        List<Long> result =  mapper.selRecommand(res);
         UserinfoDto dto = new UserinfoDto();
         dto.setUserId(facade.getLoginUserPk());
-        List<Integer> result = mapper.selRecommand(res);
         dto.setProductId(result);
-        mapper.insUserinfo(dto);
+       mapper.insUserinfo(dto);
         return result;
     }
+
     List<Integer> selUserinfo(){
         SelRecommandDto dto =new SelRecommandDto();
         dto.setUserId(facade.getLoginUserPk());
         return mapper.selUserinfo(dto);
     }
+
 }

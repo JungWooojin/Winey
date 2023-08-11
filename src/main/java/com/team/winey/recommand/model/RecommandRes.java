@@ -8,7 +8,13 @@ import java.util.List;
 public class RecommandRes {
     private List<Long> categoryId;
     private List<Long> countryId;
-    private AromaDto aroma;
-    private Long priceRange;
     private List<Long> smallCategoryId;
+    private Long flower ;
+    private Long plant ;
+    private Long fruit ;
+    private Long spicy;
+    private Long earth ;
+    private Long oak ;
+    private Long nuts ;
+    private Long priceRange;
 }
