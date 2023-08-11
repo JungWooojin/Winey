@@ -7,5 +7,5 @@ public class CartInsDto2 {
     private int cartId;
     private int quantity;
     private int productId;
-    private Long userId;
+    private int userId;
 }
