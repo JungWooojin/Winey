@@ -200,6 +200,12 @@ public class MainController {
         return SERVICE.selWinePrice();
     }
 
+    @GetMapping("/wines/salePrice")
+    @Operation(summary = "세일금액 변경", description = "디비 새로 만들 때 마다 기본적으로 해놓을테니 신경 안쓰셔도 됩니다!")
+    public List<WineTotalVo> getWinesSalePrice() {
+        return SERVICE.selWineSalePrice();
+    }
+
    /* @GetMapping("/feature")
     @Operation(summary = "입문 레벨", description = "productId 입력하면 됩니다<br><br>" +
             "Responses : 1 > 레벨1<br>" +

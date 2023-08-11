@@ -120,6 +120,7 @@ public class MainService {
 
     //====================================================================
 
+    // 금액 10원단위 절삭
     public List<WineTotalVo> selWinePrice() {
         List<WineTotalVo> voList = MAPPER.selWinePrice();
 
@@ -131,6 +132,25 @@ public class MainService {
             dto.setProductId(vo.getProductId());
             dto.setPrice(ceilPrice);
             MAPPER.updPrice(dto);
+        }
+
+        return MAPPER.selWinePrice();
+    }
+
+    //더미데이터 세일금액으로 변경
+    public List<WineTotalVo> selWineSalePrice() {
+        List<WineTotalVo> voList = MAPPER.selWinePrice();
+
+        for (WineTotalVo vo : voList) {
+            double originalPrice = vo.getPrice();
+            int sale = vo.getSale();
+            int salePrice = (int) Math.ceil(originalPrice-(originalPrice / sale));
+            int ceilPrice = (int) Math.ceil(salePrice / 100) * 100;
+
+            WineUpdSalePriceDto dto = new WineUpdSalePriceDto();
+            dto.setProductId(vo.getProductId());
+            dto.setSalePrice(ceilPrice);
+            MAPPER.updSalePrice(dto);
         }
 
         return MAPPER.selWinePrice();
