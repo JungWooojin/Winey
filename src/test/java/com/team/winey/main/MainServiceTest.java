@@ -1,6 +1,7 @@
 package com.team.winey.main;
 
 import ch.qos.logback.core.joran.util.beans.BeanDescriptionFactory;
+import com.team.winey.main.model.WineSelDetailDto;
 import com.team.winey.main.model.WineSelDto;
 import com.team.winey.main.model.WineTotalVo;
 import org.junit.jupiter.api.DisplayName;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -86,10 +88,40 @@ class MainServiceTest {
 
     @Test
     void selWineById() {
+        WineSelDetailDto dto = new WineSelDetailDto(1L);
+        WineTotalVo vo = new WineTotalVo(1L, 1L, 1L, 1L, 1L,
+                "트라마리 로제 디 프리미티보", "Tramari Rosé di Primitivo", 11300, 7,
+                "wine/1/qMwuRhM3Sl2mHZSfzDwwXg_pb_x960.png", 0, 0, 8,0,0);
+
+        when(MAPPER.selWineById(dto)).thenReturn(vo);
+
+        WineTotalVo result = SERVICE.selWineById(dto);
+
+        assertNotNull(result);
+        assertEquals(vo.getProductId(), result.getProductId());
+        assertEquals(vo.getCategoryId(), result.getCategoryId());
+        assertEquals(vo.getFeatureId(), result.getFeatureId());
+        assertEquals(vo.getCountryId(), result.getCountryId());
+        assertEquals(vo.getAromaId(), result.getAromaId());
+        assertEquals(vo.getNmKor(), result.getNmKor());
+        assertEquals(vo.getNmEng(), result.getNmEng());
+        assertEquals(vo.getPrice(), result.getPrice());
+        assertEquals(vo.getQuantity(), result.getQuantity());
+        assertEquals(vo.getPic(), result.getPic());
+        assertEquals(vo.getPromotion(), result.getPromotion());
+        assertEquals(vo.getBeginner(), result.getBeginner());
+        assertEquals(vo.getAlcohol(), result.getAlcohol());
+        assertEquals(vo.getSale(), result.getSale());
+        assertEquals(vo.getSalePrice(), result.getSalePrice());
+
+        verify(MAPPER).selWineById(any());
+
     }
+
 
     @Test
     void selWineByPrice2() {
+
     }
 }
 

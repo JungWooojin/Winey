@@ -28,32 +28,28 @@ public class MainMapperTest {
         selDto.setStartIdx(1);
         selDto.setRow(9);
         List<WineTotalVo> list = MAPPER.selWine(selDto);
+        assertEquals(9, list.size());
 
-//        WineTotalVo vo = list.get(0);
-////        list.get(0).setSale(0);
-////        list.get(0).setSalePrice(0);
-//        assertEquals(9, list.size());
+        for (WineTotalVo vo : list) {
+            WineSelDetailDto dto = new WineSelDetailDto(vo.getProductId());
+            WineTotalVo item = MAPPER.selWineById(dto);
 
-
-//        WineSelDetailDto dto = new WineSelDetailDto(list.get(0).getProductId());
-//        WineTotalVo item = MAPPER.selWineById(dto);
-
-        assertEquals(2, list.get(0).getProductId());
-        assertEquals(1, list.get(0).getCategoryId());
-        assertEquals(81, list.get(0).getFeatureId());
-        assertEquals(3, list.get(0).getCountryId());
-        assertEquals(81, list.get(0).getAromaId());
-        assertEquals("러시아 리버 밸리 피노 누아", list.get(0).getNmKor());
-        assertEquals("Russian River Valley Pinot Noir", list.get(0).getNmEng());
-        assertEquals(12000, list.get(0).getPrice());
-        assertEquals(11, list.get(0).getQuantity());
-        assertEquals("wine/2/4-vr4iXPT5eVsW46Yi6MnA_pb_x960.png", list.get(0).getPic());
-        assertEquals(0, list.get(0).getPromotion());
-        assertEquals(0, list.get(0).getBeginner());
-        assertEquals(10, list.get(0).getAlcohol());
-        assertEquals(10, list.get(0).getSale());
-        assertEquals(298699, list.get(0).getSalePrice());
-
+            assertEquals(item.getProductId(), vo.getProductId());
+            assertEquals(item.getCategoryId(), vo.getCategoryId());
+            assertEquals(item.getFeatureId(), vo.getFeatureId());
+            assertEquals(item.getCountryId(), vo.getCountryId());
+            assertEquals(item.getAromaId(), vo.getAromaId());
+            assertEquals(item.getNmKor(), vo.getNmKor());
+            assertEquals(item.getNmEng(), vo.getNmEng());
+            assertEquals(item.getPrice(), vo.getPrice());
+            assertEquals(item.getQuantity(), vo.getQuantity());
+            assertEquals(item.getPic(), vo.getPic());
+            assertEquals(item.getPromotion(), vo.getPromotion());
+            assertEquals(item.getBeginner(), vo.getBeginner());
+            assertEquals(item.getAlcohol(), vo.getAlcohol());
+            assertEquals(item.getSale(), vo.getSale());
+            assertEquals(item.getSalePrice(), vo.getSalePrice());
+        }
     }
 
 
