@@ -2,8 +2,10 @@ package com.team.winey.main;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.team.winey.main.model.WineSelDetailDto;
 import com.team.winey.main.model.WineSelDto;
 import com.team.winey.main.model.WineTotalVo;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,7 @@ class MainControllerTest {
     private MainService SERVICE;
 
     @Test
+    @DisplayName("WineSelect - 와인 전체 리스트")
     void getWines() throws Exception {
         //given
         WineSelDto selDto = new WineSelDto();
@@ -80,7 +83,24 @@ class MainControllerTest {
 
 
     @Test
-    void getWinebyId() {
+    void getWinebyId() throws Exception {
+        WineSelDetailDto dto = new WineSelDetailDto(1L);
+
+        WineTotalVo exVo = new WineTotalVo(1L, 1L, 1L, 1L, 1L,
+                "트라마리 로제 디 프리미티보", "Tramari Rosé di Primitivo", 11300, 7,
+                "wine/1/qMwuRhM3Sl2mHZSfzDwwXg_pb_x960.png", 0, 0, 8, 0, 0);
+        given(SERVICE.selWineById(any())).willReturn(exVo);
+
+        MVC.perform(get("/api/main/wines/1")
+                )
+                .andExpect(jsonPath("$.productId").exists())
+                .andExpect(jsonPath("$.productId").value(1))
+                .andExpect(jsonPath("$.nmKor").value("트라마리 로제 디 프리미티보"))
+                .andExpect(jsonPath("$.pic").value("wine/1/qMwuRhM3Sl2mHZSfzDwwXg_pb_x960.png"))
+                .andExpect(jsonPath("$.alcohol").value(8))
+                .andDo(print());
+
+        verify(SERVICE).selWineById(any());
     }
 
     @Test
