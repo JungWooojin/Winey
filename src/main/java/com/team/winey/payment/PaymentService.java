@@ -68,6 +68,7 @@ public class PaymentService {
     }
 
     public int insReview(ReviewInsDto dto){
+        dto.setUserId(facade.getLoginUserPk());
         return mapper.insReview(dto);
     }
 
