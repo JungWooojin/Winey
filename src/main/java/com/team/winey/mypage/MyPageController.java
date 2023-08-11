@@ -30,19 +30,13 @@ public class MyPageController {
     }
 
     @PatchMapping("/upduser")
-    @Operation(summary = "비밀번호 제외 값수정", description =
+    @Operation(summary = "회원정보수정", description =
             "주의사항: 로그인되어있을때 사용하셔야합니다. <br>"
             )
     public  int putUser(@RequestBody UpduserDto dto){
         return service.updUser(dto);
     }
 
-    @PatchMapping("/updPassword")
-    @Operation(summary = "비밀번호  값수정",description =
-            "주의사항: 로그인되어있을때 사용하셔야합니다. <br>")
-    public int patchUser(@RequestBody UpdPasswordDto dto){
-        return service.updPassword(dto);
-    }
     @GetMapping
     @Operation(summary = "로그인한사람의 회원정보",description =
             "주의사항: 로그인되어있을때 사용하셔야합니다. delYn값이 0이여야합니다. 1이면 삭제처리유저입니다. <br>")

@@ -8,12 +8,8 @@
         set
         nm=#{name},
         tel=#{tel},
+        pw=#{pw},
         region_nm_id=#{regionNmId}
-        where user_id=#{userId}
-    </update>
-    <update id="updPassword">
-        update t_user
-        set pw=#{pw}
         where user_id=#{userId}
     </update>
     <select id ="selUser">

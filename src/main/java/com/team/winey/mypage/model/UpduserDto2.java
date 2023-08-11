@@ -7,5 +7,6 @@ public class UpduserDto2 {
     private Long userId;
     private String name;
     private String tel;
+    private String pw;
     private Long regionNmId;
 }

@@ -32,16 +32,11 @@ public class MypageService {
         dto2.setUserId(facade.getLoginUserPk());
         dto2.setName(dto.getName());
         dto2.setTel(dto.getTel());
+        dto2.setPw(passwordEncoder.encode(dto.getPw()));
         dto2.setRegionNmId(dto.getRegionNmId());
         return mapper.updUser(dto2);
     };
 
-    public int updPassword(UpdPasswordDto dto){
-        UpdPasswordDto2 dto1=new UpdPasswordDto2();
-        dto1.setUserId(facade.getLoginUserPk());
-        dto1.setPw(passwordEncoder.encode(dto.getPw()));
-        return mapper.updPassword(dto1);
-    }
     public SelUserVo selUser(){
         SelUserDto dto =new SelUserDto();
         dto.setUserId(facade.getLoginUserPk());
