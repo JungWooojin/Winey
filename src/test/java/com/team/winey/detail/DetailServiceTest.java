@@ -79,34 +79,19 @@ class DetailServiceTest {
         WineVo acresult = service.selWineDetail(any());
 
         //then
-        assertEquals(exresult.getSelPairing().get(0), acresult.getSelPairing().get(0));
+        assertEquals(exresult.getWineDetailVo().getAlcohol(), acresult.getWineDetailVo().getAlcohol());
+        assertEquals(exresult.getSelPairing().get(1), acresult.getSelPairing().get(1));
+        assertEquals(exresult.getSelReview().get(0), acresult.getSelReview().get(0));
+        assertEquals(exresult.getSelAroma().get(0), acresult.getSelAroma().get(0));
+        assertEquals(exresult.getLevel(), acresult.getLevel());
+        assertEquals(exresult.getSelSale().getSalePrice(), acresult.getSelSale().getSalePrice());
 
         verify(mapper).selWineDetail(any());
-//        verify(mapper).selPairing(any());
-//        verify(mapper).selCount(any());
-//        verify(mapper).selSale(any());
-//        verify(mapper).selAroma(any());
+        verify(mapper).selPairing(any());
+        verify(mapper).selSale(any());
+        verify(mapper).selAroma(any());
 
-        /*
-        List<String> selPairing = new ArrayList<>();
-        selPairing.add("cheeze");
-        selPairing.add("chicken");
-
-        String selCount = "1";
-
-        SelSale selSale = new SelSale();
-        selSale.setSale(20);
-        selSale.setSalePrice(19838);
-
-        SelWineKorNm korNm = new SelWineKorNm();
-        korNm.setProductId(11L);
-        korNm.setNmKor("한글이름");
-        */
-
-
-
-        //assertEquals("cheeze", vo.getSelPairing().get(0));
-
+        //verify(mapper).selCount(any());
 
 
     }
@@ -114,5 +99,20 @@ class DetailServiceTest {
 
     @Test
     void selKorNm() {
+        SelWineKorNm exnm = new SelWineKorNm();
+        exnm.setProductId(4L);
+        exnm.setNmKor("와인이당");
+
+        when(mapper.selKorNm(any())).thenReturn(exnm);
+
+        SelWineKorNm acnm = service.selKorNm(any());
+
+        assertEquals(exnm.getProductId(), acnm.getProductId());
+        assertEquals("와인이당", acnm.getNmKor());
+
+        verify(mapper).selKorNm(any());
+
+
+
     }
 }

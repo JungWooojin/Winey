@@ -6,4 +6,5 @@ import lombok.Data;
 public class ReviewInsDto {
     private int orderDetailId;
     private int reviewLevel;
+    private Long userId;
 }

@@ -69,7 +69,7 @@ public class AdminController {
     }
 
     //할인 중인 등록 상품 리스트 출력
-    @Operation(summary = "페이징)할인 중인 상품 리스트", description = "saleYn = 1 인 상품만 리스트에 나옵니다.<br>"
+    @Operation(summary = "페이징)할인률을 입력한 상품 리스트", description = "saleYn = 1 인 상품만 리스트에 나옵니다.<br>"
             +"page (기본값 1), row (기본값 20) 디폴트값 임시로 해놓은거라 수정이 필요합니다.")
     @GetMapping("/product/salelist")
     public ProductSaleList getProductSale(@RequestParam(defaultValue = "1")int page,
@@ -184,7 +184,7 @@ public class AdminController {
     }
 
     //할인 상태(saleYn) 업데이트 (관리자가 수동으로 On/Off하는 용도)
-    @Operation(summary = "상품 할인상태(saleYn) 업데이트 (관리자가 수동으로 On/Off하는 용도)", description = "업데이트 * 성공시 코드: 1<br>"+ "* 실패시 코드: 0")
+    @Operation(summary = "상품 할인상태(saleYn) 업데이트 (관리자가 수동으로 On/Off하는 용도)", description = "업데이트 <br>"+"* 성공시 코드: 1<br>"+ "* 실패시 코드: 0")
     @PutMapping("/sale")
     public int putProductSaleYn(ProductSaleYnDto dto) {
         return SERVICE.putProductSaleYn(dto);

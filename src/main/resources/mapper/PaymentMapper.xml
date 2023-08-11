@@ -45,17 +45,9 @@
     </update>
 
     <insert id ="insReview">
-        INSERT INTO t_review (review_level, order_detail_id)
-        SELECT
-        CASE
-        WHEN o.order_status = 5 THEN 0
-        END AS review_level,
-        od.order_detail_id
-        FROM
-        t_order o
-        JOIN t_order_detail od ON o.order_id = od.order_id
-        WHERE
-        o.order_status = 5;
+       insert into t_review
+        set order_detail_id = #{orderDetailId},
+            review_level = #{reviewLevel}
     </insert>
 
 

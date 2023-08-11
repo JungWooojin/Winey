@@ -12,7 +12,7 @@ import java.util.List;
 
 @Tag(name = "주문내역 페이지")
 @RestController
-@RequestMapping("/orderList")
+@RequestMapping("/api/orderList")
 @RequiredArgsConstructor
 public class OrderController {
     private final OrderService service;

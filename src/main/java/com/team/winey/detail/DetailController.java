@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "와인상세페이지")
 @RestController
-@RequestMapping("/detail")
+@RequestMapping("/api/detail")
 @RequiredArgsConstructor
 public class DetailController {
     private final DetailService SERVICE;
