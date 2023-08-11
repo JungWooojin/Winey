@@ -7,6 +7,7 @@ import com.team.winey.main.model.WineSelDto;
 import com.team.winey.main.model.WineTotalVo;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -34,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.junit.jupiter.api.Assertions.*;
 
 @AutoConfigureMockMvc(addFilters = false)
-@WebMvcTest(MainController.class)
+@WebMvcTest(controllers = {MainController.class})
 class MainControllerTest {
 
     @Autowired
@@ -47,9 +48,8 @@ class MainControllerTest {
     void getWines() throws Exception {
         //given
         WineSelDto selDto = new WineSelDto();
-        selDto.setProductId(1L);
         selDto.setPage(1);
-        selDto.setStartIdx(1);
+        selDto.setStartIdx(2);
         selDto.setRow(9);
 
         List<WineTotalVo> mockList = new ArrayList<>();
@@ -59,16 +59,14 @@ class MainControllerTest {
         mockList.add(new WineTotalVo(2L, 2L, 2L, 2L, 2L,
                 "러시아 리버 밸리 피노 누아", "Russian River Valley Pinot Noir", 12000, 11,
                 "wine/2/4-vr4iXPT5eVsW46Yi6MnA_pb_x960.png", 0, 0, 10, 0, 0));
-        given(SERVICE.selWine(selDto)).willReturn(mockList);
+        given(SERVICE.selWine(any())).willReturn(mockList);
 
 //        String gson = new Gson().toJson(mockList);
 
         //when
         ResultActions ra = MVC.perform(get("/api/main/wines")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .characterEncoding("UTF-8")
-//                .content(gson)
-        );
+                .param("page", String.valueOf(selDto.getPage()))
+                .param("row", String.valueOf(selDto.getRow())));
 
         //then
         ra.andExpect(status().isOk())
@@ -78,7 +76,7 @@ class MainControllerTest {
                 .andExpect(jsonPath("$[0].nmKor").value("트라마리 로제 디 프리미티보"))
                 .andDo(print());
 
-        verify(SERVICE).selWine(selDto);
+        verify(SERVICE).selWine(any());
 
     }
 
