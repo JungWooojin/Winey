@@ -94,16 +94,22 @@ public class OrderService {
 
 
     int cancelOrder(Long orderId) {
-        UserIdDto dto = new UserIdDto();
+        OrderCancelDto dto = new OrderCancelDto();
         dto.setUserId(facade.getLoginUserPk());
-        return mapper.cancelOrder(orderId);
+        dto.setOrderId(orderId);
+        int result = mapper.cancelOrder(dto);
+
+
+
+        return mapper.cancelOrder(dto);
 
     }
 
     int pickupFinishOrder(Long orderId) {
-        UserIdDto dto = new UserIdDto();
+        OrderPickupFinishDto dto = new OrderPickupFinishDto();
+        dto.setOrderId(orderId);
         dto.setUserId(facade.getLoginUserPk());
-        return mapper.pickupFinishOrder(orderId);
+        return mapper.pickupFinishOrder(dto);
     }
 
 

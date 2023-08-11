@@ -9,8 +9,8 @@ import java.util.List;
 public interface OrderMapper {
     List<OrderEntity> selOrder(UserIdDto dto);
 
-    int cancelOrder(Long orderId);
-    int pickupFinishOrder(Long orderId);
+    int cancelOrder(OrderCancelDto dto);
+    int pickupFinishOrder(OrderPickupFinishDto dto);
 
     List<OrderDetailVo1> selOrderDetail1(Long orderId);
     OrderDetailVo2 selOrderDetail2(Long orderId);

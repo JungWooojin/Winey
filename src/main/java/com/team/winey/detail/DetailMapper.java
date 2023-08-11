@@ -12,6 +12,7 @@ public interface DetailMapper {
     String selCount(SelCountVo vo);
     SelSale selSale(Long productId);
     SelAroma selAroma(Long productId);
+
     SelWineKorNm selKorNm(Long productId);
 
 

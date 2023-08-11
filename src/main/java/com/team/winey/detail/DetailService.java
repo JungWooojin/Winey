@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -32,7 +33,6 @@ public class DetailService {
 
 
 
-
         List<String> selPairing = MAPPER.selPairing(productId);
 
 
@@ -45,7 +45,6 @@ public class DetailService {
             MAPPER.selCount(selCountVo);
             selCount.add(MAPPER.selCount(selCountVo));
         }
-
 
 
         SelAroma selAroma = MAPPER.selAroma(productId);
@@ -79,21 +78,6 @@ public class DetailService {
             log.info("aroma : {}", aroma);
 
         }
-
-//        SelAroma selAroma = MAPPER.selAroma(productId);
-//        List<SelAroma> map = new ArrayList<>();
-//        List<String> aroma = new ArrayList<>();
-//        map.add(selAroma);
-//        System.out.println(map);
-//
-//        for (int i = 0; i < map.size(); i++) {
-//
-//            if("1".equals(map.get(i))) {
-//                aroma.add(map.get(i).toString());
-//            }
-//
-//        }
-
 
 
 

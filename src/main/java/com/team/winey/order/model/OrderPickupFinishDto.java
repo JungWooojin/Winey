@@ -5,5 +5,6 @@ import lombok.Data;
 @Data
 public class OrderPickupFinishDto {
     private Long orderId;
+    private Long userId;
 
 }
