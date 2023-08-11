@@ -18,6 +18,7 @@ import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
 
+import static org.hamcrest.Matchers.hasItem;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.hamcrest.Matchers.hasSize;
@@ -95,13 +96,16 @@ class DetailControllerTest {
 
 
         //when - 실제 실행
-        ResultActions ra = mvc.perform(get("/api/detail/11")
+        ResultActions ra;
+        ra = mvc.perform(get("/api/detail/11")
                         )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(exAromaList.size())))
+                .andExpect(jsonPath("$.level").value(1))
+                .andExpect(jsonPath("$.wineDetailVo.categoryNm").value("레드"))
+                .andExpect(jsonPath("$.selPairing[0]").value("aaaa"))
                 .andDo(print());
 
-       // verify(service).selWineDetail(1L);
+        // verify(service).selWineDetail(1L);
 
 
 
