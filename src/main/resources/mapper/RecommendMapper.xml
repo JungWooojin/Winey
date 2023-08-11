@@ -64,6 +64,8 @@
                         AND price >= 20000 AND price <![CDATA[< 50000]]>
                     </when>
                     <when test="priceRange == 3">
+
+
                         AND price >= 50000 AND price <![CDATA[< 100000]]>
                     </when>
                     <when test="priceRange == 4">
@@ -74,6 +76,7 @@
                     </when>
                 </choose>
             </if>
+
         </where>
     </select>
 
