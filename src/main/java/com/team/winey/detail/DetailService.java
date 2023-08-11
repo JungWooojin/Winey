@@ -60,12 +60,6 @@ public class DetailService {
             if (aromaItem.getPlant() == 1) {
                 aroma.add("plant");
             }
-            if (aromaItem.getOak() == 1) {
-                aroma.add("Oak");
-            }
-            if (aromaItem.getNuts() == 1) {
-                aroma.add("Nuts");
-            }
             if (aromaItem.getFruit() == 1) {
                 aroma.add("Fruit");
             }
@@ -74,6 +68,12 @@ public class DetailService {
             }
             if (aromaItem.getEarth() == 1) {
                 aroma.add("Earth");
+            }
+            if (aromaItem.getOak() == 1) {
+                aroma.add("Oak");
+            }
+            if (aromaItem.getNuts() == 1) {
+                aroma.add("Nuts");
             }
             log.info("aroma : {}", aroma);
 
