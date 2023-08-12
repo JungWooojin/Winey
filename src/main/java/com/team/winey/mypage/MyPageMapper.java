@@ -12,6 +12,7 @@ public interface MyPageMapper {
     int updPick(UpdPickDto dto);
     int updUser(UpduserDto2 dto2);
     SelUserVo selUser(SelUserDto dto);
+
     int  delUser(DelUserDto dto);
 
 

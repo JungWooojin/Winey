@@ -9,6 +9,7 @@ public class RecommendRes {
     private List<Long> categoryId;
     private List<Long> countryId;
     private List<Long> smallCategoryId;
+    private Long priceRange;
     private Long flower ;
     private Long plant ;
     private Long fruit ;
@@ -16,5 +17,5 @@ public class RecommendRes {
     private Long earth ;
     private Long oak ;
     private Long nuts ;
-    private Long priceRange;
+
 }
