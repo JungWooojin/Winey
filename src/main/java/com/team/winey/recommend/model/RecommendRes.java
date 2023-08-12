@@ -9,7 +9,7 @@ public class RecommendRes {
     private List<Long> categoryId;
     private List<Long> countryId;
     private List<Long> smallCategoryId;
-    private Long priceRange;
+    private List<Long> priceRange;
     private Long flower ;
     private Long plant ;
     private Long fruit ;

@@ -21,7 +21,7 @@ public class RecommendService {
         UserinfoDto dto = new UserinfoDto();
         dto.setUserId(facade.getLoginUserPk());
         dto.setProductId(result);
-       mapper.insUserinfo(dto);
+        mapper.insUserinfo(dto);
         return result;
     }
     public int loginUserPk(){

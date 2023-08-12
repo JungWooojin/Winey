@@ -46,27 +46,30 @@
                 AND nuts = #{nuts}
             </if>
 
-            <if test="priceRange >= 0">
-                <choose>
-                    <when test="priceRange == 1">
-                        AND price  <![CDATA[< 20000]]>
-                    </when>
-                    <when test="priceRange == 2">
-                        AND price >= 20000 AND price <![CDATA[< 50000]]>
-                    </when>
-                    <when test="priceRange == 3">
-                        AND price >= 50000 AND price <![CDATA[< 100000]]>
-                    </when>
-                    <when test="priceRange == 4">
-                        AND price >= 100000
-                    </when>
-                    <when test="priceRange == 0">
-                        AND price >= 0
-                    </when>
-                </choose>
+            <if test="priceRange != null">
+                AND (
+                <foreach item="range" collection="priceRange" separator=" OR " open="(" close=")">
+                    <choose>
+                        <when test="range == 0">
+                            price >= 0
+                        </when>
+                        <when test="range == 1">
+                            price <![CDATA[< 20000]]>
+                        </when>
+                        <when test="range == 2">
+                            price >= 20000 AND price <![CDATA[< 50000]]>
+                        </when>
+                        <when test="range == 3">
+                            price >= 50000 AND price <![CDATA[< 100000]]>
+                        </when>
+                        <when test="range == 4">
+                            price >= 100000
+                        </when>
+                    </choose>
+                </foreach>
+                )
             </if>
         </where>
-
         order by B.product_id
     </select>
 
@@ -77,6 +80,7 @@
             (#{userId}, #{productId})
         </foreach>
     </insert>
+
     <select id="loginUserPk">
         select user_id userId
         from t_user
