@@ -81,7 +81,6 @@ public class DetailService {
 
 
 
-
         int level = 0;
         int sum = vo.getSweety() + vo.getAcidity() + vo.getBody();
 
@@ -117,8 +116,6 @@ public class DetailService {
             selSale = null;
             log.info("할인상품아님");
         }
-
-
 
 
 
