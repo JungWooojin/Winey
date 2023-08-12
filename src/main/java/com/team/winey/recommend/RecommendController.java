@@ -18,7 +18,6 @@ import java.util.List;
 public class RecommendController {
     private final RecommendService service;
 
-
     @PostMapping("/wine")
     @Operation(summary = "사용자취향에 맞는 와인추천", description =
             "값을 보낼때 categoryId와countryId와smallCategoryId는 값을 선택하지 않을 떄는 json에서 아예 삭제를 해주셔야합니다! 나머지는 아무값 입력안하면 자동으로 조건을 무시합니다." +
@@ -30,6 +29,11 @@ public class RecommendController {
                     "주의사항: 로그인이 되어있을때 사용하셔야합니다. <br>")
     public List<Long> Recommendations(@RequestBody RecommendRes res) {
         return service.selRecommand(res);
+    }
+
+    @GetMapping("/loginuser")
+    public int LoginUserPk(){
+        return service.loginUserPk();
     }
 
     @GetMapping("/getUserInfo")
