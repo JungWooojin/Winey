@@ -57,7 +57,7 @@ public class AdminController {
     }
 
     //등록 상품 리스트 출력 (페이징 처리)
-    @Operation(summary = "페이징)등록된 상품 리스트 출력(피그마: 등록상품리스트 페이지)", description = "page값 = 1(default), row값 = 20(default)<br>"
+    @Operation(summary = "등록된 상품 리스트 출력(피그마: 등록상품리스트 페이지)P", description = "page값 = 1(default), row값 = 20(default)<br>"
             + "default값은 임시로 넣은 것이니 수정이 필요합니다.")
     @GetMapping("/product/list")
     public ProductList getProduct(@RequestParam(defaultValue = "1")int page,
@@ -69,7 +69,7 @@ public class AdminController {
     }
 
     //할인 중인 등록 상품 리스트 출력
-    @Operation(summary = "페이징)할인률을 입력한 상품 리스트", description = "saleYn = 1 인 상품만 리스트에 나옵니다.<br>"
+    @Operation(summary = "할인률을 입력한 상품 리스트P", description = "saleYn = 1 인 상품만 리스트에 나옵니다.<br>"
             +"page (기본값 1), row (기본값 20) 디폴트값 임시로 해놓은거라 수정이 필요합니다.")
     @GetMapping("/product/salelist")
     public ProductSaleList getProductSale(@RequestParam(defaultValue = "1")int page,
@@ -81,7 +81,7 @@ public class AdminController {
     }
 
     //가입 회원 리스트 출력
-    @Operation(summary = "페이징)가입 회원 리스트 (페이징처리)(피그마: 가입회원리스트 페이지)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.")
+    @Operation(summary = "가입 회원 리스트 (페이징처리)(피그마: 가입회원리스트 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.")
     @GetMapping("/user/list")
     public UserList getUserList(@RequestParam(defaultValue = "1") int page,
                                     @RequestParam(defaultValue = "15") int row) {
@@ -92,7 +92,7 @@ public class AdminController {
     }
 
     //미완성) 가입 회원별 상세 주문 내역(회원pk별) +페이징 처리
-    @Operation(summary = "페이징)회원별 상세 주문 내역 (피그마: 회원상세내역 페이지)", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @Operation(summary = "회원별 상세 주문 내역 (피그마: 회원상세내역 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
     @GetMapping("/{userId}/order")
     public UserOrderDetailList getUserOrder(@PathVariable Long userId, @RequestParam(defaultValue = "1")int page,
                                                 @RequestParam(defaultValue = "15")int row) {
@@ -111,7 +111,7 @@ public class AdminController {
     }
 
     //주문 내역
-    @Operation(summary = "페이징)주문 내역 출력(피그마:주문내역관리 페이지)", description = "주문상품, 주문수량 출력 안하는 중<br>"
+    @Operation(summary = "주문 내역 출력(피그마:주문내역관리 페이지)P", description = "주문상품, 주문수량 출력 안하는 중<br>"
             +"page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
     @GetMapping("/order")
     public OrderList getOrder(@RequestParam(defaultValue = "1")int page,
@@ -151,7 +151,7 @@ public class AdminController {
         return SERVICE.insStore(param);
     }
     //매장 리스트 출력
-    @Operation(summary = "페이징)매장 리스트 출력", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @Operation(summary = "매장 리스트 출력P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
     @GetMapping("/store")
     public StoreList getStore(@RequestParam(defaultValue = "1")int page,
                                   @RequestParam(defaultValue = "15")int row) {

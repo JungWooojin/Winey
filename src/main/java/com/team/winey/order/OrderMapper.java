@@ -12,8 +12,8 @@ public interface OrderMapper {
     int cancelOrder(OrderCancelDto dto);
     int pickupFinishOrder(OrderPickupFinishDto dto);
 
-    List<OrderDetailVo1> selOrderDetail1(Long orderId);
-    OrderDetailVo2 selOrderDetail2(Long orderId);
+    List<OrderDetailVo1> selOrderDetail1(UserIdDto dto);
+    OrderDetailVo2 selOrderDetail2(UserIdDto dto);
 
 
 

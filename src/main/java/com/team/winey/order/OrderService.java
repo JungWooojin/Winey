@@ -26,69 +26,39 @@ public class OrderService {
         List<OrderEntity> list = mapper.selOrder(dto);
 
         for(OrderEntity entity : list){
+            entity.setOrderDate(entity.getOrderDate());
+            entity.setUserId(facade.getLoginUserPk());
+            entity.setOrderId(entity.getOrderId());
+            entity.setPayment(entity.getPayment());
+            entity.setTotalOrderPrice(entity.getTotalOrderPrice());
+            entity.setStoreNm("이마트 " + entity.getStoreNm());
+            entity.setOrderStatus(entity.getOrderStatus());
+
+
+            try {
+                String strDate = entity.getPickupTime();
+                SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
+                // String 타입을 Date 타입으로 변환
+
+                Date formatDate = dtFormat.parse(strDate);
+                // Date타입의 변수를 새롭게 지정한 포맷으로 변환
+
+                String strNewDtFormat = newDtFormat.format(formatDate);
+
+                entity.setPickupTime(strNewDtFormat);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
             if(entity.getCount() >= 2 ){
-
-                entity.setOrderDate(entity.getOrderDate());
-                //entity.setUserId(facade.getLoginUserPk());
-                entity.setUserId(facade.getLoginUserPk());
-                entity.setOrderId(entity.getOrderId());
-                entity.setPayment(entity.getPayment());
-                entity.setTotalOrderPrice(entity.getTotalOrderPrice());
-                entity.setStoreNm("이마트 " + entity.getStoreNm());
-
-
-                try {
-                    String strDate = list.get(0).getPickupTime();
-                    SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
-                    // String 타입을 Date 타입으로 변환
-
-                    Date formatDate = dtFormat.parse(strDate);
-                    // Date타입의 변수를 새롭게 지정한 포맷으로 변환
-
-                    String strNewDtFormat = newDtFormat.format(formatDate);
-
-                    entity.setPickupTime(strNewDtFormat);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-
-                entity.setOrderStatus(list.get(0).getOrderStatus());
-
                 entity.setNmKor(list.get(0).getNmKor() + " 외 " + (entity.getCount() - 1) + "건");
-
-
             } else if (entity.getCount() == 1) {
-
-                entity.setOrderDate(entity.getOrderDate());
-                //entity.setUserId(facade.getLoginUserPk());
-                entity.setUserId(facade.getLoginUserPk());
-                entity.setOrderId(entity.getOrderId());
-                entity.setPayment(entity.getPayment());
-                entity.setTotalOrderPrice(entity.getTotalOrderPrice());
-                entity.setStoreNm("이마트 " + entity.getStoreNm());
-
-                try {
-                    String strDate = list.get(0).getPickupTime();
-                    SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    SimpleDateFormat newDtFormat = new SimpleDateFormat("MM월 dd일 E요일 HH:mm", Locale.KOREA);
-                    // String 타입을 Date 타입으로 변환
-
-                    Date formatDate = dtFormat.parse(strDate);
-                    // Date타입의 변수를 새롭게 지정한 포맷으로 변환
-
-                    String strNewDtFormat = newDtFormat.format(formatDate);
-
-
-                    entity.setPickupTime(strNewDtFormat);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                entity.setOrderStatus(entity.getOrderStatus());
                 entity.setNmKor(entity.getNmKor());
             }
         }
+
         return list;
     }
 
@@ -98,7 +68,6 @@ public class OrderService {
         dto.setUserId(facade.getLoginUserPk());
         dto.setOrderId(orderId);
         int result = mapper.cancelOrder(dto);
-
 
 
         return mapper.cancelOrder(dto);
@@ -118,12 +87,13 @@ public class OrderService {
 
     public DetailVo selOrderDetail(Long orderId){
         UserIdDto dto = new UserIdDto();
+        dto.setOrderId(orderId);
         dto.setUserId(facade.getLoginUserPk());
 
-        List<OrderDetailVo1> vo1 = mapper.selOrderDetail1(orderId);
+        List<OrderDetailVo1> vo1 = mapper.selOrderDetail1(dto);
 
 
-        OrderDetailVo2 vo2 = mapper.selOrderDetail2(orderId);
+        OrderDetailVo2 vo2 = mapper.selOrderDetail2(dto);
         if(vo2 != null) {
             try {
                 String strDate = vo2.getPickupTime();

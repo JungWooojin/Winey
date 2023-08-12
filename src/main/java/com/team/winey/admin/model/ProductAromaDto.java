@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ProductAromaDto {
     private int aromaId;
+    private int productId;
 
     private int flower;
     private int plant;
