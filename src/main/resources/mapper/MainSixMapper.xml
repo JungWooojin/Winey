@@ -7,11 +7,13 @@
     <select id="selWineByPrice2limit6">
         <![CDATA[
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE price < 20000
         LIMIT 6
     ]]>
@@ -21,11 +23,13 @@
     <select id="selWineByPrice25limit6">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
             LIMIT 6
         ]]>
@@ -34,11 +38,13 @@
     <select id="selWineByPrice510limit6">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
             LIMIT 6
         ]]>
@@ -47,11 +53,13 @@
     <select id="selWineByPrice10limit6">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 100000
             LIMIT 6
         ]]>
@@ -59,20 +67,22 @@
 
     <select id="selWineByCountrylimit6">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
         FROM t_product a
         LEFT JOIN t_country b
         ON a.country_id = b.country_id
         LEFT JOIN t_sale c
         ON a.product_id = c.product_id
+        LEFT JOIN t_aroma d
+        ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
         LIMIT 6
     </select>
 
     <select id="selWineByFoodlimit6">
         SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_wine_pairing b
@@ -83,6 +93,8 @@
         ON c.big_category_id = d.big_category_id
         LEFT JOIN t_sale e
         ON a.product_id = e.product_id
+        LEFT JOIN t_aroma f
+        ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
         LIMIT 6
     </select>

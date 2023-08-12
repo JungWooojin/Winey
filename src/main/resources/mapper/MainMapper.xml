@@ -6,22 +6,26 @@
 
     <select id="redWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 1
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="redWineByNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 1
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
@@ -29,11 +33,13 @@
 
     <select id="redWineByExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 1
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
@@ -41,11 +47,13 @@
 
     <select id="redWineByCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 1
         ORDER BY price
         LIMIT ${startIdx}, ${row}
@@ -55,22 +63,26 @@
 
     <select id="whiteWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 2
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="whiteWineByNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 2
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
@@ -78,11 +90,13 @@
 
     <select id="whiteWineByExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 2
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
@@ -90,11 +104,13 @@
 
     <select id="whiteWineByCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 2
         ORDER BY price
         LIMIT ${startIdx}, ${row}
@@ -105,22 +121,26 @@
 
     <select id="sparklingWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 3
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="sparklingWineByNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 3
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
@@ -128,11 +148,13 @@
 
     <select id="sparklingWineByExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 3
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
@@ -140,11 +162,13 @@
 
     <select id="sparklingWineByCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 3
         ORDER BY price
         LIMIT ${startIdx}, ${row}
@@ -154,22 +178,26 @@
 
     <select id="otherWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 4
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="otherWineByNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 4
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
@@ -177,11 +205,13 @@
 
     <select id="otherWineByExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 4
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
@@ -189,11 +219,13 @@
 
     <select id="otherWineByCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.category_id = 4
         ORDER BY price
         LIMIT ${startIdx}, ${row}
@@ -217,11 +249,13 @@
 
     <select id="selWinePrice">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
     </select>
 
     <select id="beginners">
@@ -234,43 +268,51 @@
 
     <select id="selWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="selWineByNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="selWineByExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="selWineByCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         ORDER BY price
         LIMIT ${startIdx}, ${row}
     </select>
@@ -279,11 +321,13 @@
 
     <select id="selWineById">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
+        LEFT JOIN t_aroma c
+        ON a.product_id = c.product_id
         WHERE a.product_id = #{productId}
     </select>
 
@@ -292,11 +336,13 @@
     <select id="selWineByPrice2">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price < 20000
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -305,11 +351,13 @@
     <select id="selWineByPrice2New">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price < 20000
             ORDER BY a.product_id DESC
             LIMIT ${startIdx}, ${row}
@@ -319,11 +367,13 @@
     <select id="selWineByPrice2Expencive">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price < 20000
             ORDER BY price DESC
             LIMIT ${startIdx}, ${row}
@@ -333,11 +383,13 @@
     <select id="selWineByPrice2Cheap">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price < 20000
             ORDER BY price
             LIMIT ${startIdx}, ${row}
@@ -349,11 +401,13 @@
     <select id="selWineByPrice25">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -362,11 +416,13 @@
     <select id="selWineByPrice25New">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
             ORDER BY a.product_id DESC
             LIMIT ${startIdx}, ${row}
@@ -376,11 +432,13 @@
     <select id="selWineByPrice25Expencive">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
             ORDER BY price DESC
             LIMIT ${startIdx}, ${row}
@@ -390,11 +448,13 @@
     <select id="selWineByPrice25Cheap">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
             ORDER BY price
             LIMIT ${startIdx}, ${row}
@@ -407,11 +467,13 @@
     <select id="selWineByPrice510">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -419,12 +481,14 @@
 
     <select id="selWineByPrice510New">
         <![CDATA[
-            SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
             ORDER BY a.product_id DESC
             LIMIT ${startIdx}, ${row}
@@ -433,12 +497,14 @@
 
     <select id="selWineByPrice510Expencive">
         <![CDATA[
-           SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
             ORDER BY price DESC
             LIMIT ${startIdx}, ${row}
@@ -447,12 +513,14 @@
 
     <select id="selWineByPrice510Cheap">
         <![CDATA[
-            SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
             ORDER BY price
             LIMIT ${startIdx}, ${row}
@@ -464,12 +532,14 @@
 
     <select id="selWineByPrice10">
         <![CDATA[
-           SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 100000
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -478,11 +548,13 @@
     <select id="selWineByPrice10New">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 100000
             ORDER BY a.product_id DESC
             LIMIT ${startIdx}, ${row}
@@ -492,11 +564,13 @@
     <select id="selWineByPrice10Expencive">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 100000
             ORDER BY price DESC
             LIMIT ${startIdx}, ${row}
@@ -506,11 +580,13 @@
     <select id="selWineByPrice10Cheap">
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-            a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+            c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
+            LEFT JOIN t_aroma c
+            ON a.product_id = c.product_id
             WHERE price > 100000
             ORDER BY price
             LIMIT ${startIdx}, ${row}
@@ -521,26 +597,30 @@
 
     <select id="selWineByCountry">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price salePrice
+        d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
         FROM t_product a
         LEFT JOIN t_country b
         ON a.country_id = b.country_id
         LEFT JOIN t_sale c
         ON a.product_id = c.product_id
+        LEFT JOIN t_aroma d
+        ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="selWineByCountryNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price salePrice
+        d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
         FROM t_product a
         LEFT JOIN t_country b
         ON a.country_id = b.country_id
         LEFT JOIN t_sale c
         ON a.product_id = c.product_id
+        LEFT JOIN t_aroma d
+        ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
@@ -548,13 +628,15 @@
 
     <select id="selWineByCountryExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price salePrice
+        d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
         FROM t_product a
         LEFT JOIN t_country b
         ON a.country_id = b.country_id
         LEFT JOIN t_sale c
         ON a.product_id = c.product_id
+        LEFT JOIN t_aroma d
+        ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
         ORDER BY price desc
         LIMIT ${startIdx}, ${row}
@@ -562,13 +644,15 @@
 
     <select id="selWineByCountryCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price salePrice
+        d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
         FROM t_product a
         LEFT JOIN t_country b
         ON a.country_id = b.country_id
         LEFT JOIN t_sale c
         ON a.product_id = c.product_id
+        LEFT JOIN t_aroma d
+        ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
         ORDER BY price
         LIMIT ${startIdx}, ${row}
@@ -577,9 +661,8 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////////  -->
     <select id="selWineByFood">
-        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id
-        countryId,
-        a.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_wine_pairing b
@@ -590,14 +673,15 @@
         ON c.big_category_id = d.big_category_id
         LEFT JOIN t_sale e
         ON a.product_id = e.product_id
+        LEFT JOIN t_aroma f
+        ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="selWineByFoodNew">
-        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id
-        countryId,
-        a.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_wine_pairing b
@@ -608,15 +692,16 @@
         ON c.big_category_id = d.big_category_id
         LEFT JOIN t_sale e
         ON a.product_id = e.product_id
+        LEFT JOIN t_aroma f
+        ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="selWineByFoodExpencive">
-        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id
-        countryId,
-        a.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_wine_pairing b
@@ -627,15 +712,16 @@
         ON c.big_category_id = d.big_category_id
         LEFT JOIN t_sale e
         ON a.product_id = e.product_id
+        LEFT JOIN t_aroma f
+        ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
     </select>
 
     <select id="selWineByFoodCheap">
-        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id
-        countryId,
-        a.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
         FROM t_product a
         LEFT JOIN t_wine_pairing b
@@ -646,6 +732,8 @@
         ON c.big_category_id = d.big_category_id
         LEFT JOIN t_sale e
         ON a.product_id = e.product_id
+        LEFT JOIN t_aroma f
+        ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
         ORDER BY price
         LIMIT ${startIdx}, ${row}
