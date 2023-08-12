@@ -9,7 +9,6 @@
         category_id = #{categoryId},
         feature_id = #{featureId},
         country_id = #{countryId},
-        aroma_id = #{aromaId},
         nm_kor = #{nmKor},
         nm_eng = #{nmEng},
         price = #{price},
@@ -31,6 +30,7 @@
     <insert id="insAroma" parameterType="ProductAromaDto" useGeneratedKeys="true" keyProperty="aromaId">
         INSERT INTO t_aroma
         SET
+        product_id = #{productId},
         flower = #{flower},
         plant = #{plant},
         fruit = #{fruit},
@@ -63,7 +63,6 @@
         category_id = #{categoryId},
         feature_id = #{featureId},
         country_id = #{countryId},
-        aroma_id = #{aromaId},
         nm_kor = #{nmKor},
         nm_eng = #{nmEng},
         price = #{price},
@@ -99,7 +98,7 @@
         oak = #{oak},
         nuts = #{nuts}
 
-        WHERE aroma_id = #{aromaId}
+        WHERE product_id = #{productId}
     </update>
 
     <update id="updSale" parameterType="ProductUpdDto">
@@ -121,7 +120,7 @@
     </update>
 
     <select id="selProductFk" resultType="ProductUpdDto">
-        SELECT category_id categoryId, feature_id featureId, country_id countryId, aroma_id aromaId
+        SELECT category_id categoryId, feature_id featureId, country_id countryId
         FROM t_product
         WHERE product_id = #{productId}
     </select>

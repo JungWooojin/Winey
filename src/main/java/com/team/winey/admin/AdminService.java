@@ -57,11 +57,8 @@ public class AdminService {
 
         // 피쳐 인서트 하기
         MAPPER.insFeature(dto); //t_feature 인서트 후 pk값 productInsDto에 들어감
-        // 아로마 인서트 하기
-        MAPPER.insAroma(aromaDto);
-        dto.setAromaId(aromaDto.getAromaId());
 
-        //사진 파일 업로드 로직 1
+        //사진 파일 업로드 로직 1 (사진업로드 하고 상품 등록할 때 실행되는 부분)
         //임시경로에 사진 저장
         if(pic != null) { //만약에 pic가 있다면
             File tempDic = new File(FILE_DIR, "/temp");
@@ -100,14 +97,26 @@ public class AdminService {
                 }
                 File targetFile = new File(targetPath, savedFileName);
                 tempFile.renameTo(targetFile);
-
+                //t_sale 인서트
                 MAPPER.insSale(dto);
+                //t_aroma 인서트
+                aromaDto.setProductId(dto.getProductId());
+                MAPPER.insAroma(aromaDto);
+                //페어링음식 t_wine_pairing에 인서트
+                for(int i=0;i<param.getSmallCategoryId().size();i++) {
+                    dto.setSmallCategoryId(param.getSmallCategoryId().get(i));
+                    MAPPER.insWinePairing(dto);
+                }
                 return dto.getProductId();
             }
         }
-        MAPPER.insProduct(dto); //pic==null일 때 실행됨
+        //사진업로드 안하고 상품 등록할 때 실행되는 부분
+        MAPPER.insProduct(dto);
         // 할인율, 할인가격 t_sale에 인서트 (product_id 이용해서) , 할인시작일과 종료일은(3차 때 구현)
         MAPPER.insSale(dto);
+        //t_aroma 인서트
+        aromaDto.setProductId(dto.getProductId());
+        MAPPER.insAroma(aromaDto);
 
         //페어링음식 t_wine_pairing에 인서트
         for(int i=0;i<param.getSmallCategoryId().size();i++) {
@@ -138,8 +147,18 @@ public class AdminService {
         dto.setAcidity(param.getAcidity()); //t_feature
         dto.setBody(param.getBody()); //t_feature
 
+        aromaDto.setProductId(param.getProductId()); //t_aroma
+        aromaDto.setFlower(param.getAroma().getFlower()); //t_aroma
+        aromaDto.setPlant(param.getAroma().getPlant()); //t_aroma
+        aromaDto.setFruit(param.getAroma().getFruit()); //t_aroma
+        aromaDto.setSpicy(param.getAroma().getSpicy()); //t_aroma
+        aromaDto.setEarth(param.getAroma().getEarth()); //t_aroma
+        aromaDto.setOak(param.getAroma().getOak()); //t_aroma
+        aromaDto.setNuts(param.getAroma().getNuts()); //t_aroma
+
         //t_aroma 테이블 update
         MAPPER.updAroma(aromaDto);
+
         //t_sale 테이블 update
         MAPPER.updSale(dto);
         //t_feature 테이블 update
