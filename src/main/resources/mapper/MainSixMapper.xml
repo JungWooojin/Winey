@@ -88,13 +88,18 @@
     </select>
 
     <select id="selWineByday">
-        SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        a.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
-        FROM t_product a
-        LEFT JOIN t_sale b
+        SELECT b.user_id, a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price salePrice
+        from t_product a
+        LEFT JOIN t_user_info b
         ON a.product_id = b.product_id
-        WHERE beginner = 1;
+        LEFT JOIN t_sale c
+        ON a.product_id = c.product_id
+        LEFT JOIN t_aroma d
+        ON a.product_id = d.product_id
+        WHERE user_id = #{userId};
+
     </select>
 
 

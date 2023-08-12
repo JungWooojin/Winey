@@ -1,9 +1,6 @@
 package com.team.winey.main.six;
 
-import com.team.winey.main.model.WineFoodVo;
-import com.team.winey.main.model.WineSelByCountryDto;
-import com.team.winey.main.model.WineSelByFoodDto;
-import com.team.winey.main.model.WineTotalVo;
+import com.team.winey.main.model.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -18,6 +15,6 @@ public interface MainSixMapper {
     List<WineTotalVo> selWineByCountrylimit6(WineSelByCountryDto dto);
     List<WineFoodVo> selWineByFoodlimit6(WineSelByFoodDto dto);
 
-    List<WineTotalVo> selWineByday();
+    List<WineRecommandVo> selWineByday(Long val);
 
 }
