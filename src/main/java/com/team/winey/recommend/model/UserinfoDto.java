@@ -1,4 +1,4 @@
-package com.team.winey.recommand.model;
+package com.team.winey.recommend.model;
 
 import lombok.Data;
 

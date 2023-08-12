@@ -1,7 +1,7 @@
-package com.team.winey.recommand;
+package com.team.winey.recommend;
 
 
-import com.team.winey.recommand.model.*;
+import com.team.winey.recommend.model.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,14 +12,14 @@ import java.util.List;
 @Tag(name = "사용자맞춤와인추천")
 @Slf4j
 @RestController
-@RequestMapping
+@RequestMapping("/api/recommend")
 @RequiredArgsConstructor
-public class RecommandController {
-    private final RecommandService service;
+public class RecommendController {
+    private final RecommendService service;
 
 
-    @PostMapping()
-    public List<Long> Recommendations(@RequestBody RecommandRes res) {
+    @PostMapping("/wine")
+    public List<Long> Recommendations(@RequestBody RecommendRes res) {
         return service.selRecommand(res);
     }
 

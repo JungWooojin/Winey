@@ -1,11 +1,11 @@
-package com.team.winey.recommand.model;
+package com.team.winey.recommend.model;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class RecommandDto {
+public class RecommendDto {
     private List<Long> categoryId;
     private List<Long> countryId;
     private List<Long> aromaId;

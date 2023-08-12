@@ -1,8 +1,8 @@
-package com.team.winey.recommand;
+package com.team.winey.recommend;
 
 
 import com.team.winey.config.security.AuthenticationFacade;
-import com.team.winey.recommand.model.*;
+import com.team.winey.recommend.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,11 @@ import java.util.List;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class RecommandService {
-    private final RecommandMapper mapper;
+public class RecommendService {
+    private final RecommendMapper mapper;
     private final AuthenticationFacade facade;
 
-    public List<Long> selRecommand(RecommandRes res) {
+    public List<Long> selRecommand(RecommendRes res) {
         List<Long> result =  mapper.selRecommand(res);
         UserinfoDto dto = new UserinfoDto();
         dto.setUserId(facade.getLoginUserPk());
@@ -26,7 +26,7 @@ public class RecommandService {
     }
 
     List<Integer> selUserinfo(){
-        SelRecommandDto dto =new SelRecommandDto();
+        SelRecommendDto dto =new SelRecommendDto();
         dto.setUserId(facade.getLoginUserPk());
         return mapper.selUserinfo(dto);
     }
