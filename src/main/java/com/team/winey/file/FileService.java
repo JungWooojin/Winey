@@ -35,16 +35,12 @@ public class FileService {
             String fullPath = "https:" + path;
             String fileName = fullPath.replace(urlPath, "");
 
-
             String file_ext = fileName.substring(
                     fileName.lastIndexOf('.') + 1,
                     fileName.length());
-
             try {
                 String realUrl = urlPath + fileName;
-
                 BufferedImage image = ImageIO.read(new URL(realUrl));
-
                 String savedFilePath = fileDir + "wine/" + i + "/" + fileName;
                 String dbFilePath = "wine/" + i + "/" + fileName;
 
@@ -52,10 +48,8 @@ public class FileService {
                 if (!dic.exists()) {
                     dic.mkdirs();
                 }
-
                 ImageIO.write(image, file_ext, new File(savedFilePath));
                 log.info("{}, 다운로드 완료", fileName);
-
 
                 // DB에 파일 경로 업데이트
                 entity.setProductId(Long.valueOf(i)); //Long > int 변환...

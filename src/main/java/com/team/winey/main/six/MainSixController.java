@@ -92,7 +92,7 @@ public class MainSixController {
         dto.setUserId(userId);
 
         SelRecommendDto selRecommendDto = new SelRecommendDto();
-        dto.setUserId(1L);
+        selRecommendDto.setUserId(userId);
         List<Integer> recommandWines = recommendMapper.selUserinfo(selRecommendDto);
         List<Long> getProductID = new ArrayList<>();
 

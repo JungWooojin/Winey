@@ -100,7 +100,7 @@
     </select>
 
     <select id="selWineByday">
-        SELECT b.user_id, a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
+        SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price salePrice
         from t_product a

@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class WineRecommandVo {
-    private Long userId;
+//    private Long userId;
     private Long productId;
     private Long categoryId;
     private Long featureId;
