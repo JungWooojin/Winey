@@ -118,12 +118,13 @@ public class OrderService {
 
     public DetailVo selOrderDetail(Long orderId){
         UserIdDto dto = new UserIdDto();
+        dto.setOrderId(orderId);
         dto.setUserId(facade.getLoginUserPk());
 
-        List<OrderDetailVo1> vo1 = mapper.selOrderDetail1(orderId);
+        List<OrderDetailVo1> vo1 = mapper.selOrderDetail1(dto);
 
 
-        OrderDetailVo2 vo2 = mapper.selOrderDetail2(orderId);
+        OrderDetailVo2 vo2 = mapper.selOrderDetail2(dto);
         if(vo2 != null) {
             try {
                 String strDate = vo2.getPickupTime();
