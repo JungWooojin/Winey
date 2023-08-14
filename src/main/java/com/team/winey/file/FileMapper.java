@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface FileMapper {
-    FileEntity selFileById ();
     FileEntity getFileEntityById(int id);
     void updPic(FileEntity entity);
     int count();
