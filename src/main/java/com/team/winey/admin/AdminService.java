@@ -227,9 +227,8 @@ public class AdminService {
         return 0; // result2가 0이면 수정에 실패했다는 의미로 0 리턴
     }
 
-    //할인 스케줄러
+    //할인 스케줄러 (t_sale 테이블의 sale_yn을 업데이트)
     @Scheduled(cron = "0 0 0/1 1/1 * ?") //매시 정각마다 실행
-//    @Scheduled(cron = "0 0/1 * 1/1 * ?") //1분마다 실행 테스트용
     public void updSaleDateTime() {
         ProductUpdDto dto = new ProductUpdDto();
         dto.setStartSale(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
@@ -238,7 +237,7 @@ public class AdminService {
         MAPPER.updSaleYnOn(dto);
         //endSale(할인종료날짜)와 현재시간이 같으면 saleYn을 0으로 update
         MAPPER.updSaleYnOff(dto);
-        log.info("매시 정각마다 스케줄러 실행");
+        log.info("매시 정각마다 할인 스케줄러(admin) 실행");
     }
 
     //상품 사진 삭제
