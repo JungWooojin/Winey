@@ -287,7 +287,7 @@ public class AdminService {
                 .build();
     }
 
-    //미완성) 가입회원 상세 주문 내역(회원pk별) +페이징 처리
+    //가입회원 상세 주문 내역(회원pk별) +페이징 처리
     public UserOrderDetailList getUserOrder(Long userId, SelListDto dto) {
         UserOrderDetailDto detailDto = new UserOrderDetailDto();
         detailDto.setUserId(userId);
