@@ -233,9 +233,9 @@ public class AdminService {
         ProductUpdDto dto = new ProductUpdDto();
         dto.setStartSale(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         dto.setEndSale(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-        //startSale(할인시작날짜)와 현재시간이 같으면 saleYn을 1로 update
+        //t_sale테이블의 startSale(할인시작날짜)과 현재시간이 같으면 saleYn을 1로 update
         MAPPER.updSaleYnOn(dto);
-        //endSale(할인종료날짜)와 현재시간이 같으면 saleYn을 0으로 update
+        //t_sale테이블의 endSale(할인종료날짜)과 현재시간이 같으면 saleYn을 0으로 update
         MAPPER.updSaleYnOff(dto);
         log.info("매시 정각마다 할인 스케줄러(admin) 실행");
     }
@@ -287,7 +287,7 @@ public class AdminService {
                 .build();
     }
 
-    //미완성) 가입회원 상세 주문 내역(회원pk별) +페이징 처리
+    //가입회원 상세 주문 내역(회원pk별) +페이징 처리
     public UserOrderDetailList getUserOrder(Long userId, SelListDto dto) {
         UserOrderDetailDto detailDto = new UserOrderDetailDto();
         detailDto.setUserId(userId);
