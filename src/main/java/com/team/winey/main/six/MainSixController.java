@@ -101,19 +101,13 @@ public class MainSixController {
         List<WineRecommandVo> selectedWines = new ArrayList<>();
         List<Integer> totalWines = recommandWines;
 
-        //userId 당 해당하는 productId 불러오기
+        //userId 당 해당하는 productId 담기
         for (Integer wineId : recommandWines) {
             getProductID.add(wineId.longValue());
         }
 
-        //불러온 productId
-//        Long val = 0L;
-//
-//        for (int i = 0; i < getProductID.size(); i++) {
-//            val = getProductID.get(i);
-//        }
+        //랜덤 6개 출력하기
         List<WineRecommandVo> allWines = MAPPER.selWineByday(userId);
-
         int winesToDisplay = 6;
 
         if (getProductID.size() <= winesToDisplay) {

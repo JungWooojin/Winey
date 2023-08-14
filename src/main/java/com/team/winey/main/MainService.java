@@ -16,22 +16,6 @@ public class MainService {
 
     private final MainMapper MAPPER;
 
-    /*public int selFeature(WineFeatureDto dto) {
-        WineFeatureVo result = MAPPER.beginners(dto);
-
-        int sum = result.getSweety() + result.getAcidity() + result.getBody();
-
-        if (sum < 8) {
-            return 1;
-        } else if (sum >= 8 && sum < 11) {
-            return 2;
-        } else if (sum >= 11 && sum < 16) {
-            return 3;
-        }
-
-        return -1;
-    }*/
-
     public List<WineTotalVo> redWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
         return MAPPER.redWine(dto);
