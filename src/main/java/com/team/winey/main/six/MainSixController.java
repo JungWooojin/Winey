@@ -86,30 +86,35 @@ public class MainSixController {
     @Scheduled(cron = "0 0 0 * * *") // 매일 자정 마다 실행
     public List<WineRecommandVo> getRandomWines() {
 
+        //로그인한 userId 불러오기
         Long userId = facade.getLoginUserPk().longValue();
 
         LoginUserDto dto = new LoginUserDto();
         dto.setUserId(userId);
 
+        //불러온 userId값 넣어주기
         SelRecommendDto selRecommendDto = new SelRecommendDto();
         selRecommendDto.setUserId(userId);
         List<Integer> recommandWines = recommendMapper.selUserinfo(selRecommendDto);
         List<Long> getProductID = new ArrayList<>();
 
         List<WineRecommandVo> selectedWines = new ArrayList<>();
-
         List<Integer> totalWines = recommandWines;
-        int winesToDisplay = 6;
-        Long val = 0L;
 
+        //userId 당 해당하는 productId 불러오기
         for (Integer wineId : recommandWines) {
             getProductID.add(wineId.longValue());
         }
 
-        for (int i = 0; i < getProductID.size(); i++) {
-            val = getProductID.get(i);
-        }
+        //불러온 productId
+//        Long val = 0L;
+//
+//        for (int i = 0; i < getProductID.size(); i++) {
+//            val = getProductID.get(i);
+//        }
         List<WineRecommandVo> allWines = MAPPER.selWineByday(userId);
+
+        int winesToDisplay = 6;
 
         if (getProductID.size() <= winesToDisplay) {
             selectedWines.addAll(allWines);
@@ -129,49 +134,4 @@ public class MainSixController {
 
         return selectedWines;
     }
-//        List<WineRecommandVo> allWines =  MAPPER.selWineByday(dto.getUserId());
-//
-//        if (getProductID.size() <= winesToDisplay) {
-//            selectedWines.addAll(allWines);
-//        } else {
-//            Set<Integer> selectedIndexes = new HashSet<>();
-//            Random random = new Random();
-//
-//            while (selectedIndexes.size() < winesToDisplay) {
-//                int randomIndex = random.nextInt(getProductID.size());
-//                selectedIndexes.add(randomIndex);
-//            }
-//
-//            for (int index : selectedIndexes) {
-//                selectedWines.add(allWines.get(index));
-//            }
-//        }
-//
-//        return selectedWines;
-
-
-        /*List<WineTotalVo> allWines = MAPPER.selWineByday();
-        List<WineTotalVo> selectedWines = new ArrayList<>();
-
-        int totalWines = allWines.size();
-        int winesToDisplay = 6;
-
-        if (totalWines <= winesToDisplay) {
-            selectedWines.addAll(allWines);
-        } else {
-            Set<Integer> selectedIndexes = new HashSet<>();
-            Random random = new Random();
-
-            while (selectedIndexes.size() < winesToDisplay) {
-                int randomIndex = random.nextInt(totalWines);
-                selectedIndexes.add(randomIndex);
-            }
-
-            for (int index : selectedIndexes) {
-                selectedWines.add(allWines.get(index));
-            }
-        }
-
-        return selectedWines;*/
-
 }
