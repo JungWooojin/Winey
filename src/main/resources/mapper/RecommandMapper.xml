@@ -37,13 +37,47 @@
             </if>
 
             <if test="!(flower == 0 and plant == 0 and fruit == 0 and spicy == 0 and earth == 0 and oak == 0 and nuts == 0)">
-                AND flower = #{flower}
-                AND plant = #{plant}
-                AND fruit = #{fruit}
-                AND spicy = #{spicy}
-                AND earth = #{earth}
-                AND oak = #{oak}
-                AND nuts = #{nuts}
+                AND (
+                <if test="flower != 0">
+                    flower = #{flower}
+                </if>
+                <if test="plant != 0">
+                    <if test="flower != 0">
+                        OR
+                    </if>
+                    plant = #{plant}
+                </if>
+                <if test="fruit != 0">
+                    <if test="flower != 0 or plant != 0">
+                        OR
+                    </if>
+                    fruit = #{fruit}
+                </if>
+                <if test="spicy != 0">
+                    <if test="flower != 0 or plant != 0 or fruit != 0">
+                        OR
+                    </if>
+                    spicy = #{spicy}
+                </if>
+                <if test="earth != 0">
+                    <if test="flower != 0 or plant != 0 or fruit != 0 or spicy != 0">
+                        OR
+                    </if>
+                    earth = #{earth}
+                </if>
+                <if test="oak != 0">
+                    <if test="flower != 0 or plant != 0 or fruit != 0 or spicy != 0 or earth != 0">
+                        OR
+                    </if>
+                    oak = #{oak}
+                </if>
+                <if test="nuts != 0">
+                    <if test="flower != 0 or plant != 0 or fruit != 0 or spicy != 0 or earth != 0 or oak != 0">
+                        OR
+                    </if>
+                    nuts = #{nuts}
+                </if>
+                )
             </if>
 
             <if test="priceRange != null">

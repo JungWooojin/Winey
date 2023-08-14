@@ -99,7 +99,6 @@ class MainControllerTest {
                 .andExpect(jsonPath("$.pic").value("wine/1/qMwuRhM3Sl2mHZSfzDwwXg_pb_x960.png"))
                 .andExpect(jsonPath("$.alcohol").value(8))
                 .andDo(print());
-
         verify(SERVICE).selWineById(any());
     }
 
