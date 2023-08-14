@@ -408,7 +408,7 @@ public class AdminService {
         String orderStatus = String.valueOf(dto.getOrderStatus()); // int -> String 변환
         String pattern = "[1-6]";
         if(!Pattern.matches(pattern, orderStatus)) {
-            return 200L; //orderStatus 코드 유효성 검사 실패시 200 리턴
+            return 500L; //orderStatus 코드 유효성 검사 실패시 500 리턴
         }
 
         int result = MAPPER.updOrderStatus(dto);
