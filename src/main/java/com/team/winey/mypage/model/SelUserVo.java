@@ -1,8 +1,8 @@
 package com.team.winey.mypage.model;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class SelUserVo {
     private Long userId;
     private String email;

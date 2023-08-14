@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class UserUpdDto {
-    private Long iuser;
+    private Long userId;
     private String secretKey;
 }

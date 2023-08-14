@@ -158,9 +158,9 @@ public class SignService {
         return null;
     }
 
-    public int updSecretKey(Long iuser, String secretKey) {
+    public int updSecretKey(Long userId, String secretKey) {
         UserUpdDto dto = new UserUpdDto();
-        dto.setIuser(iuser);
+        dto.setUserId(userId);
         dto.setSecretKey(secretKey);
 
         return MAPPER.updSecretKey(dto);

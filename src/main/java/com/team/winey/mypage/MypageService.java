@@ -14,6 +14,8 @@ public class MypageService {
     private PasswordEncoder passwordEncoder;
 
 
+
+
     public MypageService(MyPageMapper mapper, AuthenticationFacade facade, PasswordEncoder passwordEncoder) {
         this.mapper = mapper;
         this.facade = facade;
@@ -29,8 +31,9 @@ public class MypageService {
         dto2.setTel(dto.getTel());
         dto2.setPw(passwordEncoder.encode(dto.getPw()));
         dto2.setRegionNmId(dto.getRegionNmId());
-        return mapper.updUser(dto2);
-    };
+        Integer result = mapper.updUser(dto2);
+        return result;
+    }
 
     public SelUserVo selUser(){
         SelUserDto dto =new SelUserDto();
