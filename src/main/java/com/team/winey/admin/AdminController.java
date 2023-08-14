@@ -68,8 +68,8 @@ public class AdminController {
         return SERVICE.getProduct(dto);
     }
 
-    //할인 중인 등록 상품 리스트 출력
-    @Operation(summary = "할인률을 입력한 상품 리스트P", description = "saleYn = 1 인 상품만 리스트에 나옵니다.<br>"
+    //할인률 등록 상품 리스트 출력
+    @Operation(summary = "할인률을 입력한 상품 리스트P", description = "saleYn = 1은 할인 적용, 0은 미적용<br>"
             +"page (기본값 1), row (기본값 20) 디폴트값 임시로 해놓은거라 수정이 필요합니다.")
     @GetMapping("/product/salelist")
     public ProductSaleList getProductSale(@RequestParam(defaultValue = "1")int page,

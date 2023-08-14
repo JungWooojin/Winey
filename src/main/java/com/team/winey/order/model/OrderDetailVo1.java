@@ -12,6 +12,7 @@ public class OrderDetailVo1 {
     private int salePrice;
     private int quantity;
     private String pic;
+    private String price;
 
 
 }

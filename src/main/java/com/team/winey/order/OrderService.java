@@ -34,7 +34,6 @@ public class OrderService {
             entity.setStoreNm("이마트 " + entity.getStoreNm());
             entity.setOrderStatus(entity.getOrderStatus());
 
-
             try {
                 String strDate = entity.getPickupTime();
                 SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -51,14 +50,12 @@ public class OrderService {
                 e.printStackTrace();
             }
 
-
             if(entity.getCount() >= 2 ){
                 entity.setNmKor(list.get(0).getNmKor() + " 외 " + (entity.getCount() - 1) + "건");
             } else if (entity.getCount() == 1) {
                 entity.setNmKor(entity.getNmKor());
             }
         }
-
         return list;
     }
 

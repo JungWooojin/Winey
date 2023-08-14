@@ -261,7 +261,7 @@ public class AdminService {
                 .build();
     }
 
-    //할인 중인 상품 리스트 출력 (saleYn = 1인 상품만)
+    //할인 중인 상품 리스트 출력
     public ProductSaleList getProductSale(SelListDto dto) {
         int startIdx = (dto.getPage() - 1) * dto.getRow();
         dto.setStartIdx(startIdx);

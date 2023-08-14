@@ -132,11 +132,10 @@
     </select>
 
     <select id="selProductSale" resultType="ProductSaleVo">
-        SELECT A.product_id productId, A.nm_kor nmKor, A.price, B.sale, B.sale_price salePrice, A.promotion, A.beginner, A.quantity
+        SELECT A.product_id productId, A.nm_kor nmKor, A.price, B.sale, B.sale_price salePrice, A.promotion, A.beginner, A.quantity, B.sale_yn saleYn
         FROM t_product A
         INNER JOIN t_sale B
         ON A.product_id = B.product_id
-        WHERE B.sale_yn = 1
         LIMIT #{startIdx}, #{row}
     </select>
 
