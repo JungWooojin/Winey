@@ -1,8 +1,6 @@
 package com.team.winey.cart;
 
-import com.team.winey.cart.model.CartInsDto2;
-import com.team.winey.cart.model.CartSelDto;
-import com.team.winey.cart.model.CartVo;
+import com.team.winey.cart.model.*;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +30,21 @@ class CartMapperTest {
     }
 
     @Test
-    void selCart() {
-
-    }
-
-    @Test
     void delCart() {
+        int expectResult = 1;
+        CartdelDto dto = new CartdelDto();
+        dto.setCartId(23);
+
+        int actualResult = mapper.delCart(dto);
+        assertEquals(actualResult, expectResult);
     }
 
     @Test
     void updCart() {
+        CartUpdDto dto = new CartUpdDto();
+        dto.setQuantity(2);
+        dto.setCartId(23);
+        int result = mapper.updCart(dto);
+        assertEquals(1, result);
     }
 }
