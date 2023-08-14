@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 public class MypageService {
     private MyPageMapper mapper;
     private AuthenticationFacade facade;
+    private PasswordEncoder passwordEncoder;
+
 
     public MypageService(MyPageMapper mapper, AuthenticationFacade facade, PasswordEncoder passwordEncoder) {
         this.mapper = mapper;
@@ -18,13 +20,6 @@ public class MypageService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    private PasswordEncoder passwordEncoder;
-    OrderVo selOrder(OrderDto dto){
-        return mapper.selOrder(dto);
-    }
-    int updPick(UpdPickDto dto){
-        return mapper.updPick(dto);
-    };
 
 
     public int updUser(UpduserDto dto) {

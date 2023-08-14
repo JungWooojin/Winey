@@ -15,20 +15,6 @@ public class MyPageController {
     private final MypageService service;
 
 
-    @GetMapping("/order")
-    @Operation(summary = "결제내역전체출력")
-    public OrderVo getOrder(OrderDto dto){
-        return service.selOrder(dto);
-    }
-
-    @PutMapping("/pick")
-    @Operation(summary = "픽업완료처리")
-    public int putPick(@RequestParam long orderId){
-        UpdPickDto dto = new UpdPickDto();
-        dto.setOrderId(orderId);
-        return service.updPick(dto);
-    }
-
     @PatchMapping("/upduser")
     @Operation(summary = "회원정보수정", description =
             "주의사항: 로그인되어있을때 사용하셔야합니다. <br>"
@@ -40,13 +26,16 @@ public class MyPageController {
     @GetMapping
     @Operation(summary = "로그인한사람의 회원정보",description =
             "주의사항: 로그인되어있을때 사용하셔야합니다. delYn값이 0이여야합니다. 1이면 삭제처리유저입니다. <br>")
-    private SelUserVo getUser(){
+    public SelUserVo getUser(){
         return service.selUser();
     }
+
+
+
     @DeleteMapping
     @Operation(summary = "유저 삭제 처리",description =
             "주의사항: 로그인되어있을때 사용하셔야합니다. delYn이 0에서 1로 삭제처리로 바꾸는 작업입니다.<br>")
-    private int delUser(){
+    public int delUser(){
         return service.delUser();
     }
 }
