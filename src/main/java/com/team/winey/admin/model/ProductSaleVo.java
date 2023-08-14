@@ -1,8 +1,10 @@
 package com.team.winey.admin.model;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class ProductSaleVo {
     private Long productId;
     private String nmKor;
