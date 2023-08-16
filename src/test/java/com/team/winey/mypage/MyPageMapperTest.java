@@ -44,6 +44,7 @@ class MyPageMapperTest {
         dto.setUserId(1L);
         SelUserVo result = mapper.selUser(dto);
     }
+
     @Test
     void delUser() {
         DelUserDto dto= new DelUserDto();

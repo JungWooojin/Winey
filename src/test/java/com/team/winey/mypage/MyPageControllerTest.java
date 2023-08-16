@@ -89,8 +89,6 @@ class MyPageControllerTest {
                 .andExpect(jsonPath("$.email").value("wash98@naver.com"))
                 .andExpect(jsonPath("$.nm").value("정우진"));
         verify(service).selUser();
-
-
     }
 
 

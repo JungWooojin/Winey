@@ -32,11 +32,13 @@ public class RecommendController {
     }
 
     @GetMapping("/loginuser")
+    @Operation(summary = "로그인한 유저의 PK값")
     public int LoginUserPk(){
         return service.loginUserPk();
     }
 
     @GetMapping("/getUserInfo")
+    @Operation(summary = "유저정보")
     public List<Integer> getUserInfo() {
         return service.selUserinfo();
     }

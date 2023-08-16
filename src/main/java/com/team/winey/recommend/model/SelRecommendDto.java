@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class SelRecommendDto {
     private Long userId;
+    private Long productId;
 }
