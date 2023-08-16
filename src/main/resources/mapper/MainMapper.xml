@@ -24,7 +24,7 @@
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 1
         ORDER BY a.product_id DESC
@@ -52,7 +52,7 @@
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 1
         ORDER BY price
