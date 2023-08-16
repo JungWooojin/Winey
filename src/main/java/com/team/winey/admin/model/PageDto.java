@@ -1,8 +1,10 @@
 package com.team.winey.admin.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class PageDto {
     private int page; //현재 페이지 번호
     private int row; //페이지 당 표시할 개수

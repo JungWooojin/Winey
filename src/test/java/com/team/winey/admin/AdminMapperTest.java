@@ -24,7 +24,7 @@ class AdminMapperTest {
         dto.setCategoryId(1);
         dto.setFeatureId(1);
         dto.setCountryId(1);
-        dto.setAromaId(1);
+//        dto.setAromaId(1);
         dto.setNmKor("한글이름");
         dto.setNmEng("EngName");
         dto.setPrice(10000);
