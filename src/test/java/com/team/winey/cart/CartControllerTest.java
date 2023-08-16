@@ -47,7 +47,7 @@ class CartControllerTest {
 
         mvc.perform(MockMvcRequestBuilders.post("/api/wine/cart")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"productId\": 1, \"quantity\": 2}"))
+                        .content("{\"productId\": 1, \"quantity\": 1}"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("1"));
 
