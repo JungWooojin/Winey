@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-08-14T02:52:07.247Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="buZ59OSEcPslS74aT7hO" version="21.6.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-08-16T03:51:32.132Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" etag="mPJPJg3bk69LvHALo8ux" version="21.6.8" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2074" dy="752" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -205,14 +205,6 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="j07MkLIGBB6SY7WjXgDA-51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="j07MkLIGBB6SY7WjXgDA-50" target="j07MkLIGBB6SY7WjXgDA-19" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="757" y="1710" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="j07MkLIGBB6SY7WjXgDA-50" value="네비게이션바&lt;br&gt;(메인페이지)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="480" y="1850" width="140" height="50" as="geometry" />
-        </mxCell>
         <mxCell id="j07MkLIGBB6SY7WjXgDA-53" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="414" y="2000" width="60" height="30" as="geometry" />
         </mxCell>
@@ -225,13 +217,13 @@
         <mxCell id="j07MkLIGBB6SY7WjXgDA-56" value="Yes" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="310" y="1800" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Yk4OX9eRTrmea5lvyi48-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="j07MkLIGBB6SY7WjXgDA-64" target="Yk4OX9eRTrmea5lvyi48-1">
+        <mxCell id="Yk4OX9eRTrmea5lvyi48-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="j07MkLIGBB6SY7WjXgDA-64" target="Yk4OX9eRTrmea5lvyi48-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="j07MkLIGBB6SY7WjXgDA-64" value="최신등록순,&amp;nbsp;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;높은금액순,&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;낮은금액순별&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;출력" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;shadow=0;strokeWidth=1;spacing=6;spacingTop=-4;labelBackgroundColor=none;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="1043.5" y="1955" width="120" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="Yk4OX9eRTrmea5lvyi48-1" value="와인 상세페이지" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="Yk4OX9eRTrmea5lvyi48-1" value="와인 상세페이지" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="1241" y="1975" width="140" height="50" as="geometry" />
         </mxCell>
       </root>
