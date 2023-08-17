@@ -9,9 +9,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 1
         LIMIT ${startIdx}, ${row}
@@ -22,7 +22,7 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
@@ -36,9 +36,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 1
         ORDER BY price DESC
@@ -50,7 +50,7 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
@@ -66,9 +66,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 2
         LIMIT ${startIdx}, ${row}
@@ -79,9 +79,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 2
         ORDER BY a.product_id DESC
@@ -93,9 +93,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 2
         ORDER BY price DESC
@@ -107,9 +107,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 2
         ORDER BY price
@@ -124,9 +124,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 3
         LIMIT ${startIdx}, ${row}
@@ -137,9 +137,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 3
         ORDER BY a.product_id DESC
@@ -151,9 +151,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 3
         ORDER BY price DESC
@@ -165,9 +165,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 3
         ORDER BY price
@@ -181,9 +181,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 4
         LIMIT ${startIdx}, ${row}
@@ -194,9 +194,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 4
         ORDER BY a.product_id DESC
@@ -208,9 +208,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 4
         ORDER BY price DESC
@@ -222,9 +222,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 4
         ORDER BY price
@@ -252,9 +252,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
     </select>
 
@@ -271,9 +271,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         LIMIT ${startIdx}, ${row}
     </select>
@@ -283,9 +283,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
@@ -296,9 +296,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
@@ -309,9 +309,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         ORDER BY price
         LIMIT ${startIdx}, ${row}
@@ -324,9 +324,9 @@
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_sale b
+        INNER JOIN t_sale b
         ON a.product_id = b.product_id
-        LEFT JOIN t_aroma c
+        INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.product_id = #{productId}
     </select>
@@ -339,9 +339,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price < 20000
             LIMIT ${startIdx}, ${row}
@@ -354,9 +354,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price < 20000
             ORDER BY a.product_id DESC
@@ -370,9 +370,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price < 20000
             ORDER BY price DESC
@@ -386,9 +386,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price < 20000
             ORDER BY price
@@ -404,9 +404,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
             LIMIT ${startIdx}, ${row}
@@ -419,9 +419,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
             ORDER BY a.product_id DESC
@@ -435,9 +435,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
             ORDER BY price DESC
@@ -451,9 +451,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
             ORDER BY price
@@ -470,9 +470,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
             LIMIT ${startIdx}, ${row}
@@ -485,9 +485,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
             ORDER BY a.product_id DESC
@@ -501,9 +501,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
             ORDER BY price DESC
@@ -517,9 +517,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
             ORDER BY price
@@ -536,9 +536,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 100000
             LIMIT ${startIdx}, ${row}
@@ -551,9 +551,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 100000
             ORDER BY a.product_id DESC
@@ -567,9 +567,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 100000
             ORDER BY price DESC
@@ -583,9 +583,9 @@
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
             a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
             FROM t_product a
-            LEFT JOIN t_sale b
+            INNER JOIN t_sale b
             ON a.product_id = b.product_id
-            LEFT JOIN t_aroma c
+            INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 100000
             ORDER BY price
@@ -600,11 +600,11 @@
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
         FROM t_product a
-        LEFT JOIN t_country b
+        INNER JOIN t_country b
         ON a.country_id = b.country_id
-        LEFT JOIN t_sale c
+        INNER JOIN t_sale c
         ON a.product_id = c.product_id
-        LEFT JOIN t_aroma d
+        INNER JOIN t_aroma d
         ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
         LIMIT ${startIdx}, ${row}
@@ -615,11 +615,11 @@
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
         FROM t_product a
-        LEFT JOIN t_country b
+        INNER JOIN t_country b
         ON a.country_id = b.country_id
-        LEFT JOIN t_sale c
+        INNER JOIN t_sale c
         ON a.product_id = c.product_id
-        LEFT JOIN t_aroma d
+        INNER JOIN t_aroma d
         ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
         ORDER BY a.product_id DESC
@@ -631,11 +631,11 @@
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
         FROM t_product a
-        LEFT JOIN t_country b
+        INNER JOIN t_country b
         ON a.country_id = b.country_id
-        LEFT JOIN t_sale c
+        INNER JOIN t_sale c
         ON a.product_id = c.product_id
-        LEFT JOIN t_aroma d
+        INNER JOIN t_aroma d
         ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
         ORDER BY price desc
@@ -647,11 +647,11 @@
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
         FROM t_product a
-        LEFT JOIN t_country b
+        INNER JOIN t_country b
         ON a.country_id = b.country_id
-        LEFT JOIN t_sale c
+        INNER JOIN t_sale c
         ON a.product_id = c.product_id
-        LEFT JOIN t_aroma d
+        INNER JOIN t_aroma d
         ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
         ORDER BY price
@@ -665,15 +665,15 @@
         f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_wine_pairing b
+        INNER JOIN t_wine_pairing b
         ON a.product_id = b.product_id
-        LEFT JOIN t_small_category c
+        INNER JOIN t_small_category c
         ON b.small_category_id = c.small_category_id
-        LEFT JOIN t_big_category d
+        INNER JOIN t_big_category d
         ON c.big_category_id = d.big_category_id
-        LEFT JOIN t_sale e
+        INNER JOIN t_sale e
         ON a.product_id = e.product_id
-        LEFT JOIN t_aroma f
+        INNER JOIN t_aroma f
         ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
         LIMIT ${startIdx}, ${row}
@@ -684,15 +684,15 @@
         f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_wine_pairing b
+        INNER JOIN t_wine_pairing b
         ON a.product_id = b.product_id
-        LEFT JOIN t_small_category c
+        INNER JOIN t_small_category c
         ON b.small_category_id = c.small_category_id
-        LEFT JOIN t_big_category d
+        INNER JOIN t_big_category d
         ON c.big_category_id = d.big_category_id
-        LEFT JOIN t_sale e
+        INNER JOIN t_sale e
         ON a.product_id = e.product_id
-        LEFT JOIN t_aroma f
+        INNER JOIN t_aroma f
         ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
         ORDER BY a.product_id DESC
@@ -704,15 +704,15 @@
         f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_wine_pairing b
+        INNER JOIN t_wine_pairing b
         ON a.product_id = b.product_id
-        LEFT JOIN t_small_category c
+        INNER JOIN t_small_category c
         ON b.small_category_id = c.small_category_id
-        LEFT JOIN t_big_category d
+        INNER JOIN t_big_category d
         ON c.big_category_id = d.big_category_id
-        LEFT JOIN t_sale e
+        INNER JOIN t_sale e
         ON a.product_id = e.product_id
-        LEFT JOIN t_aroma f
+        INNER JOIN t_aroma f
         ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
         ORDER BY price DESC
@@ -724,15 +724,15 @@
         f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
         FROM t_product a
-        LEFT JOIN t_wine_pairing b
+        INNER JOIN t_wine_pairing b
         ON a.product_id = b.product_id
-        LEFT JOIN t_small_category c
+        INNER JOIN t_small_category c
         ON b.small_category_id = c.small_category_id
-        LEFT JOIN t_big_category d
+        INNER JOIN t_big_category d
         ON c.big_category_id = d.big_category_id
-        LEFT JOIN t_sale e
+        INNER JOIN t_sale e
         ON a.product_id = e.product_id
-        LEFT JOIN t_aroma f
+        INNER JOIN t_aroma f
         ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
         ORDER BY price
