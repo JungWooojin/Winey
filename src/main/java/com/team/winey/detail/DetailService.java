@@ -105,12 +105,6 @@ public class DetailService {
         SelSale selSale = MAPPER.selSale(productId);
         if(selSale !=null){
             selSale.setProductId(productId);
-            if( !"".equals(selSale.getSalePrice())){
-                selSale.setSalePrice(vo.getPrice() - (vo.getPrice() * selSale.getSale() / 100));
-
-            } else {
-                selSale.setSalePrice(vo.getPrice());
-            }
 
         } else if(selSale ==null) {
             selSale = null;
