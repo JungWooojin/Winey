@@ -50,6 +50,7 @@ public class PaymentService {
         dto2.setPickupTime(dto.getPickupTime());
         dto2.setSalePrice(dto.getSalePrice());
         dto2.setPayment(dto.getPayment());
+        dto2.setQuantity(dto.getQuantity()); //추가 20230817
         mapper.insEachPayment(dto2);
 
         OrderDetailInsDto d = new OrderDetailInsDto();
