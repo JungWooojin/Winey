@@ -38,8 +38,6 @@ class MyPageControllerTest {
 
     @Autowired
     private MockMvc mvc;// 테스트 단에서 요청보내기
-
-
     @MockBean
     private MypageService service;
 
@@ -63,7 +61,6 @@ class MyPageControllerTest {
                         .andExpect(content().string("1"))
                         .andDo(print());
         verify(service).updUser(any());
-
     }
 
     @Test
@@ -76,9 +73,7 @@ class MyPageControllerTest {
             vo.setDelYn('0');
             vo.setEmail("wash98@naver.com");
             vo.setNm("정우진");
-
             given(service.selUser()).willReturn(vo);
-
         ResultActions ra =mvc.perform(get("/api/userinfo"));
         ra.andExpect(status().isOk())
                 .andExpect(jsonPath("$.userId").value(1L))
@@ -90,8 +85,6 @@ class MyPageControllerTest {
                 .andExpect(jsonPath("$.nm").value("정우진"));
         verify(service).selUser();
     }
-
-
     @Test
     void delUser() throws Exception{
         given(service.delUser()).willReturn(300);
@@ -103,7 +96,8 @@ class MyPageControllerTest {
                         .andExpect(content().string("300"))
                         .andDo(print());
                 verify(service).delUser();
-
-
     }
 }
+
+
+
