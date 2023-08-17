@@ -17,7 +17,7 @@
     <select id="getByUid">
         SELECT user_id userId,email,pw,role,nm name,tos_yn tosYn,tel,created_at createdAt,updated_at updatedAt,region_nm_id regionNmId,secret_key secretKey
         FROM t_user
-        WHERE email = #{email}
+        WHERE email = #{email} and del_yn=0
     </select>
 
     <update id="updSecretKey">
