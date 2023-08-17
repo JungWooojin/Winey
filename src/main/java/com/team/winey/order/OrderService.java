@@ -64,11 +64,7 @@ public class OrderService {
         OrderCancelDto dto = new OrderCancelDto();
         dto.setUserId(facade.getLoginUserPk());
         dto.setOrderId(orderId);
-        int result = mapper.cancelOrder(dto);
-
-
         return mapper.cancelOrder(dto);
-
     }
 
     int pickupFinishOrder(Long orderId) {

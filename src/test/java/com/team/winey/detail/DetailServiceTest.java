@@ -90,10 +90,6 @@ class DetailServiceTest {
         verify(mapper).selPairing(any());
         verify(mapper).selSale(any());
         verify(mapper).selAroma(any());
-
-        //verify(mapper).selCount(any());
-
-
     }
 
 
