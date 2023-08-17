@@ -23,6 +23,7 @@ public class PaymentService {
         dto2.setStoreId(dto.getStoreId());
         dto2.setPickupTime(dto.getPickupTime());
         dto2.setTotalOrderPrice(dto.getTotalOrderPrice());
+
         mapper.insPayment(dto2);
 
 
