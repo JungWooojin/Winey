@@ -32,9 +32,7 @@ class MyPageMapperTest {
         dto2.setPw("1234");
         dto2.setTel("01044444444");
         dto2.setRegionNmId(5L);
-
         int result = mapper.updUser(dto2);
-
         assertEquals(1,result);
     }
 

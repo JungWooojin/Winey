@@ -49,20 +49,14 @@ class MypageServiceTest {
 
     @BeforeEach
     void beforeEach() {
-
-
         UserDetails user = createUserDetails();
-
         SecurityContext context = SecurityContextHolder.getContext();
         context.setAuthentication(new UsernamePasswordAuthenticationToken(user, user.getPassword(), user.getAuthorities()));
-
-}
-
+    }
     private UserDetails createUserDetails() {
         List<String> roles = new ArrayList<>();
         roles.add("ROLE_USER");
         //roles.add("ROLE_ADMIN");
-
         UserDetails userDetails = MyUserDetails.builder()
                 .userId(1L)
                 .pw("123")
@@ -70,71 +64,47 @@ class MypageServiceTest {
                 .build();
         return userDetails;
     }
-
-
-        @Test
-        void updUser()  {
-            when(mapper.updUser(any())).thenReturn(1);
-
-            UpduserDto dto  = new UpduserDto();
-            dto.setName("정우진");
-            dto.setPw("1234");
-            dto.setTel("01044444444");
-            dto.setRegionNmId(5L);
-
-            // When
-            int result = service.updUser(dto);
-
-            // Then
-            assertEquals(1, result);
-            verify(mapper).updUser(any());
-        }
-
-
+    @Test
+    void updUser() {
+        when(mapper.updUser(any())).thenReturn(1);
+        UpduserDto dto = new UpduserDto();
+        dto.setName("정우진");
+        dto.setPw("1234");
+        dto.setTel("01044444444");
+        dto.setRegionNmId(5L);
+        int result = service.updUser(dto);
+        assertEquals(1, result);
+        verify(mapper).updUser(any());
+    }
     @Test
     @DisplayName("유저정보출력")
-  //      @WithMockUser(username = "aaa", password = "123")
+        //      @WithMockUser(username = "aaa", password = "123")
     void selUser() {
-
-      when(facade.getLoginUserPk()).thenReturn(1L);
-       // Given
-       SelUserDto dto = new SelUserDto();
-      dto.setUserId(facade.getLoginUserPk());
-
-       SelUserVo vo = new SelUserVo();
-       vo.setNm("성수천");
-     vo.setDelYn((char) 0);
+        when(facade.getLoginUserPk()).thenReturn(1L);
+        SelUserDto dto = new SelUserDto();
+        dto.setUserId(facade.getLoginUserPk());
+        SelUserVo vo = new SelUserVo();
+        vo.setNm("성수천");
+        vo.setDelYn((char) 0);
         vo.setPw("123");
         vo.setUserId(facade.getLoginUserPk());
-      vo.setRegionNmId(3L);
-       vo.setTel("01077778888");
-
-       SelUserVo vo1 = new SelUserVo();
-
-       when(mapper.selUser(any())).thenReturn(vo);
-
-//           when(mapper.selUser(facade.getLoginUserPk())).thenReturn(vo); // 메소드 호출 설정
-
-
+        vo.setRegionNmId(3L);
+        vo.setTel("01077778888");
+        SelUserVo vo1 = new SelUserVo();
+        when(mapper.selUser(any())).thenReturn(vo);
         SelUserVo result = mapper.selUser(dto);
-       assertEquals(vo.getUserId(), result.getUserId());
+        assertEquals(vo.getUserId(), result.getUserId());
     }
-
-
     @Test
     void delUser() {
-        // Given
         when(facade.getLoginUserPk()).thenReturn(1L);
         when(mapper.delUser(any())).thenReturn(1);
         DelUserDto dto = new DelUserDto();
         dto.setUserId(facade.getLoginUserPk());
-
-        // When
         int result = mapper.delUser(dto);
-
-        // Then
         assertEquals(1, result);
         verify(mapper).delUser(dto);
     }
-
 }
+
+

@@ -17,11 +17,11 @@
         from t_user
         where user_id=#{userId}
     </select>
-    <update id="delUser">
-        update t_user
-        SET  del_yn = 1
+    <delete id="delUser">
+        delete
+        from t_user
         where user_id=#{userId}
-    </update>
+    </delete>
 
 
 
