@@ -109,11 +109,26 @@ class DetailControllerTest {
 
 
 
-
-
-
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Test
     void getWineKorNm() {
