@@ -8,7 +8,7 @@
         SELECT
         A.cart_id AS cartId, A.user_id, B.product_id AS productId,
         A.quantity, B.nm_kor AS nmKor,
-        B.nm_eng AS nmEng,
+        B.nm_eng AS nmEng, c.sale_price salePrice,
         IF(C.sale_yn = 1, IF(c.sale_price = 0, B.price, c.sale_price), B.price) AS price,
         B.pic
         FROM
