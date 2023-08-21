@@ -11,7 +11,6 @@ public interface UserDetailsMapper {
     int save(UserEntity p);
     UserEntity getByUid(String email);
     int updSecretKey(UserUpdDto dto);
-
     int updUserToken(UserTokenEntity p);
     UserTokenEntity selUserToken(UserTokenEntity p);
 

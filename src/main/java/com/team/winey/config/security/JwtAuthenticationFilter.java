@@ -29,7 +29,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if(token != null && PROVIDER.isValidateToken(token, PROVIDER.ACCESS_KEY)) {
 
             String isLogout = service.getValues(token);
-            if(ObjectUtils.isEmpty(isLogout)) { //로그아웃이 없으면 액세스토큰이 없어 그러면 통과 있으면 반려
+            if(ObjectUtils.isEmpty(isLogout)) { //로그아웃이 아니면 액세스토큰이 없어 그러면 통과 있으면 반려
                 Authentication auth = PROVIDER.getAuthentication(token);
                 SecurityContextHolder.getContext().setAuthentication(auth);
                 log.info("JwtAuthenticationFilter - doFilterInternal: 토큰 유효성 체크 완료");
