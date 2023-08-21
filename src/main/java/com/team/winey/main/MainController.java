@@ -33,6 +33,7 @@ public class MainController {
         WineSelDto dto = new WineSelDto();
         dto.setPage(page);
         dto.setRow(row);
+        dto.setSaleYn(1L);
         return SERVICE.redWine(dto);
     }
 

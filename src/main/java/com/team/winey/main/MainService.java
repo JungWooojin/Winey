@@ -18,7 +18,15 @@ public class MainService {
 
     public List<WineTotalVo> redWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.redWine(dto);
+
+        List<WineTotalVo> wine = MAPPER.redWine(dto);
+        for (WineTotalVo vo : wine) {
+            if(vo.getSaleYn() == 0)
+            vo.setSale(0);
+            vo.setSalePrice(vo.getPrice());
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> redWineByNew(WineSelDto dto) {

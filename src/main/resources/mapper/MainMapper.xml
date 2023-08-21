@@ -7,7 +7,7 @@
     <select id="redWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
