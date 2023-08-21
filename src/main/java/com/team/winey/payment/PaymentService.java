@@ -37,7 +37,7 @@ public class PaymentService {
             d.setQuantity( dto.getList().get(i).getQuantity());
             d.setProductId(dto.getList().get(i).getProductId());
             d.setOrderId(dto2.getOrderId());
-//            d.setSalePrice(dto.getList().get(i).getSalePrice());
+            d.setSalePrice(dto.getList().get(i).getSalePrice());
             mapper.insOrderDetail(d);
         }
 
