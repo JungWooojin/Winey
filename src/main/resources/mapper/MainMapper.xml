@@ -20,7 +20,7 @@
     <select id="redWineByNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -34,7 +34,7 @@
     <select id="redWineByExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -48,7 +48,7 @@
     <select id="redWineByCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -64,7 +64,7 @@
     <select id="whiteWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -77,7 +77,7 @@
     <select id="whiteWineByNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -91,7 +91,7 @@
     <select id="whiteWineByExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -105,7 +105,7 @@
     <select id="whiteWineByCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -122,7 +122,7 @@
     <select id="sparklingWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -135,7 +135,7 @@
     <select id="sparklingWineByNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -149,7 +149,7 @@
     <select id="sparklingWineByExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -163,7 +163,7 @@
     <select id="sparklingWineByCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -179,7 +179,7 @@
     <select id="otherWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -192,7 +192,7 @@
     <select id="otherWineByNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -206,7 +206,7 @@
     <select id="otherWineByExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -220,7 +220,7 @@
     <select id="otherWineByCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -250,7 +250,7 @@
     <select id="selWinePrice">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -269,7 +269,7 @@
     <select id="selWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -281,7 +281,7 @@
     <select id="selWineByNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -294,7 +294,7 @@
     <select id="selWineByExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -307,7 +307,7 @@
     <select id="selWineByCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -322,7 +322,7 @@
     <select id="selWineById">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_sale b
         ON a.product_id = b.product_id
@@ -337,7 +337,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -352,7 +352,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -368,7 +368,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -384,7 +384,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -402,7 +402,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -417,7 +417,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -433,7 +433,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -449,7 +449,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -468,7 +468,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -483,7 +483,7 @@
         <![CDATA[
              SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -499,7 +499,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -515,7 +515,7 @@
         <![CDATA[
              SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -534,7 +534,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -549,7 +549,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -565,7 +565,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -581,7 +581,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             INNER JOIN t_sale b
             ON a.product_id = b.product_id
@@ -598,7 +598,7 @@
     <select id="selWineByCountry">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price, c.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_country b
         ON a.country_id = b.country_id
@@ -613,7 +613,7 @@
     <select id="selWineByCountryNew">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price, c.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_country b
         ON a.country_id = b.country_id
@@ -629,7 +629,7 @@
     <select id="selWineByCountryExpencive">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price, c.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_country b
         ON a.country_id = b.country_id
@@ -645,7 +645,7 @@
     <select id="selWineByCountryCheap">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price, c.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_country b
         ON a.country_id = b.country_id
@@ -663,7 +663,7 @@
     <select id="selWineByFood">
         SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice, e.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_wine_pairing b
         ON a.product_id = b.product_id
@@ -682,7 +682,7 @@
     <select id="selWineByFoodNew">
         SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice, e.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_wine_pairing b
         ON a.product_id = b.product_id
@@ -702,7 +702,7 @@
     <select id="selWineByFoodExpencive">
         SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice, e.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_wine_pairing b
         ON a.product_id = b.product_id
@@ -722,7 +722,7 @@
     <select id="selWineByFoodCheap">
         SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice, e.sale_yn saleYn
         FROM t_product a
         INNER JOIN t_wine_pairing b
         ON a.product_id = b.product_id
