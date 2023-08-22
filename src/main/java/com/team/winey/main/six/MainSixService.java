@@ -19,27 +19,69 @@ public class MainSixService {
 
     //6개씩 출력
     public List<WineTotalVo> selWineByPrice2limit6() {
-        return MAPPER.selWineByPrice2limit6();
+        List<WineTotalVo> wine = MAPPER.selWineByPrice2limit6();
+        for (WineTotalVo vo : wine) {
+            if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 
     public List<WineTotalVo> selWineByPrice25limit6() {
-        return MAPPER.selWineByPrice25limit6();
+        List<WineTotalVo> wine = MAPPER.selWineByPrice25limit6();
+        for (WineTotalVo vo : wine) {
+            if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 
     public List<WineTotalVo> selWineByPrice510limit6() {
-        return MAPPER.selWineByPrice510limit6();
+        List<WineTotalVo> wine = MAPPER.selWineByPrice510limit6();
+        for (WineTotalVo vo : wine) {
+            if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 
     public List<WineTotalVo> selWineByPrice10limit6() {
-        return MAPPER.selWineByPrice10limit6();
+        List<WineTotalVo> wine = MAPPER.selWineByPrice10limit6();
+        for (WineTotalVo vo : wine) {
+            if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 
     public List<WineTotalVo> selWineByCountrylimit6(WineSelByCountryDto dto) {
-        return MAPPER.selWineByCountrylimit6(dto);
+        List<WineTotalVo> wine = MAPPER.selWineByCountrylimit6(dto);
+        for (WineTotalVo vo : wine) {
+            if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 
     public List<WineFoodVo> selWineByFoodlimit6(WineSelByFoodDto dto) {
-        return MAPPER.selWineByFoodlimit6(dto);
+        List<WineFoodVo> wine = MAPPER.selWineByFoodlimit6(dto);
+        for (WineFoodVo vo : wine) {
+            if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 
 //    public List<WineTotalVo> selWineByday() {
