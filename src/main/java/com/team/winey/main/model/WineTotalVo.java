@@ -22,5 +22,4 @@ public class WineTotalVo {
     private int sale;
     private int salePrice;
 
-
 }
