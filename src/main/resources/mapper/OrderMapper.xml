@@ -44,7 +44,7 @@
     <select id="selOrderDetail1">
         SELECT A.order_detail_id orderDetailId,
         B.nm_kor nmKor, B.nm_eng nmEng,
-        A.sale_price salePrice, A.quantity, B.pic, B.price
+        A.sale_price salePrice, A.quantity, B.pic, B.price, B.product_id productId
         FROM t_order_detail A
         INNER JOIN t_product B
         ON A.product_id = B.product_id

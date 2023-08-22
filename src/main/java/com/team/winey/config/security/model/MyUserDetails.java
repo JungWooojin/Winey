@@ -22,6 +22,8 @@ public class MyUserDetails implements UserDetails {
     @Builder.Default
     private List<String> roles = new ArrayList<>();
 
+
+    //UserDetails라는 기본 스프링 메소드를 오버라이딩한다고생각
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
@@ -33,6 +35,8 @@ public class MyUserDetails implements UserDetails {
     @Override
     public String getUsername() { return String.valueOf(userId); }
 
+
+    //이 밑으로는 건드리기 ㄴㄴ 디테일해서 안건드리기로함
     @Override
     public boolean isAccountNonExpired() { return true; }
 

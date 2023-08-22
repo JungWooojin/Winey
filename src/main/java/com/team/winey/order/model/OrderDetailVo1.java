@@ -13,6 +13,7 @@ public class OrderDetailVo1 {
     private int quantity;
     private String pic;
     private String price;
+    private int productId;
 
 
 }

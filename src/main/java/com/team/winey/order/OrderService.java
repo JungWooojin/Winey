@@ -51,7 +51,7 @@ public class OrderService {
             }
 
             if(entity.getCount() >= 2 ){
-                entity.setNmKor(list.get(0).getNmKor() + " 외 " + (entity.getCount() - 1) + "건");
+                entity.setNmKor(entity.getNmKor() + " 외 " + (entity.getCount() - 1) + "건");
             } else if (entity.getCount() == 1) {
                 entity.setNmKor(entity.getNmKor());
             }
