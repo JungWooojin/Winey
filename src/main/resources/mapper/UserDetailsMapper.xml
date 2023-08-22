@@ -36,7 +36,6 @@
         ip=#{ip}
         ,access_token = #{accessToken}
         , refresh_token = #{refreshToken}
-
     </insert>
 
     <select id="selUserToken">
