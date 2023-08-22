@@ -67,12 +67,13 @@
 //    void getUser() throws Exception {
 //            SelUserVo vo = new SelUserVo();
 //            vo.setUserId(1L);
+//            vo.setPw("123");
 //            vo.setTel("01051309372");
 //            vo.setRegionNmId(3L);
 //            vo.setDelYn('0');
 //            vo.setEmail("wash98@naver.com");
 //            vo.setNm("정우진");
-////            given(service.selUser()).willReturn(vo);
+//            given(service.selUser()).willReturn(vo);
 //        ResultActions ra =mvc.perform(get("/api/userinfo"));
 //        ra.andExpect(status().isOk())
 //                .andExpect(jsonPath("$.userId").value(1L))
@@ -82,7 +83,7 @@
 //                .andExpect(jsonPath("$.delYn").value(0))
 //                .andExpect(jsonPath("$.email").value("wash98@naver.com"))
 //                .andExpect(jsonPath("$.nm").value("정우진"));
-////        verify(service).selUser();
+//        verify(service).selUser();
 //    }
 //    @Test
 //    void delUser() throws Exception{
