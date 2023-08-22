@@ -107,8 +107,14 @@ public class DetailService {
             selSale.setProductId(productId);
 
         } else if(selSale ==null) {
-            selSale = null;
-            log.info("할인상품아님");
+//            selSale = null;
+//            log.info("할인상품아님"); 이게 원래 코드
+            SelSale sale = new SelSale();
+            sale.setProductId(productId);
+            sale.setSalePrice(vo.getPrice());
+            sale.setSale(0);
+            selSale = sale; //수정후 - 세일상품아니면 세일프라이스에 원가를 넣고 할인율을 0으로 넣음
+
         }
 
 
