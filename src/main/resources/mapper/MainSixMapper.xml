@@ -8,7 +8,7 @@
         <![CDATA[
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
         FROM t_product a
         LEFT JOIN t_sale b
         ON a.product_id = b.product_id
@@ -24,7 +24,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
@@ -39,7 +39,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
@@ -54,7 +54,7 @@
         <![CDATA[
             SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
             c.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice
+            a.promotion, a.beginner, a.alcohol, b.sale, b.sale_price salePrice, b.sale_yn saleYn
             FROM t_product a
             LEFT JOIN t_sale b
             ON a.product_id = b.product_id
@@ -68,7 +68,7 @@
     <select id="selWineByCountrylimit6">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price, c.sale_yn saleYn
         FROM t_product a
         LEFT JOIN t_country b
         ON a.country_id = b.country_id
@@ -83,7 +83,7 @@
     <select id="selWineByFoodlimit6">
         SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         f.aroma_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice, e.sale_yn saleYn
         FROM t_product a
         LEFT JOIN t_wine_pairing b
         ON a.product_id = b.product_id
@@ -102,7 +102,7 @@
     <select id="selWineByday">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         d.aroma_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
-        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price salePrice
+        a.promotion, a.beginner, a.alcohol, c.sale, c.sale_price salePrice, c.sale_yn saleYn
         from t_product a
         LEFT JOIN t_user_info b
         ON a.product_id = b.product_id

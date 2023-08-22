@@ -6,7 +6,6 @@ import lombok.Data;
 public class SelUserVo {
     private Long userId;
     private String email;
-    private String pw;
     private String nm;
     private String tel;
     private Long regionNmId;

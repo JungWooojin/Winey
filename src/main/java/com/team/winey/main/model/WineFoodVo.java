@@ -22,6 +22,8 @@ public class WineFoodVo {
     private int alcohol;
     private int sale;
     private int salePrice;
+    private int saleYn;
+
 
 
 }

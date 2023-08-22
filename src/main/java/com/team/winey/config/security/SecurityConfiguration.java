@@ -30,17 +30,15 @@ public class SecurityConfiguration {
                                             , "/**"
                                             , "/index.html"
                                             , "/static/**"
-
                                             ,"/sign-api/sign-in"
                                             , "/sign-api/sign-up"
                                             , "/sign-api/exception"
-
                                             , "/view/**"
                                              ,"/api/**"
                                     ).permitAll()
                                     .requestMatchers(HttpMethod.GET, "/sign-api/refresh-token").permitAll()
                                     .requestMatchers("**exception**").permitAll() //exception의  용도
-                                    .requestMatchers("/todo-api").hasAnyRole("USER", "ADMIN")  // roles 값을 두개값으로 따로 check in 처럼 데이터에 제한을 두어야하는지 그냥 insert해야할지 ?
+                                    .requestMatchers("/sign-api").hasAnyRole("USER", "ADMIN")  // roles 값을 두개값으로 따로 check in 처럼 데이터에 제한을 두어야하는지 그냥 insert해야할지 ?
                                     .anyRequest().hasRole("ADMIN")
                 ) //사용 권한 체크
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //세션 사용 X

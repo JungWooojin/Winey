@@ -18,88 +18,230 @@ public class MainService {
 
     public List<WineTotalVo> redWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.redWine(dto);
+
+        List<WineTotalVo> wine = MAPPER.redWine(dto);
+        for (WineTotalVo vo : wine) {
+            if(vo.getSaleYn() == 0){
+            vo.setSale(0);
+            vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> redWineByNew(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.redWineByNew(dto);
+
+        List<WineTotalVo> wine = MAPPER.redWineByNew(dto);
+        for (WineTotalVo vo : wine) {
+            if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> redWineByExpencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.redWineByExpencive(dto);
+
+        List<WineTotalVo> wine = MAPPER.redWineByExpencive(dto);
+        for (WineTotalVo vo : wine) {
+            if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> redWineByCheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.redWineByCheap(dto);
+
+        List<WineTotalVo> wine = MAPPER.redWineByCheap(dto);
+        for (WineTotalVo vo : wine) {
+            if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     //====================================================================
 
     public List<WineTotalVo> whiteWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.whiteWine(dto);
+
+        List<WineTotalVo> wine = MAPPER.whiteWine(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> whiteWineByNew(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.whiteWineByNew(dto);
+
+        List<WineTotalVo> wine = MAPPER.whiteWineByNew(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> whiteWineByExpencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.whiteWineByExpencive(dto);
+
+        List<WineTotalVo> wine = MAPPER.whiteWineByExpencive(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> whiteWineByCheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.whiteWineByCheap(dto);
+
+        List<WineTotalVo> wine = MAPPER.whiteWineByCheap(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     //====================================================================
 
     public List<WineTotalVo> sparklingWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.sparklingWine(dto);
+
+        List<WineTotalVo> wine = MAPPER.sparklingWine(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 
     public List<WineTotalVo> sparklingWineByNew(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.sparklingWineByNew(dto);
+
+        List<WineTotalVo> wine = MAPPER.sparklingWineByNew(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> sparklingWineByExpencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.sparklingWineByExpencive(dto);
+
+        List<WineTotalVo> wine = MAPPER.sparklingWineByExpencive(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> sparklingWineByCheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.sparklingWineByCheap(dto);
+
+        List<WineTotalVo> wine = MAPPER.sparklingWineByCheap(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     //====================================================================
 
     public List<WineTotalVo> otherWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.otherWine(dto);
+
+        List<WineTotalVo> wine = MAPPER.otherWine(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> otherWineByNew(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.otherWineByNew(dto);
+
+        List<WineTotalVo> wine = MAPPER.otherWineByNew(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> otherWineByExpencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.otherWineByExpencive(dto);
+
+        List<WineTotalVo> wine = MAPPER.otherWineByExpencive(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> otherWineByCheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.otherWineByCheap(dto);
+
+        List<WineTotalVo> wine = MAPPER.otherWineByCheap(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 
     //====================================================================
@@ -143,23 +285,59 @@ public class MainService {
 
     public List<WineTotalVo> selWine(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWine(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWine(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
 
     public List<WineTotalVo> selWineByNew(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByNew(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByNew(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByExpencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByExpencive(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByExpencive(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByCheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByCheap(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByCheap(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     //    public List<WineVo> selWineByPrice(WineSelByPriceDto dto) {
@@ -173,128 +351,336 @@ public class MainService {
 
     public List<WineTotalVo> selWineByPrice2(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice2(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice2(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice2New(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice2New(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice2New(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice2Expencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice2Expencive(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice2Expencive(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice2Cheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice2Cheap(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice2Cheap(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
     //====================================================================
 
     public List<WineTotalVo> selWineByPrice25(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice25(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice25(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 
     public List<WineTotalVo> selWineByPrice25New(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice25New(dto);
+        List<WineTotalVo> wine = MAPPER.selWineByPrice25New(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice25Expencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice25Expencive(dto);
+        List<WineTotalVo> wine = MAPPER.selWineByPrice25Expencive(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice25Cheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice25Cheap(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice25Cheap(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
     //====================================================================
 
     public List<WineTotalVo> selWineByPrice510(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice510(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice510(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice510New(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice510New(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice510New(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice510Expencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice510Expencive(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice510Expencive(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice510Cheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice510Cheap(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice510Cheap(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     //====================================================================
 
     public List<WineTotalVo> selWineByPrice10(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice10(dto);
+
+        List<WineTotalVo> wine =  MAPPER.selWineByPrice10(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice10New(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice10New(dto);
+        List<WineTotalVo> wine = MAPPER.selWineByPrice10New(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice10Expencive(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice10Expencive(dto);
+        List<WineTotalVo> wine = MAPPER.selWineByPrice10Expencive(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByPrice10Cheap(WineSelDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByPrice10Cheap(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByPrice10Cheap(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     //===================================================================================
     public List<WineTotalVo> selWineByCountry(WineSelByCountryDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByCountry(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByCountry(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByCountryNew(WineSelByCountryDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByCountryNew(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByCountryNew(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineTotalVo> selWineByCountryExpencive(WineSelByCountryDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByCountryExpencive(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByCountryExpencive(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 
     public List<WineTotalVo> selWineByCountryCheap(WineSelByCountryDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByCountryCheap(dto);
+
+        List<WineTotalVo> wine = MAPPER.selWineByCountryCheap(dto);
+        for (WineTotalVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
 //===================================================================================
 
     public List<WineFoodVo> selWineByFood(WineSelByFoodDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByFood(dto);
+
+        List<WineFoodVo> wine = MAPPER.selWineByFood(dto);
+        for (WineFoodVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineFoodVo> selWineByFoodNew(WineSelByFoodDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByFoodNew(dto);
+
+        List<WineFoodVo> wine = MAPPER.selWineByFoodNew(dto);
+        for (WineFoodVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineFoodVo> selWineByFoodExpencive(WineSelByFoodDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByFoodExpencive(dto);
+
+        List<WineFoodVo> wine = MAPPER.selWineByFoodExpencive(dto);
+        for (WineFoodVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
+
     }
 
     public List<WineFoodVo> selWineByFoodCheap(WineSelByFoodDto dto) {
         dto.setStartIdx((dto.getPage() - 1) * dto.getRow());
-        return MAPPER.selWineByFoodCheap(dto);
+
+        List<WineFoodVo> wine = MAPPER.selWineByFoodCheap(dto);
+        for (WineFoodVo vo : wine) {
+             if(vo.getSaleYn() == 0){
+                vo.setSale(0);
+                vo.setSalePrice(vo.getPrice());
+            }
+        }
+        return wine;
     }
 }
