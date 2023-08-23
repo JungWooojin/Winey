@@ -2,14 +2,8 @@ package com.team.winey.recommend.model;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class RecommendRes {
-    private List<Long> categoryId;
-    private List<Long> countryId;
-    private List<Long> smallCategoryId;
-    private List<Long> priceRange;
+public class AromaVo {
     private Long flower ;
     private Long plant ;
     private Long fruit ;

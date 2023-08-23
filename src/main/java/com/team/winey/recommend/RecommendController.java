@@ -27,13 +27,13 @@ public class RecommendController {
                     "priceRange: 가격범위 입력시 0번부터 4번까지 있으며 입력시에 0:아무거나를 뜻합니다.1:2만원미만, 2:2만원이상 5만원미만, 3:5만원이상 10만원미만, 4:10만원이상,  ex) 3 " +
                     "향 또한 스킵이 가능하고 입력시에 각 이름에 0이면 향없음 1이면 향있음입니다. ex) flower:0,plant:1,fruit:0, spicy:1, earth:0, oak:1, nuts:0 " +
                     "주의사항: 로그인이 되어있을때 사용하셔야합니다. <br>")
-    public List<Long> Recommendations(@RequestBody RecommendRes res) {
+    public List<Long> recommendations(@RequestBody RecommendRes res) {
         return service.selRecommand(res);
     }
 
     @GetMapping("/loginuser")
     @Operation(summary = "로그인한 유저의 PK값")
-    public int LoginUserPk(){
+    public int loginUserPk(){
         return service.loginUserPk();
     }
 
@@ -42,5 +42,19 @@ public class RecommendController {
     public List<Integer> getUserInfo() {
         return service.selUserinfo();
     }
+
+    @PutMapping("/putrecommend")
+    public List<Long> putInfo(@RequestBody RecommendRes res){
+        return service.putInfo(res);
+        }
+
+    @GetMapping("/getrecommend")
+    public RecommendVo getUserRecommand(){return service.selUserRecommand();}
+
+    @PutMapping("/updrecommend")
+    public List<Long> putRecommend(@RequestBody RecommendRes res){
+        return service.updRecommand(res);
+    }
 }
+
 

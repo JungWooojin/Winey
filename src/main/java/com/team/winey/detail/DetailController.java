@@ -31,8 +31,6 @@ public class DetailController {
         WineDetailVo vo = new WineDetailVo();
         vo.setProductId(productId);
         return SERVICE.selWineDetail(productId);
-
-
     }
 
     @GetMapping("/korNm/{productId}")

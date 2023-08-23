@@ -1,11 +1,13 @@
 package com.team.winey.recommend.model;
 
+
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class RecommendRes {
+public class RecommendUserDto {
+    private Long userId;
     private List<Long> categoryId;
     private List<Long> countryId;
     private List<Long> smallCategoryId;

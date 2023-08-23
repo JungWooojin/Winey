@@ -107,6 +107,28 @@
         order by B.product_id
     </select>
 
+
+    <insert id="insRecommand">
+        INSERT INTO t_user_recommand
+        (user_id, category_id, country_id, small_category_id, price_range, flower, plant, fruit, spicy, earth, oak,
+        nuts)
+        VALUES
+        (
+        #{userId},
+        #{categoryId,jdbcType=BIGINT},
+        #{countryId,jdbcType=BIGINT},
+        #{smallCategoryId,jdbcType=BIGINT},
+        #{priceRange,jdbcType=BIGINT},
+        #{flower},
+        #{plant},
+        #{fruit},
+        #{spicy},
+        #{earth},
+        #{oak},
+        #{nuts}
+        )
+
+    </insert>
     <insert id="insUserinfo">
         INSERT INTO t_user_info (user_id, product_id)
         VALUES
@@ -114,6 +136,36 @@
             (#{userId}, #{productId})
         </foreach>
     </insert>
+
+    <select id="selUserCategoryId">
+        SELECT distinct category_id categoryId
+        FROM t_user_recommand
+        WHERE user_id=#{userId}
+    </select>
+    <select id="selUserCountryId">
+        select distinct country_id countryId
+        FROM t_user_recommand
+        WHERE user_id=#{userId}
+    </select>
+    <select id="selUserSmallCategoryId">
+        SELECT distinct small_category_id smallCategoryId
+        FROM t_user_recommand
+        WHERE user_id=#{userId}
+    </select>
+    <select id="selUserPriceRange">
+        SELECT distinct category_id categoryId
+        FROM t_user_recommand
+        WHERE user_id=#{userId}
+    </select>
+    <select id="selUserAroma">
+        select distinct flower, plant, fruit, spicy, earth, oak, nuts
+        FROM t_user_recommand
+        WHERE user_id=#{userId}
+    </select>
+
+
+
+
 
     <select id="loginUserPk">
         select user_id userId
@@ -127,6 +179,17 @@
         where user_id=#{userId}
     </select>
 
+
+    <delete id="delInfo">
+        delete
+        from t_user_info
+        where user_id=#{userId}
+    </delete>
+    <delete id="delUserRecommend">
+        delete
+        from t_user_recommand
+        where user_id=#{userId}
+    </delete>
 
 </mapper>
 

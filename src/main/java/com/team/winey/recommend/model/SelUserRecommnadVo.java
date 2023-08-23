@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class RecommendRes {
+public class SelUserRecommnadVo {
     private List<Long> categoryId;
     private List<Long> countryId;
     private List<Long> smallCategoryId;
@@ -18,3 +18,4 @@ public class RecommendRes {
     private Long oak ;
     private Long nuts ;
 }
+

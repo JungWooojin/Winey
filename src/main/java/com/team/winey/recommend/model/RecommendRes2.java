@@ -5,11 +5,12 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class RecommendRes {
-    private List<Long> categoryId;
-    private List<Long> countryId;
-    private List<Long> smallCategoryId;
-    private List<Long> priceRange;
+public class RecommendRes2 {
+    private Long userId;
+    private Long categoryId;
+    private Long countryId;
+    private Long smallCategoryId;
+    private Long priceRange;
     private Long flower ;
     private Long plant ;
     private Long fruit ;
@@ -18,3 +19,5 @@ public class RecommendRes {
     private Long oak ;
     private Long nuts ;
 }
+
+
