@@ -5,7 +5,7 @@
 <mapper namespace="com.team.winey.payment.PaymentMapper">
 
     <insert id="insPayment" useGeneratedKeys="true" keyProperty="orderId">
-        insert into t_order
+        insert ignore into t_order
         set user_id = #{userId},
         store_id = #{storeId},
         payment = 1,
@@ -15,7 +15,7 @@
     </insert>
 
     <insert id = "insEachPayment" useGeneratedKeys="true" keyProperty="orderId">
-        insert into t_order
+        insert ignore into t_order
         set user_id = #{userId},
         store_id = #{storeId},
         payment = #{payment},

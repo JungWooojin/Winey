@@ -51,7 +51,7 @@ public class OrderService {
             }
 
             if(entity.getCount() >= 2 ){
-                entity.setNmKor(list.get(0).getNmKor() + " 외 " + (entity.getCount() - 1) + "건");
+                entity.setNmKor(entity.getNmKor() + " 외 " + (entity.getCount() - 1) + "건");
             } else if (entity.getCount() == 1) {
                 entity.setNmKor(entity.getNmKor());
             }
@@ -84,6 +84,12 @@ public class OrderService {
         dto.setUserId(facade.getLoginUserPk());
 
         List<OrderDetailVo1> vo1 = mapper.selOrderDetail1(dto);
+        for(OrderDetailVo1 detailVo1 : vo1) {
+            if(detailVo1.getReviewYn() >= 1 ){
+                detailVo1.setReviewYn(1);
+            }
+
+        }
 
 
         OrderDetailVo2 vo2 = mapper.selOrderDetail2(dto);
