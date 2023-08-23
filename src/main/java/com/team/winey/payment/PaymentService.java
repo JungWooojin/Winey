@@ -69,16 +69,16 @@ public class PaymentService {
         return mapper.updPayment(dto);
     }
 
-    public int insReview(ReviewInsDto dto) {
+    public int insReview(ReviewInsDto dto){
         dto.setUserId(facade.getLoginUserPk());
-        int insertRow = mapper.insReview(dto);
-
-        if (insertRow > 0) {
+        int reviewInsert = mapper.insReview(dto);
+        if(reviewInsert >0){
             return 1;
         }else{
             return 0;
         }
     }
+
 
     public List<RegionSelVO> selRegion(){
         RegionInsDto dto = new RegionInsDto();

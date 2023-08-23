@@ -1,10 +1,12 @@
 package com.team.winey.order.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 
-@Getter
-@AllArgsConstructor
+@Data
+//@Getter
+//@AllArgsConstructor
 public class OrderDetailVo1 {
     private int orderDetailId;
     private String nmKor;
@@ -13,6 +15,9 @@ public class OrderDetailVo1 {
     private int quantity;
     private String pic;
     private String price;
+    private int productId;
+
+    private int reviewYn;
 
 
 }
