@@ -22,8 +22,10 @@ public class RecommendService {
         UserinfoDto dto = new UserinfoDto();
         dto.setUserId(facade.getLoginUserPk());
         dto.setProductId(result);
-        InsRecommend res2 = new InsRecommend();
+        InsRecommendDto res2 = new InsRecommendDto();
         res2.setUserId(facade.getLoginUserPk());
+
+
         int size =0;
         int size1 = 0;
         int size2 = 0;
@@ -66,7 +68,7 @@ public class RecommendService {
         return result;
     }
 
-    public void generateNestedLoops(int[] listSizeArr, int loopIndex, InsRecommend res2,
+    public void generateNestedLoops(int[] listSizeArr, int loopIndex, InsRecommendDto res2,
                                     RecommendRes res) {
         if (loopIndex + 1 == listSizeArr.length) {      // 내부 루프의 가장 안쪽에서 실행될 코드
             if (listSizeArr[loopIndex] > 0) {
@@ -153,7 +155,7 @@ public class RecommendService {
         UserinfoDto dto = new UserinfoDto();
         dto.setUserId(facade.getLoginUserPk());
         dto.setProductId(result);
-        InsRecommend res2 = new InsRecommend();
+        InsRecommendDto res2 = new InsRecommendDto();
         res2.setUserId(facade.getLoginUserPk());
         int size =0;
         int size1 = 0;

@@ -12,7 +12,7 @@
         INNER JOIN t_country C ON B.country_id = C.country_id
         INNER JOIN t_category D ON B.category_id = D.category_id
         INNER JOIN t_small_category E ON A.small_category_id = E.small_category_id
-        INNER JOIN t_aroma1 F on F.product_id = B.product_id
+        INNER JOIN t_aroma F on F.product_id = B.product_id
         inner join t_aroma_category G on G.aroma_category_id = F.aroma_category_id
         <where>
             <if test="categoryId != null">

@@ -10,9 +10,9 @@ import java.util.List;
 public interface RecommendMapper {
     List<Long> selRecommend(RecommendRes res);
     int insUserinfo(UserinfoDto dto);
+    int insRecommend(InsRecommendDto res);
     int loginUserPk(UserDto dto);
     List<Integer> selUserinfo(SelRecommendDto dto);
-    int insRecommend(InsRecommend res);
     List<Long> selUserCategoryId(UserDto dto);
     List<Long> selUserCountryId(UserDto dto);
     List<Long> selUserSmallCategoryId(UserDto dto);
