@@ -20,13 +20,22 @@
     </select>
 
     <select id="selAroma">
-        SELECT A.product_id productId,
-        B.flower, B.plant, B.fruit,
-        B.spicy, B.earth, B.oak, B.nuts
+<!--        SELECT A.product_id productId,-->
+<!--        B.flower, B.plant, B.fruit,-->
+<!--        B.spicy, B.earth, B.oak, B.nuts-->
+<!--        FROM t_product A-->
+<!--        INNER JOIN t_aroma B-->
+<!--        ON A.product_id=b.product_id-->
+<!--        WHERE A.product_id=#{productId}-->
+
+        SELECT C.nm aromaNm
         FROM t_product A
-        INNER JOIN t_aroma B
-        ON A.product_id=b.product_id
+        INNER JOIN t_aroma1 B
+        ON A.product_id = B.product_id
+        INNER JOIN t_aroma_category C
+        ON B.aroma_category_id = C.aroma_category_id
         WHERE A.product_id=#{productId}
+        ORDER BY C.aroma_category_id
 
     </select>
 

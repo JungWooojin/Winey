@@ -47,7 +47,7 @@ class DetailServiceTest {
 
 
         SelAroma exaroma = new SelAroma();
-        exaroma.setFlower(1);
+//        exaroma.setFlower(1);
         List<String> exAromaList = new ArrayList<>();
         exAromaList.add("flower");
 
@@ -74,7 +74,7 @@ class DetailServiceTest {
         when(mapper.selPairing(any())).thenReturn(exselPairing);
         when(mapper.selCount(any())).thenReturn(exselCount);
         when(mapper.selSale(any())).thenReturn(exselSale);
-        when(mapper.selAroma(any())).thenReturn(exaroma);
+//        when(mapper.selAroma(any())).thenReturn(exaroma);
 
         WineVo acresult = service.selWineDetail(any());
 
