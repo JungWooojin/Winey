@@ -30,7 +30,7 @@
 
         SELECT C.nm aromaNm
         FROM t_product A
-        INNER JOIN t_aroma1 B
+        INNER JOIN t_aroma B
         ON A.product_id = B.product_id
         INNER JOIN t_aroma_category C
         ON B.aroma_category_id = C.aroma_category_id
