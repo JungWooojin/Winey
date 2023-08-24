@@ -27,18 +27,17 @@
         body = #{body}
     </insert>
 
-    <insert id="insAroma" parameterType="ProductAromaDto" useGeneratedKeys="true" keyProperty="aromaId">
+    <insert id="insAroma">
         INSERT INTO t_aroma
         SET
         product_id = #{productId},
-        flower = #{flower},
-        plant = #{plant},
-        fruit = #{fruit},
-        spicy = #{spicy},
-        earth = #{earth},
-        oak = #{oak},
-        nuts = #{nuts}
+        aroma_category_id = #{aromaCategoryId}
     </insert>
+
+    <delete id="delAroma">
+        DELETE FROM t_aroma
+        WHERE product_id = #{productId}
+    </delete>
 
     <insert id="insSale" parameterType="ProductInsDto">
         INSERT INTO t_sale

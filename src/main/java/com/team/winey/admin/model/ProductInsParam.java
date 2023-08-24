@@ -21,7 +21,7 @@ public class ProductInsParam {
 
     private int category; //레드(1) 화이트(2) 스파클링(3) 기타(4) //
 
-    private ProductAromaParam aroma; //향
+    private List<Integer> aroma; //향
 
     private int sale; //할인률
     private int salePrice; //할인가격

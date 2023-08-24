@@ -47,38 +47,7 @@ public class DetailService {
         }
 
 
-        SelAroma selAroma = MAPPER.selAroma(productId);
-
-        List<SelAroma> aromaList = new ArrayList<>();
-        List<String> aroma = new ArrayList<>();
-        aromaList.add(selAroma);
-
-        for (SelAroma aromaItem : aromaList) {
-            if (aromaItem.getFlower() == 1) {
-                aroma.add("flower");
-            }
-            if (aromaItem.getPlant() == 1) {
-                aroma.add("plant");
-            }
-            if (aromaItem.getFruit() == 1) {
-                aroma.add("Fruit");
-            }
-            if (aromaItem.getSpicy() == 1) {
-                aroma.add("Spicy");
-            }
-            if (aromaItem.getEarth() == 1) {
-                aroma.add("Earth");
-            }
-            if (aromaItem.getOak() == 1) {
-                aroma.add("Oak");
-            }
-            if (aromaItem.getNuts() == 1) {
-                aroma.add("Nuts");
-            }
-            log.info("aroma : {}", aroma);
-
-        }
-
+        List<String> selAroma = MAPPER.selAroma(productId);
 
 
         int level = 0;
@@ -123,7 +92,7 @@ public class DetailService {
                 .wineDetailVo(vo)
                 .selPairing(selPairing)
                 .selReview(selCount)
-                .selAroma(aroma)
+                .selAroma(selAroma)
                 .Level(level)
                 .selSale(selSale)
                 .build();

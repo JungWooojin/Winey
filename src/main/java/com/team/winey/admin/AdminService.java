@@ -31,7 +31,7 @@ public class AdminService {
     public int postProduct(MultipartFile pic, ProductInsParam param) {
         ProductInsDto dto = new ProductInsDto();
 
-        ProductAromaDto aromaDto = new ProductAromaDto(param.getAroma()); //t_aroma
+        ProductAromaInsDto aromaDto = new ProductAromaInsDto(); //t_aroma
 
         dto.setSweety(param.getSweety()); //t_feature
         dto.setAcidity(param.getAcidity()); //t_feature
@@ -100,8 +100,11 @@ public class AdminService {
                 //t_sale 인서트
                 MAPPER.insSale(dto);
                 //t_aroma 인서트
-                aromaDto.setProductId(dto.getProductId());
-                MAPPER.insAroma(aromaDto);
+                for(int i=0;i<param.getAroma().size();i++) {
+                    aromaDto.setProductId(dto.getProductId());
+                    aromaDto.setAromaCategoryId(param.getAroma().get(i));
+                    MAPPER.insAroma(aromaDto);
+                }
                 //페어링음식 t_wine_pairing에 인서트
                 for(int i=0;i<param.getSmallCategoryId().size();i++) {
                     dto.setSmallCategoryId(param.getSmallCategoryId().get(i));
@@ -115,8 +118,11 @@ public class AdminService {
         // 할인율, 할인가격 t_sale에 인서트 (product_id 이용해서) , 할인시작일과 종료일은(3차 때 구현)
         MAPPER.insSale(dto);
         //t_aroma 인서트
-        aromaDto.setProductId(dto.getProductId());
-        MAPPER.insAroma(aromaDto);
+        for(int i=0;i<param.getAroma().size();i++) {
+            aromaDto.setProductId(dto.getProductId());
+            aromaDto.setAromaCategoryId(param.getAroma().get(i));
+            MAPPER.insAroma(aromaDto);
+        }
 
         //페어링음식 t_wine_pairing에 인서트
         for(int i=0;i<param.getSmallCategoryId().size();i++) {
@@ -128,7 +134,7 @@ public class AdminService {
 
     public int putProduct(MultipartFile pic, ProductUpdParam param) {
         ProductUpdDto dto = MAPPER.selProductFk(param.getProductId());
-        ProductAromaDto aromaDto = new ProductAromaDto(param.getAroma()); //t_aroma
+        ProductAromaInsDto aromaDto = new ProductAromaInsDto(); //t_aroma
 
         dto.setProductId(param.getProductId()); //t_product
         dto.setNmKor(param.getNmKor()); //t_product
@@ -147,17 +153,24 @@ public class AdminService {
         dto.setAcidity(param.getAcidity()); //t_feature
         dto.setBody(param.getBody()); //t_feature
 
-        aromaDto.setProductId(param.getProductId()); //t_aroma
-        aromaDto.setFlower(param.getAroma().getFlower()); //t_aroma
-        aromaDto.setPlant(param.getAroma().getPlant()); //t_aroma
-        aromaDto.setFruit(param.getAroma().getFruit()); //t_aroma
-        aromaDto.setSpicy(param.getAroma().getSpicy()); //t_aroma
-        aromaDto.setEarth(param.getAroma().getEarth()); //t_aroma
-        aromaDto.setOak(param.getAroma().getOak()); //t_aroma
-        aromaDto.setNuts(param.getAroma().getNuts()); //t_aroma
+//        aromaDto.setProductId(param.getProductId()); //t_aroma
+//        aromaDto.setFlower(param.getAroma().getFlower()); //t_aroma
+//        aromaDto.setPlant(param.getAroma().getPlant()); //t_aroma
+//        aromaDto.setFruit(param.getAroma().getFruit()); //t_aroma
+//        aromaDto.setSpicy(param.getAroma().getSpicy()); //t_aroma
+//        aromaDto.setEarth(param.getAroma().getEarth()); //t_aroma
+//        aromaDto.setOak(param.getAroma().getOak()); //t_aroma
+//        aromaDto.setNuts(param.getAroma().getNuts()); //t_aroma
 
         //t_aroma 테이블 update
-        MAPPER.updAroma(aromaDto);
+        //삭제
+        MAPPER.delAroma(param.getProductId());
+        //인서트
+        for(int i=0;i<param.getAroma().size();i++) {
+            aromaDto.setProductId(dto.getProductId());
+            aromaDto.setAromaCategoryId(param.getAroma().get(i));
+            MAPPER.insAroma(aromaDto);
+        }
 
         //t_sale 테이블 update
         MAPPER.updSale(dto);

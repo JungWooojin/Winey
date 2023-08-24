@@ -39,7 +39,6 @@ public class SignController {
                     "참고사항 : password 가 틀릴경우 경고창이 나와요<br>" +
                     "참고사항 : 로그인시 액세스 토큰과 리프레시 토큰이 발급되요"
     )
-
     public SignInResultDto signIn(HttpServletRequest req, @RequestBody SignDto dto) throws Exception {
         String ip = req.getRemoteAddr();
         log.info("[signIn] 로그인을 시도하고 있습니다. email: {}, pw: {}, ip: {}", dto.getEmail(),dto.getPw(), ip);
