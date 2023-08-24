@@ -25,7 +25,7 @@ public class RecommendController {
                     "countryId: 원산지 1:미국, 2:스페인, 3:이탈리아, 4:칠레, 5:포르투갈, 6:프랑스 ex:위와 동일<br>" +
                     "smallcategoryId: 페어링음식 12번까지있으며 1:steak, 2:chicken, 3:lamb, 4:pork, 5:oyster, 6:fish, 7:shrimp, 8:clamp, 9:cheeze, 10:fruit, 11:pizza, 12:pasta ex: 위와 동일 <br>" +
                     "priceRange: 가격범위 입력시 0번부터 4번까지 있으며 입력시에 0:아무거나를 뜻합니다.1:2만원미만, 2:2만원이상 5만원미만, 3:5만원이상 10만원미만, 4:10만원이상,  ex) 3 " +
-                    "향 또한 스킵이 가능하고 입력시에 각 이름에 0이면 향없음 1이면 향있음입니다. ex) flower:0,plant:1,fruit:0, spicy:1, earth:0, oak:1, nuts:0 " +
+                    "aromaCategoryId:향 또한 스킵이 가능하고 입력시에는 1~7번까지있으며 1.flower 2.plant 3.fruit 4.spicy 5.earth 6.oak 7.nut ex) 1,2 " +
                     "주의사항: 로그인이 되어있을때 사용하셔야합니다. <br>")
     public List<Long> recommendations(@RequestBody RecommendRes res) {
         return service.selRecommend(res);
