@@ -2,14 +2,12 @@ package com.team.winey.recommend;
 
 
 import com.team.winey.config.security.AuthenticationFacade;
-import com.team.winey.mypage.model.DelUserDto;
 import com.team.winey.recommend.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.util.CollectionUtils;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -19,26 +17,18 @@ public class RecommendService {
     private final RecommendMapper mapper;
     private final AuthenticationFacade facade;
 
-    public List<Long> selRecommand(RecommendRes res) {
-        List<Long> result = mapper.selRecommand(res);
+    public List<Long> selRecommend(RecommendRes res) {
+        List<Long> result = mapper.selRecommend(res);
         UserinfoDto dto = new UserinfoDto();
         dto.setUserId(facade.getLoginUserPk());
         dto.setProductId(result);
-        RecommendRes2 res2 = new RecommendRes2();
+        InsRecommend res2 = new InsRecommend();
         res2.setUserId(facade.getLoginUserPk());
-        res2.setFlower(res.getFlower());
-        res2.setPlant(res.getPlant());
-        res2.setEarth(res.getEarth());
-        res2.setOak(res.getOak());
-        res2.setNuts(res.getNuts());
-        res2.setSpicy(res.getSpicy());
-        res2.setFruit(res.getFruit());
-
         int size =0;
         int size1 = 0;
         int size2 = 0;
         int size3 = 0;
-
+        int size4 = 0;
         if (CollectionUtils.isEmpty(res.getCategoryId())==true) {
              size = 0;
         } else {
@@ -57,13 +47,17 @@ public class RecommendService {
         if (CollectionUtils.isEmpty(res.getPriceRange())==true) {
              size3 = 0;
         }else{size3 = res.getPriceRange().size();}
+        if (CollectionUtils.isEmpty(res.getAromaCategoryId())==true) {
+            size4 = 0;
+        }else{size4 = res.getAromaCategoryId().size();}
 
         //1번쨰 2번째 3번쨰
         int[] listSizeArr = {
                 size,
                 size1,
                 size2,
-                size3
+                size3,
+                size4
         }; // 각 루프의 반복 횟수 설정
         //첫번째에는 1번째 list의 .size 들어감
         //두번째에는 2번째 list의 .size 들어감
@@ -72,19 +66,19 @@ public class RecommendService {
         return result;
     }
 
-    public void generateNestedLoops(int[] listSizeArr, int loopIndex, RecommendRes2 res2,
+    public void generateNestedLoops(int[] listSizeArr, int loopIndex, InsRecommend res2,
                                     RecommendRes res) {
         if (loopIndex + 1 == listSizeArr.length) {      // 내부 루프의 가장 안쪽에서 실행될 코드
             if (listSizeArr[loopIndex] > 0) {
                 for (int i = 0; i < listSizeArr[loopIndex]; i++) {
                     System.out.printf("%d번째 list for문 %d번 작동\n", loopIndex + 1, i + 1);
-                    res2.setPriceRange(res.getPriceRange().get(i));
-                    mapper.insRecommand(res2);
+                    res2.setAromaCategoryId(res.getAromaCategoryId().get(i));
+                    mapper.insRecommend(res2);
                 }
             } else if (listSizeArr[loopIndex] == 0) {
                 System.out.printf("%d번째 list 작동안함\n", loopIndex + 1);
                 res2.setPriceRange(null);
-                mapper.insRecommand(res2);
+                mapper.insRecommend(res2);
             }
             System.out.printf("끝도착\n", loopIndex);
             return;
@@ -98,6 +92,10 @@ public class RecommendService {
                     res2.setCountryId(res.getCountryId().get(i));
                 } else if (loopIndex == 2) {
                     res2.setSmallCategoryId(res.getSmallCategoryId().get(i));
+                } else if (loopIndex == 3) {
+                    res2.setPriceRange(res.getPriceRange().get(i));
+                } else if (loopIndex==4) {
+                    res2.setAromaCategoryId(res.getAromaCategoryId().get(i));
                 }
                 generateNestedLoops(listSizeArr, loopIndex + 1, res2, res); // 다음 루프로 재귀 호출
             }
@@ -109,13 +107,17 @@ public class RecommendService {
                 res2.setCountryId(null);
             } else if (loopIndex == 2) {
                 res2.setSmallCategoryId(null);
+            } else if (loopIndex== 3) {
+                res2.setPriceRange(null);
+            } else if (loopIndex==4){
+                res2.setAromaCategoryId(null);
             }
             generateNestedLoops(listSizeArr, loopIndex + 1, res2, res);
         }
     }
 
     public int loginUserPk() {
-        LoginUserDto dto = new LoginUserDto();
+        UserDto dto = new UserDto();
         dto.setUserId(facade.getLoginUserPk());
         return mapper.loginUserPk(dto);
     }
@@ -126,57 +128,38 @@ public class RecommendService {
         return mapper.selUserinfo(dto);
     }
 
-    public List<Long> putInfo(RecommendRes res) {
-        DelUserDto dto1 = new DelUserDto();
-        dto1.setUserId(facade.getLoginUserPk());
-        mapper.delInfo(dto1);
-        List<Long> result = mapper.selRecommand(res);
-        UserinfoDto dto = new UserinfoDto();
-        dto.setUserId(facade.getLoginUserPk());
-        dto.setProductId(result);
-        mapper.insUserinfo(dto);
-        return result;
-    }
-    public RecommendVo selUserRecommand(){
+    public RecommendVo selUserRecommend(){
         UserDto dto =new UserDto();
         dto.setUserId(facade.getLoginUserPk());
          List<Long> categoryId=mapper.selUserCategoryId(dto);
          List<Long> countryId=mapper.selUserCountryId(dto);
          List<Long> smallCategoryId=mapper.selUserSmallCategoryId(dto);
          List<Long> priceRange=mapper.selUserPriceRange(dto);
-         AromaVo aroma=mapper.selUserAroma(dto);
+         List<Long> aroma=mapper.selUserAroma(dto);
         return RecommendVo.builder()
                 .categoryId(categoryId)
                 .countryId(countryId)
                 .smallCategoryId(smallCategoryId)
                 .priceRange(priceRange)
-                .aroma(aroma)
+                .aromaCategoryId(aroma)
                 .build();
     }
-    public List<Long> updRecommand(RecommendRes res) {
-        DelUserDto dto1 =new DelUserDto();
+    public List<Long> updRecommend(RecommendRes res) {
+        UserDto dto1 =new UserDto();
         dto1.setUserId(facade.getLoginUserPk());
         mapper.delInfo(dto1);
         mapper.delUserRecommend(dto1);
-        List<Long> result = mapper.selRecommand(res);
+        List<Long> result = mapper.selRecommend(res);
         UserinfoDto dto = new UserinfoDto();
         dto.setUserId(facade.getLoginUserPk());
         dto.setProductId(result);
-        RecommendRes2 res2 = new RecommendRes2();
+        InsRecommend res2 = new InsRecommend();
         res2.setUserId(facade.getLoginUserPk());
-        res2.setFlower(res.getFlower());
-        res2.setPlant(res.getPlant());
-        res2.setEarth(res.getEarth());
-        res2.setOak(res.getOak());
-        res2.setNuts(res.getNuts());
-        res2.setSpicy(res.getSpicy());
-        res2.setFruit(res.getFruit());
-
         int size =0;
         int size1 = 0;
         int size2 = 0;
         int size3 = 0;
-
+        int size4 = 0;
         if (CollectionUtils.isEmpty(res.getCategoryId())==true) {
             size = 0;
         } else {
@@ -195,13 +178,17 @@ public class RecommendService {
         if (CollectionUtils.isEmpty(res.getPriceRange())==true) {
             size3 = 0;
         }else{size3 = res.getPriceRange().size();}
+        if (CollectionUtils.isEmpty(res.getAromaCategoryId())==true) {
+            size4 = 0;
+        }else{size4 = res.getAromaCategoryId().size();}
 
         //1번쨰 2번째 3번쨰
         int[] listSizeArr = {
                 size,
                 size1,
                 size2,
-                size3
+                size3,
+                size4
         }; // 각 루프의 반복 횟수 설정
         //첫번째에는 1번째 list의 .size 들어감
         //두번째에는 2번째 list의 .size 들어감

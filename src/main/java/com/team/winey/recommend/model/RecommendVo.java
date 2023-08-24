@@ -14,5 +14,5 @@ public class RecommendVo {
    private List<Long> countryId;
    private List<Long> smallCategoryId;
    private List<Long> priceRange;
-   private AromaVo aroma;
+   private List<Long> aromaCategoryId;;
 }

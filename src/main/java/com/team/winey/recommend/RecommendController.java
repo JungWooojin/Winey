@@ -28,7 +28,7 @@ public class RecommendController {
                     "향 또한 스킵이 가능하고 입력시에 각 이름에 0이면 향없음 1이면 향있음입니다. ex) flower:0,plant:1,fruit:0, spicy:1, earth:0, oak:1, nuts:0 " +
                     "주의사항: 로그인이 되어있을때 사용하셔야합니다. <br>")
     public List<Long> recommendations(@RequestBody RecommendRes res) {
-        return service.selRecommand(res);
+        return service.selRecommend(res);
     }
 
     @GetMapping("/loginuser")
@@ -38,22 +38,19 @@ public class RecommendController {
     }
 
     @GetMapping("/getUserInfo")
-    @Operation(summary = "유저정보")
+    @Operation(summary = "유저와인정보")
     public List<Integer> getUserInfo() {
         return service.selUserinfo();
     }
 
-    @PutMapping("/putrecommend")
-    public List<Long> putInfo(@RequestBody RecommendRes res){
-        return service.putInfo(res);
-        }
-
     @GetMapping("/getrecommend")
-    public RecommendVo getUserRecommand(){return service.selUserRecommand();}
+    @Operation(summary = "유저가 취향선택했던 값")
+    public RecommendVo getUserRecommend(){return service.selUserRecommend();}
 
     @PutMapping("/updrecommend")
+    @Operation(summary = "사용자취향수정")
     public List<Long> putRecommend(@RequestBody RecommendRes res){
-        return service.updRecommand(res);
+        return service.updRecommend(res);
     }
 }
 

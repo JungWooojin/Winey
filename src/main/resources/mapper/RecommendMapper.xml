@@ -5,14 +5,15 @@
 <mapper namespace="com.team.winey.recommend.RecommendMapper">
 
 
-    <select id="selRecommand" resultType="Long">
+    <select id="selRecommend" resultType="Long">
         SELECT distinct B.product_id productId
         FROM t_wine_pairing A
         INNER JOIN t_product B ON A.product_id = B.product_id
         INNER JOIN t_country C ON B.country_id = C.country_id
         INNER JOIN t_category D ON B.category_id = D.category_id
         INNER JOIN t_small_category E ON A.small_category_id = E.small_category_id
-        INNER JOIN t_aroma F on F.product_id = B.product_id
+        INNER JOIN t_aroma1 F on F.product_id = B.product_id
+        inner join t_aroma_category G on G.aroma_category_id = F.aroma_category_id
         <where>
             <if test="categoryId != null">
                 AND (
@@ -35,51 +36,13 @@
                 </foreach>
                 )
             </if>
-
-            <if test="!(flower == 0 and plant == 0 and fruit == 0 and spicy == 0 and earth == 0 and oak == 0 and nuts == 0)">
+            <if test="aromaCategoryId != null">
                 AND (
-                <if test="flower != 0">
-                    flower = #{flower}
-                </if>
-                <if test="plant != 0">
-                    <if test="flower != 0">
-                        OR
-                    </if>
-                    plant = #{plant}
-                </if>
-                <if test="fruit != 0">
-                    <if test="flower != 0 or plant != 0">
-                        OR
-                    </if>
-                    fruit = #{fruit}
-                </if>
-                <if test="spicy != 0">
-                    <if test="flower != 0 or plant != 0 or fruit != 0">
-                        OR
-                    </if>
-                    spicy = #{spicy}
-                </if>
-                <if test="earth != 0">
-                    <if test="flower != 0 or plant != 0 or fruit != 0 or spicy != 0">
-                        OR
-                    </if>
-                    earth = #{earth}
-                </if>
-                <if test="oak != 0">
-                    <if test="flower != 0 or plant != 0 or fruit != 0 or spicy != 0 or earth != 0">
-                        OR
-                    </if>
-                    oak = #{oak}
-                </if>
-                <if test="nuts != 0">
-                    <if test="flower != 0 or plant != 0 or fruit != 0 or spicy != 0 or earth != 0 or oak != 0">
-                        OR
-                    </if>
-                    nuts = #{nuts}
-                </if>
+                <foreach item="aromaCategoryId" collection="aromaCategoryId" separator=" OR " open="(" close=")">
+                    F.aroma_category_id = #{aromaCategoryId}
+                </foreach>
                 )
             </if>
-
             <if test="priceRange != null">
                 AND (
                 <foreach item="range" collection="priceRange" separator=" OR " open="(" close=")">
@@ -108,10 +71,9 @@
     </select>
 
 
-    <insert id="insRecommand">
-        INSERT INTO t_user_recommand
-        (user_id, category_id, country_id, small_category_id, price_range, flower, plant, fruit, spicy, earth, oak,
-        nuts)
+    <insert id="insRecommend">
+        INSERT INTO t_user_recommend
+        (user_id, category_id, country_id, small_category_id, price_range, aroma_category_id)
         VALUES
         (
         #{userId},
@@ -119,13 +81,7 @@
         #{countryId,jdbcType=BIGINT},
         #{smallCategoryId,jdbcType=BIGINT},
         #{priceRange,jdbcType=BIGINT},
-        #{flower},
-        #{plant},
-        #{fruit},
-        #{spicy},
-        #{earth},
-        #{oak},
-        #{nuts}
+        #{aromaCategoryId,jdbcType=BIGINT}
         )
 
     </insert>
@@ -139,40 +95,35 @@
 
     <select id="selUserCategoryId">
         SELECT distinct category_id categoryId
-        FROM t_user_recommand
+        FROM t_user_recommend
         WHERE user_id=#{userId}
     </select>
     <select id="selUserCountryId">
         select distinct country_id countryId
-        FROM t_user_recommand
+        FROM t_user_recommend
         WHERE user_id=#{userId}
     </select>
     <select id="selUserSmallCategoryId">
         SELECT distinct small_category_id smallCategoryId
-        FROM t_user_recommand
+        FROM t_user_recommend
         WHERE user_id=#{userId}
     </select>
     <select id="selUserPriceRange">
         SELECT distinct category_id categoryId
-        FROM t_user_recommand
+        FROM t_user_recommend
         WHERE user_id=#{userId}
     </select>
     <select id="selUserAroma">
-        select distinct flower, plant, fruit, spicy, earth, oak, nuts
-        FROM t_user_recommand
+        select aroma_category_id
+        FROM t_user_recommend
         WHERE user_id=#{userId}
     </select>
-
-
-
-
 
     <select id="loginUserPk">
         select user_id userId
         from t_user
         where user_id=#{userId}
     </select>
-
     <select id="selUserinfo">
         select product_id productId
         from t_user_info
@@ -187,7 +138,7 @@
     </delete>
     <delete id="delUserRecommend">
         delete
-        from t_user_recommand
+        from t_user_recommend
         where user_id=#{userId}
     </delete>
 
