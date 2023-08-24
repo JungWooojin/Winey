@@ -11,7 +11,9 @@ public interface AdminMapper {
     //상품 등록
     int insProduct(ProductInsDto dto);
     int insFeature(ProductInsDto dto);
-    int insAroma(ProductAromaDto dto);
+//    int insAroma(ProductAromaDto dto);
+    int insAroma(ProductAromaInsDto dto);
+    int delAroma(int productId);
     int insSale(ProductInsDto dto);
     int insWinePairing(ProductInsDto dto);
 
