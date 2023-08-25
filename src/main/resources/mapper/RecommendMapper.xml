@@ -114,7 +114,7 @@
         WHERE user_id=#{userId}
     </select>
     <select id="selUserAroma">
-        select aroma_category_id
+        select distinct aroma_category_id
         FROM t_user_recommend
         WHERE user_id=#{userId}
     </select>
