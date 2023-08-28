@@ -24,7 +24,7 @@ public class RecommendController {
                     "categoryId:와인종류 1:레드와인, 2:화이트와인, 3:스파클링와인, 4:기타 ex) 1,3 이 가능 <br>" +
                     "countryId: 원산지 1:미국, 2:스페인, 3:이탈리아, 4:칠레, 5:포르투갈, 6:프랑스 ex:위와 동일<br>" +
                     "smallcategoryId: 페어링음식 12번까지있으며 1:steak, 2:chicken, 3:lamb, 4:pork, 5:oyster, 6:fish, 7:shrimp, 8:clamp, 9:cheeze, 10:fruit, 11:pizza, 12:pasta ex: 위와 동일 <br>" +
-                    "priceRange: 가격범위 입력시 0번부터 4번까지 있으며 입력시에 0:아무거나를 뜻합니다.1:2만원미만, 2:2만원이상 5만원미만, 3:5만원이상 10만원미만, 4:10만원이상,  ex) 3 " +
+                    "priceRange: 가격범위 입력시 1번부터 4번까지 있으며 입력시에 .1:2만원미만, 2:2만원이상 5만원미만, 3:5만원이상 10만원미만, 4:10만원이상,  ex) 3 " +
                     "aromaCategoryId:향 또한 스킵이 가능하고 입력시에는 1~7번까지있으며 1.flower 2.plant 3.fruit 4.spicy 5.earth 6.oak 7.nut ex) 1,2 " +
                     "주의사항: 로그인이 되어있을때 사용하셔야합니다. <br>")
     public List<Long> recommendations(@RequestBody RecommendRes res) {
