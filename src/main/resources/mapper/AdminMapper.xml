@@ -164,7 +164,7 @@
     </select>
 
     <select id="selOrder" resultType="OrderListVo">
-        SELECT A.order_id orderId, DATE_FORMAT(A.order_date, '%y-%m-%d') orderDate , B.email, E.nm_kor nmKor, SUM(D.quantity) quantity, A.total_order_price totalPrice
+        SELECT A.order_id orderId, DATE_FORMAT(A.order_date, '%y-%m-%d') orderDate , B.email, E.nm_kor nmKor, SUM(D.sale_price) salePrice, SUM(D.quantity) quantity, A.total_order_price totalPrice
         , A.payment, C.nm pickUpStore, A.order_status orderStatus, COUNT(*) count
         FROM t_order A
         INNER JOIN t_user B
