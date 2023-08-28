@@ -164,7 +164,7 @@
     </select>
 
     <select id="selOrder" resultType="OrderListVo">
-        SELECT A.order_id orderId, DATE_FORMAT(A.order_date, '%y-%m-%d') orderDate , B.email, E.nm_kor nmKor, SUM(D.quantity) quantity, A.total_order_price totalPrice
+        SELECT A.order_id orderId, DATE_FORMAT(A.order_date, '%y-%m-%d') orderDate , B.email, E.nm_kor nmKor, SUM(D.sale_price) salePrice, SUM(D.quantity) quantity, A.total_order_price totalPrice
         , A.payment, C.nm pickUpStore, A.order_status orderStatus, COUNT(*) count
         FROM t_order A
         INNER JOIN t_user B
@@ -179,6 +179,30 @@
         LIMIT #{startIdx}, #{row}
     </select>
 
+    <select id="selOrderDetail1" resultType="OrderDetail1">
+        SELECT A.order_id orderId, DATE_FORMAT(A.order_date, '%y-%m-%d') orderDate, C.email, D.nm_kor nmKor, B.sale_price salePrice, B.quantity
+        FROM t_order A
+        INNER JOIN t_order_detail B
+        ON A.order_id = B.order_id
+        INNER JOIN t_user C
+        ON A.user_id = C.user_id
+        INNER JOIN t_product D
+        ON B.product_id = D.product_id
+        WHERE A.order_id = #{orderId}
+    </select>
+
+    <select id="selOrderDetail2" resultType="OrderDetail2">
+        SELECT  SUM(B.quantity) quantity, SUM(B.sale_price) salePrice, A.total_order_price totalPrice,
+        A.payment, E.nm storeNm, DATE_FORMAT(A.pickup_time, '%y-%m-%d') pickUpDate, DATE_FORMAT(A.pickup_time, '%H:%i') pickUpTime, A.order_status orderStatus
+        FROM t_order A
+        INNER JOIN t_order_detail B
+        ON A.order_id = B.order_id
+        INNER JOIN t_store E
+        ON A.store_id = E.store_id
+        WHERE A.order_id = #{orderId}
+    </select>
+
+    <!-- 미사용 -->
     <select id="selOrderDetail" resultType="OrderDetailVo">
         SELECT A.order_id orderId, DATE_FORMAT(A.order_date, '%y-%m-%d') orderDate, C.email, D.nm_kor nmKor, B.sale_price salePrice, B.quantity, A.total_order_price totalPrice,
         A.payment, E.nm storeNm, DATE_FORMAT(A.pickup_time, '%y-%m-%d') pickUpDate, DATE_FORMAT(A.pickup_time, '%H:%i') pickUpTime, A.order_status orderStatus

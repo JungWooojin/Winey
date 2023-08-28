@@ -350,8 +350,17 @@ public class AdminService {
     }
 
     //상세 주문 내역 리스트 by orderId
-    public List<OrderDetailVo> getOrderDetail(int orderId) {
-        return MAPPER.selOrderDetail(orderId);
+    public OrderDetail3 getOrderDetail(int orderId) {
+        List<OrderDetail1> list1 = MAPPER.selOrderDetail1(orderId);
+
+        List<OrderDetailVo> list = MAPPER.selOrderDetail(orderId);
+
+        List<OrderDetail2> list2 = MAPPER.selOrderDetail2(orderId);
+
+        return OrderDetail3.builder()
+                .list1(list1)
+                .list2(list2)
+                .build();
     }
 
     //환불된 상품과 환불 사유 출력

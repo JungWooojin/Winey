@@ -11,6 +11,7 @@ public class OrderListVo {
     private String email;
     private String nmKor;
     private int quantity;
+    private int salePrice;
     private int totalPrice;
     private int payment;
     private String pickUpStore;
