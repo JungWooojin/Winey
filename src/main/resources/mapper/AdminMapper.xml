@@ -180,7 +180,7 @@
     </select>
 
     <select id="selOrderDetail1" resultType="OrderDetail1">
-        SELECT A.order_id orderId, DATE_FORMAT(A.order_date, '%y-%m-%d') orderDate, C.email, D.nm_kor nmKor, B.sale_price salePrice
+        SELECT A.order_id orderId, DATE_FORMAT(A.order_date, '%y-%m-%d') orderDate, C.email, D.nm_kor nmKor, B.sale_price salePrice, B.quantity
         FROM t_order A
         INNER JOIN t_order_detail B
         ON A.order_id = B.order_id
