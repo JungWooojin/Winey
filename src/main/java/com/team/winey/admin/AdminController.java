@@ -125,7 +125,7 @@ public class AdminController {
     //상세 주문 내역 리스트 by orderId
     @Operation(summary = "상세 주문 내역 출력 by orderId(피그마:주문상세리스트)")
     @GetMapping("/order/{orderId}")
-    public List<OrderDetailVo> getOrderDetail(@PathVariable int orderId) {
+    public OrderDetail3 getOrderDetail(@PathVariable int orderId) {
         return SERVICE.getOrderDetail(orderId);
     }
 
