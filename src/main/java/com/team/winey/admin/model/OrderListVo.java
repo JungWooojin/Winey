@@ -14,5 +14,6 @@ public class OrderListVo {
     private int totalPrice;
     private int payment;
     private String pickUpStore;
+    private int orderStatus;
     private int count;
 }

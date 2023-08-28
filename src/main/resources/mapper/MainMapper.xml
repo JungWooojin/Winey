@@ -4,6 +4,65 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.winey.main.MainMapper">
 
+
+    <select id="searchWine" resultType="WineVo">
+        SELECT a.product_id productId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.pic,
+        a.promotion, a.beginner, b.sale, b.sale_price salePrice, b.sale_yn saleYn
+        FROM t_product a
+        INNER JOIN t_sale b
+        ON a.product_id = b.product_id
+        INNER JOIN t_small_category c
+        <where>
+            <if test="categoryId != null">
+                and a.category_id = #{categoryId}
+            </if>
+            <if test="bigCategoryId != null">
+                AND c.big_category_id = #{bigCategoryId}
+            </if>
+            <if test="countryId != null">
+                AND a.country_id = #{countryId}
+            </if>
+            <if test="price == 0">
+                AND a.price <![CDATA[< 20000]]>
+            </if>
+            <if test="price == 1">
+                AND a.price >= 20000 AND a.price <![CDATA[< 50000]]>
+            </if>
+            <if test="price == 2">
+                AND a.price <![CDATA[>= 50000]]>
+            </if>
+            <if test="price == 3">
+                AND a.price >= 100000
+            </if>
+            <if test="text != null">
+                AND a.nm_kor LIKE CONCAT('%', #{text}, '%')
+            </if>
+        </where>
+        <if test="sort == 0">
+            ORDER BY a.product_id DESC
+        </if>
+        <if test="sort == 1">
+            ORDER BY a.price DESC
+        </if>
+        <if test="sort == 2">
+            ORDER BY a.price
+        </if>
+        LIMIT #{startIdx}, #{row}
+    </select>
+
+    <select id="selLastWine" resultType="int">
+        SELECT count(product_id)
+        FROM t_product
+        <where>
+            <if test = "product_id != null">
+                and product_id = #{productId}
+            </if>
+            <if test = "text != null">
+                and `nm_kor` LIKE CONCAT('%',#{text},'%')
+            </if>
+        </where>
+    </select>
+
     <select id="redWine">
         SELECT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
         c.aroma_category_id aromaId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
@@ -14,6 +73,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 1
+        GROUP BY a.product_id
         LIMIT ${startIdx}, ${row}
     </select>
 
@@ -27,6 +87,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 1
+        GROUP BY a.product_id
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -41,6 +102,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 1
+        GROUP BY a.product_id
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -55,6 +117,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 1
+        GROUP BY a.product_id
         ORDER BY price
         LIMIT ${startIdx}, ${row}
     </select>
@@ -71,6 +134,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 2
+        GROUP BY a.product_id
         LIMIT ${startIdx}, ${row}
     </select>
 
@@ -84,6 +148,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 2
+        GROUP BY a.product_id
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -98,6 +163,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 2
+        GROUP BY a.product_id
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -112,6 +178,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 2
+        GROUP BY a.product_id
         ORDER BY price
         LIMIT ${startIdx}, ${row}
     </select>
@@ -129,6 +196,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 3
+        GROUP BY a.product_id
         LIMIT ${startIdx}, ${row}
     </select>
 
@@ -142,6 +210,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 3
+        GROUP BY a.product_id
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -156,6 +225,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 3
+        GROUP BY a.product_id
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -170,6 +240,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 3
+        GROUP BY a.product_id
         ORDER BY price
         LIMIT ${startIdx}, ${row}
     </select>
@@ -186,6 +257,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 4
+        GROUP BY a.product_id
         LIMIT ${startIdx}, ${row}
     </select>
 
@@ -199,6 +271,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 4
+        GROUP BY a.product_id
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -213,6 +286,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 4
+        GROUP BY a.product_id
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -227,6 +301,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.category_id = 4
+        GROUP BY a.product_id
         ORDER BY price
         LIMIT ${startIdx}, ${row}
     </select>
@@ -275,6 +350,7 @@
         ON a.product_id = b.product_id
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
+        GROUP BY a.product_id
         LIMIT ${startIdx}, ${row}
     </select>
 
@@ -287,6 +363,7 @@
         ON a.product_id = b.product_id
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
+        GROUP BY a.product_id
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -300,6 +377,7 @@
         ON a.product_id = b.product_id
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
+        GROUP BY a.product_id
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -313,6 +391,7 @@
         ON a.product_id = b.product_id
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
+        GROUP BY a.product_id
         ORDER BY price
         LIMIT ${startIdx}, ${row}
     </select>
@@ -329,6 +408,7 @@
         INNER JOIN t_aroma c
         ON a.product_id = c.product_id
         WHERE a.product_id = #{productId}
+        GROUP BY a.product_id
     </select>
 
     <!-- ////////////////////////////////////////////////////////////////////////////////  -->
@@ -344,6 +424,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price < 20000
+            GROUP BY a.product_id
             LIMIT ${startIdx}, ${row}
         ]]>
     </select>
@@ -359,6 +440,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price < 20000
+                    GROUP BY a.product_id
             ORDER BY a.product_id DESC
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -375,6 +457,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price < 20000
+                    GROUP BY a.product_id
             ORDER BY price DESC
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -391,6 +474,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price < 20000
+                    GROUP BY a.product_id
             ORDER BY price
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -409,6 +493,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
+                    GROUP BY a.product_id
             LIMIT ${startIdx}, ${row}
         ]]>
     </select>
@@ -424,6 +509,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
+                    GROUP BY a.product_id
             ORDER BY a.product_id DESC
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -440,6 +526,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
+                    GROUP BY a.product_id
             ORDER BY price DESC
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -456,6 +543,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 20000 AND price < 50000
+                    GROUP BY a.product_id
             ORDER BY price
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -475,6 +563,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
+                    GROUP BY a.product_id
             LIMIT ${startIdx}, ${row}
         ]]>
     </select>
@@ -490,6 +579,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
+                    GROUP BY a.product_id
             ORDER BY a.product_id DESC
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -506,6 +596,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
+                    GROUP BY a.product_id
             ORDER BY price DESC
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -522,6 +613,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 50000 AND price < 100000
+                    GROUP BY a.product_id
             ORDER BY price
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -541,6 +633,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 100000
+                    GROUP BY a.product_id
             LIMIT ${startIdx}, ${row}
         ]]>
     </select>
@@ -556,6 +649,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 100000
+                    GROUP BY a.product_id
             ORDER BY a.product_id DESC
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -572,6 +666,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 100000
+                    GROUP BY a.product_id
             ORDER BY price DESC
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -588,6 +683,7 @@
             INNER JOIN t_aroma c
             ON a.product_id = c.product_id
             WHERE price > 100000
+                    GROUP BY a.product_id
             ORDER BY price
             LIMIT ${startIdx}, ${row}
         ]]>
@@ -607,6 +703,7 @@
         INNER JOIN t_aroma d
         ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
+        GROUP BY a.product_id
         LIMIT ${startIdx}, ${row}
     </select>
 
@@ -622,6 +719,7 @@
         INNER JOIN t_aroma d
         ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
+        GROUP BY a.product_id
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -638,6 +736,7 @@
         INNER JOIN t_aroma d
         ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
+        GROUP BY a.product_id
         ORDER BY price desc
         LIMIT ${startIdx}, ${row}
     </select>
@@ -654,6 +753,7 @@
         INNER JOIN t_aroma d
         ON a.product_id = d.product_id
         WHERE b.country_id = #{countryId}
+        GROUP BY a.product_id
         ORDER BY price
         LIMIT ${startIdx}, ${row}
     </select>
@@ -676,6 +776,7 @@
         INNER JOIN t_aroma f
         ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
+        GROUP BY a.product_id
         LIMIT ${startIdx}, ${row}
     </select>
 
@@ -695,6 +796,7 @@
         INNER JOIN t_aroma f
         ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
+        GROUP BY a.product_id
         ORDER BY a.product_id DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -715,6 +817,7 @@
         INNER JOIN t_aroma f
         ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
+        GROUP BY a.product_id
         ORDER BY price DESC
         LIMIT ${startIdx}, ${row}
     </select>
@@ -735,6 +838,7 @@
         INNER JOIN t_aroma f
         ON a.product_id = f.product_id
         WHERE d.big_category_id = #{bigCategoryId}
+        GROUP BY a.product_id
         ORDER BY price
         LIMIT ${startIdx}, ${row}
     </select>
