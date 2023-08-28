@@ -1,10 +1,9 @@
 package com.team.winey.main.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class WineRecommandVo {
+public class WineRecommendVo {
 //    private Long userId;
     private Long productId;
     private Long categoryId;

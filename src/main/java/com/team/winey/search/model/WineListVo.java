@@ -1,4 +1,4 @@
-package com.team.winey.main.model;
+package com.team.winey.search.model;
 
 import lombok.Data;
 

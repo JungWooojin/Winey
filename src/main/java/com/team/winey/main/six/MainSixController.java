@@ -5,7 +5,6 @@ import com.team.winey.main.MainMapper;
 import com.team.winey.main.model.*;
 import com.team.winey.recommend.RecommendMapper;
 import com.team.winey.recommend.model.LoginUserDto;
-import com.team.winey.recommend.model.RecommendVo;
 import com.team.winey.recommend.model.SelRecommendDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -84,7 +83,7 @@ public class MainSixController {
     @GetMapping("/random-wines")
     @Operation(summary = "입문용 와인리스트 6개")
     @Scheduled(cron = "0 0 0 * * *") // 매일 자정 마다 실행
-    public List<WineRecommandVo> getRandomWines() {
+    public List<WineRecommendVo> getRandomWines() {
 
         //로그인한 userId 불러오기
         Long userId = facade.getLoginUserPk().longValue();
@@ -98,7 +97,7 @@ public class MainSixController {
         List<Integer> recommandWines = recommendMapper.selUserinfo(selRecommendDto);
         List<Long> getProductID = new ArrayList<>();
 
-        List<WineRecommandVo> selectedWines = new ArrayList<>();
+        List<WineRecommendVo> selectedWines = new ArrayList<>();
         List<Integer> totalWines = recommandWines;
 
         //userId 당 해당하는 productId 담기
@@ -107,7 +106,7 @@ public class MainSixController {
         }
 
         //랜덤 6개 출력하기
-        List<WineRecommandVo> allWines = MAPPER.selWineByday(userId);
+        List<WineRecommendVo> allWines = MAPPER.selWineByday(userId);
         int winesToDisplay = 6;
 
         if (getProductID.size() <= winesToDisplay) {
