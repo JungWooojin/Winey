@@ -13,4 +13,6 @@ public class ProductVo {
     private int promotion;
     private int beginner;
     private int quantity;
+    private int sale;
+    private int salePrice;
 }

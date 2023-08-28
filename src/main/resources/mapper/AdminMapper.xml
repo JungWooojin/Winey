@@ -125,11 +125,19 @@
     </select>
 
     <select id="selProduct" resultType="ProductVo">
+        SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+        FROM t_product A
+        LEFT OUTER JOIN t_sale B
+        ON A.product_id = B.product_id
+        LIMIT #{startIdx}, #{row}
+    </select>
+<!--
+    <select id="selProduct" resultType="ProductVo">
         SELECT product_id productId, nm_kor nmKor, price, promotion, beginner, quantity
         FROM t_product
         LIMIT #{startIdx}, #{row}
     </select>
-
+-->
     <select id="selProductSale" resultType="ProductSaleVo">
         SELECT A.product_id productId, A.nm_kor nmKor, A.price, B.sale, B.sale_price salePrice, A.promotion, A.beginner, A.quantity, B.sale_yn saleYn
         FROM t_product A
