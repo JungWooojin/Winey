@@ -26,6 +26,30 @@ public class MainController {
 
     private final MainService SERVICE;
 
+    @GetMapping("/search")
+    public WineSelDetailRes getSearchWine(@RequestParam(value = "cate",required=false)Long cate,
+                                          @RequestParam(value = "bigCate",required=false)Long bigCate,
+                                          @RequestParam(value = "country",required=false)Long country,
+                                          @RequestParam(value = "text",required=false)String text,
+                                          @RequestParam(defaultValue = "1")int page,
+                                          @RequestParam(defaultValue = "9")int row,
+                                          @RequestParam(defaultValue = "0")int sort,
+                                          @RequestParam(defaultValue = "0")int price) {
+
+        WineSearchDto dto = new WineSearchDto();
+        dto.setText(text);
+        dto.setPage(page);
+        dto.setRow(row);
+        dto.setCategoryId(cate);
+        dto.setBigCategoryId(bigCate);
+        dto.setCountryId(country);
+        dto.setSort(sort);
+        dto.setPrice(price);
+
+        return SERVICE.searchWine(dto);
+    }
+
+
     @GetMapping("/redWine")
     @Operation(summary = "레드와인", description = "레드와인만 모아놨지롱")
     public List<WineTotalVo> getRedWines(@RequestParam(defaultValue = "1") int page
