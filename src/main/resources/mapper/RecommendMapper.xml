@@ -47,9 +47,6 @@
                 AND (
                 <foreach item="range" collection="priceRange" separator=" OR " open="(" close=")">
                     <choose>
-                        <when test="range == 0">
-                            price >= 0
-                        </when>
                         <when test="range == 1">
                             price <![CDATA[< 20000]]>
                         </when>
@@ -67,7 +64,7 @@
                 )
             </if>
         </where>
-        order by B.product_id
+        ORDER BY B.product_id
     </select>
 
 
@@ -83,7 +80,6 @@
         #{priceRange,jdbcType=BIGINT},
         #{aromaCategoryId,jdbcType=BIGINT}
         )
-
     </insert>
     <insert id="insUserinfo">
         INSERT INTO t_user_info (user_id, product_id)
@@ -109,7 +105,7 @@
         WHERE user_id=#{userId}
     </select>
     <select id="selUserPriceRange">
-        SELECT distinct category_id categoryId
+        SELECT distinct price_range priceRange
         FROM t_user_recommend
         WHERE user_id=#{userId}
     </select>
@@ -129,7 +125,6 @@
         from t_user_info
         where user_id=#{userId}
     </select>
-
 
     <delete id="delInfo">
         delete
