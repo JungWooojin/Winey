@@ -298,6 +298,13 @@
         WHERE product_id = #{productId}
     </update>
 
+    <update id="updDelYn">
+        update t_user
+        set
+        del_yn = 1
+        where user_id = #{userId}
+    </update>
+
     <select id="productCount">
         SELECT COUNT(product_id)
         FROM t_product
