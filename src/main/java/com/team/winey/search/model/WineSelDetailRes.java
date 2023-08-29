@@ -20,5 +20,6 @@ public class WineSelDetailRes {
     private int isMore;
     private int page;
     private int row;
+    private int count;
     private List<WineListVo> wineList;
 }
