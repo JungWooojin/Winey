@@ -28,10 +28,8 @@ public class MyPageController {
     @GetMapping("/userinfo")
     @Operation(summary = "로그인한사람의 회원정보",description =
             "주의사항: 로그인되어있을때 사용하셔야합니다. delYn값이 0이여야합니다. 1이면 삭제처리유저입니다. <br>")
-    public SelUserVo getUser(@AuthenticationPrincipal MyUserDetails details){
-        SelUserDto dto = new SelUserDto();
-        dto.setUserId(details.getUserId());
-        return service.selUser(dto);
+    public SelUserVo getUser(){
+        return service.selUser();
     }
 
 

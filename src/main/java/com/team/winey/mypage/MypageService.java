@@ -40,7 +40,9 @@ public class MypageService {
 //        dto.setUserId(facade.getLoginUserPk());
 //        return mapper.selUser(dto);
 //    }
-    public SelUserVo selUser( SelUserDto dto){
+    public SelUserVo selUser(){
+        SelUserDto dto =new SelUserDto();
+        dto.setUserId(facade.getLoginUserPk());
         return mapper.selUser(dto);
     }
     public int delUser(){
