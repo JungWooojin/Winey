@@ -49,8 +49,8 @@ public class AdminController {
             +"category -> 1(레드), 2(화이트), 3(스파클링), 4(기타)<br>"
             +"aroma(flower/plant/fruit/spicy/earth/oak/nuts -> 향이 있으면 1, 없으면 0<br>"
             +"sale/salePrice -> int타입<br>"
-            +"startSale/endSale -> 2023-08-08 12:00 형식 (시간 단위까지만 입력, 분단위는 00)<br>"
-            +"smallCategoryId -> steak(1), chicken(2), lamb(3), pork(4), oyster(5), fish(6), shrimp(7), clam(8), cheese(9), fruit(10), pizza(11), pasta(12)<br>")
+            +"startSale/endSale -> 2023-08 년-월 <br>"
+            +"smallCategoryId -> steak(1), chicken(2), 샐러드(salad)(3), pork(4), oyster(5), fish(6), 튀김(fried)(7), 한식(kfood)(8), cheese(9), fruit(10), pizza(11), 디저트(dessert)(12)<br>")
     @PutMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public int putProduct(@RequestPart(required = false) MultipartFile pic, @RequestPart ProductUpdParam param) {
         return SERVICE.putProduct(pic, param);
