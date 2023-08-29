@@ -2,6 +2,8 @@ package com.team.winey.admin.model;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class ProductUpdDto {
     private int productId;
@@ -27,8 +29,8 @@ public class ProductUpdDto {
 
     private int sale; //할인률
     private int salePrice; //할인가격
-    private String startSale; //할인 시작일
-    private String endSale; //할인 종료일
+    private LocalDate startSale; //할인 시작일
+    private LocalDate endSale; //할인 종료일
     private int saleYn; //할인여부
 
     //음식 페어링
