@@ -8,8 +8,7 @@ import java.util.List;
 @Mapper
 public interface MainMapper {
 
-    List<WineListVo> searchWine(WineSearchDto dto);
-    int selLastWine(WineSearchDto dto);
+
 
     int updPrice(WineUpdDto dto);
     int updSalePrice(WineUpdSalePriceDto dto);

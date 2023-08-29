@@ -1,23 +1,22 @@
-package com.team.winey.main.model;
+package com.team.winey.search.model;
 
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.Setter;
 
-import java.util.List;
-
-@Builder
+@Setter
 @Getter
-public class WineSelDetailRes {
+public class WineSearchDto {
     private Long categoryId;
     private Long bigCategoryId;
     private Long countryId;
     private String text;
     private int sort;
     private int price;
-    private int maxPage;
     private int startIdx;
-    private int isMore;
     private int page;
     private int row;
-    private List<WineListVo> wineList;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long product_id;
+
 }

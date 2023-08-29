@@ -26,29 +26,6 @@ public class MainController {
 
     private final MainService SERVICE;
 
-    @GetMapping("/search")
-    public WineSelDetailRes getSearchWine(@RequestParam(value = "cate",required=false)Long cate,
-                                          @RequestParam(value = "bigCate",required=false)Long bigCate,
-                                          @RequestParam(value = "country",required=false)Long country,
-                                          @RequestParam(value = "text",required=false)String text,
-                                          @RequestParam(defaultValue = "1")int page,
-                                          @RequestParam(defaultValue = "9")int row,
-                                          @RequestParam(defaultValue = "0")int sort,
-                                          @RequestParam(defaultValue = "0")int price) {
-
-        WineSearchDto dto = new WineSearchDto();
-        dto.setText(text);
-        dto.setPage(page);
-        dto.setRow(row);
-        dto.setCategoryId(cate);
-        dto.setBigCategoryId(bigCate);
-        dto.setCountryId(country);
-        dto.setSort(sort);
-        dto.setPrice(price);
-
-        return SERVICE.searchWine(dto);
-    }
-
 
     @GetMapping("/redWine")
     @Operation(summary = "레드와인", description = "레드와인만 모아놨지롱")
@@ -550,8 +527,8 @@ public class MainController {
             "    \"alcohol\": 알코올 도수<br>" +
             "  }")
     public List<WineTotalVo> getWineByCountry(@RequestParam Long countryId
-                                            , @RequestParam(defaultValue = "1") int page
-                                            , @RequestParam(defaultValue = "9") int row) {
+            , @RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
         WineSelByCountryDto dto = new WineSelByCountryDto();
         dto.setCountryId(countryId);
         dto.setPage(page);
@@ -562,8 +539,8 @@ public class MainController {
     @GetMapping("/country/new/")
     @Operation(summary = "국가별 와인리스트 - 최신등록순")
     public List<WineTotalVo> getWineByCountryNew(@RequestParam Long countryId
-                                                , @RequestParam(defaultValue = "1") int page
-                                                , @RequestParam(defaultValue = "9") int row) {
+            , @RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
         WineSelByCountryDto dto = new WineSelByCountryDto();
         dto.setCountryId(countryId);
         dto.setPage(page);
@@ -571,11 +548,12 @@ public class MainController {
         dto.setCountryId(countryId);
         return SERVICE.selWineByCountryNew(dto);
     }
+
     @GetMapping("/country/expensive")
     @Operation(summary = "국가별 와인리스트 - 높은금액순")
     public List<WineTotalVo> getWineByCountryExpensive(@RequestParam Long countryId
-                                                    , @RequestParam(defaultValue = "1") int page
-                                                    , @RequestParam(defaultValue = "9") int row) {
+            , @RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
         WineSelByCountryDto dto = new WineSelByCountryDto();
         dto.setCountryId(countryId);
         dto.setPage(page);
@@ -587,8 +565,8 @@ public class MainController {
     @GetMapping("/country/cheap")
     @Operation(summary = "국가별 와인리스트 - 낮은금액순")
     public List<WineTotalVo> getWineByCountryCheap(@RequestParam Long countryId
-                                                , @RequestParam(defaultValue = "1") int page
-                                                , @RequestParam(defaultValue = "9") int row) {
+            , @RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
         WineSelByCountryDto dto = new WineSelByCountryDto();
         dto.setCountryId(countryId);
         dto.setPage(page);
@@ -596,7 +574,6 @@ public class MainController {
         dto.setCountryId(countryId);
         return SERVICE.selWineByCountryCheap(dto);
     }
-
 
 
     @GetMapping("/food")
@@ -620,8 +597,8 @@ public class MainController {
             "    \"alcohol\": 알코올 도수<br>" +
             "  }")
     public List<WineFoodVo> getWineByFood(@RequestParam Long bigCategoryId
-                                        , @RequestParam(defaultValue = "1") int page
-                                        , @RequestParam(defaultValue = "9") int row) {
+            , @RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
         WineSelByFoodDto dto = new WineSelByFoodDto();
         dto.setPage(page);
         dto.setRow(row);
@@ -632,8 +609,8 @@ public class MainController {
     @GetMapping("/food/new")
     @Operation(summary = "음식별 와인리스트 - 최신등록순")
     public List<WineFoodVo> getWineByFoodNew(@RequestParam Long bigCategoryId
-                                            , @RequestParam(defaultValue = "1") int page
-                                            , @RequestParam(defaultValue = "9") int row) {
+            , @RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
         WineSelByFoodDto dto = new WineSelByFoodDto();
         dto.setBigCategoryId(bigCategoryId);
         dto.setPage(page);
@@ -645,8 +622,8 @@ public class MainController {
     @GetMapping("/food/expensive")
     @Operation(summary = "음식별 와인리스트 - 높은금액순")
     public List<WineFoodVo> getWineByFoodExpensive(@RequestParam Long bigCategoryId
-                                                , @RequestParam(defaultValue = "1") int page
-                                                , @RequestParam(defaultValue = "9") int row) {
+            , @RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
         WineSelByFoodDto dto = new WineSelByFoodDto();
         dto.setBigCategoryId(bigCategoryId);
         dto.setPage(page);
@@ -658,8 +635,8 @@ public class MainController {
     @GetMapping("/food/cheap")
     @Operation(summary = "음식별 와인리스트 - 낮은가격순")
     public List<WineFoodVo> selWineByFoodCheap(@RequestParam Long bigCategoryId
-                                            , @RequestParam(defaultValue = "1") int page
-                                            , @RequestParam(defaultValue = "9") int row) {
+            , @RequestParam(defaultValue = "1") int page
+            , @RequestParam(defaultValue = "9") int row) {
         WineSelByFoodDto dto = new WineSelByFoodDto();
         dto.setBigCategoryId(bigCategoryId);
         dto.setPage(page);
