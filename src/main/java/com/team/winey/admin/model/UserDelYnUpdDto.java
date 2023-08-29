@@ -3,6 +3,6 @@ package com.team.winey.admin.model;
 import lombok.Data;
 
 @Data
-public class UserUpdDto {
+public class UserDelYnUpdDto {
     private Long userId;
 }

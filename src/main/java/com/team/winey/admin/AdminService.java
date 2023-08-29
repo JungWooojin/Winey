@@ -444,7 +444,7 @@ public class AdminService {
     public int putProductSaleYn(ProductSaleYnDto dto) {
         return MAPPER.updSaleYn(dto); // saleYn update 성공시 1, 실패시 0 리턴
     }
-    public int putUserDelYn(UserUpdDto dto){
+    public int putUserDelYn(UserDelYnUpdDto dto){
         return MAPPER.updDelYn(dto);
     }
 }

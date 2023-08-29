@@ -192,7 +192,7 @@ public class AdminController {
 
     @Operation(summary = "회원 탈퇴상태(delYn) 업데이트", description = "업데이트 <br>"+"* 성공시 코드: 1<br>"+ "* 실패시 코드: 0")
     @DeleteMapping("/withdrawal")
-    public int delUserDelYn(UserUpdDto dto){
+    public int delUserDelYn(UserDelYnUpdDto dto){
         return SERVICE.putUserDelYn(dto);
     }
 }
