@@ -47,10 +47,10 @@ public class AdminController {
             +"country -> 1(미국), 2(스페인), 3(프랑스), 4(이탈리아), 5(포르투갈), 6(칠레)<br>"
             +"sweety/acidity/body -> 1~5<br>"
             +"category -> 1(레드), 2(화이트), 3(스파클링), 4(기타)<br>"
-            +"aroma(flower/plant/fruit/spicy/earth/oak/nuts -> 향이 있으면 1, 없으면 0<br>"
+            +"aroma -> flower(1), plant(2), fruit(3), spicy(4), earth(5), oak(6), nuts(7)<br>"
             +"sale/salePrice -> int타입<br>"
-            +"startSale/endSale -> 2023-08-08 12:00 형식 (시간 단위까지만 입력, 분단위는 00)<br>"
-            +"smallCategoryId -> steak(1), chicken(2), lamb(3), pork(4), oyster(5), fish(6), shrimp(7), clam(8), cheese(9), fruit(10), pizza(11), pasta(12)<br>")
+            +"saleDate -> 2023-08(년-월) <br>"
+            +"smallCategoryId -> steak(1), chicken(2), 샐러드(salad)(3), pork(4), oyster(5), fish(6), 튀김(fried)(7), 한식(kfood)(8), cheese(9), fruit(10), pizza(11), 디저트(dessert)(12)<br>")
     @PutMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public int putProduct(@RequestPart(required = false) MultipartFile pic, @RequestPart ProductUpdParam param) {
         return SERVICE.putProduct(pic, param);
@@ -191,8 +191,8 @@ public class AdminController {
     }
 
     @Operation(summary = "회원 탈퇴상태(delYn) 업데이트", description = "업데이트 <br>"+"* 성공시 코드: 1<br>"+ "* 실패시 코드: 0")
-    @DeleteMapping("/withdrawal")
-    public int delUserDelYn(UserDelYnUpdDto dto){
+    @PutMapping("/withdrawal")
+    public int putUserDelYn(UserDelYnUpdDto dto){
         return SERVICE.putUserDelYn(dto);
     }
 }
