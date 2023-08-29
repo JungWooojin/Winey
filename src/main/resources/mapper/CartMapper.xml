@@ -24,7 +24,7 @@
     </select>
 
     <insert id="insCart" useGeneratedKeys="true" keyProperty="cartId">
-        insert into t_cart
+        insert ignore into t_cart
         set
         user_id = #{userId},
         product_id = #{productId},
