@@ -27,8 +27,9 @@ public class ProductUpdParam {
 
     private int sale; //할인률
     private int salePrice; //할인가격
-    private String startSale; //할인 시작일
-    private String endSale; //할인 종료일
+//    private String startSale; //할인 시작일
+//    private String endSale; //할인 종료일
+    private String saleDate;
     private int saleYn; //할인여부
 
     //음식페어링
