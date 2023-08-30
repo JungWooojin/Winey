@@ -25,6 +25,16 @@ public class SearchService {
         int maxPage = (int) Math.ceil((double) count / dto.getRow());
         int isMore = maxPage > dto.getPage() ? 1 : 0;
 
+        if(dto.getBigCategoryId() == null) {
+            return null;
+        }
+        if(dto.getCategoryId() == null) {
+            return null;
+        }
+        if(dto.getCountryId() == null) {
+            return null;
+        }
+
         return WineSelDetailRes.builder()
                 .categoryId(dto.getCategoryId())
                 .bigCategoryId(dto.getBigCategoryId())
