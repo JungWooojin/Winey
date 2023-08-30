@@ -12,4 +12,5 @@ public class UserVo {
     String email;
     String nm;
     int regionNmId;
+    String createdAt;
 }
