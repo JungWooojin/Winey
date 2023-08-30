@@ -184,6 +184,7 @@
         INNER JOIN t_product E
         ON D.product_id = E.product_id
         GROUP BY A.order_id
+        ORDER BY A.order_date DESC
         LIMIT #{startIdx}, #{row}
     </select>
 
