@@ -26,28 +26,35 @@
                 AND a.country_id = #{countryId}
             </if>
             <if test="price == 0">
-                AND a.price <![CDATA[< 20000]]>
+                AND a.price > 0
             </if>
             <if test="price == 1">
-                AND a.price >= 20000 AND a.price <![CDATA[< 50000]]>
+                AND a.price <![CDATA[< 20000]]>
             </if>
             <if test="price == 2">
-                AND price >= 50000 AND price <![CDATA[< 100000]]>
+                AND a.price >= 20000 AND a.price <![CDATA[< 50000]]>
             </if>
             <if test="price == 3">
+                AND price >= 50000 AND price <![CDATA[< 100000]]>
+            </if>
+            <if test="price == 4">
                 AND a.price >= 100000
             </if>
+
             <if test="text != null">
                 AND a.nm_kor LIKE CONCAT('%', #{text}, '%')
             </if>
         </where>
         <if test="sort == 0">
-            ORDER BY a.product_id DESC
+            ORDER BY a.product_id
         </if>
         <if test="sort == 1">
-            ORDER BY a.price DESC
+            ORDER BY a.product_id DESC
         </if>
         <if test="sort == 2">
+            ORDER BY a.price DESC
+        </if>
+        <if test="sort == 3">
             ORDER BY a.price
         </if>
         LIMIT #{startIdx}, #{row}
@@ -57,10 +64,10 @@
         SELECT count(product_id)
         FROM t_product
         <where>
-            <if test = "product_id != null">
+            <if test="product_id != null">
                 and product_id = #{productId}
             </if>
-            <if test = "text != null">
+            <if test="text != null">
                 and `nm_kor` LIKE CONCAT('%',#{text},'%')
             </if>
         </where>

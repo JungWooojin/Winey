@@ -17,12 +17,23 @@ public class SearchService {
     public WineSelDetailRes searchWine(WineSearchDto dto) {
 
         dto.setStartIdx((dto.getPage() - 1));
+//        dto.setStartIdx((dto.getPage()-1) * dto.getRow());
 
         List<WineListVo> list = MAPPER.searchWine(dto);
 
         int count = MAPPER.selLastWine(dto);
         int maxPage = (int) Math.ceil((double) count / dto.getRow());
         int isMore = maxPage > dto.getPage() ? 1 : 0;
+
+//        if(dto.getBigCategoryId() == null) {
+//            return null;
+//        }
+//        if(dto.getCategoryId() == null) {
+//            return null;
+//        }
+//        if(dto.getCountryId() == null) {
+//            return null;
+//        }
 
         return WineSelDetailRes.builder()
                 .categoryId(dto.getCategoryId())
@@ -36,7 +47,7 @@ public class SearchService {
                 .row(dto.getRow())
                 .isMore(isMore)
                 .maxPage(maxPage)
-                .count(list.size())
+                .count(count)
                 .wineList(list)
                 .build();
     }
