@@ -24,12 +24,22 @@
     </select>
 
     <insert id="insCart" useGeneratedKeys="true" keyProperty="cartId">
-        insert ignore into t_cart
-        set
-        user_id = #{userId},
-        product_id = #{productId},
-        quantity = #{quantity},
-        buy_yn = 0
+        INSERT INTO t_cart (user_id, product_id, quantity, buy_yn)
+        SELECT
+        #{userId},
+        #{productId},
+        #{quantity},
+        0
+        FROM
+        (SELECT 1) AS dummy
+        WHERE
+        NOT EXISTS (
+        SELECT 1
+        FROM t_cart
+        WHERE user_id = #{userId}
+        AND product_id = #{productId}
+        AND DATE(created_at) = CURDATE()
+        );
     </insert>
 
     <delete id="delCart">
