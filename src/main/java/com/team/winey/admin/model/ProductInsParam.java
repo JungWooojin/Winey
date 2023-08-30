@@ -1,6 +1,7 @@
 package com.team.winey.admin.model;
 
 import lombok.Data;
+import reactor.util.annotation.Nullable;
 
 import java.util.List;
 @Data
@@ -25,9 +26,11 @@ public class ProductInsParam {
 
     private int sale; //할인률
     private int salePrice; //할인가격
-//    private String startSale; //할인 시작일
-//    private String endSale; //할인 종료일
-    private String saleDate;
+    @Nullable
+    private String startSale; //할인 시작일
+    @Nullable
+    private String endSale; //할인 종료일
+//    private String saleDate;
 
     //음식페어링
     private List<Integer> smallCategoryId; //1~12번까지 있음
