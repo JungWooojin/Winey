@@ -37,7 +37,7 @@ public class SearchService {
                 .row(dto.getRow())
                 .isMore(isMore)
                 .maxPage(maxPage)
-                .count(list.size())
+                .count(count)
                 .wineList(list)
                 .build();
     }
