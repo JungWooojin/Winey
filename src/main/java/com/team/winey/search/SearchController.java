@@ -27,8 +27,8 @@ public class SearchController {
             "\"text\": [-] 검색어,<br>" +
             "\"page\": [-] 리스트 페이지,<br>" +
             "\"row\": [고정] 아이템 개수,<br>" +
-            "\"sort\": [1] 판매순 랭킹(0 : 최신순, 1: 오래된순, 2: 높은가격순, 3: 낮은가격순)  <br>" +
-            "\"price\": [1] 금액별 순서(0 : 2만원 미만, 1: 2~5만원 , 2: 5~10만원, 3: 10만원 이상)  <br>"
+            "\"sort\": [1] 판매순 랭킹(0 : 오래된순, 1: 최신순, 2: 높은가격순, 3: 낮은가격순)  <br>" +
+            "\"price\": [1] 금액별 순서(0: 전체금액, 1 : 2만원 미만, 2: 2~5만원 , 3: 5~10만원, 4: 10만원 이상)  <br>"
     )
     public WineSelDetailRes getSearchWine(@RequestParam(value = "cate", required = false) Long cate,
                                           @RequestParam(value = "bigCate", required = false) Long bigCate,
@@ -36,8 +36,8 @@ public class SearchController {
                                           @RequestParam(value = "text", required = false) String text,
                                           @RequestParam(defaultValue = "1") int page,
                                           @RequestParam(defaultValue = "9") int row,
-                                          @RequestParam(defaultValue = "0") int sort,
-                                          @RequestParam(defaultValue = "0") int price) {
+                                          @RequestParam(defaultValue = "0", required = false) int sort,
+                                          @RequestParam(defaultValue = "0", required = false) int price) {
 
         WineSearchDto dto = new WineSearchDto();
         dto.setText(text);

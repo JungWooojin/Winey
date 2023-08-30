@@ -17,6 +17,7 @@ public class SearchService {
     public WineSelDetailRes searchWine(WineSearchDto dto) {
 
         dto.setStartIdx((dto.getPage() - 1));
+//        dto.setStartIdx((dto.getPage()-1) * dto.getRow());
 
         List<WineListVo> list = MAPPER.searchWine(dto);
 
