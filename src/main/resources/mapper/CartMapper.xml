@@ -44,13 +44,5 @@
         where cart_id = #{cartId}
     </update>
 
-<!--    <select id = "selSumPrice">-->
-<!--        SELECT sum(A.quantity * B.price) sumPrice-->
-<!--        from t_cart A-->
-<!--        inner JOIN t_product B-->
-<!--        ON A.product_id = B.product_id-->
-<!--        WHERE user_id = #{user_id}-->
-<!--        order by user_id;-->
-<!--    </select>-->
 
 </mapper>
