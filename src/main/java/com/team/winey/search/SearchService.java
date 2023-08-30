@@ -17,6 +17,7 @@ public class SearchService {
     public WineSelDetailRes searchWine(WineSearchDto dto) {
 
         dto.setStartIdx((dto.getPage() - 1));
+//        dto.setStartIdx((dto.getPage()-1) * dto.getRow());
 
         List<WineListVo> list = MAPPER.searchWine(dto);
 
@@ -36,7 +37,7 @@ public class SearchService {
                 .row(dto.getRow())
                 .isMore(isMore)
                 .maxPage(maxPage)
-                .count(list.size())
+                .count(count)
                 .wineList(list)
                 .build();
     }

@@ -54,9 +54,10 @@ public class AdminService {
         dto.setSale(param.getSale()); // t_sale
         dto.setSalePrice(param.getSalePrice()); // t_sale
 
-        LocalDate parseDate = LocalDate.parse(param.getSaleDate(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        LocalDate startSale = parseDate.withDayOfMonth(1);
-        LocalDate endSale = parseDate.withDayOfMonth(parseDate.lengthOfMonth());
+        LocalDate parseStartDate = LocalDate.parse(param.getStartSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String startSale을 LocalDate로 변환
+        LocalDate parseEndDate = LocalDate.parse(param.getEndSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String endSale을 LocalDate로 변환
+        LocalDate startSale = parseStartDate.withDayOfMonth(1); //할인시작월의 1일
+        LocalDate endSale = parseEndDate.withDayOfMonth(parseEndDate.lengthOfMonth()); //할인종료월의 마지막 일
 
 //        dto.setSmallCategoryId(param.getSmallCategoryId());// t_wine_pairing 테이블에 인서트 아래에서
 
@@ -103,12 +104,12 @@ public class AdminService {
                 File targetFile = new File(targetPath, savedFileName);
                 tempFile.renameTo(targetFile);
                 //t_sale 인서트
-                //saleDate가 이번 달과 똑같은 달이면 실행되는 로직
-                if(parseDate.getMonthValue() == LocalDate.now().getMonthValue()) {
+                //startSale이 이번 달과 똑같은 달이면 실행되는 로직
+                if(parseStartDate.getMonthValue() == LocalDate.now().getMonthValue()) {
                     dto.setStartSale(LocalDate.now().plusDays(1));
                     dto.setEndSale(endSale);
                     MAPPER.insSale(dto);
-                } else { //saleDate가 이번 달이 아니면 실행되는 로직
+                } else { //startSale이 이번 달이 아니면 실행되는 로직
                     dto.setStartSale(startSale);
                     dto.setEndSale(endSale);
                     MAPPER.insSale(dto);
@@ -131,7 +132,7 @@ public class AdminService {
         MAPPER.insProduct(dto);
         // 할인율, 할인가격 t_sale에 인서트 (product_id 이용해서) , 할인시작일과 종료일은(3차 때 구현)
         //saleDate가 이번 달과 똑같은 달이면 실행되는 로직
-        if(parseDate.getMonthValue() == LocalDate.now().getMonthValue()) {
+        if(parseStartDate.getMonthValue() == LocalDate.now().getMonthValue()) {
             dto.setStartSale(LocalDate.now().plusDays(1));
             dto.setEndSale(endSale);
             MAPPER.insSale(dto);
@@ -170,9 +171,10 @@ public class AdminService {
         dto.setSale(param.getSale()); // t_sale
         dto.setSalePrice(param.getSalePrice()); // t_sale
 
-        LocalDate parseDate = LocalDate.parse(param.getSaleDate(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        LocalDate startSale = parseDate.withDayOfMonth(1);
-        LocalDate endSale = parseDate.withDayOfMonth(parseDate.lengthOfMonth());
+        LocalDate parseStartDate = LocalDate.parse(param.getStartSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String startSale을 LocalDate로 변환
+        LocalDate parseEndDate = LocalDate.parse(param.getEndSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String endSale을 LocalDate로 변환
+        LocalDate startSale = parseStartDate.withDayOfMonth(1); //할인시작월의 1일
+        LocalDate endSale = parseEndDate.withDayOfMonth(parseEndDate.lengthOfMonth()); //할인종료월의 마지막 일
 
         dto.setSweety(param.getSweety()); //t_feature
         dto.setAcidity(param.getAcidity()); //t_feature
@@ -199,7 +201,7 @@ public class AdminService {
 
         //t_sale 테이블 update
         //saleDate가 이번 달과 똑같은 달이면 실행되는 로직
-        if(parseDate.getMonthValue() == LocalDate.now().getMonthValue()) {
+        if(parseStartDate.getMonthValue() == LocalDate.now().getMonthValue()) {
             dto.setStartSale(LocalDate.now().plusDays(1));
             dto.setEndSale(endSale);
             MAPPER.updSale(dto);
