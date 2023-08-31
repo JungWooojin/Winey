@@ -128,14 +128,20 @@ public class AdminController {
     }
 
     //주문 내역
-    @Operation(summary = "주문 내역 출력(피그마:주문내역관리 페이지)P", description = "주문상품, 주문수량 출력 안하는 중<br>"
-            +"page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @Operation(summary = "주문 내역 출력(피그마:주문내역관리 페이지)P", description = "<br>"
+            +"page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.<br>"
+            +"type -> 기본값(0) / 픽업장소(storeNm) / 픽업배송상태(orderStatus) <br>"
+            +"sort ->  기본값(0) / 오름차순(asc) / 내림차순(desc)")
     @GetMapping("/order")
     public OrderList getOrder(@RequestParam(defaultValue = "1")int page,
-                                      @RequestParam(defaultValue = "15")int row) {
+                              @RequestParam(defaultValue = "15")int row,
+                              @RequestParam(defaultValue = "0") String type,
+                              @RequestParam(defaultValue = "0") String sort) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
         dto.setRow(row);
+        dto.setType(type);
+        dto.setSort(sort);
 
         return SERVICE.getOrder(dto);
     }
