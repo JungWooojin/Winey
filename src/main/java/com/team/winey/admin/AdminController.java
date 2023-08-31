@@ -86,13 +86,13 @@ public class AdminController {
 
     //가입 회원 리스트 출력
     @Operation(summary = "가입 회원 리스트 (페이징처리)(피그마: 가입회원리스트 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.<br>"
-    + "type -> 픽업지역(pickUp) / 회원번호(userId)<br>"
-    + "sort -> 오름차순(asc) / 내림차순(desc)")
+    + "type -> 기본값(0) / 픽업지역(pickUp) / 회원번호(userId)<br>"
+    + "sort -> 기본값(0) / 오름차순(asc) / 내림차순(desc)")
     @GetMapping("/user/list")
     public UserList getUserList(@RequestParam(defaultValue = "1") int page,
                                     @RequestParam(defaultValue = "15") int row,
-                                String type,
-                                String sort) {
+                                @RequestParam(defaultValue = "0") String type,
+                                @RequestParam(defaultValue = "0") String sort) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
         dto.setRow(row);
@@ -104,8 +104,8 @@ public class AdminController {
     //가입 회원별 상세 주문 내역(회원pk별) +페이징 처리
     @Operation(summary = "회원별 상세 주문 내역 (피그마: 회원상세내역 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.<br>"
     + "구매합산금액(sumOrderPrice) / 구매횟수(orderCount) 추가<br>"
-    +"type -> 주문날짜(orderDate) / 픽업매장(storeNm) / 주문상태(orderStatus)<br>"
-    + "sort -> 오름차순(asc) / 내림차순(desc)")
+    +"type -> 기본값(0) / 주문날짜(orderDate) / 픽업매장(storeNm) / 주문상태(orderStatus)<br>"
+    + "sort -> 기본값(0) / 오름차순(asc) / 내림차순(desc)")
     @GetMapping("/{userId}/order")
     public UserOrderDetailList getUserOrder(@PathVariable Long userId, @RequestParam(defaultValue = "1")int page,
                                                 @RequestParam(defaultValue = "15")int row,
