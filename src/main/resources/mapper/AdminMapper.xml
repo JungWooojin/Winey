@@ -125,19 +125,131 @@
     </select>
 
     <select id="selProduct" resultType="ProductVo">
-        SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
-        FROM t_product A
-        LEFT OUTER JOIN t_sale B
-        ON A.product_id = B.product_id
-        LIMIT #{startIdx}, #{row}
+
+        <choose>
+            <when test="type == 'productId'.toString() and sort == 'asc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY A.product_id ASC
+                LIMIT #{startIdx}, #{row}
+            </when>
+            <when test="type == 'productId'.toString() and sort == 'desc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY A.product_id DESC
+                LIMIT #{startIdx}, #{row}
+            </when>
+
+            <when test="type == 'salePrice'.toString() and sort == 'asc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY B.sale_price ASC
+                LIMIT #{startIdx}, #{row}
+            </when>
+            <when test="type == 'salePrice'.toString() and sort == 'desc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY B.sale_price DESC
+                LIMIT #{startIdx}, #{row}
+            </when>
+
+            <when test="type == 'sale'.toString() and sort == 'asc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY B.sale ASC
+                LIMIT #{startIdx}, #{row}
+            </when>
+            <when test="type == 'sale'.toString() and sort == 'desc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY B.sale DESC
+                LIMIT #{startIdx}, #{row}
+            </when>
+
+            <when test="type == 'price'.toString() and sort == 'asc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY A.price ASC
+                LIMIT #{startIdx}, #{row}
+            </when>
+            <when test="type == 'price'.toString() and sort == 'desc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY A.price DESC
+                LIMIT #{startIdx}, #{row}
+            </when>
+
+            <when test="type == 'recommend'.toString() and sort == 'asc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY A.promotion AND A.beginner ASC
+                LIMIT #{startIdx}, #{row}
+            </when>
+            <when test="type == 'recommend'.toString() and sort == 'desc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY A.promotion AND A.beginner DESC
+                LIMIT #{startIdx}, #{row}
+            </when>
+
+            <when test="type == 'quantity'.toString() and sort == 'asc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY A.quantity ASC
+                LIMIT #{startIdx}, #{row}
+            </when>
+            <when test="type == 'quantity'.toString() and sort == 'desc'.toString()">
+                SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+                FROM t_product A
+                LEFT OUTER JOIN t_sale B
+                ON A.product_id = B.product_id
+                ORDER BY A.quantity DESC
+                LIMIT #{startIdx}, #{row}
+            </when>
+
+        </choose>
     </select>
-<!--
-    <select id="selProduct" resultType="ProductVo">
-        SELECT product_id productId, nm_kor nmKor, price, promotion, beginner, quantity
-        FROM t_product
-        LIMIT #{startIdx}, #{row}
-    </select>
--->
+
+
+    <!--
+        <select id="selProduct" resultType="ProductVo">
+            SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
+            FROM t_product A
+            LEFT OUTER JOIN t_sale B
+            ON A.product_id = B.product_id
+            LIMIT #{startIdx}, #{row}
+        </select>
+    -->
+
+    <!--
+        <select id="selProduct" resultType="ProductVo">
+            SELECT product_id productId, nm_kor nmKor, price, promotion, beginner, quantity
+            FROM t_product
+            LIMIT #{startIdx}, #{row}
+        </select>
+    -->
     <select id="selProductSale" resultType="ProductSaleVo">
         SELECT A.product_id productId, A.nm_kor nmKor, A.price, B.sale, B.sale_price salePrice, A.promotion, A.beginner, A.quantity, B.sale_yn saleYn
         FROM t_product A
