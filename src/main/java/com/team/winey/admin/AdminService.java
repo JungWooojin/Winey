@@ -343,6 +343,8 @@ public class AdminService {
         UserOrderDetailDto detailDto = new UserOrderDetailDto();
         detailDto.setUserId(userId);
         detailDto.setRow(dto.getRow());
+        detailDto.setType(dto.getType());
+        detailDto.setSort(dto.getSort());
 
         int startIdx = (dto.getPage() - 1) * dto.getRow();
         detailDto.setStartIdx(startIdx);
