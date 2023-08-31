@@ -17,7 +17,7 @@ public class PaymentService {
     private final PaymentMapper mapper;
     private final AuthenticationFacade facade;
 
-    public int insPayment(PaymentInsDto dto){
+    public int insPayment(PaymentInsDto dto){ // t_order에 인서트가 되는 동시에 t_cart 컬럼 buy_yn 1로 바뀌고 t_order_detail 에 리스트하나하나의 가격과 수량이 담긴다
         PaymentInsDto2 dto2 = new PaymentInsDto2();
         dto2.setUserId(facade.getLoginUserPk());
         dto2.setStoreId(dto.getStoreId());
@@ -44,7 +44,7 @@ public class PaymentService {
 
         return dto2.getOrderId();
     }
-    public int insEachPayment(EachPaymentInsDto dto){
+    public int insEachPayment(EachPaymentInsDto dto){ //개별 구매
         EachPaymentInsDto2 dto2 = new EachPaymentInsDto2();
         dto2.setUserId(facade.getLoginUserPk());
         dto2.setStoreId(dto.getStoreId());
@@ -65,11 +65,11 @@ public class PaymentService {
         return dto2.getOrderId();
     }
 
-    public int updPayment(PaymentUpdDto dto){
+    public int updPayment(PaymentUpdDto dto){ //카드 결제 update
         return mapper.updPayment(dto);
     }
 
-    public int insReview(ReviewInsDto dto){
+    public int insReview(ReviewInsDto dto){ // 리뷰 등록
         dto.setUserId(facade.getLoginUserPk());
         int reviewInsert = mapper.insReview(dto);
         if(reviewInsert >0){
@@ -79,13 +79,11 @@ public class PaymentService {
         }
     }
 
-
-    public List<RegionSelVO> selRegion(){
+    public List<RegionSelVO> selRegion(){ // 픽업 지역 출력
         RegionInsDto dto = new RegionInsDto();
         dto.setUserId(facade.getLoginUserPk());
 
         return mapper.selRegion(dto);
     }
-
 
 }

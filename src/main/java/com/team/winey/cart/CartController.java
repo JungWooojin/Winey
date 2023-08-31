@@ -18,7 +18,7 @@ public class CartController {
     private final CartService service;
 
 
-    @PostMapping ("/cart")
+    @PostMapping ("/cart") //장바구니 추가
     @Operation(summary = "장바구니 추가", description =
             "productId: 상품 PK값,<br>"
             + "quantity: 수량,<br>")
@@ -26,7 +26,7 @@ public class CartController {
         return service.insCart(dto);
     }
 
-    @GetMapping("/filledcart")
+    @GetMapping("/filledcart") //장바구니 출력(buy_yn이 0인거만 출력되게)
     @Operation(summary = "장바구니 출력", description =
             "userId: 유저PK값, <br>"
                     + "quantity: 수량, <br>"
@@ -39,7 +39,7 @@ public class CartController {
         return service.selCart();
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete") // 장바구니에 있는 상품 삭제
     @Operation(summary = "장바구니 삭제", description =
             "cartId: cart pk값 <br>")
     public int delCart(@RequestBody CartdelDto dto){
@@ -47,7 +47,7 @@ public class CartController {
     }
 
 
-    @PutMapping("/quantity")
+    @PutMapping("/quantity") //장바구니 수량 변경
     @Operation(summary = "장바구니 수량변경", description =
             "quantity: 수량, <br>"
                     + "cartId: cart pk값 <br>")
