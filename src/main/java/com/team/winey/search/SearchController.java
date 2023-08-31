@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "와인 검색")
 @RestController
-@RequestMapping("/search")
+@RequestMapping("/api/search")
 @RequiredArgsConstructor
 public class SearchController {
 
