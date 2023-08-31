@@ -259,10 +259,52 @@
     </select>
 
     <select id="selUserList" resultType="UserVo">
-        SELECT user_id userId, email, nm, region_nm_id regionNmId, created_at createdAt
-        FROM t_user
-        WHERE role = "ROLE_USER"
-        LIMIT #{startIdx}, #{row}
+
+        <choose>
+            <when test="type == 'pickUp'.toString() and sort == 'asc'.toString()">
+                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
+                FROM t_user A
+                INNER JOIN t_region_nm B
+                ON A.region_nm_id = B.region_nm_id
+                WHERE role = "ROLE_USER"
+                ORDER BY A.region_nm_id ASC
+                LIMIT #{startIdx}, #{row}
+            </when>
+            <when test="type == 'pickUp'.toString() and sort == 'desc'.toString()">
+                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
+                FROM t_user A
+                INNER JOIN t_region_nm B
+                ON A.region_nm_id = B.region_nm_id
+                WHERE role = "ROLE_USER"
+                ORDER BY A.region_nm_id DESC
+                LIMIT #{startIdx}, #{row}
+            </when>
+
+            <when test="type == 'userId'.toString() and sort == 'asc'.toString()">
+                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
+                FROM t_user A
+                INNER JOIN t_region_nm B
+                ON A.region_nm_id = B.region_nm_id
+                WHERE role = "ROLE_USER"
+                ORDER BY A.user_id ASC
+                LIMIT #{startIdx}, #{row}
+            </when>
+            <when test="type == 'userId'.toString() and sort == 'desc'.toString()">
+                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
+                FROM t_user A
+                INNER JOIN t_region_nm B
+                ON A.region_nm_id = B.region_nm_id
+                WHERE role = "ROLE_USER"
+                ORDER BY A.user_id DESC
+                LIMIT #{startIdx}, #{row}
+            </when>
+
+
+
+
+
+        </choose>
+
     </select>
 
     <select id="selUserOrder" resultType="UserOrderDetailVo">

@@ -85,13 +85,19 @@ public class AdminController {
     }
 
     //가입 회원 리스트 출력
-    @Operation(summary = "가입 회원 리스트 (페이징처리)(피그마: 가입회원리스트 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.")
+    @Operation(summary = "가입 회원 리스트 (페이징처리)(피그마: 가입회원리스트 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.<br>"
+    + "type -> 픽업지역(pickUp) / 회원번호(userId)<br>"
+    + "sort -> 오름차순(asc) / 내림차순(desc)")
     @GetMapping("/user/list")
     public UserList getUserList(@RequestParam(defaultValue = "1") int page,
-                                    @RequestParam(defaultValue = "15") int row) {
+                                    @RequestParam(defaultValue = "15") int row,
+                                String type,
+                                String sort) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
         dto.setRow(row);
+        dto.setType(type);
+        dto.setSort(sort);
         return SERVICE.getUserList(dto);
     }
 
