@@ -18,7 +18,7 @@ public class PaymentController {
 
     private final PaymentService service;
 
-    @PostMapping("/payment")
+    @PostMapping("/cartpayment") //장바구니에 담겨있는 제품 결제
     @Operation(summary = "결제", description =
             "storeId: 매장PK값, <br>"
                     + "totalOrderPrice: 총 결제 금액, <br>"
@@ -32,7 +32,7 @@ public class PaymentController {
         return service.insPayment(dto);
     }
 
-    @PostMapping("/eachpayment")
+    @PostMapping("/eachpayment") //와인상세페이지에서 바로 구매하기버튼 눌러서 결제
     @Operation(summary = "개별 결제", description =
             "productId: 상품 pk, <br>"
                     + "userId: 유저 pk, <br>"
@@ -41,18 +41,18 @@ public class PaymentController {
                     + "payment: 카드결제 1번 <br>"
                     + "pickupTime: 픽업시간 <br>"
                     + "quantity: 수량 <br>")
-    public int postEachPayment(@RequestBody EachPaymentInsDto dto){
+    public int postEachPayment(@RequestBody EachPaymentInsDto dto) {
         return service.insEachPayment(dto);
     }
 
-    @PutMapping("/orderstatus")
+    @PutMapping("/orderstatus") //주문상태 변경
     @Operation(summary = "주문상태 변경", description =
             "orderStatus: 주문 상태, <br>")
     public int putPayment(@RequestBody PaymentUpdDto dto) {
         return service.updPayment(dto);
     }
 
-    @PostMapping("/review")
+    @PostMapping("/userreview") //리뷰 등록
     @Operation(summary = "리뷰 작성", description =
             "orderDetailId: 주문상세 pk값, <br>"
                     + "review_level: 1번 좋아요 <br>"
@@ -62,7 +62,7 @@ public class PaymentController {
         return service.insReview(dto);
     }
 
-    @GetMapping("/region")
+    @GetMapping("/pickregion") //픽업지역 출력
     @Operation(summary = "픽업 지역", description =
             "userId: 사용자 pk값, <br>"
                     + "regionNmId: 지역 pk값 <br>"
