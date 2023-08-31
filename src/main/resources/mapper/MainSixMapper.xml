@@ -86,8 +86,10 @@
     </select>
 
     <select id="selWineByFoodlimit6">
-        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id countryId,
-        f.aroma_category_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price, a.quantity, a.pic,
+        SELECT DISTINCT a.product_id productId, a.category_id categoryId, a.feature_id featureId, a.country_id
+        countryId,
+        f.aroma_category_id aromaId, d.big_category_id bigCategoryId, a.nm_kor nmKor, a.nm_eng nmEng, a.price,
+        a.quantity, a.pic,
         a.promotion, a.beginner, a.alcohol, e.sale, e.sale_price salePrice, e.sale_yn saleYn
         FROM t_product a
         LEFT JOIN t_wine_pairing b
