@@ -299,10 +299,6 @@
                 LIMIT #{startIdx}, #{row}
             </when>
 
-
-
-
-
         </choose>
 
     </select>
@@ -497,9 +493,13 @@
     </select>
 
     <select id="selUserInfo">
-        SELECT user_id userId, email, nm
-        FROM t_user
-        WHERE user_id = #{userId}
+        SELECT A.user_id userId, A.email, A.nm, SUM(B.total_order_price) sumOrderPrice, COUNT(B.order_id) orderCount
+        FROM t_user A
+        INNER JOIN t_order B
+        ON A.user_id = B.user_id
+        INNER JOIN t_order_refund C
+        ON B.order_id = C.order_id
+        WHERE A.user_id = #{userId} AND C.refund_yn = 0
     </select>
 
     <select id="orderCount">

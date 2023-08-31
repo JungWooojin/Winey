@@ -102,7 +102,9 @@ public class AdminController {
     }
 
     //가입 회원별 상세 주문 내역(회원pk별) +페이징 처리
-    @Operation(summary = "회원별 상세 주문 내역 (피그마: 회원상세내역 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @Operation(summary = "회원별 상세 주문 내역 (피그마: 회원상세내역 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.<br>"
+    + "구매합산금액(sumOrderPrice) / 구매횟수(orderCount) 추가<br>"
+            +"")
     @GetMapping("/{userId}/order")
     public UserOrderDetailList getUserOrder(@PathVariable Long userId, @RequestParam(defaultValue = "1")int page,
                                                 @RequestParam(defaultValue = "15")int row) {

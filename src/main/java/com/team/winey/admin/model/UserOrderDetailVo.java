@@ -15,4 +15,6 @@ public class UserOrderDetailVo {
     private String storeNm; //픽업지점이름
     private int orderStatus; //주문상태
     private int count; //order_detail 행 수
+    //총구매합산금액
+    //구매횟수
 }
