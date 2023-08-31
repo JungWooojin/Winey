@@ -23,5 +23,7 @@ public interface PaymentMapper {
 
     List<RegionSelVO> selRegion(RegionInsDto dto); // 픽업지역 출력
 
+    int updQuantity(PaymentInsDto2 dto2);
+    int selCartId(PaymentInsDto2 dto2);
 
 }

@@ -24,8 +24,13 @@ public class PaymentService {
         dto2.setPickupTime(dto.getPickupTime());
         dto2.setTotalOrderPrice(dto.getTotalOrderPrice());
 
-        mapper.insPayment(dto2);
+        int pk = mapper.selCartId(dto2);
 
+        if(pk > 0) {
+            mapper.insPayment(dto2);
+        }else{
+            mapper.updQuantity(dto2);
+        }
 
         List<CartVo> list = dto.getList();  //t_cart 컬럼 buy_yn의 default가 0인데 1로 결제하는 순간 1로 바뀐다
         for (CartVo cartVo : list) {

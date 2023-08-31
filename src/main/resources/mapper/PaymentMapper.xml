@@ -14,6 +14,18 @@
             order_status = 1
     </insert>
 
+    <select id="selCartId">
+        SELECT cart_id cartId
+        FROM t_cart
+        WHERE user_id = #{userId} AND buy_yn = 1
+    </select>
+
+    <update id ="updQuantity">
+            UPDATE t_cart
+            SET quantity = #{quantity + 1}
+            WHERE product_id = #{productId} and user_id = #{userId}
+    </update>
+
     <insert id = "insEachPayment" useGeneratedKeys="true" keyProperty="orderId">
         INSERT into t_order
         SET user_id = #{userId},
