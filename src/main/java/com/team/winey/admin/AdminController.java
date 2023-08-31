@@ -62,8 +62,8 @@ public class AdminController {
     @GetMapping("/product/list")
     public ProductList getProduct(@RequestParam(defaultValue = "1")int page,
                                       @RequestParam(defaultValue = "20")int row,
-                                  String type,
-                                  String sort) {
+                                  @RequestParam(defaultValue = "0") String type,
+                                  @RequestParam(defaultValue = "0") String sort) {
         SelListDto dto = new SelListDto();
         dto.setRow(row);
         dto.setPage(page);
@@ -109,8 +109,8 @@ public class AdminController {
     @GetMapping("/{userId}/order")
     public UserOrderDetailList getUserOrder(@PathVariable Long userId, @RequestParam(defaultValue = "1")int page,
                                                 @RequestParam(defaultValue = "15")int row,
-                                            @RequestParam(defaultValue = "orderDate") String type,
-                                            @RequestParam(defaultValue = "asc") String sort) {
+                                            @RequestParam(defaultValue = "0") String type,
+                                            @RequestParam(defaultValue = "0") String sort) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
         dto.setRow(row);
