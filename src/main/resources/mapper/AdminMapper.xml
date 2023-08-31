@@ -754,6 +754,12 @@
                 ORDER BY A.user_id
             </when>
 
+        </choose>
+    </select>
+
+    <select id="serchProduct">
+
+        <choose>
             <when test="type == 'productNmKor'.toString()">
                 SELECT A.product_id productId, A.nm_kor nmKor, A.price, A.promotion, A.beginner, A.quantity, B.sale, B.sale_price salePrice
                 FROM t_product A
@@ -763,6 +769,7 @@
             </when>
 
         </choose>
+
     </select>
 
 
