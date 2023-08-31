@@ -14,7 +14,7 @@ public class CartService {
     private final CartMapper mapper;
     private final AuthenticationFacade facade;
 
-    public int insCart(CartInsDto dto){
+    public int insCart(CartInsDto dto) { //장바구니 추가
         CartInsDto2 dto2 = new CartInsDto2();
         dto2.setUserId(facade.getLoginUserPk());
         dto2.setProductId(dto.getProductId());
@@ -23,16 +23,17 @@ public class CartService {
         return dto2.getCartId();
     }
 
-    public List<CartVo> selCart(){
+    public List<CartVo> selCart() { //장바구니 출력
         CartSelDto dto = new CartSelDto();
         dto.setUserId(facade.getLoginUserPk());
         return mapper.selCart(dto);
     }
 
-    public int delCart(CartdelDto dto){
+    public int delCart(CartdelDto dto) { //장바구니 삭제
         return mapper.delCart(dto);
     }
-    public int updCart(CartUpdDto dto){
+
+    public int updCart(CartUpdDto dto) { //장바구니 업데이트
         return mapper.updCart(dto);
     }
 }

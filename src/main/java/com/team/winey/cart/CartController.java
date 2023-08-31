@@ -18,15 +18,15 @@ public class CartController {
     private final CartService service;
 
 
-    @PostMapping ("/cart")
+    @PostMapping("/cartadd") //장바구니 추가
     @Operation(summary = "장바구니 추가", description =
             "productId: 상품 PK값,<br>"
-            + "quantity: 수량,<br>")
-    public int postCart(@RequestBody CartInsDto dto){
+                    + "quantity: 수량,<br>")
+    public int postCart(@RequestBody CartInsDto dto) {
         return service.insCart(dto);
     }
 
-    @GetMapping("/filledcart")
+    @GetMapping("/filledcart") //장바구니 출력(buy_yn이 0인거만 출력되게)
     @Operation(summary = "장바구니 출력", description =
             "userId: 유저PK값, <br>"
                     + "quantity: 수량, <br>"
@@ -39,30 +39,23 @@ public class CartController {
         return service.selCart();
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/cartdelete") // 장바구니에 있는 상품 삭제
     @Operation(summary = "장바구니 삭제", description =
             "cartId: cart pk값 <br>")
-    public int delCart(@RequestBody CartdelDto dto){
+    public int delCart(@RequestBody CartdelDto dto) {
         return service.delCart(dto);
     }
 
 
-    @PutMapping("/quantity")
+    @PutMapping("/productquantity") //장바구니 수량 변경
     @Operation(summary = "장바구니 수량변경", description =
             "quantity: 수량, <br>"
                     + "cartId: cart pk값 <br>")
-    public int putCart(@RequestParam int cartId, @RequestParam int quantity){
+    public int putCart(@RequestParam int cartId, @RequestParam int quantity) {
         CartUpdDto dto = new CartUpdDto();
         dto.setCartId(cartId);
         dto.setQuantity(quantity);
         return service.updCart(dto);
     }
-//
-//    @GetMapping("/sumPrice")
-//    @Operation(summary = "장바구니 총합계", description =
-//            "userId: user pk값 <br>")
-//    public int getSumPrice(@RequestParam int userId){
-//        return service.selSumPrice(userId);
-//    }
 
 }
