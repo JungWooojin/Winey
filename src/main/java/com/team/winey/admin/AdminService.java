@@ -88,7 +88,7 @@ public class AdminService {
             //t_product에 인서트
             //사진 파일 업로드 로직 2
             int result = MAPPER.insProduct(dto); //t_product 인서트 후 pk값 productInsDto에 들어감
-            String dbFilePath = "/wine/" + dto.getProductId() + "/" + savedFileName; //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
+            String dbFilePath = "wine/" + dto.getProductId() + "/" + savedFileName; //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
             dto.setPic(dbFilePath); //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
             MAPPER.updProductPic(dto); //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
             try {
@@ -100,7 +100,7 @@ public class AdminService {
                 return 0;
             }
             if (result == 1) {
-                String targetPath = FILE_DIR + "/wine/"+dto.getProductId()+"/"; //수정예정?
+                String targetPath = FILE_DIR + "wine/"+dto.getProductId()+"/"; //수정예정?
 //                String targetPath = FILE_DIR + "/winey/product/" + dto.getProductId();
                 File targetDic = new File(targetPath);
                 if(!targetDic.exists()) {
@@ -264,7 +264,7 @@ public class AdminService {
                 return 0;
             }
             if (result == 1) {
-                String targetPath = FILE_DIR + "/winey/product/" + dto.getProductId();
+                String targetPath = FILE_DIR + "wine/product/" + dto.getProductId();
                 File targetDic = new File(targetPath);
                 if(!targetDic.exists()) {
                     targetDic.mkdirs();
@@ -300,7 +300,7 @@ public class AdminService {
 
     //상품 사진 삭제
     public int deleteProductPic(int productId) {
-        MyFileUtils.delFolder(FILE_DIR+"/winey/product/"+productId);
+        MyFileUtils.delFolder(FILE_DIR+"wine/product/"+productId);
 
         return 200; //성공시 200 리턴
     }
