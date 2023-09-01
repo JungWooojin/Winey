@@ -11,6 +11,6 @@ public class UserVo {
     Long userId;
     String email;
     String nm;
-    String regionNmId;
+    int regionNmId;
     String createdAt;
 }
