@@ -6,7 +6,6 @@ import reactor.util.annotation.Nullable;
 
 import java.util.List;
 @Data
-@Builder
 public class ProductInsParam {
     private String nmKor;
     private String nmEng;
