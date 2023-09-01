@@ -224,7 +224,7 @@ public class AdminController {
     @DeleteMapping("/product/{productId}")
     public int delProduct(@PathVariable int productId) {
 
-        return 1;
+        return SERVICE.delProduct(productId);
     }
 }
 
