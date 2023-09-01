@@ -16,6 +16,7 @@ public class ProductUpdParam {
     private int beginner; //입문자 추천
     private int alcohol; //도수
     private int quantity; // 재고
+    private String pic;
 
     private int country; //원산지
 
