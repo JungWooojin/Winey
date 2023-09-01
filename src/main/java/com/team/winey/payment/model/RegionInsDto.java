@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class RegionInsDto {
-    private Long userId;
+    private Long userId; //유저pk
 }

@@ -18,11 +18,11 @@ public class CartController {
     private final CartService service;
 
 
-    @PostMapping ("/cart") //장바구니 추가
+    @PostMapping("/cartadd") //장바구니 추가
     @Operation(summary = "장바구니 추가", description =
             "productId: 상품 PK값,<br>"
-            + "quantity: 수량,<br>")
-    public int postCart(@RequestBody CartInsDto dto){
+                    + "quantity: 수량,<br>")
+    public int postCart(@RequestBody CartInsDto dto) {
         return service.insCart(dto);
     }
 
@@ -39,19 +39,19 @@ public class CartController {
         return service.selCart();
     }
 
-    @DeleteMapping("/delete") // 장바구니에 있는 상품 삭제
+    @DeleteMapping("/cartdelete") // 장바구니에 있는 상품 삭제
     @Operation(summary = "장바구니 삭제", description =
             "cartId: cart pk값 <br>")
-    public int delCart(@RequestBody CartdelDto dto){
+    public int delCart(@RequestBody CartdelDto dto) {
         return service.delCart(dto);
     }
 
 
-    @PutMapping("/quantity") //장바구니 수량 변경
+    @PutMapping("/productquantity") //장바구니 수량 변경
     @Operation(summary = "장바구니 수량변경", description =
             "quantity: 수량, <br>"
                     + "cartId: cart pk값 <br>")
-    public int putCart(@RequestParam int cartId, @RequestParam int quantity){
+    public int putCart(@RequestParam int cartId, @RequestParam int quantity) {
         CartUpdDto dto = new CartUpdDto();
         dto.setCartId(cartId);
         dto.setQuantity(quantity);

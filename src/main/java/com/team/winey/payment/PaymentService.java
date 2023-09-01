@@ -17,22 +17,27 @@ public class PaymentService {
     private final PaymentMapper mapper;
     private final AuthenticationFacade facade;
 
-    public int insPayment(PaymentInsDto dto){ // t_order에 인서트가 되는 동시에 t_cart 컬럼 buy_yn 1로 바뀌고 t_order_detail 에 리스트하나하나의 가격과 수량이 담긴다
+    public int insPayment(PaymentInsDto dto){ //t_order에 인서트(결제테이블)
         PaymentInsDto2 dto2 = new PaymentInsDto2();
         dto2.setUserId(facade.getLoginUserPk());
         dto2.setStoreId(dto.getStoreId());
         dto2.setPickupTime(dto.getPickupTime());
         dto2.setTotalOrderPrice(dto.getTotalOrderPrice());
 
-        mapper.insPayment(dto2);
+        int pk = mapper.selCartId(dto2);
 
+        if(pk > 0) {
+            mapper.insPayment(dto2);
+        }else{
+            mapper.updQuantity(dto2);
+        }
 
-        List<CartVo> list = dto.getList();
+        List<CartVo> list = dto.getList();  //t_cart 컬럼 buy_yn의 default가 0인데 1로 결제하는 순간 1로 바뀐다
         for (CartVo cartVo : list) {
             mapper.updBuy(cartVo.getCartId());
         }
 
-        OrderDetailInsDto d = new OrderDetailInsDto();
+        OrderDetailInsDto d = new OrderDetailInsDto(); //결제한 제품 하나하나의 정보(수량,가격 등등) 이 저장된다.
         for(int i = 0; i < dto.getList().size(); i++){
             d.setQuantity( dto.getList().get(i).getQuantity());
             d.setProductId(dto.getList().get(i).getProductId());
@@ -44,7 +49,7 @@ public class PaymentService {
 
         return dto2.getOrderId();
     }
-    public int insEachPayment(EachPaymentInsDto dto){ //개별 구매
+    public int insEachPayment(EachPaymentInsDto dto){ //개별 구매(와인상세페이지에서 장바구니에 안넣고 구매하기버튼을 누른경우)
         EachPaymentInsDto2 dto2 = new EachPaymentInsDto2();
         dto2.setUserId(facade.getLoginUserPk());
         dto2.setStoreId(dto.getStoreId());
@@ -54,7 +59,7 @@ public class PaymentService {
         dto2.setQuantity(dto.getQuantity()); //추가 20230817
         mapper.insEachPayment(dto2);
 
-        OrderDetailInsDto d = new OrderDetailInsDto();
+        OrderDetailInsDto d = new OrderDetailInsDto(); //구매한 제품의 정보가 담긴다.
         d.setOrderId(dto2.getOrderId());
         d.setProductId(dto.getProductId());
         d.setQuantity(dto2.getQuantity());
@@ -65,11 +70,11 @@ public class PaymentService {
         return dto2.getOrderId();
     }
 
-    public int updPayment(PaymentUpdDto dto){ //카드 결제 update
+    public int updPayment(PaymentUpdDto dto){ //카드 결제(default 값이 0 인데 1로 바뀐다)
         return mapper.updPayment(dto);
     }
 
-    public int insReview(ReviewInsDto dto){ // 리뷰 등록
+    public int insReview(ReviewInsDto dto){ // 리뷰 등록(등록되면 1 아니면 0 리턴)
         dto.setUserId(facade.getLoginUserPk());
         int reviewInsert = mapper.insReview(dto);
         if(reviewInsert >0){

@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class PaymentUpdDto {
-    private int orderStatus;
+    private int orderStatus; //주문상태
 
 }

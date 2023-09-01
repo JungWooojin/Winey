@@ -56,13 +56,19 @@ public class AdminController {
 
     //등록 상품 리스트 출력 (페이징 처리)
     @Operation(summary = "등록된 상품 리스트 출력(피그마: 등록상품리스트 페이지)P", description = "page값 = 1(default), row값 = 20(default)<br>"
-            + "default값은 임시로 넣은 것이니 수정이 필요합니다.")
+            + "default값은 임시로 넣은 것이니 수정이 필요합니다.<br>"
+            + "type -> 기본값(0) / 상품번호(productId)/세일가격(salePrice)/할인률(sale)/정상가(price)/추천상품(recommend)/재고수량=품절여부(quantity)<br>"
+            + "sort -> 기본값(0) / 오름차순(asc) / 내림차순(desc)")
     @GetMapping("/product/list")
     public ProductList getProduct(@RequestParam(defaultValue = "1")int page,
-                                      @RequestParam(defaultValue = "20")int row) {
+                                      @RequestParam(defaultValue = "20")int row,
+                                  @RequestParam(defaultValue = "0") String type,
+                                  @RequestParam(defaultValue = "0") String sort) {
         SelListDto dto = new SelListDto();
         dto.setRow(row);
         dto.setPage(page);
+        dto.setType(type);
+        dto.setSort(sort);
         return SERVICE.getProduct(dto);
     }
 
@@ -79,24 +85,37 @@ public class AdminController {
     }
 
     //가입 회원 리스트 출력
-    @Operation(summary = "가입 회원 리스트 (페이징처리)(피그마: 가입회원리스트 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.")
+    @Operation(summary = "가입 회원 리스트 (페이징처리)(피그마: 가입회원리스트 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정이 필요합니다.<br>"
+    + "type -> 기본값(0) / 픽업지역(pickUp) / 회원번호(userId)<br>"
+    + "sort -> 기본값(0) / 오름차순(asc) / 내림차순(desc)")
     @GetMapping("/user/list")
     public UserList getUserList(@RequestParam(defaultValue = "1") int page,
-                                    @RequestParam(defaultValue = "15") int row) {
+                                    @RequestParam(defaultValue = "15") int row,
+                                @RequestParam(defaultValue = "0") String type,
+                                @RequestParam(defaultValue = "0") String sort) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
         dto.setRow(row);
+        dto.setType(type);
+        dto.setSort(sort);
         return SERVICE.getUserList(dto);
     }
 
     //가입 회원별 상세 주문 내역(회원pk별) +페이징 처리
-    @Operation(summary = "회원별 상세 주문 내역 (피그마: 회원상세내역 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @Operation(summary = "회원별 상세 주문 내역 (피그마: 회원상세내역 페이지)P", description = "page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.<br>"
+    + "구매합산금액(sumOrderPrice) / 구매횟수(orderCount) 추가<br>"
+    +"type -> 기본값(0) / 주문날짜(orderDate) / 픽업매장(storeNm) / 주문상태(orderStatus)<br>"
+    + "sort -> 기본값(0) / 오름차순(asc) / 내림차순(desc)")
     @GetMapping("/{userId}/order")
     public UserOrderDetailList getUserOrder(@PathVariable Long userId, @RequestParam(defaultValue = "1")int page,
-                                                @RequestParam(defaultValue = "15")int row) {
+                                                @RequestParam(defaultValue = "15")int row,
+                                            @RequestParam(defaultValue = "0") String type,
+                                            @RequestParam(defaultValue = "0") String sort) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
         dto.setRow(row);
+        dto.setType(type);
+        dto.setSort(sort);
         return SERVICE.getUserOrder(userId, dto);
     }
 
@@ -109,14 +128,20 @@ public class AdminController {
     }
 
     //주문 내역
-    @Operation(summary = "주문 내역 출력(피그마:주문내역관리 페이지)P", description = "주문상품, 주문수량 출력 안하는 중<br>"
-            +"page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.")
+    @Operation(summary = "주문 내역 출력(피그마:주문내역관리 페이지)P", description = "<br>"
+            +"page (기본값1), row (기본값15) 임시로 해놓은거라 수정 필요하면 말해주세요.<br>"
+            +"type -> 기본값(0) / 픽업장소(storeNm) / 픽업배송상태(orderStatus) <br>"
+            +"sort ->  기본값(0) / 오름차순(asc) / 내림차순(desc)")
     @GetMapping("/order")
     public OrderList getOrder(@RequestParam(defaultValue = "1")int page,
-                                      @RequestParam(defaultValue = "15")int row) {
+                              @RequestParam(defaultValue = "15")int row,
+                              @RequestParam(defaultValue = "0") String type,
+                              @RequestParam(defaultValue = "0") String sort) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
         dto.setRow(row);
+        dto.setType(type);
+        dto.setSort(sort);
 
         return SERVICE.getOrder(dto);
     }
