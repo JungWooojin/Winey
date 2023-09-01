@@ -1,10 +1,12 @@
 package com.team.winey.admin.model;
 
+import lombok.Builder;
 import lombok.Data;
 import reactor.util.annotation.Nullable;
 
 import java.util.List;
 @Data
+@Builder
 public class ProductInsParam {
     private String nmKor;
     private String nmEng;
@@ -26,9 +28,9 @@ public class ProductInsParam {
 
     private int sale; //할인률
     private int salePrice; //할인가격
-    @Nullable
+
     private String startSale; //할인 시작일
-    @Nullable
+
     private String endSale; //할인 종료일
 //    private String saleDate;
 

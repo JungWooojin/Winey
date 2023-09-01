@@ -544,4 +544,13 @@ public class AdminService {
     public List<ProductVo> serchProduct(AdminSerchDto dto) {
         return MAPPER.serchProduct(dto);
     }
+
+    public ProductUpdParam getProductDetail(int productId) {
+        ProductUpdParam dto = MAPPER.selPutProductInfo1(productId);
+        List<Integer> aroma = MAPPER.selPutProductInfo2(productId);
+        List<Integer> smallCategoryId = MAPPER.selPutProductInfo3(productId);
+        dto.setAroma(aroma);
+        dto.setSmallCategoryId(smallCategoryId);
+        return dto;
+    }
 }

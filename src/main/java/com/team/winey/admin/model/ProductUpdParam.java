@@ -1,10 +1,12 @@
 package com.team.winey.admin.model;
 
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.List;
 
 @Data
+@Getter
 public class ProductUpdParam {
     private int productId;
     private String nmKor;
