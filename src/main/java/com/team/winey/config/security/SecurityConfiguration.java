@@ -30,9 +30,11 @@ public class SecurityConfiguration {
                                             , "/v3/api-docs/**"
                                             , "/index.html"
                                             , "/static/**"
+
                                             ,"/sign-api/sign-in"
                                             , "/sign-api/sign-up"
                                             , "/sign-api/exception"
+
                                             , "/view/**"
                                              ,"/api/**"
                                     ).permitAll()
