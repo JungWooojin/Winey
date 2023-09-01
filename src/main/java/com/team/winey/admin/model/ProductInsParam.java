@@ -32,6 +32,7 @@ public class ProductInsParam {
 
     private String endSale; //할인 종료일
 //    private String saleDate;
+    private int saleYn;
 
     //음식페어링
     private List<Integer> smallCategoryId; //1~12번까지 있음

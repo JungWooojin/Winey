@@ -52,7 +52,8 @@
         sale = #{sale},
         sale_price = #{salePrice},
         start_sale = #{startSale},
-        end_sale = #{endSale}
+        end_sale = #{endSale},
+        sale_yn = #{saleYn}
     </insert>
 
     <insert id="insWinePairing" parameterType="ProductInsDto">

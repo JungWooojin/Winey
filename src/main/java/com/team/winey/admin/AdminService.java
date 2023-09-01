@@ -54,6 +54,7 @@ public class AdminService {
         //t_sale 로직
         dto.setSale(param.getSale()); // t_sale
         dto.setSalePrice(param.getSalePrice()); // t_sale
+        dto.setSaleYn(param.getSaleYn());
 
         LocalDate parseStartDate = LocalDate.parse(param.getStartSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String startSale을 LocalDate로 변환
         LocalDate parseEndDate = LocalDate.parse(param.getEndSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String endSale을 LocalDate로 변환
@@ -177,6 +178,7 @@ public class AdminService {
 
         dto.setSale(param.getSale()); // t_sale
         dto.setSalePrice(param.getSalePrice()); // t_sale
+        dto.setSaleYn(param.getSaleYn());
 
         LocalDate parseStartDate = LocalDate.parse(param.getStartSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String startSale을 LocalDate로 변환
         LocalDate parseEndDate = LocalDate.parse(param.getEndSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String endSale을 LocalDate로 변환
