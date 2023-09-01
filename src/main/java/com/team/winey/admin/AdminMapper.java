@@ -63,8 +63,8 @@ public interface AdminMapper {
     UserRefundVo selUserRefundInfo(Long userId);
 
     //
-    int selUserRefundInfo1(Long userId);
-    int selUserRefundInfo2(Long userId);
+    UserRefundVo selUserRefundInfo1(Long userId);
+    UserRefundVo selUserRefundInfo2(Long userId);
 
     int orderCount(); //order 수
     int storeCount(); //store 수
