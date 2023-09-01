@@ -362,6 +362,7 @@ public class AdminService {
         }
         UserInfo user = MAPPER.selUserInfo(userId);
 
+
         return UserOrderDetailList.builder()
                 .page(new PageDto(maxUserOrder, dto.getPage(), dto.getRow()))
                 .userInfo(user)

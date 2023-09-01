@@ -705,9 +705,7 @@
         FROM t_user A
         INNER JOIN t_order B
         ON A.user_id = B.user_id
-        INNER JOIN t_order_refund C
-        ON B.order_id = C.order_id
-        WHERE A.user_id = #{userId} AND C.refund_yn = 0
+        WHERE A.user_id = #{userId};
     </select>
 
     <select id="orderCount">
