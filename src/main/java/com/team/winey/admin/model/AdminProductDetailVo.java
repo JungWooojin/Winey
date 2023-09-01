@@ -4,10 +4,9 @@ import lombok.Data;
 import lombok.Getter;
 
 import java.util.List;
-
 @Data
 @Getter
-public class ProductUpdParam {
+public class AdminProductDetailVo {
     private int productId;
     private String nmKor;
     private String nmEng;
@@ -16,6 +15,7 @@ public class ProductUpdParam {
     private int beginner; //입문자 추천
     private int alcohol; //도수
     private int quantity; // 재고
+    private String pic;
 
     private int country; //원산지
 
@@ -31,7 +31,7 @@ public class ProductUpdParam {
     private int salePrice; //할인가격
     private String startSale; //할인 시작일
     private String endSale; //할인 종료일
-//    private String saleDate;
+    //    private String saleDate;
     private int saleYn; //할인여부
 
     //음식페어링

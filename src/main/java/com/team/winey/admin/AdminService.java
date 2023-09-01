@@ -101,7 +101,7 @@ public class AdminService {
                 return 0;
             }
             if (result == 1) {
-                String targetPath = FILE_DIR + "wine/"+dto.getProductId()+"/"; //수정예정?
+                String targetPath = FILE_DIR + "/wine/"+dto.getProductId()+"/"; //수정예정?
 //                String targetPath = FILE_DIR + "/winey/product/" + dto.getProductId();
                 File targetDic = new File(targetPath);
                 if(!targetDic.exists()) {
@@ -266,7 +266,7 @@ public class AdminService {
                 return 0;
             }
             if (result == 1) {
-                String targetPath = FILE_DIR + "wine/product/" + dto.getProductId();
+                String targetPath = FILE_DIR + "/wine/" + dto.getProductId();
                 File targetDic = new File(targetPath);
                 if(!targetDic.exists()) {
                     targetDic.mkdirs();
@@ -547,8 +547,8 @@ public class AdminService {
         return MAPPER.serchProduct(dto);
     }
 
-    public ProductUpdParam getProductDetail(int productId) {
-        ProductUpdParam dto = MAPPER.selPutProductInfo1(productId);
+    public AdminProductDetailVo getProductDetail(int productId) {
+        AdminProductDetailVo dto = MAPPER.selPutProductInfo1(productId);
         List<Integer> aroma = MAPPER.selPutProductInfo2(productId);
         List<Integer> smallCategoryId = MAPPER.selPutProductInfo3(productId);
         dto.setAroma(aroma);

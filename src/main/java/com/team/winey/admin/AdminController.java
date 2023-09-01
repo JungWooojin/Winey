@@ -254,7 +254,7 @@ public class AdminController {
     //상품 디테일 관리자용
     @Operation(summary = "등록 상품 디테일(상품 수정용)")
     @GetMapping("/product/detail")
-    public ProductUpdParam getProductDetail(@RequestParam int productId) {
+    public AdminProductDetailVo getProductDetail(@RequestParam int productId) {
         return SERVICE.getProductDetail(productId);
     }
 }

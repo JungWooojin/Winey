@@ -79,7 +79,7 @@ public interface AdminMapper {
     List<ProductVo> serchProduct(AdminSerchDto dto);
 
     //
-    ProductUpdParam selPutProductInfo1(int userId);
+    AdminProductDetailVo selPutProductInfo1(int userId);
     List<Integer> selPutProductInfo2(int userId);
     List<Integer> selPutProductInfo3(int userId);
 
