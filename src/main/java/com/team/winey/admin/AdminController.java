@@ -57,7 +57,7 @@ public class AdminController {
     //등록 상품 리스트 출력 (페이징 처리)
     @Operation(summary = "등록된 상품 리스트 출력(피그마: 등록상품리스트 페이지)P", description = "page값 = 1(default), row값 = 20(default)<br>"
             + "default값은 임시로 넣은 것이니 수정이 필요합니다.<br>"
-            + "type -> 상품번호(productId)/세일가격(salePrice)/할인률(sale)/정상가(price)/추천상품(recommend)/재고수량=품절여부(quantity)"
+            + "type -> 상품번호(productId)/세일가격(salePrice)/할인률(sale)/정상가(price)/추천상품(recommend)/재고수량=품절여부(quantity)<br>"
             + "sort -> 오름차순(asc) / 내림차순(desc)")
     @GetMapping("/product/list")
     public ProductList getProduct(@RequestParam(defaultValue = "1")int page,
