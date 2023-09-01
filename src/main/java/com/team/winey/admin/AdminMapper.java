@@ -19,6 +19,7 @@ public interface AdminMapper {
 
     //상품 수정
     ProductUpdDto selProductFk(int productId); // 특정 product의 FK값 구하기
+    int updProductPic(ProductInsDto dto);
 
     int updFeature(ProductUpdDto dto);
     int updAroma(ProductAromaDto dto);
@@ -59,6 +60,12 @@ public interface AdminMapper {
     int userCount(); //가입회원 수
     int userOrderCount(Long userId); //userOrder 개수 카운트
     UserInfo selUserInfo(Long userId); //피그마(회원상세내역)페이지 회원정보 출력용
+    UserRefundVo selUserRefundInfo(Long userId);
+
+    //
+    int selUserRefundInfo1(Long userId);
+    int selUserRefundInfo2(Long userId);
+
     int orderCount(); //order 수
     int storeCount(); //store 수
 

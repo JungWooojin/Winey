@@ -19,6 +19,12 @@
         quantity = #{quantity}
     </insert>
 
+    <update id="updProductPic">
+        UPDATE t_product
+        SET pic = #{pic}
+        WHERE product_id = #{productId}
+    </update>
+
     <insert id="insFeature" parameterType="ProductInsDto" useGeneratedKeys="true" keyProperty="featureId">
         INSERT INTO t_feature
         SET
@@ -705,7 +711,30 @@
         FROM t_user A
         INNER JOIN t_order B
         ON A.user_id = B.user_id
-        WHERE A.user_id = #{userId};
+        WHERE A.user_id = #{userId}
+    </select>
+<!--
+    <select id="selUserRefundInfo" >
+        SELECT A.user_id userId, SUM(A.total_order_price) sumOrderPrice, COUNT(B.order_id) orderCount
+        FROM t_order A
+        INNER JOIN t_order_refund B
+        ON A.order_id = B.order_id
+        WHERE A.user_id = #{userId} AND B.refund_yn =1
+    </select>
+-->
+    <select id="selUserRefundInfo1" resultType="Integer">
+        SELECT SUM(A.total_order_price) sumOrderPrice
+        FROM t_order A
+        INNER JOIN t_order_refund B
+        ON A.order_id = B.order_id
+        WHERE A.user_id = #{userId} AND B.refund_yn =1
+    </select>
+    <select id="selUserRefundInfo2" resultType="Integer">
+        SELECT COUNT(B.order_id) orderCount
+        FROM t_order A
+        INNER JOIN t_order_refund B
+        ON A.order_id = B.order_id
+        WHERE A.user_id = #{userId} AND B.refund_yn =1
     </select>
 
     <select id="orderCount">
@@ -770,19 +799,19 @@
 
     </select>
 
-    <select id="delProduct">
+    <delete id="delProduct">
         DELETE FROM t_product
         WHERE product_id = #{productId}
-    </select>
+    </delete>
 
-    <select id="delFeature">
+    <delete id="delFeature">
         DELETE FROM t_feature
         WHERE feature_id = #{featureId}
-    </select>
+    </delete>
 
-    <select id="delSale">
+    <delete id="delSale">
         DELETE FROM t_sale
         WHERE product_id = #{productId}
-    </select>
+    </delete>
 
 </mapper>

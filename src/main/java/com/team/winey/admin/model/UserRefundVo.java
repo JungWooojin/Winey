@@ -2,14 +2,11 @@ package com.team.winey.admin.model;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
-public class UserInfo {
-    private Long userId;
-    private String email;
-    private String nm;
+@Builder
+public class UserRefundVo {
+    private int userId;
     private int sumOrderPrice;
     private int orderCount;
 }

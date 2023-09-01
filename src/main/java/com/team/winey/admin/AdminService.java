@@ -83,11 +83,14 @@ public class AdminService {
                 e.printStackTrace();
             }
 
-            dto.setPic(savedFileName);
+//            dto.setPic(savedFileName);
 
             //t_product에 인서트
             //사진 파일 업로드 로직 2
             int result = MAPPER.insProduct(dto); //t_product 인서트 후 pk값 productInsDto에 들어감
+            String dbFilePath = "wine/" + dto.getProductId() + "/" + savedFileName; //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
+            dto.setPic(dbFilePath); //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
+            MAPPER.updProductPic(dto); //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
             try {
                 if(result == 0) {
                     throw new Exception("상품을 등록할 수 없습니다.");
@@ -97,13 +100,16 @@ public class AdminService {
                 return 0;
             }
             if (result == 1) {
-                String targetPath = FILE_DIR + "/winey/product/" + dto.getProductId();
+                String targetPath = FILE_DIR + "wine/"+dto.getProductId()+"/"; //수정예정?
+//                String targetPath = FILE_DIR + "/winey/product/" + dto.getProductId();
                 File targetDic = new File(targetPath);
                 if(!targetDic.exists()) {
                     targetDic.mkdirs();
                 }
                 File targetFile = new File(targetPath, savedFileName);
+//                String dbFilePath = "wine/" + dto.getProductId() + "/" + savedFileName; //
                 tempFile.renameTo(targetFile);
+
                 //t_sale 인서트
                 //startSale이 이번 달과 똑같은 달이면 실행되는 로직
                 if(parseStartDate.getMonthValue() == LocalDate.now().getMonthValue()) {
@@ -243,8 +249,8 @@ public class AdminService {
             } catch(Exception e) {
                 e.printStackTrace();
             }
-
-            dto.setPic(savedFileName);
+            String dbFilePath = "wine/" + param.getProductId() + "/" + savedFileName; //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
+            dto.setPic(dbFilePath);
 
             //t_product테이블 update
             //사진 파일 업로드 로직 2
@@ -362,6 +368,21 @@ public class AdminService {
         }
         UserInfo user = MAPPER.selUserInfo(userId);
 
+        //환불 금액, 횟수 구하는 로직
+
+//        UserRefundVo refundVo = MAPPER.selUserRefundInfo(userId);
+//        if(MAPPER.selUserRefundInfo(userId) != null) {
+//            user.setSumOrderPrice(user.getSumOrderPrice()-refundVo.getSumOrderPrice());
+//            user.setOrderCount(user.getOrderCount()-refundVo.getOrderCount());
+//        }
+//        int refundVo1 = MAPPER.selUserRefundInfo1(userId);
+//        int refundVo2 = MAPPER.selUserRefundInfo2(userId);
+//        if(refundVo1 != null) {
+//            user.setSumOrderPrice(refundVo1.getSumOrderPrice());
+//        }
+//        if(refundVo2 != null) {
+//            user.setOrderCount(refundVo2.getOrderCount());
+//        }
 
         return UserOrderDetailList.builder()
                 .page(new PageDto(maxUserOrder, dto.getPage(), dto.getRow()))
