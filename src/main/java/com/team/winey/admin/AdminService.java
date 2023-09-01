@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -508,5 +509,13 @@ public class AdminService {
         MAPPER.delProduct(productId);
 
         return 1;
+    }
+
+    public List<UserVo> serchUserList(AdminSerchDto dto) {
+        return MAPPER.serchUser(dto);
+    }
+
+    public List<ProductVo> serchProduct(AdminSerchDto dto) {
+        return MAPPER.serchProduct(dto);
     }
 }

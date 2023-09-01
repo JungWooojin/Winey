@@ -226,6 +226,30 @@ public class AdminController {
 
         return SERVICE.delProduct(productId);
     }
+
+    //유저 검색
+    @Operation(summary = "가입회원리스트 검색", description = " <br>"
+            +"type(검색타입) -> 이름(userName) / 이메일(userEmail) <br>"
+            +"str -> 검색어입력  <br>")
+    @GetMapping("/user/serch")
+    public List<UserVo> serchUserList(@RequestParam String type, @RequestParam String str) {
+        AdminSerchDto dto = new AdminSerchDto();
+        dto.setType(type);
+        dto.setStr(str);
+        return SERVICE.serchUserList(dto);
+    }
+
+    //상품 검색
+    @Operation(summary = "등록 상품 검색", description = " <br>"
+            +"type(검색타입) -> 한글이름(productNmKor) <br>"
+            +"str -> 검색어입력  <br>")
+    @GetMapping("/product/serch")
+    public List<ProductVo> serchProduct(@RequestParam String type, @RequestParam String str) {
+        AdminSerchDto dto = new AdminSerchDto();
+        dto.setType(type);
+        dto.setStr(str);
+        return SERVICE.serchProduct(dto);
+    }
 }
 
 

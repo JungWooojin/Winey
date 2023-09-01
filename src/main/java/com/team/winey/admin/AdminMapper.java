@@ -67,4 +67,8 @@ public interface AdminMapper {
     int delFeature(ProductUpdDto dto);
     int delSale(int productId);
 
+    //검색
+    List<UserVo> serchUser(AdminSerchDto dto);
+    List<ProductVo> serchProduct(AdminSerchDto dto);
+
 }

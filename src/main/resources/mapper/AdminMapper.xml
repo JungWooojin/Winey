@@ -741,7 +741,7 @@
                 FROM t_user A
                 INNER JOIN t_region_nm B
                 ON A.region_nm_id = B.region_nm_id
-                WHERE role = "ROLE_USER" AND nm LIKE '%#{string}%'
+                WHERE role = "ROLE_USER" AND nm LIKE '%${str}%'
                 ORDER BY A.user_id
             </when>
 
@@ -750,7 +750,7 @@
                 FROM t_user A
                 INNER JOIN t_region_nm B
                 ON A.region_nm_id = B.region_nm_id
-                WHERE role = "ROLE_USER" AND email LIKE '%#{string}%'
+                WHERE role = "ROLE_USER" AND email LIKE '%${str}%'
                 ORDER BY A.user_id
             </when>
 
@@ -765,7 +765,7 @@
                 FROM t_product A
                 LEFT OUTER JOIN t_sale B
                 ON A.product_id = B.product_id
-                WHERE nm_kor LIKE '%#{string}%'
+                WHERE nm_kor LIKE '%${str}%'
             </when>
 
         </choose>
