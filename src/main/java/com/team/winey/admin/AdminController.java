@@ -218,6 +218,14 @@ public class AdminController {
     public int putUserDelYn(UserDelYnUpdDto dto){
         return SERVICE.putUserDelYn(dto);
     }
+
+    //상품 삭제
+    @Operation(summary = "등록 상품 삭제")
+    @DeleteMapping("/product/{productId}")
+    public int delProduct(@PathVariable int productId) {
+
+        return 1;
+    }
 }
 
 

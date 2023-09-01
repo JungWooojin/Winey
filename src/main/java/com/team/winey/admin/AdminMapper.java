@@ -62,4 +62,9 @@ public interface AdminMapper {
     int orderCount(); //order 수
     int storeCount(); //store 수
 
+    //삭제
+    int delProduct(int productId);
+    int delFeature(ProductUpdDto dto);
+    int delSale(int productId);
+
 }

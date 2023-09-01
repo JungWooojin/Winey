@@ -487,4 +487,26 @@ public class AdminService {
     public int putUserDelYn(UserDelYnUpdDto dto){
         return MAPPER.updDelYn(dto);
     }
+
+    //등록 상품 삭제
+    public int delProduct(int productId) {
+        //selProductFk 이용해서 featureId 가져오기
+        //featureid 삭제
+        ProductUpdDto dto = MAPPER.selProductFk(productId);
+        MAPPER.delFeature(dto);
+
+        //t_sale 삭제 (productId로)
+        MAPPER.delSale(productId);
+
+        //aroma 삭제 (productId로)
+        MAPPER.delAroma(productId);
+
+        //winePairing 삭제 (productId로)
+        MAPPER.delWinePairing(dto);
+
+        //product 삭제
+        MAPPER.delProduct(productId);
+
+        return 1;
+    }
 }

@@ -772,5 +772,19 @@
 
     </select>
 
+    <select id="delProduct">
+        DELETE FROM t_product
+        WHERE product_id = #{productId}
+    </select>
+
+    <select id="delFeature">
+        DELETE FROM t_feature
+        WHERE feature_id = #{featureId}
+    </select>
+
+    <select id="delSale">
+        DELETE FROM t_sale
+        WHERE product_id = #{productId}
+    </select>
 
 </mapper>
