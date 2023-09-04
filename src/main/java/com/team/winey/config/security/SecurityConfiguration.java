@@ -27,7 +27,7 @@ public class SecurityConfiguration {
                         authz.requestMatchers(
                                         "/swagger.html"
                                         , "/swagger-ui/**"
-                                        , "/*", "/admin/**"
+//                                        , "/*", "/admin/**"
                                         , "/v3/api-docs/**"
                                         , "/index.html"
                                         , "/static/**"
@@ -41,19 +41,28 @@ public class SecurityConfiguration {
                                         , "/sign-api/exception"
 
                                         , "/view/**"
-                                        , "/api/**"
                                 ).permitAll()
                                 .requestMatchers(HttpMethod.GET, "/sign-api/refresh-token").permitAll()
-                                .requestMatchers("**exception**").permitAll() //exception의  용도
-                                .requestMatchers("/api/main").permitAll()// roles 값을 두개값으로 따로 check in 처럼 데이터에 제한을 두어야하는지 그냥 insert해야할지 ?
-                                .requestMatchers("/api/recommend").hasAnyRole("USER", "ADMIN")
-                                .requestMatchers("/api/mypage").hasAnyRole("USER", "ADMIN")
-                                .requestMatchers("/api/wine").hasAnyRole("USER", "ADMIN")
-                                .requestMatchers("/api/admin").hasRole("ADMIN")
-                                .requestMatchers("/api/download").hasRole("ADMIN")
-                                .requestMatchers("/api/orderList").hasAnyRole("USER", "ADMIN")
-                                .requestMatchers("/api/detail").hasAnyRole("USER", "ADMIN")
-                                .requestMatchers("/api/payment").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers("**exception**").permitAll()
+                                .requestMatchers("/api/recommend/**").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers("/api/mypage/**").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers("/api/wine/**").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/api/download/**").hasRole("ADMIN")
+                                .requestMatchers("/api/orderList/**").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers("/api/payment/**").hasAnyRole("USER", "ADMIN")
+                                .anyRequest().permitAll()
+//                                .requestMatchers(HttpMethod.GET, "/sign-api/refresh-token").permitAll()
+//                                .requestMatchers("**exception**").permitAll() //exception의  용도
+//                                .requestMatchers("/api/main").permitAll()// roles 값을 두개값으로 따로 check in 처럼 데이터에 제한을 두어야하는지 그냥 insert해야할지 ?
+//                                .requestMatchers("/api/recommend").hasAnyRole("USER", "ADMIN")
+//                                .requestMatchers("/api/mypage").hasAnyRole("USER", "ADMIN")
+//                                .requestMatchers("/api/wine").hasAnyRole("USER", "ADMIN")
+//                                .requestMatchers("/api/admin").hasRole("ADMIN")
+//                                .requestMatchers("/api/download").hasRole("ADMIN")
+//                                .requestMatchers("/api/orderList").hasAnyRole("USER", "ADMIN")
+//                                .requestMatchers("/api/detail").hasAnyRole("USER", "ADMIN")
+//                                .requestMatchers("/api/payment").hasAnyRole("USER", "ADMIN")
                 ) //사용 권한 체크
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //세션 사용 X
                 .httpBasic(http -> http.disable()) //UI 있는 시큐리티 설정을 비활성화
