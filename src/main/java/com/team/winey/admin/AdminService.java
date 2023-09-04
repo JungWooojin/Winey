@@ -302,7 +302,7 @@ public class AdminService {
 
     //상품 사진 삭제
     public int deleteProductPic(int productId) {
-        MyFileUtils.delFolder(FILE_DIR+"wine/product/"+productId);
+        MyFileUtils.delFolder(FILE_DIR+"/wine/"+productId);
 
         return 200; //성공시 200 리턴
     }
