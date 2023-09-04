@@ -19,5 +19,5 @@ public class UserEntity {
     private LocalDateTime createdAt;
     private LocalDate updatedAt;
     private Long regionNmId;
-    private String secretKey;
+//    private String secretKey;
 }
