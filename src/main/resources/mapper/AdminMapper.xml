@@ -601,7 +601,8 @@
         SET
         region_nm_id = #{regionNmId},
         nm = #{nm},
-        tel = #{tel}
+        tel = #{tel},
+        address = #{address}
     </insert>
 
     <select id="selStore">
