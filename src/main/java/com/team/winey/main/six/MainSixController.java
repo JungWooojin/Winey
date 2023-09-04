@@ -82,7 +82,7 @@ public class MainSixController {
 
     @GetMapping("/random-wines")
     @Operation(summary = "입문용 와인리스트 6개")
-    @Scheduled(cron = "0 0 0 * * *") // 매일 자정 마다 실행
+    //@Scheduled(cron = "0 0 0 * * *") // 매일 자정 마다 실행
     public List<WineRecommendVo> getRandomWines() {
 
         //로그인한 userId 불러오기

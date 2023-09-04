@@ -52,7 +52,8 @@
         sale = #{sale},
         sale_price = #{salePrice},
         start_sale = #{startSale},
-        end_sale = #{endSale}
+        end_sale = #{endSale},
+        sale_yn = #{saleYn}
     </insert>
 
     <insert id="insWinePairing" parameterType="ProductInsDto">
@@ -276,50 +277,40 @@
 
         <choose>
             <when test="type == '0'.toString() and sort == '0'.toString()">
-                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
-                FROM t_user A
-                INNER JOIN t_region_nm B
-                ON A.region_nm_id = B.region_nm_id
+                SELECT user_id userId, email, nm, region_nm_id regionNmId, DATE_FORMAT(created_at, '%y-%m-%d') createdAt
+                FROM t_user
                 WHERE role = "ROLE_USER"
-                ORDER BY A.user_id
+                ORDER BY user_id
                 LIMIT #{startIdx}, #{row}
             </when>
 
             <when test="type == 'pickUp'.toString() and sort == 'asc'.toString()">
-                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
-                FROM t_user A
-                INNER JOIN t_region_nm B
-                ON A.region_nm_id = B.region_nm_id
+                SELECT user_id userId, email, nm, region_nm_id regionNmId, DATE_FORMAT(created_at, '%y-%m-%d') createdAt
+                FROM t_user
                 WHERE role = "ROLE_USER"
-                ORDER BY A.region_nm_id ASC
+                ORDER BY region_nm_id ASC
                 LIMIT #{startIdx}, #{row}
             </when>
             <when test="type == 'pickUp'.toString() and sort == 'desc'.toString()">
-                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
-                FROM t_user A
-                INNER JOIN t_region_nm B
-                ON A.region_nm_id = B.region_nm_id
+                SELECT user_id userId, email, nm, region_nm_id regionNmId, DATE_FORMAT(created_at, '%y-%m-%d') createdAt
+                FROM t_user
                 WHERE role = "ROLE_USER"
-                ORDER BY A.region_nm_id DESC
+                ORDER BY region_nm_id DESC
                 LIMIT #{startIdx}, #{row}
             </when>
 
             <when test="type == 'userId'.toString() and sort == 'asc'.toString()">
-                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
-                FROM t_user A
-                INNER JOIN t_region_nm B
-                ON A.region_nm_id = B.region_nm_id
+                SELECT user_id userId, email, nm, region_nm_id regionNmId, DATE_FORMAT(created_at, '%y-%m-%d') createdAt
+                FROM t_user
                 WHERE role = "ROLE_USER"
-                ORDER BY A.user_id ASC
+                ORDER BY user_id ASC
                 LIMIT #{startIdx}, #{row}
             </when>
             <when test="type == 'userId'.toString() and sort == 'desc'.toString()">
-                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
-                FROM t_user A
-                INNER JOIN t_region_nm B
-                ON A.region_nm_id = B.region_nm_id
+                SELECT user_id userId, email, nm, region_nm_id regionNmId, DATE_FORMAT(created_at, '%y-%m-%d') createdAt
+                FROM t_user
                 WHERE role = "ROLE_USER"
-                ORDER BY A.user_id DESC
+                ORDER BY user_id DESC
                 LIMIT #{startIdx}, #{row}
             </when>
 
@@ -813,5 +804,27 @@
         DELETE FROM t_sale
         WHERE product_id = #{productId}
     </delete>
+
+    <select id="selPutProductInfo1">
+        SELECT A.product_id productId, A.category_id categoryId, A.feature_id featureId, A.country_id countryId, A.nm_kor nmKor, A.nm_eng nmEng, A.price, A.pic, A.promotion, A.beginner, A.alcohol, A.quantity, C.sweety, C.acidity, C.body, B.sale, B.sale_price salePrice , B.start_sale startSale, B.end_sale endSale, B.sale_yn saleYn
+        FROM t_product A
+        INNER JOIN t_sale B
+        ON A.product_id = B.product_id
+        INNER JOIN t_feature C
+        ON A.feature_id = C.feature_id
+        WHERE A.product_id = #{productId}
+    </select>
+
+    <select id="selPutProductInfo2">
+        SELECT aroma_category_id aroma
+        FROM t_aroma
+        WHERE product_id =#{productId}
+    </select>
+
+    <select id="selPutProductInfo3">
+        SELECT small_category_id smallCategoryId
+        FROM t_wine_pairing
+        WHERE product_id = #{productId}
+    </select>
 
 </mapper>

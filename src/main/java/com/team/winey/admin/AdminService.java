@@ -54,6 +54,7 @@ public class AdminService {
         //t_sale 로직
         dto.setSale(param.getSale()); // t_sale
         dto.setSalePrice(param.getSalePrice()); // t_sale
+        dto.setSaleYn(param.getSaleYn());
 
         LocalDate parseStartDate = LocalDate.parse(param.getStartSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String startSale을 LocalDate로 변환
         LocalDate parseEndDate = LocalDate.parse(param.getEndSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String endSale을 LocalDate로 변환
@@ -88,7 +89,7 @@ public class AdminService {
             //t_product에 인서트
             //사진 파일 업로드 로직 2
             int result = MAPPER.insProduct(dto); //t_product 인서트 후 pk값 productInsDto에 들어감
-            String dbFilePath = "/wine/" + dto.getProductId() + "/" + savedFileName; //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
+            String dbFilePath = "wine/" + dto.getProductId() + "/" + savedFileName; //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
             dto.setPic(dbFilePath); //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
             MAPPER.updProductPic(dto); //db에 wine/pk값/파일명 순으로 저장하기 위한 로직
             try {
@@ -177,6 +178,7 @@ public class AdminService {
 
         dto.setSale(param.getSale()); // t_sale
         dto.setSalePrice(param.getSalePrice()); // t_sale
+        dto.setSaleYn(param.getSaleYn());
 
         LocalDate parseStartDate = LocalDate.parse(param.getStartSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String startSale을 LocalDate로 변환
         LocalDate parseEndDate = LocalDate.parse(param.getEndSale(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));//String endSale을 LocalDate로 변환
@@ -264,7 +266,7 @@ public class AdminService {
                 return 0;
             }
             if (result == 1) {
-                String targetPath = FILE_DIR + "/winey/product/" + dto.getProductId();
+                String targetPath = FILE_DIR + "/wine/" + dto.getProductId();
                 File targetDic = new File(targetPath);
                 if(!targetDic.exists()) {
                     targetDic.mkdirs();
@@ -300,7 +302,7 @@ public class AdminService {
 
     //상품 사진 삭제
     public int deleteProductPic(int productId) {
-        MyFileUtils.delFolder(FILE_DIR+"/winey/product/"+productId);
+        MyFileUtils.delFolder(FILE_DIR+"/wine/"+productId);
 
         return 200; //성공시 200 리턴
     }
@@ -543,5 +545,14 @@ public class AdminService {
 
     public List<ProductVo> serchProduct(AdminSerchDto dto) {
         return MAPPER.serchProduct(dto);
+    }
+
+    public AdminProductDetailVo getProductDetail(int productId) {
+        AdminProductDetailVo dto = MAPPER.selPutProductInfo1(productId);
+        List<Integer> aroma = MAPPER.selPutProductInfo2(productId);
+        List<Integer> smallCategoryId = MAPPER.selPutProductInfo3(productId);
+        dto.setAroma(aroma);
+        dto.setSmallCategoryId(smallCategoryId);
+        return dto;
     }
 }
