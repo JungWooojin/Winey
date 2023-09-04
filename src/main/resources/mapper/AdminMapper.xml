@@ -279,7 +279,7 @@
             <when test="type == '0'.toString() and sort == '0'.toString()">
                 SELECT user_id userId, email, nm, region_nm_id regionNmId, DATE_FORMAT(created_at, '%y-%m-%d') createdAt
                 FROM t_user
-                WHERE role = "ROLE_USER"
+                WHERE role = "ROLE_USER" AND del_yn = 0
                 ORDER BY user_id
                 LIMIT #{startIdx}, #{row}
             </when>
@@ -287,14 +287,14 @@
             <when test="type == 'pickUp'.toString() and sort == 'asc'.toString()">
                 SELECT user_id userId, email, nm, region_nm_id regionNmId, DATE_FORMAT(created_at, '%y-%m-%d') createdAt
                 FROM t_user
-                WHERE role = "ROLE_USER"
+                WHERE role = "ROLE_USER" AND del_yn = 0
                 ORDER BY region_nm_id ASC
                 LIMIT #{startIdx}, #{row}
             </when>
             <when test="type == 'pickUp'.toString() and sort == 'desc'.toString()">
                 SELECT user_id userId, email, nm, region_nm_id regionNmId, DATE_FORMAT(created_at, '%y-%m-%d') createdAt
                 FROM t_user
-                WHERE role = "ROLE_USER"
+                WHERE role = "ROLE_USER" AND del_yn = 0
                 ORDER BY region_nm_id DESC
                 LIMIT #{startIdx}, #{row}
             </when>
@@ -302,14 +302,14 @@
             <when test="type == 'userId'.toString() and sort == 'asc'.toString()">
                 SELECT user_id userId, email, nm, region_nm_id regionNmId, DATE_FORMAT(created_at, '%y-%m-%d') createdAt
                 FROM t_user
-                WHERE role = "ROLE_USER"
+                WHERE role = "ROLE_USER" AND del_yn = 0
                 ORDER BY user_id ASC
                 LIMIT #{startIdx}, #{row}
             </when>
             <when test="type == 'userId'.toString() and sort == 'desc'.toString()">
                 SELECT user_id userId, email, nm, region_nm_id regionNmId, DATE_FORMAT(created_at, '%y-%m-%d') createdAt
                 FROM t_user
-                WHERE role = "ROLE_USER"
+                WHERE role = "ROLE_USER" AND del_yn = 0
                 ORDER BY user_id DESC
                 LIMIT #{startIdx}, #{row}
             </when>
