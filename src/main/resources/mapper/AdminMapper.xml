@@ -757,7 +757,7 @@
 
         <choose>
             <when test="type == 'userName'.toString()">
-                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
+                SELECT A.user_id userId, A.email, A.nm, B.region_nm_id regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
                 FROM t_user A
                 INNER JOIN t_region_nm B
                 ON A.region_nm_id = B.region_nm_id
@@ -766,7 +766,7 @@
             </when>
 
             <when test="type == 'userEmail'.toString()">
-                SELECT A.user_id userId, A.email, A.nm, B.region_nm regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
+                SELECT A.user_id userId, A.email, A.nm, B.region_nm_id regionNmId, DATE_FORMAT(A.created_at, '%y-%m-%d') createdAt
                 FROM t_user A
                 INNER JOIN t_region_nm B
                 ON A.region_nm_id = B.region_nm_id
