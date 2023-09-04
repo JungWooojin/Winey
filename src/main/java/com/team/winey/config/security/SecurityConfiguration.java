@@ -26,10 +26,13 @@ public class SecurityConfiguration {
                             authz.requestMatchers(
                                              "/swagger.html"
                                             , "/swagger-ui/**"
-                                            , "/"
+                                            , "/*", "/admin/**"
                                             , "/v3/api-docs/**"
                                             , "/index.html"
                                             , "/static/**"
+                                            , "/images/**"
+                                            , "/js/**"
+                                            , "/css/**"
 
                                             ,"/sign-api/sign-in"
                                             , "/sign-api/sign-up"
