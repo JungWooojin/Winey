@@ -617,6 +617,7 @@
         region_nm_id = #{regionNmId},
         nm = #{nm},
         tel = #{tel},
+        address = #{address},
         updated_at = CURRENT_TIMESTAMP
         WHERE store_id = #{storeId}
     </update>
