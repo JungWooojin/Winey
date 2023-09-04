@@ -168,7 +168,8 @@ public class AdminController {
 
     //매장 정보 등록
     @Operation(summary = "매장 정보 등록", description = "nm(매장이름)을 기존 등록된 매장이름과 중복된 이름 입력시 등록 안됨<br>"
-            +"전화번호 유효성 검사 (2~3자리 숫자)-(3~4자리 숫자)-(4자리 숫자), 실패시 코드 : 0")
+            +"전화번호 유효성 검사 (2~3자리 숫자)-(3~4자리 숫자)-(4자리 숫자), 실패시 코드 : 0<br>"
+            +"주소 형식 -> ex) 서울 양천구 오목로 299")
     @PostMapping("/store")
     public Long postStore(@RequestBody StoreInsParam param) {
         return SERVICE.insStore(param);

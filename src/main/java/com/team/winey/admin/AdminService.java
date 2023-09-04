@@ -449,6 +449,7 @@ public class AdminService {
         dto.setRegionNmId(param.getRegionNmId());
         dto.setNm(param.getNm());
         dto.setTel(param.getTel());
+        dto.setAddress(param.getAddress());
 
         //tel(전화번호) 유효성 검사하기
         String pattern = "(\\d{2,3})-(\\d{3,4})-(\\d{4})"; // (2~3자리 숫자)-(3~4자리 숫자)-(4자리 숫자)
