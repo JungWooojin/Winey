@@ -78,4 +78,9 @@ public interface AdminMapper {
     List<UserVo> serchUser(AdminSerchDto dto);
     List<ProductVo> serchProduct(AdminSerchDto dto);
 
+    //
+    AdminProductDetailVo selPutProductInfo1(int userId);
+    List<Integer> selPutProductInfo2(int userId);
+    List<Integer> selPutProductInfo3(int userId);
+
 }

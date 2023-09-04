@@ -52,7 +52,8 @@
         sale = #{sale},
         sale_price = #{salePrice},
         start_sale = #{startSale},
-        end_sale = #{endSale}
+        end_sale = #{endSale},
+        sale_yn = #{saleYn}
     </insert>
 
     <insert id="insWinePairing" parameterType="ProductInsDto">
@@ -803,5 +804,27 @@
         DELETE FROM t_sale
         WHERE product_id = #{productId}
     </delete>
+
+    <select id="selPutProductInfo1">
+        SELECT A.product_id productId, A.category_id categoryId, A.feature_id featureId, A.country_id countryId, A.nm_kor nmKor, A.nm_eng nmEng, A.price, A.pic, A.promotion, A.beginner, A.alcohol, A.quantity, C.sweety, C.acidity, C.body, B.sale, B.sale_price salePrice , B.start_sale startSale, B.end_sale endSale, B.sale_yn saleYn
+        FROM t_product A
+        INNER JOIN t_sale B
+        ON A.product_id = B.product_id
+        INNER JOIN t_feature C
+        ON A.feature_id = C.feature_id
+        WHERE A.product_id = #{productId}
+    </select>
+
+    <select id="selPutProductInfo2">
+        SELECT aroma_category_id aroma
+        FROM t_aroma
+        WHERE product_id =#{productId}
+    </select>
+
+    <select id="selPutProductInfo3">
+        SELECT small_category_id smallCategoryId
+        FROM t_wine_pairing
+        WHERE product_id = #{productId}
+    </select>
 
 </mapper>
