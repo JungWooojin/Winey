@@ -339,7 +339,7 @@ public class AdminService {
         int startIdx = (dto.getPage()-1) * dto.getRow();
         dto.setStartIdx(startIdx);
 
-        int maxUser = MAPPER.userCount();
+        int maxUser = MAPPER.userCount(dto);
 
         return UserList.builder()
                 .page(new PageDto(maxUser, dto.getPage(), dto.getRow()))
