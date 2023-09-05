@@ -466,7 +466,7 @@ public class AdminService {
 
         int maxStore = MAPPER.storeCount();
         PageDto page = new PageDto(maxStore, dto.getPage(), dto.getRow());
-        page.setPageSize(3);
+//        page.setPageSize(3);
 
         return StoreList.builder()
                 .page(page)
