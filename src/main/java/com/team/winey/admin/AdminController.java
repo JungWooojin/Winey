@@ -92,12 +92,14 @@ public class AdminController {
     public UserList getUserList(@RequestParam(defaultValue = "1") int page,
                                     @RequestParam(defaultValue = "15") int row,
                                 @RequestParam(defaultValue = "0") String type,
-                                @RequestParam(defaultValue = "0") String sort) {
+                                @RequestParam(defaultValue = "0") String sort,
+                                @RequestParam(required = false) String str) {
         SelListDto dto = new SelListDto();
         dto.setPage(page);
         dto.setRow(row);
         dto.setType(type);
         dto.setSort(sort);
+        dto.setStr(str);
         return SERVICE.getUserList(dto);
     }
 

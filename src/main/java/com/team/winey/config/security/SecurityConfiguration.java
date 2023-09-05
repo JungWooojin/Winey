@@ -27,7 +27,7 @@ public class SecurityConfiguration {
                         authz.requestMatchers(
                                         "/swagger.html"
                                         , "/swagger-ui/**"
-//                                        , "/*", "/admin/**"
+                                        , "/*", "/admin/**"
                                         , "/v3/api-docs/**"
                                         , "/index.html"
                                         , "/static/**"
@@ -47,7 +47,7 @@ public class SecurityConfiguration {
                                 .requestMatchers("/api/recommend/**").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers("/api/mypage/**").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers("/api/wine/**").hasAnyRole("USER", "ADMIN")
-                                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+//                                .requestMatchers("/api/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/api/download/**").hasRole("ADMIN")
                                 .requestMatchers("/api/orderList/**").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers("/api/payment/**").hasAnyRole("USER", "ADMIN")
